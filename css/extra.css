@@ -1,40 +1,49 @@
 @font-face {
-    font-family: "Elstob";
-    src: url(../fonts/Elstob.woff2);
+  font-family: "Elstob";
+  src: url(../fonts/Elstob.woff2);
 }
 @font-face {
-    font-family: "Elstob";
-    src: url(../fonts/Elstob-Italic.woff2);
-    font-weight: bold;
+  font-family: "Elstob";
+  src: url(../fonts/Elstob-Italic.woff2);
+  font-weight: bold;
 }
 
-
 :root {
-    --md-primary-fg-color:        #df4d4d;
-    --md-primary-fg-color--light: #ECB7B7;
-    --md-primary-fg-color--dark:  #90030C;
-  }
+  --md-primary-fg-color: #df4d4d;
+  --md-primary-fg-color--light: #ecb7b7;
+  --md-primary-fg-color--dark: #90030c;
+}
 
 [data-md-color-scheme="slate"] {
-    --md-hue: 210;
-  }
+  --md-hue: 210;
+}
 
 .md-content p {
-    font-family: 'Elstob', 'Times New Roman', Times, serif;
-    text-align: justify;
-    hyphens: auto;
-    font-size: calc(17px + (20 - 17) * ((100vw - 300px) / (1600 - 300)));
-    line-height: calc(1.35em + (1.5 - 1.2) * ((100vw - 300px)/(1600 - 300)));
-    font-variation-settings: "opsz" 18, "wght" 400;
+  font-family: "Elstob", "Times New Roman", Times, serif;
+  text-align: justify;
+  hyphens: auto;
+  font-size: calc(17px + (20 - 17) * ((100vw - 300px) / (1600 - 300)));
+  line-height: calc(1.35em + (1.5 - 1.2) * ((100vw - 300px) / (1600 - 300)));
+  font-variation-settings: "opsz" 18, "wght" 400;
+  counter-increment: css-counter 1;
+}
+
+.md-content p:before {
+    content: "[" counter(css-counter) "] "; /* Apply counter before children's content. */
 }
 
 .md-nav__item {
-    padding: 0 .25rem;
-    padding-right: 0.25rem;
+  padding: 0 0.25rem;
+  padding-right: 0.25rem;
 }
 
 .md-nav__list {
-    list-style: square;
-    margin: 0.5em;
-    padding: 0em;
+  list-style: square;
+  margin: 0.5em;
+  padding: 0em;
+}
+
+div {
+  list-style-type: none;
+  counter-reset: css-counter 0; /* initializes counter to 0; use -1 for zero-based numbering */
 }
