@@ -1,0 +1,35 @@
+article h1 {
+    font-size: 2.5em;
+    line-height: calc(1ex / 0.42);
+    margin: calc(1ex / 0.42) 0;
+}
+
+article h2 {
+    font-size: 2em;
+    line-height: calc(1ex / 0.42);
+    margin: calc(1ex / 0.42) 0;
+}
+
+article h3 {
+    font-size: 1.75em;
+    line-height: calc(1ex / 0.38);
+    margin: calc(1ex / 0.38) 0;
+}
+
+article h4 {
+    font-size: 1.5em;
+    line-height: calc(1ex / 0.37);
+    margin: calc(1ex / 0.37) 0;
+}
+
+article p {
+    font-size: 1em;
+    line-height: calc(1ex / 0.32);
+    margin: calc(1ex / 0.32) 0;
+    width: 60ch;
+    max-width: 100%;
+    font-kerning: auto;
+    font-variant-ligatures: common-ligatures;
+    text-align: justify;
+    hyphens: auto;
+}
