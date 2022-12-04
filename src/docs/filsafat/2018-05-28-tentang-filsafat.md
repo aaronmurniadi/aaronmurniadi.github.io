@@ -2,7 +2,9 @@
 layout: post
 title: Tentang Filsafat
 date: 2018-05-28
-category: philosophy
+category: Tesis Komprehensif Filsafat
+hide:
+  - navigation
 ---
 
 Dalam bahasa Yunani Kuno, *philo* berarti cinta dan *sophia* berarti kebijaksanaan. Filsuf adalah orang yang mengabdi pada kebijaksanaan. Menjadi bijak berarti mencoba hidup sekaligus mati dengan baik. Dalam mengejar kebijaksanaan, para filsuf mengembangkan seperangkat keterampilan yang sangat spesifik. Mereka telah, selama berabad-abad, justru menjadi ahli dalam hal-hal yang membuat orang tidak bijak.

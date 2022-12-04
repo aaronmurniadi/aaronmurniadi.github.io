@@ -2,7 +2,9 @@
 layout: post
 title: Pendidikan untuk Perdamaian
 date: 2019-12-05
-category: philosophy
+category: Tesis Komprehensif Filsafat
+hide:
+  - navigation
 ---
 
 > Hornedo, Florentino H., *Christian Education: Becoming Person-for-Others: Essays in Philosophy of Education*, (Manila: Santo Tomas University Press, 1995), pp. 111--119. Selanjutnya, acuan pada sumber ini akan ditulis dengan 'CE', diikuti dengan nomor halaman. E.g.:(CE 112).

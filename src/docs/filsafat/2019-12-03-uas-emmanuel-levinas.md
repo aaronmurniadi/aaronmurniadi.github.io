@@ -2,7 +2,9 @@
 layout: post
 title: Refleksi Filosofis atas Film "Hotel Rwanda" (2004) Berdasarkan Pemikiran Emmanuel Levinas
 date: 2019-12-03
-category: philosophy
+category: Tesis Komprehensif Filsafat
+hide:
+  - navigation
 ---
 
 ## Pendahuluan

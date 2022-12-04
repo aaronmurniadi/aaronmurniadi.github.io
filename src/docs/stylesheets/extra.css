@@ -25,12 +25,10 @@ article h4 {
     font-style: italic;
 }
 
+
 article p {
     font-size: 1em;
     line-height: calc(1ex / 0.32);
-    margin: 1ex auto;
-    width: 60ch;
-    max-width: 100%;
     font-kerning: auto;
     font-variant-ligatures: common-ligatures;
     text-align: justify;
@@ -46,4 +44,9 @@ article p::before {
     content: "[" counter(par-counter) "] ";
     font-size: 0.75em;
     color: tomato;
+}
+
+.md-typeset blockquote {
+    color: var(--md-default-fg-color);
+    margin: 2em 2em;
 }

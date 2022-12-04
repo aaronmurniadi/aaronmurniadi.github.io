@@ -2,7 +2,9 @@
 layout: post
 title: Rangkuman Buku "Memahami Islam" oleh Frithjof Schuon
 date: 2018-10-27
-category: philosophy
+category: Tesis Komprehensif Filsafat
+hide:
+  - navigation
 ---
 
 Frithjof Schuon (1907–1998) adalah keturunan Jerman yang lahir di Swiss. Ia juga dikenal dengan nama Isa Nur al-Din. Schuon adalah seorang filsuf, metafisikawan, pelukis, dan juga penyair. Pemikirannya tertuang di dalam syair dan puisi-puisinya, dalam bentuk doktrin-doktrin metafisika dan metode spiritual. Ia juga mengarang banyak buku tentang agama dan spiritualitas. Sepanjang hidupnya, ia telah menuliskan lebih dari 20 buku. Schuon juga dikenal sebagai penganut dan juru bicara pandangan *religio perennis*, yaitu pandangan modern yang melihat bahwa di balik setiap tradisi agama-agama, ada suatu kebenaran metafisika atau sumber yang sama, yang dari situ tumbuhlah semua doktrin dan pengetahuan esoterik maupun eksoterik agama-agama.

@@ -2,7 +2,9 @@
 layout: post
 title: Layanan Kesehatan sebagai Tanggung Jawab Sosial Menurut ajaran Gereja Katolik
 date: 2019-11-26
-category: philosophy
+category: Tesis Komprehensif Filsafat
+hide:
+  - navigation
 ---
 
 > Ashley, Benedict M., Kevin D. O'Rourke. *Ethics of Health Care: An Introductory Textbook*. 3rd ed. (Washington, D.C: Georgetown University Press, 2002), p. 87--104. Acuan pada karya ini akan ditulis dengan 'EHC', diikuti dengan nomor halaman. E.g.: (EHC 87).

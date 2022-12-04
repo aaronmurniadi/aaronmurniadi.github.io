@@ -10,7 +10,6 @@ theme:
     - navigation.tabs.sticky
     - navigation.top
     - toc.follow
-    - header.autohide
   palette: 
     # Palette toggle for light mode
     - scheme: default

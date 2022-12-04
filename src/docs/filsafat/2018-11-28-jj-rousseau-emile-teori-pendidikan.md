@@ -2,7 +2,9 @@
 layout: post
 title: Teori Pendidikan Jean-Jacques Rousseau Dalam Buku "Emile, or On Education"
 date: 2018-11-28
-category: philosophy
+category: Tesis Komprehensif Filsafat
+hide:
+  - navigation
 ---
 
 > Jean-Jaqcues Rousseau, *Émile: or On Education*, trans. Allan Bloom, (USA: Basic Books, 1979). Selanjutnya, acuan pada karya ini akan ditulis dengan ‘EM’ diikuti dengan *nomor halaman* dan *nomor paragraf*. Kata-kata yang ditambahkan penulis dalam kutipan langsung akan diapit oleh tanda ‘[’ dan ‘]’. Semua terjemahan bahasa Indonesia merupakan terjemahan bebas penulis.

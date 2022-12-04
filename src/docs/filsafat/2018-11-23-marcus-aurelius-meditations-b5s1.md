@@ -2,7 +2,9 @@
 layout: post
 title: "Marcus Aurelius, Meditations: Book 5, Section 1"
 date: 2018-11-23
-category: philosophy
+category: Tesis Komprehensif Filsafat
+hide:
+  - navigation
 ---
 
 At dawn, when you have trouble getting out of bed, tell yourself: "I have to go to work—as a human being. What do I have to complain of, if I'm going to do what I was born for—the things I was brought into the world to do? Or is this what I was created for? To huddle under the blankets and stay warm?"

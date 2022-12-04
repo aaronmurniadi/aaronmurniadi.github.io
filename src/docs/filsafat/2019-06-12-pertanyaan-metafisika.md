@@ -2,7 +2,9 @@
 layout: post
 title: Bahan Ujian Metafisika
 date: 2019-06-12
-category: philosophy
+category: Tesis Komprehensif Filsafat
+hide:
+  - navigation
 ---
 
 > Ujian lisan ini dibagi dalam dua tahap: Pertama, Anda dipersilahkan menyiapkan jawaban atas pertanyaan A (dan berikan uraian sekitar 5-8 menit). Kedua, Anda akan mengambil undian untuk menjawab 1 dari 6 pertanyaan di bagian B.

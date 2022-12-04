@@ -2,7 +2,9 @@
 layout: post
 title: "Analisis Pascakolonial Pergulatan Eksistensi, Identitas, dan Rekognisi Agama Kaharingan"
 date: 2019-05-27
-category: philosophy
+category: Tesis Komprehensif Filsafat
+hide:
+  - navigation
 ---
 
 ## Pendahuluan

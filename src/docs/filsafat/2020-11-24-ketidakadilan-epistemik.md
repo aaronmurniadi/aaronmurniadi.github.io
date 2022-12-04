@@ -2,7 +2,9 @@
 layout: post
 title: Ketidakadilan Epistemik dalam Dunia Kesehatan
 date: 2020-11-24
-category: philosophy
+category: Tesis Komprehensif Filsafat
+hide:
+  - navigation
 ---
 
 ## Pokok-pokok Bahasan[^1]

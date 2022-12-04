@@ -2,7 +2,9 @@
 layout: post
 title: "Menerobos Fenomena dan Mengambil Makna Sebagai Manusia: Telaah Metodologi Filsafat Fenomenologi Eksistensial Driyarkara"
 date: 2019-06-10
-category: philosophy
+category: Tesis Komprehensif Filsafat
+hide:
+  - navigation
 ---
 
 ## ABSTRAK

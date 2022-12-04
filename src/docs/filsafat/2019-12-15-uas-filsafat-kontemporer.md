@@ -2,7 +2,9 @@
 layout: post
 title: Bahan Ujian Akhir Filsafat Kontemporer
 date: 2019-12-15
-category: philosophy
+category: Tesis Komprehensif Filsafat
+hide:
+  - navigation
 ---
 
 ## Filsafat Analitik

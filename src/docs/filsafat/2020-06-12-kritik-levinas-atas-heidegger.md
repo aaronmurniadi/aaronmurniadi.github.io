@@ -2,7 +2,9 @@
 layout: post
 title: "Transendensi dan Waktu: Kritik Levinas atas Heidegger"
 date: 2020-06-12
-category: philosophy
+category: Tesis Komprehensif Filsafat
+hide:
+  - navigation
 ---
 
 > Disarikan dari artikel Branko Klun, "Transcendence and Time: Levinas's Criticism of Heidegger," _Gregorianum_ Vol. 88, No. 3 (2007): 587--603.

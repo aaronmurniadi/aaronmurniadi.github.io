@@ -2,7 +2,9 @@
 layout: post
 title: 'Selayang Pandang Pendekatan Pascakolonial: Dari Orientalisme, Subaltern, Resistensi, sampai Rekognisi dan Reclaiming'
 date: 2019-04-08
-category: philosophy
+category: Tesis Komprehensif Filsafat
+hide:
+  - navigation
 ---
 
 ## Edward Said: Orientalisme 

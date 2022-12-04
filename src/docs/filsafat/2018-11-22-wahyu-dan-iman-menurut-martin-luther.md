@@ -2,7 +2,9 @@
 layout: post
 title: Wahyu dan Iman Menurut Martin Luther
 date: 2018-11-22
-category: philosophy
+category: Tesis Komprehensif Filsafat
+hide:
+  - navigation
 ---
 
 Martin Luther merupakan tokoh besar dalam Sejarah Gereja abad ke-16. Luther menolak beberapa ajaran dan praktik Gereja Katolik Roma, terutama praktik indulgensi yang marak terjadi di zamannya. Luther mengemukakan tesis-tesis kritikannya itu pada tahun 1517, yang kemudian dikenal dengan Sembilan Puluh Lima Tesis. Tesis-tesis tersebut memulai gerakan besar yang menghasilkan suatu perpisahan dalam Kekristenan Barat, yaitu antara Katolik Roma dan Protestan. Gerakan ini dikenal dengan Reformasi Protestan, yang kemudian menghasilkan setidaknya 236 denominasi di tahun 2010, menurut data yang dikumpulkan ARDA (*Association of Religion Data Archives*).[^1] Dari denominasi-denominasi itu, yang dominan adalah Lutheran, Kalvinis, Anglikan, dan Anabaptis. Tetapi, apa sebenarnya dasar dari pemikiran Martin Luther sehingga memiliki pengaruh sangat besar dalam Sejarah Gereja? Tulisan ini bertujuan untuk menjawab pertanyaan itu dengan menguraikan pemahaman Martin Luther atas dua hal mendasar dalam spiritualitas hidup beragama seseorang, yaitu pemahaman atas Wahyu dan Iman.

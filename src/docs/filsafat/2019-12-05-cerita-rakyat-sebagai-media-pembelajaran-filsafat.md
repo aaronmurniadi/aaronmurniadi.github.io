@@ -2,7 +2,9 @@
 layout: post
 title: Cerita Rakyat Sebagai Media Pembelajaran Filsafat untuk Anak-anak di Indonesia
 date: 2019-12-05
-category: philosophy
+category: Tesis Komprehensif Filsafat
+hide:
+  - navigation
 ---
 
 ## Abstrak

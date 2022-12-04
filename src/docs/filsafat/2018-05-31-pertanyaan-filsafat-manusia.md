@@ -2,7 +2,9 @@
 layout: post
 title: Bahan Ujian Filsafat Manusia
 date: 2018-05-31
-category: philosophy
+category: Tesis Komprehensif Filsafat
+hide:
+  - navigation
 ---
 
 ### Apa perbedaan antara filsafat manusia dibandingkan ilmu-ilmu kemanusiaan lainnya seperti antropologi dan psikologi? Apa ciri khas filsafat manusia dalam hal ini?

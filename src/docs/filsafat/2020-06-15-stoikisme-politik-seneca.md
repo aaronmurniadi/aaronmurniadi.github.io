@@ -2,7 +2,9 @@
 layout: post
 title: "Stoikisme Seneca: Bersikap Stoik dalam Dunia Politik yang Korup"
 date: 2020-06-15
-category: philosophy
+category: Tesis Komprehensif Filsafat
+hide:
+  - navigation
 ---
 
 ## Seneca dan Situasi Politik Zamannya

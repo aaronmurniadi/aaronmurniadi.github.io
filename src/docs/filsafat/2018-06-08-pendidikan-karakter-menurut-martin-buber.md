@@ -2,7 +2,9 @@
 layout: post
 title: Pendidikan Karakter menurut Martin Buber
 date: 2018-06-08
-category: philosophy
+category: Tesis Komprehensif Filsafat
+hide:
+  - navigation
 ---
 
 Menurut Martin Buber, pendidikan yang layak disebut pendidikan pada dasarnya adalah pendidikan karakter.[^1] Pemikiran-pemikiran Buber tentang pendidikan tidak dapat dilepas dari pemikirannya tentang prinsip dialogis. Begitu juga dengan pemikirannya mengenai pendidikan karakter. Dalam prinsip dialogisnya, Buber mengatakan bahwa manusia mempunyai dua macam relasi yang secara fundamental berbeda. Relasi yang pertama adalah relasi dengan benda-benda, yang disebut Aku-Itu. Relasi yang kedua adalah relasi dengan sesama manusia dan Allah, yang disebut Aku-Engkau.[^2] Dari prinsip dialogis inilah Buber mendasarkan pemikirannya tentang pendidikan karakter.

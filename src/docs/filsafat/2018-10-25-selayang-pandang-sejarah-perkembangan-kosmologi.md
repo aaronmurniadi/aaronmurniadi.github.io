@@ -2,7 +2,9 @@
 layout: post
 title: Selayang Pandang Sejarah Perkembangan Kosmologi
 date: 2018-10-25
-category: philosophy
+category: Tesis Komprehensif Filsafat
+hide:
+  - navigation
 ---
 
 Kosmologi adalah "telaah alam semesta skala besar sebagai suatu sistem keseluruhan yang terpadu." Artinya, kosmologi bukanlah kajian tentang berbagai benda-benda individu di alam (planet, bintang, galaksi, dll.), melainkan dunia dipandang sebagai suatu keteraturan yang selaras, indah, dan bernilai. Saat kita mendengar kata kosmologi, kemungkinan besar kita langsung mengaitkannya dengan astronomi. Tetapi, ada satu lagi bidang ilmu yang tidak kalah dekat dengan kosmologi, yaitu Sastra. Suatu ketika manusia melihat ke langit malam, lalu hatinya terpikat oleh keindahan Bima Sakti beserta bintang-bintangnya. Di benaknya muncul pertanyaan: dari mana semuanya itu berasal? Inilah fase awal kosmologi tradisional, yaitu suatu wilayah irisan antara kosmologi dan sastra. Di dalamnya, terdapat narasi-narasi mitis tentang penciptaan dunia yang disebut mitokosmologi. Narasi yang tertua berasal dari Babilonia, yaitu *Enuma Elish* (2000-an SM). Pengaruh narasi ini dapat terlihat dalam mitos-mitos penciptaan Asia Barat Daya Kuno (*Ancient Near East*) dan sekitarnya. Di Indonesia sendiri, ada mitokosmologi terpanjang, yaitu *La Galigo* (abad ke-19), yang juga merupakan peneguhan garis keturunan raja-raja Bugis. Narasi-narasi tersebut adalah usaha manusia untuk memahami dunia, tetapi masih bersifat imajinatif penuh.

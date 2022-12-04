@@ -2,7 +2,9 @@
 layout: post
 title: "Emmanuel Levinas's Totality and Infinity: Metafisika dan Transendensi"
 date: 2019-06-12
-category: philosophy
+category: Tesis Komprehensif Filsafat
+hide:
+  - navigation
 ---
 
 > Levinas, Emmanuel. *Totality and Infinity: An Essay on Exteriority*, trans. Alphonso Lingis. Pittsburgh: Duquesne University Press, 1969, pp. 33--40. Selanjutnya, acuan pada karya ini akan ditulis dengan 'TI' diikuti dengan nomor halaman dan nomor baris dihitung dari atas. Semua terjemahan merupakan terjemahan bebas penulis. Kata yang ditambahkan penulis dalam kutipan akan diapit oleh tanda '[' dan ']'.

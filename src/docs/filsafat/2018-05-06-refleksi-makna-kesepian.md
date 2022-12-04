@@ -2,7 +2,9 @@
 layout: post
 title: Refleksi Makna Kesepian
 date: 2018-05-06
-category: philosophy
+category: Tesis Komprehensif Filsafat
+hide:
+  - navigation
 ---
 
 Tidak mudah untuk mengaku kesepian. Asumsi dasarnya adalah orang gaul dan keren tidak akan merasa terisolasi karena status sosial tersebut membuatnya selalu punya teman dan koneksi.

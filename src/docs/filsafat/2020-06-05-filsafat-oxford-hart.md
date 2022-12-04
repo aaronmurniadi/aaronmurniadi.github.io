@@ -2,7 +2,9 @@
 layout: post
 title: "Gaya Filsafat Oxford dalam Kritik H.L.A. Hart atas Teori Hukum John Austin"
 date: 2020-06-05
-category: philosophy
+category: Tesis Komprehensif Filsafat
+hide:
+  - navigation
 ---
 
 ## Pendahuluan: Gaya Filsafat Oxford[^1]
