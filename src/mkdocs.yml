@@ -1,5 +1,6 @@
 site_name: Aaron P. Murniadi
 site_url: https://aaronmurniadi.github.io/
+site_dir: ../docs
 copyright: Copyright &copy; 2018 - 2022 Aaron P. Murniadi
 
 theme:
