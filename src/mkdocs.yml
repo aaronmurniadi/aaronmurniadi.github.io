@@ -4,20 +4,22 @@ copyright: Copyright &copy; 2018 - 2022 Aaron P. Murniadi
 
 theme:
   name: material
+  font: false
   features:
     - navigation.tracking
     - navigation.tabs
     - navigation.tabs.sticky
     - navigation.top
+    - navigation.indexes
     - toc.follow
   palette: 
-    # Palette toggle for light mode
-    - scheme: default
+    # Palette toggle for dark mode
+    - scheme: slate
       toggle:
         icon: material/brightness-7 
         name: Switch to dark mode
-    # Palette toggle for dark mode
-    - scheme: slate
+    # Palette toggle for light mode
+    - scheme: default
       toggle:
         icon: material/brightness-4
         name: Switch to light mode
@@ -58,6 +60,47 @@ extra_css:
 extra:
   social:
     - icon: fontawesome/brands/linkedin
-      link: https://www.linkedin.com/in/aaronmurniadi/
+      link: https://www.linkedin.com/in/aaronmurniadi
     - icon: fontawesome/brands/instagram
       link: https://www.instagram.com/aaronmurniadi
+
+
+nav:
+  - Home: index.md
+  - Blog:
+    - blog/index.md 
+    - blog/post1.md
+  - Filsafat:
+    - filsafat/index.md 
+    - filsafat/2018-05-06-refleksi-makna-kesepian.md
+    - filsafat/2018-05-28-tentang-filsafat.md
+    - filsafat/2018-05-31-pertanyaan-filsafat-manusia.md
+    - filsafat/2018-06-08-pendidikan-karakter-menurut-martin-buber.md
+    - filsafat/2018-10-25-selayang-pandang-sejarah-perkembangan-kosmologi.md
+    - filsafat/2018-10-27-rangkuman-buku-frithjof-schuon-memahami-islam.md
+    - filsafat/2018-11-22-wahyu-dan-iman-menurut-martin-luther.md
+    - filsafat/2018-11-23-marcus-aurelius-meditations-b5s1.md
+    - filsafat/2018-11-24-jj-rousseau-emile-b3.md
+    - filsafat/2018-11-28-jj-rousseau-emile-teori-pendidikan.md
+    - filsafat/2019-04-08-selayang-pandang-pendekatan-pascakolonial.md
+    - filsafat/2019-05-27-pascakolonial-agama-kaharingan.md
+    - filsafat/2019-06-10-telaah-metodologis-fenomenologi-eksistensial-driyarkara.md
+    - filsafat/2019-06-12-pertanyaan-metafisika.md
+    - filsafat/2019-10-24-levinas-metafisika-dan-transendensi.md
+    - filsafat/2019-11-26-layanan-kesehatan.md
+    - filsafat/2019-12-03-uas-emmanuel-levinas.md
+    - filsafat/2019-12-05-cerita-rakyat-sebagai-media-pembelajaran-filsafat.md
+    - filsafat/2019-12-05-pendidikan-untuk-perdamaian.md
+    - filsafat/2019-12-15-uas-filsafat-kontemporer.md
+    - filsafat/2020-06-05-filsafat-oxford-hart.md
+    - filsafat/2020-06-12-kritik-levinas-atas-heidegger.md
+    - filsafat/2020-06-15-stoikisme-politik-seneca.md
+    - filsafat/2020-11-24-ketidakadilan-epistemik.md
+  - Tesis-tesis Komprehensif Filsafat:
+    - tesis_komprehensif_filsafat/index.md
+    - tesis_komprehensif_filsafat/01-filsafat-manusia.md
+    - tesis_komprehensif_filsafat/02-epistemologi.md
+    - tesis_komprehensif_filsafat/03-filsafat-politik.md
+    - tesis_komprehensif_filsafat/04-filsafat-ketuhanan.md
+    - tesis_komprehensif_filsafat/05-etika.md
+    - tesis_komprehensif_filsafat/06-metafisika.md
