@@ -1,3 +1,11 @@
+[data-md-color-scheme="slate"] {
+    --md-primary-fg-color: #b84343;
+}
+
+article {
+    max-width: 60ch;
+}
+
 article h1 {
     font-size: 2.5em;
     line-height: calc(1ex / 0.42);
@@ -49,4 +57,8 @@ article p::before {
 .md-typeset blockquote {
     color: var(--md-default-fg-color);
     margin: 2em 2em;
+}
+
+.md-sidebar--secondary {
+    margin-right: 5em;
 }
