@@ -35,7 +35,6 @@ article h4 {
 
 
 article p {
-    font-size: 1em;
     line-height: calc(1ex / 0.32);
     font-kerning: auto;
     font-variant-ligatures: common-ligatures;
@@ -47,12 +46,13 @@ div {
     counter-reset: par-counter;
 }
 
+/* 
 article p::before {
     counter-increment: par-counter;
     content: "[" counter(par-counter) "] ";
     font-size: 0.75em;
     color: tomato;
-}
+} */
 
 .md-typeset blockquote {
     color: var(--md-default-fg-color);
