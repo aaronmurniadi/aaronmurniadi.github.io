@@ -33,6 +33,9 @@ markdown_extensions:
   - pymdownx.keys
   - pymdownx.mark
   - pymdownx.tilde
+  - pymdownx.blocks.admonition
+  - pymdownx.blocks.details
+  - pymdownx.betterem
   - tables
   - attr_list
   - md_in_html
