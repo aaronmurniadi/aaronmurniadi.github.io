@@ -2,7 +2,7 @@ site_name: Aaron P. Murniadi
 site_url: https://aaronmurniadi.github.io/
 site_description: Personal Blog of Aaron Purnomo Murniadi
 site_dir: ../docs
-copyright: Copyright &copy; 2018 - 2022 Aaron P. Murniadi
+copyright: Copyright &copy; 2018 - 2023 Aaron P. Murniadi
 
 
 theme:
@@ -78,6 +78,7 @@ plugins:
       cache_safe: true
 
 extra:
+  generator: false
   social:
     - icon: fontawesome/brands/linkedin
       link: https://www.linkedin.com/in/aaronmurniadi
