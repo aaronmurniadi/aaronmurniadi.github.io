@@ -4,12 +4,18 @@
 
 article {
     max-width: 60ch;
+    text-rendering: optimizeLegibility;
+    font-kerning: auto;
 }
 
 article h1 {
     font-size: 2.5em;
     line-height: calc(1ex / 0.42);
     margin: calc(1ex / 0.42) 0;
+}
+
+.md-typeset h1 {
+    color: #b84343;
 }
 
 article h2 {
@@ -38,21 +44,11 @@ article p {
     line-height: calc(1ex / 0.32);
     font-kerning: auto;
     font-variant-ligatures: common-ligatures;
-    text-align: justify;
-    hyphens: auto;
 }
 
 div {
     counter-reset: par-counter;
 }
-
-/* 
-article p::before {
-    counter-increment: par-counter;
-    content: "[" counter(par-counter) "] ";
-    font-size: 0.75em;
-    color: tomato;
-} */
 
 .md-typeset blockquote {
     color: var(--md-default-fg-color);
