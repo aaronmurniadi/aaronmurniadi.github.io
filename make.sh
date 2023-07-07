@@ -1,0 +1,1 @@
+ronn --html --style=src/style.css,toc,80c src/tesis_komprehensif_filsafat/*.md

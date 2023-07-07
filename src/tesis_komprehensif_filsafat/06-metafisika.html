@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv='content-type' value='text/html;charset=utf8'>
+  <meta name='generator' value='Ronn/v0.7.3 (http://github.com/rtomayko/ronn/tree/0.7.3)'>
+  <title>06-metafisika</title>
+  <style type='text/css' media='all'>
+  /* style: man */
+  body#manpage {margin:0}
+  .mp {max-width:100ex;padding:0 9ex 1ex 4ex}
+  .mp p,.mp pre,.mp ul,.mp ol,.mp dl {margin:0 0 20px 0}
+  .mp h2 {margin:10px 0 0 0}
+  .mp > p,.mp > pre,.mp > ul,.mp > ol,.mp > dl {margin-left:8ex}
+  .mp h3 {margin:0 0 0 4ex}
+  .mp dt {margin:0;clear:left}
+  .mp dt.flush {float:left;width:8ex}
+  .mp dd {margin:0 0 0 9ex}
+  .mp h1,.mp h2,.mp h3,.mp h4 {clear:left}
+  .mp pre {margin-bottom:20px}
+  .mp pre+h2,.mp pre+h3 {margin-top:22px}
+  .mp h2+pre,.mp h3+pre {margin-top:5px}
+  .mp img {display:block;margin:auto}
+  .mp h1.man-title {display:none}
+  .mp,.mp code,.mp pre,.mp tt,.mp kbd,.mp samp,.mp h3,.mp h4 {font-family:monospace;font-size:14px;line-height:1.42857142857143}
+  .mp h2 {font-size:16px;line-height:1.25}
+  .mp h1 {font-size:20px;line-height:2}
+  .mp {text-align:justify;background:#fff}
+  .mp,.mp code,.mp pre,.mp pre code,.mp tt,.mp kbd,.mp samp {color:#131211}
+  .mp h1,.mp h2,.mp h3,.mp h4 {color:#030201}
+  .mp u {text-decoration:underline}
+  .mp code,.mp strong,.mp b {font-weight:bold;color:#131211}
+  .mp em,.mp var {font-style:italic;color:#232221;text-decoration:none}
+  .mp a,.mp a:link,.mp a:hover,.mp a code,.mp a pre,.mp a tt,.mp a kbd,.mp a samp {color:#0000ff}
+  .mp b.man-ref {font-weight:normal;color:#434241}
+  .mp pre {padding:0 4ex}
+  .mp pre code {font-weight:normal;color:#434241}
+  .mp h2+pre,h3+pre {padding-left:0}
+  ol.man-decor,ol.man-decor li {margin:3px 0 10px 0;padding:0;float:left;width:33%;list-style-type:none;text-transform:uppercase;color:#999;letter-spacing:1px}
+  ol.man-decor {width:100%}
+  ol.man-decor li.tl {text-align:left}
+  ol.man-decor li.tc {text-align:center;letter-spacing:4px}
+  ol.man-decor li.tr {text-align:right;float:right}
+  </style>
+  <style type='text/css' media='all'>
+  /* style: style */
+  @import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+  body#manpage {margin: 0;background: #4e081b}
+  .mp {max-width: 100ex;padding: 0 9ex 1ex 4ex
+  }
+  .mp p,.mp pre,.mp ul,.mp ol,.mp dl {margin: 0 0 20px 0
+  }
+  .mp h2 {margin: 10px 0 0 0
+  }
+  .mp>p,.mp>pre,.mp>ul,.mp>ol,.mp>dl {margin-left: 8ex
+  }
+  .mp h3 {margin: 0 0 0 4ex
+  }
+  .mp dt {margin: 0;clear: left
+  }
+  .mp dt.flush {float: left;width: 8ex
+  }
+  .mp dd {margin: 0 0 0 9ex
+  }
+  .mp h1,.mp h2,.mp h3,.mp h4 {clear: left
+  }
+  .mp pre {margin-bottom: 20px
+  }
+  .mp pre+h2,.mp pre+h3 {margin-top: 22px
+  }
+  .mp h2+pre,.mp h3+pre {margin-top: 5px
+  }
+  .mp img {display: block;margin: auto
+  }
+  .mp h1.man-title {display: none
+  }
+  .mp,.mp code,.mp pre,.mp tt,.mp kbd,.mp samp,.mp h3,.mp h4 {font-family: 'Source Code Pro',monospace;font-size: 14px;line-height: 1.42857142857143}
+  .mp h2 {font-size: 16px;line-height: 1.25
+  }
+  .mp h1 {font-size: 20px;line-height: 2
+  }
+  .mp {text-align: left;background: #4e081b}
+  .mp,.mp code,.mp pre,.mp pre code,.mp tt,.mp kbd,.mp samp {color: #c8cbc1}
+  .mp h1,.mp h2,.mp h3,.mp h4 {color: #c8cbc1}
+  .mp u {text-decoration: underline
+  }
+  .mp code,.mp strong,.mp b {font-weight: bold;color: #c8cbc1}
+  .mp em,.mp var {font-style: italic;color: #c8cbc1;text-decoration: none
+  }
+  .mp a,.mp a:link,.mp a:hover,.mp a code,.mp a pre,.mp a tt,.mp a kbd,.mp a samp {color: #0000ff
+  }
+  .mp b.man-ref {font-weight: normal;color: #434241
+  }
+  .mp pre {padding: 0 4ex
+  }
+  .mp pre code {font-weight: normal;color: #434241
+  }
+  .mp h2+pre,h3+pre {padding-left: 0
+  }
+  ol.man-decor,ol.man-decor li {margin: 3px 0 10px 0;padding: 0;float: left;width: 33%;list-style-type: none;text-transform: uppercase;color: #999;letter-spacing: 1px
+  }
+  ol.man-decor {width: 100%
+  }
+  ol.man-decor li.tl {text-align: left
+  }
+  ol.man-decor li.tc {text-align: center;letter-spacing: 4px
+  }
+  ol.man-decor li.tr {text-align: right;float: right
+  }
+  </style>
+  <style type='text/css' media='all'>
+  /* style: toc */
+  .man-navigation {display:block !important;position:fixed;top:0;left:113ex;height:100%;width:100%;padding:48px 0 0 0;border-left:1px solid #dbdbdb;background:#eee}
+  .man-navigation a,.man-navigation a:hover,.man-navigation a:link,.man-navigation a:visited {display:block;margin:0;padding:5px 2px 5px 30px;color:#999;text-decoration:none}
+  .man-navigation a:hover {color:#111;text-decoration:underline}
+  </style>
+  <style type='text/css' media='all'>
+  /* style: 80c */
+  .mp {max-width:86ex}
+   
+  .man-navigation {left:101ex}
+  </style>
+</head>
+<!--
+  The following styles are deprecated and will be removed at some point:
+  div#man, div#man ol.man, div#man ol.head, div#man ol.man.
+
+  The .man-page, .man-decor, .man-head, .man-foot, .man-title, and
+  .man-navigation should be used instead.
+-->
+<body id='manpage'>
+  <div class='mp' id='man'>
+
+  <div class='man-navigation' style='display:none'>
+    <a href="#NAME">NAME</a>
+    <a href="#tags-tesis-filsafat">tags: tesis-filsafat</a>
+    <a href="#Krisis-Metafisika">Krisis Metafisika</a>
+    <a href="#Melampaui-Metafisika">Melampaui Metafisika</a>
+  </div>
+
+  <ol class='man-decor man-head man head'>
+    <li class='tl'>06-metafisika</li>
+    <li class='tc'></li>
+    <li class='tr'>06-metafisika</li>
+  </ol>
+
+  <h2 id="NAME">NAME</h2>
+<p class="man-name">
+  <code>06-metafisika</code>
+</p>
+<hr />
+
+<p>layout: post
+title: "Metafisika"</p>
+
+<h2 id="tags-tesis-filsafat">tags: tesis-filsafat</h2>
+
+<p>Metafisika pada umumnya membicarakan tentang "ada sebagaimana ada-nya sendiri" (<em>being qua being</em>). Metafisika tidak tertarik untuk membicarakan sudut pandang sudut pandang partikular, dan mau mempertanyakan dan membahas "ada" itu sendiri. Penjelasan Anton Bakker berikut mungkin menambah pemahaman mengenai metafisika yang dipahami secara umum. Nama "Metafisika" mencakup pemikiran dan refleksi filosofis mengenai kenyataan yang secara mutlak paling mendalam dan paling ultima. Metafisika bermaksud menyatukan seluruh kenyataan dalam visi menyeluruh, menurut intinya yang paling mutlak. Maka, dapat dikatakan bahwa metafisika adalah usaha pencarian rasional terhadap landasan terakhir dari realitas. Dalam pengertian ini pula, metafisika kemudian mengalami krisisnya.</p>
+
+<h2 id="Krisis-Metafisika">Krisis Metafisika</h2>
+
+<blockquote><p>Zaman kita sering dikatakan sebagai era posmetafisis. Ada dua pemikiran besar yang bisa ditengarai sebagai penanda krisis yang dialami Metafisika: pertama, teori tentang tiga hukum perkembangan masyarakat dari Auguste Comte (di abad 19), dan kedua, kritik Heidegger atas Metafisika sebagai <em>onto-theo-logi</em>.</p></blockquote>
+
+<p>Para filsuf postmodernis seperti Jean Francois Lyotard, Jacques Derrida dan Michel Foucoult mengumandangkan bahwa tidak ada yang disebut sebagai kebenaran fundamental (persis yang dicari-cari oleh Metafisika). Pemikiran yang mau mencari landasan pokok yang logis dari kenyataan tak lebih dari fondasionalisme atau representasionalisme. Kebenaran itu subjektif, tergantung pada subjek, dan tidak pernah mutlak. Manusialah yang mengkonstruksi kebenaran oleh karena keyakinan bahwa dirinya adalah subjek yang ada di luar dunia. Postmodernisme menolak narasi-narasi besar yang termuat dalam filsafat metafisis, filsafat sejarah, atau segala usaha yang berpretensi untuk sampai pada pengetahuan yang universal. Ujung dari penolakan terhadap kebenaran mutlak yang menjadi obsesi modernisme adalah Relativisme. Karena itu, zaman kita juga sering dikatakan sebagai era <em>post-metafisis</em>.</p>
+
+<p>Di pihak lain, meskipun tetap percaya pada karakter rasional manusia, Eric Weil menolak metafisika dari segi sikap dogmatisnya yang melanggengkan kekerasan. Ini karena metafisika membicarakan tentang kebenaran tertinggi---sesuatu yang mustahil dicapai---yang jika diyakini akan secara otomatis mengeliminasi hal-hal lain bertentangan dengan kebenaran terakhir yang mereka temukan. Bagaimana bisa kebenaran tertinggi dapat dicapai jika subjek filsafat adalah manusia yang historis dan dalam ruang-waktu yang terbatas? Menurut Well, "<em>the ultimate truth</em>" yang menjadi obsesi metafisika tidak lagi penting atau relevan untuk dicari. Yang perlu ditangani adalah situasi "absennya kebenaran atau penolakan terhadap kebenaran." Sebagaimana kebenaran yang ultima melahirkan kekerasan, absennya kebenaran pun melahirkan hal yang serupa, yaitu kekerasan juga.</p>
+
+<p>Dengan pandangan-pandangan demikian ini, zaman ini menjadi genderang kematian-atau setidak-tidaknya, krisis bagi metafisika yang memiliki hasrat untuk menemukan landasan terakhir dari realitas. Ketika metafisika mati, ada dua aliran yang lahir.</p>
+
+<p>Pertama, pandangan bahwa rasio sepenuhnya hilang. Tidak ada konsep, tidak ada rasio, yang ada hanyalah kebutuhan. Percaya Tuhan berarti "butuh" percaya pada Tuhan. Inilah jalur yang dibangun Nietzsche (<em>Will to Power</em>), Husserl, dan Feidegger, yang diteruskan dalam pandangan-pandangan postmodernisme. Mereka berpendapat bahwa kekayaan objek tidak dapat direduksi oleh konsep-konsep.</p>
+
+<p>Kedua, pandangan bahwa rasio yang hilang hanyalah rasio instrumental saja. Inilah pandangan mereka yang mengembangkan mazhab Frankfurt (Adorno, Marcuse, Horkheimer), dan juga Habermas dan Eric Weil. Habermas yang masih percaya dengan rasio, misalnya dengan melihat zaman ini sebagai zaman postmetafisis. la menyadari bahwa ilmu-ilmu alam dan sosial sifatnya mendominasi. Ilmu-ilmu alam, misalnya, mendominasi bidang masing-masing, entah itu fisika, biologi molekuler, komputer, atau berbagai teknologi. Di sinilah peran ilmu-ilmu kritis (filsafat) yang menawarkan emansipasi, yaitu menyadarkan manusia akan dominasi-doniinasi yang tengah terjadi. Dimensi rasio yang memahami dominasi-dominasi ini tidak mati. Inilah yang disebut Habermas sebagai ratio komunikatif.</p>
+
+<p>Selain kedua pandangan di atas, ada dua pemikiran besar yang ditengarai sebagai penanda krisis yang dialami metafisika: Pertama, teori tentang tiga hukum perkembangan masyarakat dari Auguste Comte, dan kedua kritik <em>onto-teo-logis</em> Heidegger terhadap Metafisika.</p>
+
+<h3 id="Auguste-Comte-Tiga-Hukum-Perkembangan-Masyarakat">Auguste Comte: Tiga Hukum Perkembangan Masyarakat</h3>
+
+<p>Menurut Comte, ada tiga tahap perkembangan masyarakat, yaitu (i) Tahap kanak-kanak, di mana masyarakat berada dalam kondisi <em>teologis</em> (fiktif), (ii) tahap usia muda, masyarakat dalam kondisi <em>metafisis</em> (abstrak), dan (iii) tahap kematangan masyarakat, yaitu ada dalam kondisi <em>positif</em> (saintifik ilmiah). Ketiga tahap itu merujuk pada proses perkembangan 'roh manusia' (cara-cara manusia "berfilsafat") yang menurut Compte selalu melewati tiga tahapan: metode teologis, metode metafisis dan akhirnya metode positif. Hukum tiga tahap ini menunjukkan perkembangan bukan hanya pemikiran manusia individu, tetapi juga sejarah umat manusia pada umumnya.</p>
+
+<ol>
+<li><em>Kondisi Teologis</em> merujuk pada situasi masyarakat yang ditemukan sejak awal sampai dengan Abad ke-12. Dalam masyarakat teologis, kehidupan dilandaskan pada kepercayaan-kepercayaan religius yang berkembang dari tahap fetisisme, politeisme sampai ke monoteisme. Kaum elit pemimpin masyarakat adalah <em>'Man of God'</em>, manusia-manusia pilihan, atau wakil Tuhan. Dalam kondisi ini, orang percaya bahwa fenomen di dunia ini adalah hasil tindakan suatu entitas yang supranatural. Kalau ada bencana, orang lalu beranggapan bahwa hal itu karena manusia "dihukum Allah akibat dosa-dosanya." Kondisi teologis tidak merujuk pada sistem teologi Abad Pertengahan, melainkan merujuk pada sebuah cara menjelaskan fenomen-fenomen.</li>
+<li><em>Kondisi Metafisis</em> merujuk pada periode Abad ke-14 sampai Abad ke-18. Ini merupakan tahap peralihan. Dalam masyarakat periode ini, tumbuh kritisisme yang akan menghancurkan hierarki. Pencarian "<em>causa</em>" yang pada kondisi teologis berakhir pada dewa-dewi atau Tuhan, dalam kondisi metafisis diperingkas menjadi beberapa prinsip abstrak saja. Kejadian atau fakta sosial diterangkan secara abstrak dan dicarikan hukum dasarnya, misalnya politik diterangkan sebagai hasil Kontrak Sosial. Kondisi ini merujuk pada cara menjelaskan fenomen di mana orang menggunakan abstraksi-abstraksi ide yang seolah-olah riil (misalnya <em>aether</em> untuk merujuk pada ruang kosong (<em>vacuum</em>) dan jiwa untuk menjelaskan manusia).</li>
+<li><em>Kondisi Positif</em> merujuk pada masyarakat Abad ke-19, yaitu pada zaman Auguste Comte hidup. Masyarakat 'normal' ini berlandaskan pada hasil-hasil temuan ilmiah (sains). Pada kondisi positif, masyarakat menemukan hukum-hukum konstan berdasarkan fenomen-fenomen yang telah diamati. Pada kondisi positif ini, orang meninggalkan cara berpikir yang mencari-cari sebab atau causa dan memuaskan diri sekadar pada relasi-relasi atau hukum-hukum yang dapat diamati dari fakta fakta yang diselidiki. Manusia tidak lagi berambisi mencari mengapa atau sebab terdasar sebuah fenomen muncul, cukup dengan deskripsi "bagaimana" relasi antar-fenomen yang ada dan dapat diamati ini terjadi. Kita dapat melihat di sini, bagaimana metafisika kehilangan tempatnya dalam cara berpikir dan pengetahuan manusia.</li>
+</ol>
+
+
+<h3 id="Martin-Heidegger-Metafisika-sebagai-Onto-teo-logi">Martin Heidegger: Metafisika sebagai Onto-teo-logi</h3>
+
+<p>Pemikiran kedua yang menjadi penanda krisis metafisika adalah kritik Heidegger atas metafisika sebagai <em>onto-teo-logi</em>. Melalui pembedaan ontologisnya, Heidegger menyatakan hahwa Metafisika Barat memiliki berstrukturkan onto-teo-logis. Pembedaan ontologis menjadi distingsi induk pemikiran Heidegger, yaitu antara Sein (<em>Be</em>, Ada) dan Seindes (<em>beings</em>, adaan-adaan). Intuisi dasar Heidegger mengenai ‘Onto-theo-logi’ dan ‘Pembedaan Ontologis’ ini dijelaskan dalam <em>Introduction to ‘What is Metaphysics’</em>, Pathmarks, hlm. 287. Heidegger menuliskan sebagai berikut:</p>
+
+<blockquote><p>"Metaphysics states what beings are as beings. It offers a <strong>logos</strong> (statement) about the <strong>on</strong> (beings). The latter title ‘ontology’ characterizes its essence, provided, of course that we understand it in accordance with its proper significance and not through its narrow Scholastic meaning. In this manner, metaphysics always represents beings as such in their totality; it represents the <em>beingness of beings</em> (the <em>ousia</em> of the <em>on</em>). But metaphysics represents the beingness of beings in a <em>twofold manner</em>; in the first place, the totality of beings as such with an eye to their <em>most universal</em> traits (<em>on katholou</em>, <em>kainon</em>); but at the same time also the totality of beings as such in the sence of <em>the highest and therefore divine</em> being (<em>on katholau</em>, <em>akrotaton</em>, <strong>thelon</strong>). In the metaphysics of Aristotle, the unconcealedness of beings as such has specifically developed in this twofold manner."</p>
+
+<p>"Because it represents beings as beings, metaphysics is, in a twofold and yet unitary manner, the truth of beings in their universality and in the highest being. <em>According to its essence</em>, <strong>metaphysics at the same time both ontology in the narrower sense, and theology</strong>. This <em>onto-theo-logical</em> essence of philosophy proper [<em>prote philosophia</em>, <em>first philosophy</em>, <em>filsafat pertama</em>] must indeed be grounded in the way in which the <em>on</em> opens up in it, namely, as <em>on</em>."</p></blockquote>
+
+<p>Dalam "The Onto-Theo-Logical Constitution of Metaphysics," <em>Identity and Difference</em>, New York: Harper Torchbooks, 1974, hlm. 54, Heidegger juga menulis:</p>
+
+<blockquote><p>"Western metaphyiscs, however, since its beginning with the Greeks has eminently been both ontology and theology, still without being tied to these rubrics. For this reason my inaugural lecture <em>What is Metaphysics</em> (1929) defines metaphysics as the question about beings as such <em>and</em> as a whole. The wholeness of this whole is the unity of all beings that unifies as the generative ground. To those who can read, <em>this means: metaphysics is onto-theo-logy</em>."</p></blockquote>
+
+<p>Metafisika sebelum Heidegger dikenal sebagai pembicaraan tentang "ada sebagaimana ada-nya sendiri" (<em>being qua being</em>). Kata <em>being</em> merujuk pada apa saja, entah itu yang inteligibel maupun sensibel. Melampaui apakah malaikat itu bisa dilihat atau tidak, apakah meja itu bisa dilihat atau tidak, yang jelas malaikat dan meja itu "ada." Jadi, metafisika tidak tertarik dengan aspek-aspek partikular atas "ada" (aspek berat, panjang, dll). Metafisika mau mempertanyakan dan membahas "ada"-nya sendiri dari binatang atau malaikat itu "sejauh ia ada." Binatang "ada" dan malaikat "ada," dan terlepas dari segala sudut pandang partikular atasnya, Metafisika mencari "ada sejauh ada" itu sendiri.</p>
+
+<p>Dalam kutipan di atas, Heidegger menunjukkan bahwa metafisika yang seperti itu ternyata memiliki struktur <em>onto-teo-logis</em>. Setelah melampaui pembahasan binatang atau malaikat dari sudut ilmu partikular, dan mencoba membahas ada-nya dalam dirinya sendiri, orang biasanya akan tiba pada sebuah <em>‘ada’ yang paling umum</em> atau <em>universal</em>, atau pada sebuah <em>‘ada’ yang paling ilahi</em>. ‘Ada’ tersebut lalu dijadikan sebagai ‘sebab akhir’ atau sebagai ‘pengasal,’ atau ‘pencipta.' Ada sejauh 'ada' (<em>to on</em>) yang dicari-cari dan ditemukan akhirnya ditempatkan sebagai "yang paling umum" dalam arti yang paling tinggi atau yang paling ilahi (<em>theos</em>). Heidegger melihat metafisika semacam itu bersifat <em>ontologis</em> sekaligus <em>teologis</em>. Semuanya itu kemudian dibungkus atau dibicarakan dalam sebuah wacana atau uraian yang benar dan terstuktur (<em>logos</em>).</p>
+
+<p>Masalah lain dalam metafisika yang dilihat Heidegger adalah bahwa metafisika selalu berpretensi atau berambisi menemukan "kebenaran" lewat representasi yang mereka temukan disekitarnya. Benda, terlepas dari kesadaran kita, sudah mem-<em>presentasi</em>-kan dirinya. Ketika kita menyadari benda tersebut, maka yang terjadi adalah kita me-<em>representasi</em>-kan benda tersebut dalam kesadaran kita. Yang namanya <em>representasi</em> itu tidak pernah mengacu kepada keseluruhan realitas benda. Representasi selalu <em>mencerabut kekayaan realitas</em> dan <em>mereduksinya</em>. Di sini masalahnya: metafisika onto-teo-logis selalu berambisi menemukan keseluruhan dan totalitas, padahal dalam kesadaran atas realitas selalu ada reduksi.</p>
+
+<p>Heidegger kemudian menyimpulkan bahwa metafisika yang seperti itu sebenarnya tidak pernah sampai pada pembahasan 'ada' dalam dirinya sendiri. Kenapa begitu? Kenapa sulit sekali untuk membicarakan <em>Being qua being</em>? Menurut Heidegger, itu karena 'ada' memang bersifat <em>mewujudkan sekaligus menyembunyikan dirinya</em>.</p>
+
+<p>‘Ada,’ bagi Heidegger tidak pernah dapat habis diuraikan karena setiap ia muncul, ia muncul pada kesadaran kita dalam bentuk sebuah representasi. Karena selalu tereduksi, 'Ada' dapat dikatakan mewahyukan sekaligus menyembunyikan dirinya. Kebenaran dibalik "Ada" bagi Heidegger adalah <em>a-letheia</em>, yang artinya 'tidak lupa,' 'sejauh tersingkap dari kelupaan,' atau lebih tepatnya: <em>ketaktersembunyian</em>. Bila kebenaran adalah <em>a-letheia</em>, konsep ini dengan sendirinya mengandaikan adanya <em>lethe</em> (sesuatu yang masih menunggu untuk disingkapkan dari kelupaannya), yang Heidegger sebut <em>the unthought</em>.</p>
+
+<p>Itulah mengapa supaya "ada" dalam dirinya sendiri dapat dibicarakan, Heidegger mengatakan bahwa kita membutuhkan sebuah ruang pembicaraan atau wacana yang baru, yang disebut <em>Ontologi Fundamental</em>. Tujuan ontologi fundamental bukanlah mencari kebenaran dari "ada" sebagaimana termanifestasi dalam representasi-representasi atas "ada" tersebut, melainkan masuk lebih dalam lagi dan membicarakan kembali "ada" dalam dirinya sendiri. Heidegger mengajak kita beralih dari "berpikir tentang ‘ada’ <em>via</em> representasi" ke "berpikir tentang ada itu sendiri." Dalam ontologi fundamental, ada <em>pembedaan ontologis</em>, yaitu pembedaan antara <em>Sein</em> (<em>Be</em>, Ada) dan <em>Seindes</em> (<em>beings</em>, adaan-adaan). Pembedaan inilah pokok utama dari pemikiran Heidegger. Pembedaan Ontologis dapat dijelaskan dengan anekdot berikut:</p>
+
+<blockquote><p>Bayangkan seseorang yang mau membeli buah-buahan. Ia pergi ke pasar, lalu berkata pada pedagang buah: "Saya mau membeli buah, Pak." Pedagang buah lalu menawarkan buah apel, buah pisang, buah mangga, buah jeruk, dan buah delima, dan segala buah-buahan yang ada di warungnya. Tetapi orang itu selalu menjawab "Tidak, Pak. Saya mau membeli buah." Meskipun benda-benda yang ditawarkan pedagang toh juga buah-buahan, "buah" yang dicari oleh si pembeli tidak juga ketemu.
+Ternyata, orang tersebut adalah seorang metafisikus, dan yang dicarinya adalah <em>kebuahan</em>. Itu adalah semacam karakter paling umum dan paling mulia atau tinggi dari segala buah-buahan yang ada. Sedangkan "buah" hanyalah adalah nama generik dan umum yang merangkumi segala macam-macam buah-buahan yang ada.</p></blockquote>
+
+<p>Apakah seperti itu yang dimaksudkan Heidegger dengan "Pembedaan ontologis" antara <em>Be</em> dan <em>being</em>? Apakah <em>kebuahan</em> merupakan <em>Be</em>, dan <em>buah-buah</em> partikular itu adalah <em>beings</em>? Bukan! Apakah kalau <em>beings</em> itu semua dikumpulkan lalu didapatkan <em>Be</em>? Masih bukan! <em>Be</em> yang dimaksud Heidegger bukanlah kumpulan atau karakter umum dari <em>beings</em>. <em>Be</em>-nya Heidegger dalam arti tertentu adalah yang mendasari, suatu dasar yang menopang, yang menjadi <em>ground</em>, yang meng-<em>ada</em>-kan semua <em>beings</em>. Disebut ‘dalam arti tertentu’ karena <em>Be</em> yang mendasari adanya <em>beings</em> itu juga bukanlah sebuah "landasan." <em>Be</em> tidak meng-ada-kan <em>beings</em> melalui hubungan kausal-kausal yang rasional (i.e. karena ada <em>Be</em>, maka <em>beings</em> dapat ada), melainkan lewat aktivitas "perwahyuan" atau "ketersingkapan."</p>
+
+<p>Pembedaan ontologis ini menurut Heidegger berawal dari Platon dalam penjelasannya tentang <em>khora</em>. Konsep <em>khora</em> merujuk pada suatu <em>gap</em> atau ruang di antara dunia <em>Real</em> dengan dunia <em>Forma</em>. Disebut juga suatu rahim, atau matriks. Dalam <em>Timaeos</em> diceritakan tentang penciptaan dunia, yaitu bahwa dunia itu diciptakan menurut apa yang Demiurgos bayangkan mengenai Paradeigma. Khora adalah sebuah wadah atau tempat di mana yang sensibel (air, api, udara, tanah) dibuat. Karena yang sensibel merupakan hasil bayangan Demiurgos, maka ia tidak se-ideal <em>paradeigma</em>. Khora ini juga di sebut sebagai "bentuk ke tiga" (<em>the 3rd kind</em>), di samping yang sensibel dan inteligibel. Dalam pemikiran Heidegger, <em>khora</em> kemudian menjadi suatu ruang di antara <em>Being</em> dan <em>beings</em>. Khora adalah <em>ontological differance</em> itu sendiri, pembeda ontologiss antara <em>Being</em> dan <em>beings</em>. Ia berasal dari yang 'lain,' <em>the 3rd kind</em>, yang tidak bisa dipikirkan dan tidak bisa dibicarakan.</p>
+
+<p>Sebagai tambahan, menurut skema pembedaan ontologis Heidegger, apabila <em>Be</em> itu dikatakan Sang Pencipta, <em>Ultima Ratio</em>, atau <em>Causa Sui</em>, maka <em>Be</em> dengan demikian direpresentasikan, diturunkan derajatnya menjadi sekadar beings pada umumnya. Sedangkan, <em>Be</em> dalam dirinya sendiri, yang lain sama sekali dari beings, dilupakan, tidak dibahas! Itulah mengapa menurut Heidegger sejarah filsafat Barat (dengan metafisikanya) adalah suatu sejarah pelupaan akan <em>Be</em> karena jatuh ke dalam struktur ontotheologis. Di mata Heidegger, <em>Be</em> yang selalu dilupakan oleh sejarah filsafat ini adalah semacam "kedalaman yang lebih dalam, yang tak terbahasakan, dan tak terpikirkan oleh <em>logos</em>." Menurut Heidegger, kita bisa mengakses <em>Be</em> ini bukan lagi lewat rasio-analitis yang memakai logika, melainkan kita mesti memasuki "<em>meditative thinking</em>" di mana kita "hanya menunggu <em>self-revelation</em> dari sang Ada itu.</p>
+
+<h2 id="Melampaui-Metafisika">Melampaui Metafisika</h2>
+
+<blockquote><p>Lewat kritiknya atas Metafisika, Heidegger menawarkan sebuah arti baru untuk aktivitas <em>berpikir</em> yang meditatif. Bila Metafisika memang mati, cara berpikir yang senantiasa mencari sesuatu yang <em>beyond</em> tidak pernah berakhir sebagaimana tampak dalam beberapa pemikir kontemporer yang mengritik Heidegger, seperti Emmanuel Levinas dan Alain Badiou.</p></blockquote>
+
+<p>Dalam aktivitas berpikir yang meditatif, orang membuka diri dan mendengarkan. Ia membuka diri pada realitas di hadaparnya dan mendengarkan apa yang akan disingkapkan kepadanya. Tawaran Heidegger ini beranjak dari pandangannya mengenai kebenaran, yang dihubungkan dengan phusis Herakleitos (semacam alanı semesta, segala sesuatu yang ada, yang lewat dan ada di sekitar manusia). Menurut Heidegger, pemahaman tentang phusis ini dikacaukan oleh Platon dengan konsepnya tentang idea, oleh Aristoteles dengan konsepnya tentang substansi, oleh Hegel dengan roh absolut-nya, oleh Nietzsche dengan will to power-nya. Sejatinya, phusis ini memilikd dua bagian, yang tampak/tak tersembunyi/a-letheia (legein) dan yang tak tampak/tersembunyi/lethe (kruptein). Dari situ, kebenaran bagi Heidegger bukan sesuatu yang terang-benderang, bukan homoiosis (kesesuain), bukan korespondensi. Kebenaran adalah ketercerabutan dari ketersembunyian, maka ia sekadar "ketaktersembunyian" (terjemahan Heidegger tertiadap ale theia) oleh karena logos. Ada bagian dari phusis yang tidak terungkapkan dan tetap tinggal tersembunyi. Dengan demikian, di hadapan phusis, tidak mungkin manusia mencerap secara keseluruhan. Maka, jalan terbaik adalah aktivitas berpikir yang meditatif. Di situ, manusia membuka diri dan mendengarkan.</p>
+
+<h3 id="Kritik-Levinas">Kritik Levinas</h3>
+
+<p>Bagi Levinas, yang pertama bukanlah pencarian being qua being, melainkan relasi etis kita dengan Yang Lain. Levinas mengkritik doktrin Heideggerian tentang Ontologi Fundamental. Di matanya, ontologi sama sekali tidak fundamental karena masih merupakan filsafat dari Yang Sama (ontologie du Même), yaitu filsafat yang mereduksi kekayaan sesuatu yang konkret melalui "aktivitas mengetahui (menangkap, mencengkeram, mencerabut)" manusia, Inilah cara bekerja filsafat Barat, yaitu ketika yang konkret direduksi sebagai pengetahuan. Levinas mengajukan sebuah cara berfilsafat yang lain yang mendasarkan diri pada "melihat Yang Lain" dan mengutamakan "Yang Lain" untuk mengembalikan "irreduktibilitas Yang Lain".</p>
+
+<p>Reduksi transendental Husserl menunda (bracketting) semua penilaian terhadap dunia dalam rangka menghindari representasionalisme. Namun demikian, menurut Levinas reduksi ini tidak menunda kesadaran diri yang selalu sadar akan sesuatu. Di situ, subjek tetap bertahan dalam fakta bahwa ia mendasarkan diri pada sebuah keakuan absolut. Inilah kesadaran diri konstitutif. Menurut Levinas, ada kesadaran diri yang mendahului kesadaran diri konstitutif, yaitu kesadaran ciri non intensional, sebuah kesadaran diri yang tanpa arah dan tujuan apa pun yang juga dapat menjadi pengetahuan namun bukan pengetahuan dalam arti objektif yang mengobjekkan apa yang diketahui dalam bentuk representasi). Kesadaran non-reflekstif ini seperti "orang asing," tanpa "rumah," dan tanpa "negara." Heidegger memang sudah menghilangkan "ego" menjadi <em>Dasein</em>, tetapi tetap saja ontologi fundamental berkutat pada filsafat Yang Sama.</p>
+
+<p>Levinas melihat bahwa proyek Heidegger sebetulnya terpusat pada soal pemahaman, yaitu Dasein yang mau memahami segala sesuatunya dalam cakrawala <em>Be</em> (<em>Sein</em>). Levinas menyebut hal ini sebagai totalitas. Heidegger memberikan prioritas kepada Be daripada beings, artinya dari kacamata Levinas, beings (yang salah satunya adalah manusia) hanyalah sarana untuk pemahaman akan Be. Filsafat dari Platon (Idea) sampai Hegel (Roh Absolut) menjadikan kita jatuh dalam sikap "teoretis," berelasi dengan dunia dan manusia secara Impersonal, tidak lagi berelasi secara konkret. Filsafat Neutrum ini berbahaya, karena mengorbankan begitu saja eksistensi konkret demi Idea atau Roh Absolut Filsafat demikian mengabaikan relasi etis (sebuah relasi langsung, mula ketemu muka). Relasi dengan orang lain tidak dapat direduksi dalam sekadar pemahaman, apalagi pemahamanku yang selalu egologis.</p>
+
+<p>Kata ontologi bagi Levinas bermakna buruk la hendak merestorasi kata "metafisika." Dalam pandangan Levinas, Metafisika merujuk pada sesuatu yang benar-benar "beyond, meta" (yang mengajak keluar dan tanpa kembai ke kita), merujuk pada sesuatu yang benar-benar transenden, bukan pura-pura transenden tetapi lalu balik ke diri kita lagi. Metafisika adalah relasi ets, sebuah hasrat keluar, yang terarah pada sesuatu yang lain absolutely other), yang tidak dapat ditundukkan pada pemahaman egologis. Ini adalah sebuah relasi yang bersifat "mendasar," yang tidak dapat distrukturkan secara sadar. Inilah relasi etis, relasi tanpa relasi, pra-reflektif, yang adalah "tanggung jawab kepada orang lain".</p>
+
+<h3 id="Bahan-bahan-Rujukan">Bahan-bahan Rujukan</h3>
+
+<ol>
+<li>Anton Bakker. <em>Ontologi: Metafisika Umum. Filsafat Pengada dan Dasar-dasar Kenyataan</em>. Yogyakarta: Kanisius, 1992.</li>
+<li><ol type="a">
+<li>Setyo Wibowo. "Filsafat Pertama Bukan Ontologi Melainkan Etika." Bahan Kuliah Metafisika: "Emmanuel Levinas".</li>
+</ol>
+</li>
+<li><ol type="a">
+<li>Setyo Wibowio. "Kuliah Metafisika: Heidegger". Teks 2008, revisi akhir Februari 2011. STF Driyarkara, Jakarta.</li>
+</ol>
+</li>
+<li><ol type="a">
+<li>Setyo Wibowo. "Positivisme Auguste Comte." Disampaikan pada kuliah Sejarah Pemikiran Modern, 22 Februari 2010 di STF Driyarkara, Jakarta.</li>
+</ol>
+</li>
+</ol>
+
+
+
+  <ol class='man-decor man-foot man foot'>
+    <li class='tl'></li>
+    <li class='tc'>July 2023</li>
+    <li class='tr'>06-metafisika</li>
+  </ol>
+
+  </div>
+</body>
+</html>
