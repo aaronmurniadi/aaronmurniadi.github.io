@@ -104,11 +104,11 @@
             var year = now.getFullYear() + 1;
 
             var nextyear = month + '/' + day + '/' + year + ' 07:07:07';
-            var harih = '08/31/2023 03:00:00';
+            var harih = '08/31/2023 09:00:00';
 
             $('#hitungmundur').countdown({
               date: harih, // TODO Date format: 07/27/2017 17:00:00
-              offset: 7, // TODO Your Timezone Offset
+              offset: +7, // TODO Your Timezone Offset
               day: 'Hari',
               days: 'Hari'
             }, function () {
