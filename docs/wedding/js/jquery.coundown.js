@@ -8,7 +8,7 @@
 	$.fn.countdown = function (options, callback) {
 		var settings = $.extend({
 			date: null,
-			offset: 7,
+			offset: null,
 			day: 'Hari',
 			days: 'Hari',
 			hour: 'Jam',
@@ -44,7 +44,7 @@
 			var utc = date.getTime() + (date.getTimezoneOffset() * 60000);
 
 			// set new Date object
-			var new_date = new Date(utc + (3600000 * settings.offset));
+			var new_date = new Date(utc + (3600000*settings.offset));
 
 			return new_date;
 		};
@@ -52,7 +52,7 @@
 		/**
 		 * Main countdown function that calculates everything
 		 */
-		function countdown() {
+		function countdown () {
 			var target_date = new Date(settings.date), // set target date
 				current_date = currentDate(); // get fixed current date
 
@@ -87,11 +87,11 @@
 				text_minutes = (minutes === 1) ? settings.minute : settings.minutes,
 				text_seconds = (seconds === 1) ? settings.second : settings.seconds;
 
-			// fix dates so that it will show two digets
-			days = (String(days).length >= 2) ? days : '0' + days;
-			hours = (String(hours).length >= 2) ? hours : '0' + hours;
-			minutes = (String(minutes).length >= 2) ? minutes : '0' + minutes;
-			seconds = (String(seconds).length >= 2) ? seconds : '0' + seconds;
+				// fix dates so that it will show two digets
+				days = (String(days).length >= 2) ? days : '0' + days;
+				hours = (String(hours).length >= 2) ? hours : '0' + hours;
+				minutes = (String(minutes).length >= 2) ? minutes : '0' + minutes;
+				seconds = (String(seconds).length >= 2) ? seconds : '0' + seconds;
 
 			// set to DOM
 			container.find('.days').text(days);
