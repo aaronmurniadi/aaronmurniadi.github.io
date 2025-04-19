@@ -67,12 +67,16 @@ document.addEventListener('DOMContentLoaded', function() {
             <div class="lightbox-content">
                 <button class="lightbox-close">&times;</button>
                 <button class="lightbox-nav lightbox-prev">&#10094;</button>
-                <div class="lightbox-image-container">
-                    <img class="lightbox-image" src="" alt="">
-                    <div class="lightbox-exif"></div>
+                <div class="lightbox-container">
+                    <div class="lightbox-image-container">
+                        <img class="lightbox-image" src="" alt="">
+                    </div>
+                    <div class="lightbox-thumbnails"></div>
                 </div>
                 <button class="lightbox-nav lightbox-next">&#10095;</button>
-                <div class="lightbox-thumbnails"></div>
+                <div class="lightbox-sidebar">
+                    <div class="lightbox-exif"></div>
+                </div>
             </div>
         `;
         
@@ -119,8 +123,39 @@ document.addEventListener('DOMContentLoaded', function() {
     function updateLightboxContent() {
         const photo = photos[currentIndex];
         const img = lightbox.querySelector('.lightbox-image');
+        
+        // Reset any previous sizing
+        img.style.width = 'auto';
+        img.style.height = 'auto';
+        img.style.maxWidth = '100%';
+        img.style.maxHeight = '100%';
+        
+        // Set src after resetting styles
         img.src = photo.src;
         img.alt = photo.alt;
+        
+        // Handle image loading to adjust for portrait/landscape
+        img.onload = function() {
+            const container = lightbox.querySelector('.lightbox-image-container');
+            const containerRect = container.getBoundingClientRect();
+            const imageRatio = this.naturalWidth / this.naturalHeight;
+            
+            console.log(`Image dimensions: ${this.naturalWidth}x${this.naturalHeight}, ratio: ${imageRatio}`);
+            console.log(`Container dimensions: ${containerRect.width}x${containerRect.height}`);
+            
+            // Center and size the image properly based on orientation
+            if (imageRatio < 1) {
+                // Portrait image (taller than wide)
+                console.log('Portrait orientation detected');
+                this.style.maxHeight = '100%';
+                this.style.maxWidth = '100%';
+            } else {
+                // Landscape image (wider than tall)
+                console.log('Landscape orientation detected');
+                this.style.maxWidth = '100%';
+                this.style.maxHeight = '100%';
+            }
+        };
         
         // Create a formatted metadata display
         const exifContainer = lightbox.querySelector('.lightbox-exif');
