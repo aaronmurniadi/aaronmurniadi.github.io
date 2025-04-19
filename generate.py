@@ -27,6 +27,12 @@ def parse_arguments():
                         help='HTML template file (default: templates/default.html)')
     parser.add_argument('-s', '--static_dir', default='static',
                         help='Directory containing static files (default: static)')
+    parser.add_argument('-q', '--quality', type=int, default=85,
+                        help='Image optimization quality (1-100, default: 85)')
+    parser.add_argument('-w', '--max_width', type=int, default=1800,
+                        help='Maximum image width in pixels (default: 1800)')
+    parser.add_argument('--no-optimize', action='store_true',
+                        help='Skip image optimization')
     return parser.parse_args()
 
 def extract_title(markdown_content):
@@ -55,7 +61,49 @@ def get_photo_metadata(photo_path):
     
     return metadata
 
-def process_photo_gallery(gallery_dir, output_dir):
+def optimize_image(source_path, output_path, quality=85, max_width=1800):
+    """Optimize an image for web display by resizing and compressing."""
+    try:
+        # Open and process the image
+        with Image.open(source_path) as img:
+            # Get original format
+            img_format = img.format if img.format else 'JPEG'
+            
+            # Resize the image if it's wider than max_width
+            width, height = img.size
+            if width > max_width:
+                # Calculate new height while maintaining aspect ratio
+                new_height = int(height * max_width / width)
+                img = img.resize((max_width, new_height), Image.LANCZOS)
+            
+            # Convert images with alpha channel (like PNG) to RGB with white background
+            if img.mode in ('RGBA', 'LA'):
+                background = Image.new('RGB', img.size, (255, 255, 255))
+                background.paste(img, mask=img.split()[3])  # 3 is the alpha channel
+                img = background
+            elif img.mode != 'RGB':
+                img = img.convert('RGB')
+            
+            # Save with optimization and appropriate quality
+            img.save(output_path, format=img_format, 
+                    optimize=True, 
+                    quality=quality, 
+                    progressive=True if img_format == 'JPEG' else False)
+            
+            # Calculate original and new file sizes
+            original_size = os.path.getsize(source_path) / 1024  # in KB
+            new_size = os.path.getsize(output_path) / 1024  # in KB
+            reduction = (1 - new_size / original_size) * 100 if original_size > 0 else 0
+            
+            print(f"Optimized: {os.path.basename(source_path)} - {original_size:.1f}KB → {new_size:.1f}KB ({reduction:.1f}% reduction)")
+            return True
+    except Exception as e:
+        print(f"Error optimizing {source_path}: {e}")
+        # If optimization fails, just copy the original file
+        shutil.copy2(source_path, output_path)
+        return False
+
+def process_photo_gallery(gallery_dir, output_dir, optimize=True, quality=85, max_width=1800):
     """Process a directory of photos and generate gallery data."""
     # Get supported image extensions
     image_extensions = ['.jpg', '.jpeg', '.png', '.gif', '.bmp', '.tiff', '.webp']
@@ -76,9 +124,16 @@ def process_photo_gallery(gallery_dir, output_dir):
         # Get filename
         filename = os.path.basename(photo_path)
         
-        # Copy the photo to output directory
+        # Output path for the optimized photo
         output_photo_path = os.path.join(photos_output_dir, filename)
-        shutil.copy2(photo_path, output_photo_path)
+        
+        if optimize:
+            # Optimize and save the image
+            optimize_image(photo_path, output_photo_path, quality, max_width)
+        else:
+            # Skip optimization and just copy the original file
+            shutil.copy2(photo_path, output_photo_path)
+            print(f"Copied: {photo_path} -> {output_photo_path}")
         
         # Get metadata from YAML
         metadata = get_photo_metadata(photo_path)
@@ -166,7 +221,7 @@ def copy_static_files(static_dir, output_dir):
             shutil.copy2(js_file, dest_file)
             print(f"Copied: {js_file} -> {dest_file}")
 
-def process_markdown_files(input_dir, output_dir, template_path):
+def process_markdown_files(input_dir, output_dir, template_path, optimize_images=True, image_quality=85, max_width=1800):
     """Process all markdown files in the input directory."""
     # Ensure output directory exists
     os.makedirs(output_dir, exist_ok=True)
@@ -175,12 +230,12 @@ def process_markdown_files(input_dir, output_dir, template_path):
     site_title = "AARON MURNIADI"
     
     # Get content sections for navigation
-    sections = get_content_sections(input_dir)
+    sections = []  # Empty sections as we'll only have photos displayed as homepage
     
     # Special handling for photo gallery
     photos_dir = os.path.join(input_dir, 'photos')
     if os.path.exists(photos_dir):
-        gallery_data = process_photo_gallery(photos_dir, output_dir)
+        gallery_data = process_photo_gallery(photos_dir, output_dir, optimize_images, image_quality, max_width)
         
         # Generate gallery HTML
         gallery_template_path = 'templates/gallery.html'
@@ -217,14 +272,20 @@ def process_markdown_files(input_dir, output_dir, template_path):
                 sections=sections
             )
             
-            # Write HTML file
+            # Write HTML file - both as gallery index and as site homepage
             gallery_output_path = os.path.join(output_dir, 'photos', 'index.html')
             os.makedirs(os.path.dirname(gallery_output_path), exist_ok=True)
             
             with open(gallery_output_path, 'w') as f:
                 f.write(rendered_html)
             
+            # Copy the gallery to the main index.html as well
+            with open(os.path.join(output_dir, 'index.html'), 'w') as f:
+                f.write(rendered_html)
+            
             print(f"Generated photo gallery: {gallery_output_path}")
+            print(f"Set photos as homepage: {os.path.join(output_dir, 'index.html')}")
+            return  # Skip processing other markdown files
     
     # Find all markdown files
     markdown_files = glob.glob(os.path.join(input_dir, '**', '*.md'), recursive=True)
@@ -273,8 +334,15 @@ def main():
     # Copy static files first
     copy_static_files(args.static_dir, args.output_dir)
     
-    # Then process markdown files
-    process_markdown_files(args.input_dir, args.output_dir, args.template)
+    # Then process markdown files with image optimization settings
+    process_markdown_files(
+        args.input_dir, 
+        args.output_dir, 
+        args.template,
+        not args.no_optimize,
+        args.quality,
+        args.max_width
+    )
     
     print("Conversion complete!")
 
