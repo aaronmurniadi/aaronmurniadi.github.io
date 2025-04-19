@@ -3,6 +3,7 @@ document.addEventListener('DOMContentLoaded', function() {
     let lightbox = null;
     let currentIndex = 0;
     const photos = [];
+    let navTimeoutId = null; // Timeout ID for nav buttons
     
     // Initialize the lightbox
     function initLightbox() {
@@ -75,6 +76,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 </div>
                 <button class="lightbox-nav lightbox-next">&#10095;</button>
                 <div class="lightbox-sidebar">
+                    <button class="sidebar-toggle" aria-label="Toggle metadata sidebar"></button>
                     <div class="lightbox-exif"></div>
                 </div>
             </div>
@@ -88,14 +90,63 @@ document.addEventListener('DOMContentLoaded', function() {
         lightbox.querySelector('.lightbox-prev').addEventListener('click', showPreviousImage);
         lightbox.querySelector('.lightbox-next').addEventListener('click', showNextImage);
         
+        // Add sidebar toggle functionality
+        const sidebarToggle = lightbox.querySelector('.sidebar-toggle');
+        sidebarToggle.addEventListener('click', toggleSidebar);
+        
+        // Check for saved preference and apply it
+        const sidebarCollapsed = localStorage.getItem('lightbox-sidebar-collapsed') === 'true';
+        if (sidebarCollapsed) {
+            toggleSidebar();
+        }
+        
+        // Auto-hide navigation buttons after inactivity
+        const lightboxContent = lightbox.querySelector('.lightbox-content');
+        const navButtons = lightbox.querySelectorAll('.lightbox-nav');
+        
+        // Show buttons on mouse movement
+        lightboxContent.addEventListener('mousemove', function() {
+            showNavButtons();
+        });
+        
+        // Also show buttons on touch events for mobile
+        lightboxContent.addEventListener('touchstart', function() {
+            showNavButtons();
+        });
+        
         // Keyboard navigation
         document.addEventListener('keydown', function(e) {
             if (!lightbox.classList.contains('active')) return;
             
+            showNavButtons(); // Show nav buttons when using keyboard
+            
             if (e.key === 'Escape') closeLightbox();
             if (e.key === 'ArrowLeft') showPreviousImage();
             if (e.key === 'ArrowRight') showNextImage();
+            if (e.key === 'i') toggleSidebar(); // 'i' for 'information'
         });
+    }
+    
+    // Function to show navigation buttons and set auto-hide timeout
+    function showNavButtons() {
+        const navButtons = lightbox.querySelectorAll('.lightbox-nav');
+        
+        // Add visible class to all nav buttons
+        navButtons.forEach(button => {
+            button.classList.add('lightbox-nav-visible');
+        });
+        
+        // Clear any existing timeout
+        if (navTimeoutId) {
+            clearTimeout(navTimeoutId);
+        }
+        
+        // Set a new timeout to hide buttons after 1 second
+        navTimeoutId = setTimeout(() => {
+            navButtons.forEach(button => {
+                button.classList.remove('lightbox-nav-visible');
+            });
+        }, 1000);
     }
     
     // Open the lightbox with a specific image
@@ -108,8 +159,9 @@ document.addEventListener('DOMContentLoaded', function() {
         // Create thumbnails
         createThumbnails();
         
-        // Show the lightbox
+        // Show the lightbox and navigation buttons initially
         lightbox.classList.add('active');
+        showNavButtons();
         document.body.style.overflow = 'hidden'; // Prevent scrolling
     }
     
@@ -281,6 +333,16 @@ document.addEventListener('DOMContentLoaded', function() {
                 updateLightboxContent();
             });
         });
+    }
+    
+    // Toggle the sidebar visibility
+    function toggleSidebar() {
+        const lightboxElement = document.querySelector('.lightbox');
+        lightboxElement.classList.toggle('sidebar-collapsed');
+        
+        // Save preference
+        const isCollapsed = lightboxElement.classList.contains('sidebar-collapsed');
+        localStorage.setItem('lightbox-sidebar-collapsed', isCollapsed);
     }
     
     // Initialize the lightbox when the page loads

@@ -42,6 +42,7 @@
 .gallery-photo {
     width: 100%;
     height: auto;
+    margin-top: 4px;
     display: block;
     object-fit: contain;
     background-color: transparent;
