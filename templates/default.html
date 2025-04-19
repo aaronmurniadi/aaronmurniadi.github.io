@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ title }}</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body> 
+       
+    <header>
+        <h1 class="site-title">{{ site_title }}</h1>
+        
+        <nav class="main-nav">
+            <a href="/" class="nav-link">HOME</a>
+            {% for section in sections %}
+            <a href="/{{ section.path }}" class="nav-link">{{ section.name|upper }}</a>
+            {% endfor %}
+        </nav>
+    </header>
+    
+    <main>
+        {{ content }}
+    </main>
+    
+    <footer>
+    </footer>
+</body>
+</html> 

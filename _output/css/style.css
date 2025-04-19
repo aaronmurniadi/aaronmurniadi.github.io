@@ -1,0 +1,127 @@
+:root {
+    --bg-color: #2b2b2b;
+    --text-color: #a9b7c6;
+    --heading-color: #d0d0ff;
+    --link-color: #6897bb;
+    --link-hover-color: #9876aa;
+    --code-bg-color: #2d2d2d;
+    --code-color: #a9b7c6;
+    --border-color: #323232;
+    --selection-bg: #214283;
+    --nav-border-color: #ff8c00;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+}
+
+.rainbow-bar {
+    height: 5px;
+    width: 100%;
+    background: linear-gradient(90deg, 
+        #ff0000 0%, 
+        #ff8c00 16%, 
+        #ffff00 32%, 
+        #00ff00 48%, 
+        #0000ff 64%, 
+        #4b0082 80%, 
+        #8b00ff 100%
+    );
+}
+
+header {
+    padding: 1.5rem 1rem;
+}
+
+.site-title {
+    font-size: 1.8rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin: 0 0 1rem 0;
+    color: #ffffff;
+}
+
+.main-nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin: 1rem 0;
+}
+
+.nav-link {
+    display: inline-block;
+    padding: 8px 15px;
+    border: 1px solid var(--nav-border-color);
+    border-radius: 4px;
+    color: var(--nav-border-color);
+    text-decoration: none;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 0.9rem;
+    transition: all 0.2s ease;
+}
+
+.nav-link:hover {
+    background-color: var(--nav-border-color);
+    color: #000;
+    text-decoration: none;
+}
+
+main {
+    padding: 1rem;
+    background-color: var(--bg-color);
+}
+
+main h1:first-child {
+    margin-top: 0;
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 0.5rem;
+    color: var(--heading-color);
+}
+
+.page-title {
+    margin-top: 0;
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 0.5rem;
+}
+
+a {
+    color: var(--link-color);
+    text-decoration: none;
+}
+
+a:hover {
+    color: var(--link-hover-color);
+    text-decoration: underline;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    color: var(--heading-color);
+    margin-top: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+pre {
+    background-color: var(--code-bg-color);
+    padding: 1rem;
+    border-radius: 4px;
+    overflow-x: auto;
+    border: 1px solid var(--border-color);
+}
+
+code {
+    font-family: 'Courier New', Courier, monospace;
+    color: var(--code-color);
+}
+
+/* Selection color */
+::selection {
+    background-color: var(--selection-bg);
+    color: white;
+} 

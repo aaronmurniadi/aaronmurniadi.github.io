@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ title }}</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/gallery.css">
+    <link rel="stylesheet" href="/css/lightbox.css">
+</head>
+<body>    
+    <header>
+        <h1 class="site-title">{{ site_title }}</h1>
+        
+        <nav class="main-nav">
+            <a href="/" class="nav-link">HOME</a>
+            {% for section in sections %}
+            <a href="/{{ section.path }}" class="nav-link">{{ section.name|upper }}</a>
+            {% endfor %}
+        </nav>
+    </header>
+    
+    <main>
+        <div class="content">
+            {{ content }}
+        </div>
+        <div class="gallery">
+            {% for photo in photos %}
+            <div class="photo-container">
+                <img src="/{{ photo.path }}" alt="{{ photo.filename }}" class="gallery-photo">
+                <div class="metadata-container" style="display: none;" data-metadata='{{ photo.metadata|tojson|safe }}'></div>
+            </div>
+            {% endfor %}
+        </div>
+    </main>
+    
+    <footer>
+    </footer>
+
+    <script src="/js/masonry.js"></script>
+    <script src="/js/lightbox.js"></script>
+</body>
+</html> 
