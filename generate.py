@@ -21,8 +21,8 @@ def parse_arguments():
     parser = argparse.ArgumentParser(description='Convert Markdown files to HTML')
     parser.add_argument('-i', '--input_dir', default='content',
                         help='Directory containing markdown files (default: content)')
-    parser.add_argument('-o', '--output_dir', default='_output',
-                        help='Directory to output HTML files (default: _output)')
+    parser.add_argument('-o', '--output_dir', default='docs',
+                        help='Directory to output HTML files (default: docs)')
     parser.add_argument('-t', '--template', default='templates/default.html',
                         help='HTML template file (default: templates/default.html)')
     parser.add_argument('-s', '--static_dir', default='static',

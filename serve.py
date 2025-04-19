@@ -11,8 +11,8 @@ from http.server import HTTPServer, SimpleHTTPRequestHandler
 def parse_arguments():
     """Parse command line arguments."""
     parser = argparse.ArgumentParser(description='Serve the generated static site')
-    parser.add_argument('-d', '--directory', default='_output',
-                        help='Directory to serve (default: _output)')
+    parser.add_argument('-d', '--directory', default='docs',
+                        help='Directory to serve (default: docs)')
     parser.add_argument('-p', '--port', type=int, default=8000,
                         help='Port to serve on (default: 8000)')
     return parser.parse_args()
