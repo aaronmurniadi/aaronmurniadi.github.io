@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About the "Translate this Article" button - My Blog</title>
+    <link rel="stylesheet" href="style.css">
+    
+</head>
+<body>
+    <header>
+        <a class="title" href="index.html">
+            <h1>aaron-pm</h1>
+        </a>
+        <nav>
+            <p>
+                
+                    
+                        <a href="index.html">Home</a>
+                    
+                        <a href="contact/index.html">Contact</a>
+                    
+                
+            </p>
+        </nav>
+    </header>
+
+    <main>
+        
+<article class="post">
+    <h1>About the "Translate this Article" button</h1>
+    
+    
+    <p><time datetime="2025-02-12">2025-02-12</time></p>
+    
+    
+    <div class="post-content">
+        <p>Before migrating to Bearblog, most of my legacy content was written in Bahasa Indonesia. I wanted a quick and easy way to translate my posts for readers. One solution I found was Google Translate, which allows you to view a webpage inside a container with its contents automatically translated—a pretty handy feature.</p>
+<p>After some trial and error, I discovered that you can add a custom <code>&lt;a&gt;</code> element in the navigation section like this:</p>
+<pre class="codehilite"><code class="language-markdown">[Home](/) 
+[Status](/status/) 
+[Posts](/posts/) 
+[Articles](/articles/) 
+[Contact](/contact/) 
+[CV](https://github.com/aaronmurniadi/cv/releases/latest/download/aaron_murniadi_cv.pdf)
+&lt;a href=&quot;https://translate.google.com/translate?sl=auto&amp;amp;tl=en&amp;amp;u={{ post_link }}&quot; target=&quot;_blank&quot;&gt;Translate this Article&lt;/a&gt;
+</code></pre>
+
+<p>And yes—it works! 🎉</p>
+<p>Clicking the &ldquo;Translate this Article&rdquo; button will open a new tab of the Google Translated version of your post. Keep in mind that this only works for <em>Posts</em>, as it relies on <code>{{ post_link }}</code>.</p>
+<p>What about pages that aren’t <code>Posts</code>, like the <code>Home</code> page? With the current setup, the translation link breaks, generating a URL like this:</p>
+<pre class="codehilite"><code>https://translate.google.com/translate?sl=auto&amp;tl=en&amp;u={{%20post_link%20}}
+</code></pre>
+
+<p>To fix this, I decided to show the translation button only on specific pages, such as my <code>Articles</code> page. Initially, I thought this would require JavaScript, but surprisingly, it can be done purely with CSS!</p>
+<p>First, add the <code>class="translate"</code> attribute to the link element:</p>
+<pre class="codehilite"><code class="language-html">&lt;a class=&quot;translate&quot; href=&quot;https://translate.google.com/translate?sl=auto&amp;amp;tl=en&amp;amp;u={{ post_link }}&quot; target=&quot;_blank&quot;&gt;Translate this Article&lt;/a&gt;
+</code></pre>
+
+<p>Then, use this clever CSS trick:</p>
+<pre class="codehilite"><code class="language-css">html:not(:has(meta[property=&quot;og:type&quot;][content=&quot;article&quot;])) .translate {
+    display: none;
+}
+</code></pre>
+
+<p>Now, the translation button only appears on pages that include the <code>&lt;meta property="og:type" content="article"&gt;</code> tag.</p>
+<p>Pretty neat, right? 🚀</p>
+    </div>
+    
+    
+    <p class="tags">
+        
+        <span class="tag">#blog</span>
+        
+    </p>
+    
+    
+    <nav class="post-navigation">
+        
+        <div class="nav-links">
+            
+            <div class="nav-previous">
+                <a href="2025-02-12-shell-function-to-help-with-pythons-virtual-environment.html" rel="prev">
+                    ← Shell function to help with Python's Virtual Environment
+                </a>
+            </div>
+            
+            
+            
+            <div class="nav-next">
+                <a href="status/2025-02-12-notes-from-so-you-think-you-know-git-fosdem-2024.html" rel="next">
+                    Notes from "So You Think You Know Git - FOSDEM 2024" →
+                </a>
+            </div>
+            
+        </div>
+        
+    </nav>
+</article>
+
+    </main>
+
+    <footer>
+        <p class="copyright">© 2025 Aaron P. Murniadi</p>
+    </footer>
+    <script src="script.js"></script>
+</body>
+</html> 
