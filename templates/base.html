@@ -1,13 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}Blog{% endblock %}</title>
     <link rel="stylesheet" href="{% if current_category %}../{% endif %}style.css">
+    <script defer src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
+
     {% block extra_head %}{% endblock %}
 </head>
-<body{% if body_class %} class="{{ body_class }}"{% endif %}>
+<body{% if body_class %} class="{{ body_class }}" {% endif %}>
     <header>
         <a class="title" href="{% if current_category %}../{% endif %}index.html">
             <h1>aaron-pm</h1>
@@ -15,13 +18,13 @@
         <nav>
             <p>
                 {% if nav_links %}
-                    {% for link in nav_links %}
-                        <a href="{% if current_category %}../{% endif %}{{ link.url }}">{{ link.name }}</a>
-                    {% endfor %}
+                {% for link in nav_links %}
+                <a href="{% if current_category %}../{% endif %}{{ link.url }}">{{ link.name }}</a>
+                {% endfor %}
                 {% else %}
-                    <a href="{% if current_category %}../{% endif %}index.html">Home</a>
-                    <a href="#about">About</a>
-                    <a href="#contact">Contact</a>
+                <a href="{% if current_category %}../{% endif %}index.html">Home</a>
+                <a href="#about">About</a>
+                <a href="#contact">Contact</a>
                 {% endif %}
             </p>
         </nav>
@@ -35,5 +38,6 @@
         <p class="copyright">© 2025 Aaron P. Murniadi</p>
         <script src="{% if current_category %}../{% endif %}script.js"></script>
     </footer>
-</body>
-</html> 
+    </body>
+
+</html>
