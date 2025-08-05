@@ -3,8 +3,7 @@ title: "TIL that you can make any integer with four 2s!"
 slug: til-that-you-can-make-any-integer-with-four-2s
 date: 2025-02-24
 tags:
-  - TIL
-  - status
+  - blog
 published: true
 ---
 TIL that you can make any integer with four 2s! The formula is:

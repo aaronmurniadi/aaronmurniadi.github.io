@@ -3,7 +3,7 @@ title: Notes from "So You Think You Know Git - FOSDEM 2024"
 slug: notes-from-so-you-think-you-know-git-fosdem-2024
 date: 2025-02-12
 tags:
-  - status
+  - blog
 published: true
 ---
 See historical changes to a particular method/function in a given file using language-aware heuristics (especially for C, Java, Python, etc.) to detect function/method boundaries:
