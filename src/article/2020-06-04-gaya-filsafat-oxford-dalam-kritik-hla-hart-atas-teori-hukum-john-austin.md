@@ -6,7 +6,9 @@ tags:
   - article
 published: true
 ---
-## Pendahuluan: Gaya Filsafat Oxford[^1]
+## Pendahuluan: Gaya Filsafat Oxford
+
+> Disarikan dari artikel: Weitz, M., "Oxford Philosophy," *The Philosophical Review*, Vol. 62, No. 2, April 1953, hlm. 187--233.[^1]
 
 Filsafat Oxford, istilah tersebut merupakan pembagian filsafat yang relatif sempit jika dibandingkan dengan pembagian-pembagian filsafat lainnya. Dalam filsafat, biasa dikenal pembagian *historis* seperti 'Filsafat Yunani Kuno', 'Filsafat Abad Pertengahan', 'Filsafat Modern', dst. Masing-masing pembagian tersebut memiliki rentang ratusan tahun lamanya. Ada juga pembagian *geografis* seperti 'Filsafat Barat', 'Filsafat Timur', dan lebih spesifik lagi ada 'Filsafat China', 'Filsafat Indonesia', dll. Dibandingkan itu semua, istilah 'Filsafat Oxford' merujuk pada pembagian geografis yang sangat spesifik, yaitu pemikiran yang berkembang di Universitas Oxford. Universitas Oxford, dengan klaimnya sebagai "universitas yang paling tua di dunia berbahasa Inggris",[^2] punya sejarah pemikiran sejak akhir Abad Pertengahan (sekitar tahun 1090-an, tidak ada tanggal yang pasti. Duns Scotus dan William dari Ockham adalah dua tokoh yang sering dikategorikan sebagai pemikir Filsafat Abad Pertengahan, dan mereka sempat mengajar di Oxford) sampai sekarang. Namun, 'Filsafat Oxford' yang dibahas dalam filsafat modern merujuk pada pemikiran di Universitas Oxford yang berkembang mulai awal abad ke-20 atau pasca Perang Dunia II. Waktu itu, tokoh-tokoh besar seperti Bertrand Russell, G.E. Moore, and Ludwig Wittgenstein sedang mengajar di Oxford, dan pemikiran mereka diakui punya pengaruh besar terhadap tokoh-tokoh kontemporer yang sekarang masuk dalam golongan 'Filsafat Oxford.' (OP 189)
 
@@ -149,7 +151,7 @@ Austin dan Hart hanyalah dua dari serangkaian pemikir-pemikir cemerlang dalam li
 - [KB] Bertens, K., *Filsafat Barat Kontemporer: Inggris-Jerman*,\
 Jakarta: Gramedia, 2014.
 
-[^1]:  Disarikan dari artikel: Weitz, M., "Oxford Philosophy," *The Philosophical Review*, Vol. 62, No. 2, April 1953, hlm. 187--233. Selanjutnya, acuan dari karya ini akan ditulis dengan 'OP' diikuti dengan nomor halaman. E.g.: (OP 187). Semua terjemahan kutipan langsung merupakan terjemahan bebas pengarang. Kata-kata yang penulis sendiri tambahkan akan dikurung oleh tanda '\[' dan '\]'.
+[^1]: Selanjutnya, acuan dari karya ini akan ditulis dengan 'OP' diikuti dengan nomor halaman. E.g.: (OP 187). Semua terjemahan kutipan langsung merupakan terjemahan bebas pengarang. Kata-kata yang penulis sendiri tambahkan akan dikurung oleh tanda '\[' dan '\]'.
 
 [^2]:  "*As the oldest university in the English-speaking world* (\...)." Lih. University of Oxford, *Introduction and history*, *https://www.ox.ac.uk/about/organisation/history*.
 
