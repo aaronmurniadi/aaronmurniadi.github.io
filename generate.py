@@ -142,7 +142,7 @@ class BlogGenerator:
                             f"{post.get('category', '')}/{post['slug']}.html",
                         )
 
-                post_list.append(f"- **{date_str}** - [{title}]({url})")
+                post_list.append(f"- <div class='post-date'>{date_str}</div> <div class='post-title'>[{title}]({url})</div>")
 
             return "\n".join(post_list)
 
