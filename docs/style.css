@@ -70,14 +70,13 @@ body>main {
 /* ========================================
    TUFTE TYPOGRAPHY & HEADINGS
    ======================================== */
-h1 {
+   h1 {
     font-weight: 400;
     margin-top: 4rem;
     margin-bottom: 1.5rem;
     font-size: 1.8rem;
-    line-height: 1.25;
+    line-height: 1;
     text-align: left;
-    hyphens: none;
 }
 
 h2 {
