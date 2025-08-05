@@ -6,9 +6,8 @@ tags:
   - blog
 published: true
 ---
-So, I logged in into my GitHub account today and saw: 71 repositories!
 
-All the projects I've started, forks I've looked into, and then just abandoned. Let's be real; no way am I really keeping track of that many projects. Most of them are just remnants of things I was interested in for a short time.
+So, I logged in into my GitHub account today and saw: 71 repositories! That is all the projects I've started, forks I've looked into, and then just abandoned. Let's be real; no way am I really keeping track of that many projects. Most of them are just remnants of things I was interested in for a short time.
 
 I forked/created them, tinkering a bit, and then... nothing. They just lingered, collecting digital dust and taking up space on my GitHub profile.
 
