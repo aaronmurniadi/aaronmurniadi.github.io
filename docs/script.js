@@ -1,6 +1,17 @@
-const firstPWithoutTime = document.querySelector('main p:not(:has(time))');
+const firstPWithoutTime = document.querySelector('main p:not(:has(time)):not(blockquote p)');
 if (firstPWithoutTime) {
   firstPWithoutTime.classList.add('drop-cap');
+  
+  // Wrap first 4 words in a span for small-caps styling
+  const text = firstPWithoutTime.textContent;
+  const words = text.split(' ');
+  
+  if (words.length >= 3) {
+    const firstFourWords = words.slice(0, 3).join(' ');
+    const remainingText = words.slice(3).join(' ');
+    
+    firstPWithoutTime.innerHTML = `<span class="first-three-words">${firstFourWords}</span> ${remainingText}`;
+  }
 }
 
 // // Add hierarchical numbering to headers starting from H2

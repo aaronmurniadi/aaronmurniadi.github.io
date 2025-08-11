@@ -157,7 +157,7 @@ subtitle {
     text-transform: uppercase;
 }
 
-.drop-cap::first-line {
+.drop-cap .first-three-words {
     text-transform: lowercase;
     font-family: "Spectral SC", serif;
     font-variant: small-caps;
@@ -909,7 +909,7 @@ code {
     }
 
     blockquote {
-        color: #c8c8c8;
+        color: #f8f8f2;
         border-left-color: #3a3a3a;
     }
 
