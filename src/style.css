@@ -434,11 +434,13 @@ ol {
     margin-bottom: 1em;
 }
 
-.footnote ol>li {
+.footnote ol > li {
     margin-bottom: 0.75em;
-    text-align: justify;
-    text-justify: inter-word;
+    text-align: left;
     line-height: 1.4;
+    white-space: normal;        /* Ensure normal wrapping */
+    overflow-wrap: anywhere;    /* Break anywhere if needed */
+    word-break: break-word;     /* Fallback for older browsers */
 }
 
 .footnote ol>li::before {
