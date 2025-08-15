@@ -16,7 +16,7 @@
 
 html {
     /* Set base font size with responsive scaling */
-    font-size: clamp(15px, 2.5vw, 16px);
+    font-size: clamp(14px, 2.5vw, 16px);
 }
 
 body {
