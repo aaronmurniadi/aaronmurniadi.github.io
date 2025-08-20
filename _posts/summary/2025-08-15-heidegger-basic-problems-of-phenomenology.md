@@ -5,6 +5,7 @@ author: aaron
 date: 2025-08-15
 categories: [Philosophy, Book Summary]
 tags: [Martin Heidegger, phenomenology, ontology, Being, philosophical methodology, continental philosophy, fundamental ontology, temporality, book summary]
+pin: true
 ---
 
 Dalam upaya memahami hakikat keberadaan, filsafat kerap menempuh jalan berliku, menelusuri pertanyaan-pertanyaan mendasar yang tak kunjung usai. Martin Heidegger, dalam karyanya *Basic Problems of Phenomenology* (1988), mengajak kita untuk menengok kembali akar-akar pemikiran fenomenologis, bukan sekadar sebagai metode, melainkan sebagai cara menyingkap makna Ada itu sendiri. Buku ini bukan sekadar telaah atas fenomenologi Husserl, melainkan juga usaha Heidegger untuk menyingkap problematika ontologis yang tersembunyi di balik pengalaman sehari-hari manusia.

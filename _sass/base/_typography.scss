@@ -159,6 +159,17 @@ main {
   }
 
   p {
+    /* Enable hyphenation for all screen sizes */
+    hyphens: auto;
+    -webkit-hyphens: auto;
+    -moz-hyphens: auto;
+    -ms-hyphens: auto;
+    
+    /* Enable text justification only on large screens (≥850px) */
+    @include bp.lg {
+      text-align: justify;
+    }
+
     > a.popup {
       &:not(.normal):not(.left):not(.right) {
         @include mx.align-center;
