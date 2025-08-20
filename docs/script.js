@@ -74,15 +74,113 @@ const firstPWithoutTime = document.querySelector('main p:not(:has(time)):not(blo
 if (firstPWithoutTime) {
   firstPWithoutTime.classList.add('drop-cap');
 
-  // Wrap first 4 words in a span for small-caps styling
-  const text = firstPWithoutTime.textContent;
-  const words = text.split(' ');
+  // Wrap first 3 words in a span for small-caps styling while preserving HTML formatting
+  const originalHTML = firstPWithoutTime.innerHTML;
+
+  // Create a temporary element to work with the HTML content
+  const tempDiv = document.createElement('div');
+  tempDiv.innerHTML = originalHTML;
+
+  // Get the text content to count words, but preserve the original HTML structure
+  const textContent = tempDiv.textContent || tempDiv.innerText;
+  const words = textContent.trim().split(/\s+/);
 
   if (words.length >= 3) {
-    const firstFourWords = words.slice(0, 3).join(' ');
-    const remainingText = words.slice(3).join(' ');
+    // We need to find where the first 3 words end in the HTML
+    // This is a more complex approach that preserves HTML formatting
+    const firstThreeWords = words.slice(0, 3).join(' ');
 
-    firstPWithoutTime.innerHTML = `<span class="first-three-words">${firstFourWords}</span> ${remainingText}`;
+    // Create a walker to traverse text nodes
+    const walker = document.createTreeWalker(
+      tempDiv,
+      NodeFilter.SHOW_TEXT,
+      null,
+      false
+    );
+
+    let wordCount = 0;
+    let targetWordCount = 3;
+    let textNodes = [];
+    let node;
+
+    // Collect all text nodes and count words
+    while (node = walker.nextNode()) {
+      textNodes.push(node);
+    }
+
+    // Find where to split by counting words in text nodes
+    let splitNode = null;
+    let splitOffset = 0;
+    let currentWordCount = 0;
+
+    for (let textNode of textNodes) {
+      const nodeText = textNode.textContent;
+      const nodeWords = nodeText.trim().split(/\s+/).filter(word => word.length > 0);
+
+      if (currentWordCount + nodeWords.length >= targetWordCount) {
+        // The split point is in this node
+        splitNode = textNode;
+        const wordsNeeded = targetWordCount - currentWordCount;
+
+        // Find the character position after the needed words
+        let charCount = 0;
+        let wordsSeen = 0;
+
+        for (let i = 0; i < nodeText.length; i++) {
+          if (nodeText[i].match(/\s/)) {
+            // Found whitespace, check if we've seen enough words
+            if (wordsSeen >= wordsNeeded) {
+              splitOffset = i;
+              break;
+            }
+          } else if (i === 0 || nodeText[i - 1].match(/\s/)) {
+            // Starting a new word
+            wordsSeen++;
+          }
+        }
+
+        // If we've seen all needed words, find the end of the last word
+        if (wordsSeen >= wordsNeeded) {
+          for (let i = splitOffset; i < nodeText.length; i++) {
+            if (nodeText[i].match(/\s/)) {
+              splitOffset = i;
+              break;
+            }
+            if (i === nodeText.length - 1) {
+              splitOffset = i + 1;
+              break;
+            }
+          }
+        }
+        break;
+      }
+
+      currentWordCount += nodeWords.length;
+    }
+
+    if (splitNode && splitOffset > 0) {
+      // Split the text node
+      const beforeText = splitNode.textContent.substring(0, splitOffset);
+      const afterText = splitNode.textContent.substring(splitOffset);
+
+      // Create the span for first three words
+      const span = document.createElement('span');
+      span.className = 'first-three-words';
+      span.textContent = beforeText.trim();
+
+      // Replace the original text node
+      const parent = splitNode.parentNode;
+      parent.insertBefore(span, splitNode);
+
+      if (afterText.trim()) {
+        splitNode.textContent = afterText;
+      } else {
+        parent.removeChild(splitNode);
+      }
+
+      // Update the paragraph's HTML
+      firstPWithoutTime.innerHTML = tempDiv.innerHTML;
+    }
   }
 }
 
