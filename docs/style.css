@@ -1,6 +1,6 @@
-@import url('https://fonts.cdnfonts.com/css/spectral');
-@import url('https://fonts.cdnfonts.com/css/spectral-sc');
-@import url('https://fonts.cdnfonts.com/css/floral-capitals');
+@import url('https://fonts.cdnfonts.com/css/spectral') layer(fonts);
+@import url('https://fonts.cdnfonts.com/css/spectral-sc') layer(fonts);
+@import url('https://fonts.cdnfonts.com/css/floral-capitals') layer(fonts);
 
 /* ========================================
    LOADING SPINNER & FADE-IN ANIMATION
@@ -111,7 +111,8 @@ html {
 
 body {
     font-size: 1rem;
-    font-family: 'Spectral', Charter, 'Bitstream Charter', 'Sitka Text', Cambria, serif;
+    font-family: 'Spectral', 'Times New Roman', Times, Charter, 'Bitstream Charter', 'Sitka Text', Cambria, serif;
+    font-display: swap;
     height: 100%;
     scroll-behavior: smooth;
     -webkit-font-smoothing: antialiased;

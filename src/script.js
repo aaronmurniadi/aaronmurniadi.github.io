@@ -7,36 +7,13 @@ function initializeFontLoading() {
   const loadingOverlay = document.getElementById('loading-spinner');
   const mainContent = document.getElementById('main-content');
 
-  // List of fonts to wait for
-  const fontsToLoad = [
-    { family: 'Spectral', weight: '400' },
-    { family: 'Spectral', weight: '600' },
-    { family: 'Spectral SC', weight: '400' },
-    { family: 'Spectral SC', weight: '600' },
-    { family: 'Floral Capitals', weight: '400' }
-  ];
-
-  // Create font loading promises
-  const fontPromises = fontsToLoad.map(font => {
-    return new FontFace(font.family, `url(https://fonts.cdnfonts.com/s/${font.family.toLowerCase().replace(/\s+/g, '-')}/${font.family.replace(/\s+/g, '')}-${font.weight}.woff2)`, {
-      weight: font.weight,
-      style: 'normal'
-    }).load().catch(() => {
-      // If a specific font fails to load, continue anyway
-      console.warn(`Failed to load font: ${font.family} ${font.weight}`);
-      return null;
-    });
-  });
-
-  // Alternative approach using document.fonts.ready for broader compatibility
-  const fontLoadingPromise = Promise.allSettled([
-    ...fontPromises,
-    document.fonts.ready
-  ]);
+  // Use document.fonts.ready instead of trying to load individual font files
+  // This waits for all CSS-declared fonts to load
+  const fontLoadingPromise = document.fonts.ready;
 
   // Set a maximum timeout to prevent infinite loading
   const timeoutPromise = new Promise(resolve => {
-    setTimeout(resolve, 5000); // 5 second timeout
+    setTimeout(resolve, 3000); // 3 second timeout (reduced from 5)
   });
 
   // Wait for fonts to load or timeout
