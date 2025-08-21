@@ -18,10 +18,9 @@
         {% for item in gallery_items %}
         <div class="gallery-item">
             <div class="pdf-thumbnail">
-                <div class="pdf-placeholder">
-                    <div class="pdf-icon">📄</div>
-                    <div class="pdf-title">{{ item.title }}</div>
-                </div>
+                <embed src="{{ item.pdf_path }}#toolbar=0&navpanes=0&scrollbar=0" 
+                       type="application/pdf"
+                       aria-label="PDF preview of {{ item.title }}">
             </div>
             <div class="gallery-item-info">
                 <h3 class="gallery-item-title">{{ item.title }}</h3>
