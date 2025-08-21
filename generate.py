@@ -10,6 +10,7 @@ import shutil
 import yaml
 import time
 import sys
+import subprocess
 from datetime import datetime
 from pathlib import Path
 from typing import List, Dict, Any
@@ -296,10 +297,95 @@ class BlogGenerator:
             index_content=index_content,
         )
 
+    def compile_typst_files(self):
+        """Compile all .typ files in src/typst-collection directory"""
+        typst_dir = self.src_dir / "typst-collection"
+        
+        if not typst_dir.exists():
+            print("No typst-collection directory found, skipping Typst compilation")
+            return
+            
+        try:
+            # Find and compile all .typ files
+            result = subprocess.run(
+                ["find", str(typst_dir), "-name", "*.typ"],
+                capture_output=True,
+                text=True,
+                check=True
+            )
+            
+            typ_files = result.stdout.strip().split('\n') if result.stdout.strip() else []
+            
+            if not typ_files:
+                print("No .typ files found in typst-collection")
+                return
+                
+            print(f"Found {len(typ_files)} .typ files to compile")
+            
+            # Compile each file
+            for typ_file in typ_files:
+                if typ_file:  # Skip empty strings
+                    try:
+                        subprocess.run(["typst", "compile", typ_file], check=True)
+                        print(f"Compiled {typ_file}")
+                    except subprocess.CalledProcessError as e:
+                        print(f"Error compiling {typ_file}: {e}")
+                        
+        except subprocess.CalledProcessError as e:
+            print(f"Error finding .typ files: {e}")
+        except FileNotFoundError:
+            print("typst command not found. Please install Typst to compile documents.")
+
+    def get_typst_gallery_data(self):
+        """Get data for typst gallery - find all PDFs and their corresponding .typ sources"""
+        typst_dir = self.src_dir / "typst-collection" 
+        gallery_items = []
+        
+        if not typst_dir.exists():
+            return gallery_items
+            
+        # Find all PDF files in the typst-collection directory
+        for pdf_file in typst_dir.rglob("*.pdf"):
+            # Find corresponding .typ file
+            typ_file = pdf_file.with_suffix(".typ")
+            
+            if typ_file.exists():
+                # Calculate relative paths from docs directory
+                rel_pdf_path = pdf_file.relative_to(self.src_dir)
+                
+                # Generate GitHub URL for the .typ source file
+                # Remove 'src/' prefix and construct GitHub blob URL
+                typ_relative_to_typst_collection = typ_file.relative_to(typst_dir)
+                github_source_url = f"https://github.com/aaronmurniadi/typst-collection/blob/main/{typ_relative_to_typst_collection}"
+                
+                gallery_items.append({
+                    "title": pdf_file.stem.replace("_", " ").replace("-", " ").title(),
+                    "pdf_path": str(rel_pdf_path),
+                    "typ_path": github_source_url,
+                    "filename": pdf_file.name
+                })
+                
+        return gallery_items
+
+    def generate_typst_gallery_html(self, gallery_items):
+        """Generate HTML for the typst gallery page"""
+        template = self.jinja_env.get_template("typst_gallery.html")
+        nav_links = self.get_navigation_links()
+        
+        # Get content from typst-collection/index.md
+        index_content = self.get_index_content("typst-collection")
+        
+        return template.render(
+            nav_links=nav_links,
+            page_title="Typst Collection - Aaron PM",
+            gallery_items=gallery_items,
+            index_content=index_content
+        )
+
     def copy_static_files(self):
-        """Copy CSS, JS, and image files from src directory to docs directory"""
+        """Copy CSS, JS, image files, and PDFs from src directory to docs directory"""
         # Define file extensions to copy
-        static_extensions = {'.css', '.js', '.png', '.jpg', '.jpeg', '.gif', '.svg', '.webp', '.ico', '.bmp'}
+        static_extensions = {'.css', '.js', '.png', '.jpg', '.jpeg', '.gif', '.svg', '.webp', '.ico', '.bmp', '.pdf'}
         
         # Scan src directory for static files
         for file_path in self.src_dir.iterdir():
@@ -308,6 +394,20 @@ class BlogGenerator:
                 dest_path = self.docs_dir / file_path.name
                 shutil.copy2(file_path, dest_path)
                 print(f"Copied {file_path} to docs/{file_path.name}")
+                
+        # Copy PDF files from typst-collection directory
+        typst_dir = self.src_dir / "typst-collection"
+        if typst_dir.exists():
+            for pdf_file in typst_dir.rglob("*.pdf"):
+                # Preserve directory structure in docs
+                rel_path = pdf_file.relative_to(self.src_dir)
+                dest_path = self.docs_dir / rel_path
+                
+                # Create directory if it doesn't exist
+                dest_path.parent.mkdir(parents=True, exist_ok=True)
+                
+                shutil.copy2(pdf_file, dest_path)
+                print(f"Copied {pdf_file} to {dest_path}")
 
     def build(self):
         """Build the entire blog"""
@@ -315,6 +415,9 @@ class BlogGenerator:
 
         # Create docs directory if it doesn't exist
         self.docs_dir.mkdir(exist_ok=True)
+        
+        # Compile Typst files first
+        self.compile_typst_files()
 
         # Get all posts
         posts = self.get_all_posts()
@@ -372,6 +475,16 @@ class BlogGenerator:
                         f.write(category_index_html)
                     print(f"Generated {category_index_file}")
 
+        # Generate Typst gallery page
+        gallery_items = self.get_typst_gallery_data()
+        if gallery_items:
+            gallery_html = self.generate_typst_gallery_html(gallery_items)
+            gallery_file = self.docs_dir / "typst-collection.html"
+            
+            with open(gallery_file, "w", encoding="utf-8") as f:
+                f.write(gallery_html)
+            print(f"Generated {gallery_file}")
+
         # Copy static files
         self.copy_static_files()
 
@@ -390,11 +503,12 @@ class BlogHandler(FileSystemEventHandler):
         if event.is_directory:
             return
 
-        # Rebuild for markdown files, CSS files, JS files, and template files
+        # Rebuild for markdown files, CSS files, JS files, template files, and typst files
         if (event.src_path.endswith(".md") or 
             event.src_path.endswith(".css") or 
             event.src_path.endswith(".js") or
-            event.src_path.endswith(".html")):
+            event.src_path.endswith(".html") or
+            event.src_path.endswith(".typ")):
             current_time = time.time()
             if current_time - self.last_build > self.debounce_delay:
                 print(f"\n📝 File changed: {event.src_path}")
@@ -410,14 +524,16 @@ class BlogHandler(FileSystemEventHandler):
         if not event.is_directory and (event.src_path.endswith(".md") or 
                                      event.src_path.endswith(".css") or 
                                      event.src_path.endswith(".js") or
-                                     event.src_path.endswith(".html")):
+                                     event.src_path.endswith(".html") or
+                                     event.src_path.endswith(".typ")):
             self.on_modified(event)
 
     def on_deleted(self, event):
         if not event.is_directory and (event.src_path.endswith(".md") or 
                                      event.src_path.endswith(".css") or 
                                      event.src_path.endswith(".js") or
-                                     event.src_path.endswith(".html")):
+                                     event.src_path.endswith(".html") or
+                                     event.src_path.endswith(".typ")):
             print(f"\n🗑️  File deleted: {event.src_path}")
             print("🔄 Rebuilding blog...")
             try:

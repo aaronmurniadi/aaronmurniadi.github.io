@@ -994,6 +994,30 @@ code {
     .post-navigation {
         border-top-color: #d1d5db;
     }
+
+    /* Typst Gallery Light Mode */
+    .gallery-item {
+        background-color: white;
+        border-color: #ddd;
+    }
+    
+    .gallery-item-title {
+        color: #1f2937;
+    }
+    
+    .gallery-link.source-link {
+        color: #1f2937;
+        border-color: #ddd;
+    }
+    
+    .gallery-link.source-link:hover {
+        background-color: #f3f4f6;
+        color: #1f2937;
+    }
+    
+    .gallery-empty {
+        color: #666;
+    }
 }
 
 @media (prefers-color-scheme: dark) {
@@ -1074,6 +1098,120 @@ code {
 code {
     font-size: 0.8em;
     font-family: 'Share-TechMono', monospace;
+}
+
+/* ========================================
+   TYPST GALLERY STYLES
+   ======================================== */
+
+.gallery-container {
+    margin-top: 2rem;
+}
+
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.gallery-item {
+    border: 1px solid #444;
+    border-radius: 8px;
+    overflow: hidden;
+    background-color: #1e1e1e;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.gallery-item:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+}
+
+.pdf-thumbnail {
+    width: 100%;
+    height: 200px;
+    background-color: #f5f5f5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.pdf-thumbnail::before {
+    font-size: 4rem;
+    opacity: 0.7;
+    position: absolute;
+    color: #666;
+}
+
+.pdf-thumbnail embed {
+    width: 100%;
+    height: 100%;
+    border: none;
+    pointer-events: none;
+}
+
+.gallery-item-info {
+    padding: 1rem;
+}
+
+.gallery-item-title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: #cecece;
+}
+
+.gallery-item-links {
+    display: flex;
+    gap: 1rem;
+    margin-top: 0.75rem;
+}
+
+.gallery-link {
+    padding: 0.5rem 1rem;
+    border: 1px solid #555;
+    border-radius: 4px;
+    text-decoration: none;
+    transition: all 0.2s ease;
+    font-size: 0.9rem;
+}
+
+.gallery-link.pdf-link {
+    background-color: #dc3545;
+    color: white;
+    border-color: #dc3545;
+}
+
+.gallery-link.pdf-link:hover {
+    background-color: #c82333;
+    border-color: #c82333;
+    transform: translateY(-1px);
+}
+
+.gallery-link.source-link {
+    background-color: transparent;
+    color: #cecece;
+    border-color: #555;
+}
+
+.gallery-link.source-link:hover {
+    background-color: #555;
+    color: white;
+    transform: translateY(-1px);
+}
+
+.gallery-empty {
+    text-align: center;
+    padding: 3rem;
+    color: #888;
+    font-style: italic;
+}
+
+.gallery-intro {
+    margin-bottom: 2rem;
 }
 
 /* Blog post list styles - specific to post-date and post-title classes */

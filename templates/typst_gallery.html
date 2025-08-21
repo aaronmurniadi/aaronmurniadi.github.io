@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+
+{% block title %}{{ page_title }}{% endblock %}
+
+{% block extra_head %}{% endblock %}
+
+{% block content %}
+<div class="gallery-container">
+    {% if index_content %}
+        {{ index_content.content|safe }}
+    {% else %}
+        <h1>Typst Collection</h1>
+        <div class="gallery-intro">
+            <p>Welcome to the Typst Collection! This gallery showcases documents created with Typst.</p>
+        </div>
+    {% endif %}
+    
+    {% if gallery_items %}
+    <div class="gallery-grid">
+        {% for item in gallery_items %}
+        <div class="gallery-item">
+            <div class="pdf-thumbnail">
+                <embed src="{{ item.pdf_path }}#toolbar=0&navpanes=0&scrollbar=0" 
+                       type="application/pdf"
+                       aria-label="PDF preview of {{ item.title }}">
+            </div>
+            <div class="gallery-item-info">
+                <h3 class="gallery-item-title">{{ item.title }}</h3>
+                <div class="gallery-item-links">
+                    <a href="{{ item.pdf_path }}" 
+                       target="_blank" 
+                       rel="noopener" 
+                       class="gallery-link pdf-link"
+                       aria-label="Open {{ item.title }} PDF in new tab">
+                        PDF
+                    </a>
+                    <a href="{{ item.typ_path }}" 
+                       target="_blank" 
+                       rel="noopener" 
+                       class="gallery-link source-link"
+                       aria-label="View {{ item.title }} source code in new tab">
+                        Source
+                    </a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    {% else %}
+    <div class="gallery-empty">
+        <p>No Typst documents found. Add some .typ files to the src/typst-collection directory and rebuild to see them here.</p>
+    </div>
+    {% endif %}
+</div>
+{% endblock %}
