@@ -10,7 +10,7 @@ import shutil
 import yaml
 import time
 import sys
-import subprocess
+
 from datetime import datetime
 from pathlib import Path
 from typing import List, Dict, Any
@@ -150,7 +150,7 @@ class BlogGenerator:
         return re.sub(pattern, replace_post_list, content)
 
     def get_all_posts(self):
-        """Get all markdown posts from src directory and subdirectories, excluding index.md files and README.md for typst-collection"""
+        """Get all markdown posts from src directory and subdirectories, excluding index.md files"""
         posts = []
 
         # Get posts from root src directory (excluding index.md)
@@ -165,15 +165,13 @@ class BlogGenerator:
             except Exception as e:
                 print(f"Error processing {md_file}: {e}")
 
-        # Get posts from subdirectories (excluding index.md and README.md for typst-collection)
+        # Get posts from subdirectories (excluding index.md)
         for subdir in self.src_dir.iterdir():
             if subdir.is_dir() and not subdir.name.startswith("."):
                 category = subdir.name
                 for md_file in subdir.glob("*.md"):
                     if md_file.name == "index.md":
                         continue  # Skip index.md files
-                    if category == "typst-collection" and md_file.name == "README.md":
-                        continue  # Skip README.md files for typst-collection
                     try:
                         post_data = self.process_markdown_file(md_file)
                         post_data["category"] = category
@@ -208,11 +206,7 @@ class BlogGenerator:
     def get_index_content(self, category=None, all_posts=None):
         """Get content from index.md file for a category or the homepage"""
         if category:
-            # Special case for typst-collection: check for README.md
-            if category == "typst-collection":
-                index_file = self.src_dir / category / "README.md"
-            else:
-                index_file = self.src_dir / category / "index.md"
+            index_file = self.src_dir / category / "index.md"
         else:
             index_file = self.src_dir / "index.md"
 
@@ -265,17 +259,15 @@ class BlogGenerator:
         )
 
     def get_navigation_links(self):
-        """Generate navigation links based on src subdirectories that have index.md or README.md"""
+        """Generate navigation links based on src subdirectories that have index.md"""
         nav_links = [{"name": "Home", "url": "index.html"}]
 
-        # Add links for each subdirectory in src that has an index.md or README.md file
+        # Add links for each subdirectory in src that has an index.md file
         for subdir in self.src_dir.iterdir():
             if subdir.is_dir() and not subdir.name.startswith("."):
-                # Check for index.md or README.md (special case for typst-collection)
                 index_file = subdir / "index.md"
-                readme_file = subdir / "README.md"
                 
-                if index_file.exists() or (subdir.name == "typst-collection" and readme_file.exists()):
+                if index_file.exists():
                     nav_links.append(
                         {
                             "name": subdir.name.title(),
@@ -311,73 +303,36 @@ class BlogGenerator:
             gallery_items=gallery_items,
         )
 
-    def compile_typst_files(self):
-        """Compile all .typ files in src/typst-collection directory"""
-        typst_dir = self.src_dir / "typst-collection"
-        
-        if not typst_dir.exists():
-            print("No typst-collection directory found, skipping Typst compilation")
-            return
-            
-        try:
-            # Find and compile all .typ files
-            result = subprocess.run(
-                ["find", str(typst_dir), "-name", "*.typ"],
-                capture_output=True,
-                text=True,
-                check=True
-            )
-            
-            typ_files = result.stdout.strip().split('\n') if result.stdout.strip() else []
-            
-            if not typ_files:
-                print("No .typ files found in typst-collection")
-                return
-                
-            print(f"Found {len(typ_files)} .typ files to compile")
-            
-            # Compile each file
-            for typ_file in typ_files:
-                if typ_file:  # Skip empty strings
-                    try:
-                        subprocess.run(["typst", "compile", typ_file], check=True)
-                        print(f"Compiled {typ_file}")
-                    except subprocess.CalledProcessError as e:
-                        print(f"Error compiling {typ_file}: {e}")
-                        
-        except subprocess.CalledProcessError as e:
-            print(f"Error finding .typ files: {e}")
-        except FileNotFoundError:
-            print("typst command not found. Please install Typst to compile documents.")
+
+
+
 
     def get_typst_gallery_data(self):
-        """Get data for typst gallery - find all PDFs and their corresponding .typ sources"""
+        """Get data for typst gallery - find all .typ files and link to GitHub release PDFs"""
         typst_dir = self.src_dir / "typst-collection" 
         gallery_items = []
         
         if not typst_dir.exists():
             return gallery_items
             
-        # Find all PDF files in the typst-collection directory
-        for pdf_file in typst_dir.rglob("*.pdf"):
-            # Find corresponding .typ file
-            typ_file = pdf_file.with_suffix(".typ")
+        # Find all .typ files in the typst-collection directory
+        for typ_file in typst_dir.rglob("*.typ"):
+            # Calculate relative path from typst-collection directory
+            typ_relative_to_typst_collection = typ_file.relative_to(typst_dir)
             
-            if typ_file.exists():
-                # Calculate relative paths from docs directory
-                rel_pdf_path = pdf_file.relative_to(self.src_dir)
-                
-                # Generate GitHub URL for the .typ source file
-                # Remove 'src/' prefix and construct GitHub blob URL
-                typ_relative_to_typst_collection = typ_file.relative_to(typst_dir)
-                github_source_url = f"https://github.com/aaronmurniadi/typst-collection/blob/main/{typ_relative_to_typst_collection}"
-                
-                gallery_items.append({
-                    "title": pdf_file.stem.replace("_", " ").replace("-", " ").title(),
-                    "pdf_path": str(rel_pdf_path),
-                    "typ_path": github_source_url,
-                    "filename": pdf_file.name
-                })
+            # Generate GitHub release URL for the PDF
+            pdf_filename = typ_file.with_suffix(".pdf").name
+            github_pdf_url = f"https://github.com/aaronmurniadi/typst-collection/releases/download/latest/{pdf_filename}"
+            
+            # Generate GitHub URL for the .typ source file
+            github_source_url = f"https://github.com/aaronmurniadi/typst-collection/blob/main/{typ_relative_to_typst_collection}"
+            
+            gallery_items.append({
+                "title": typ_file.stem.replace("_", " ").replace("-", " ").title(),
+                "pdf_path": github_pdf_url,
+                "typ_path": github_source_url,
+                "filename": pdf_filename
+            })
                 
         return gallery_items
 
@@ -394,19 +349,7 @@ class BlogGenerator:
                 shutil.copy2(file_path, dest_path)
                 print(f"Copied {file_path} to docs/{file_path.name}")
                 
-        # Copy PDF files from typst-collection directory
-        typst_dir = self.src_dir / "typst-collection"
-        if typst_dir.exists():
-            for pdf_file in typst_dir.rglob("*.pdf"):
-                # Preserve directory structure in docs
-                rel_path = pdf_file.relative_to(self.src_dir)
-                dest_path = self.docs_dir / rel_path
-                
-                # Create directory if it doesn't exist
-                dest_path.parent.mkdir(parents=True, exist_ok=True)
-                
-                shutil.copy2(pdf_file, dest_path)
-                print(f"Copied {pdf_file} to {dest_path}")
+
 
     def build(self):
         """Build the entire blog"""
@@ -414,9 +357,6 @@ class BlogGenerator:
 
         # Create docs directory if it doesn't exist
         self.docs_dir.mkdir(exist_ok=True)
-        
-        # Compile Typst files first
-        self.compile_typst_files()
 
         # Get all posts
         posts = self.get_all_posts()
@@ -425,12 +365,11 @@ class BlogGenerator:
         # Create category directories
         categories = set(post.get("category", "blog") for post in posts)
 
-        # Also include directories that have index.md or README.md files (even if no posts)
+        # Also include directories that have index.md files (even if no posts)
         for subdir in self.src_dir.iterdir():
             if subdir.is_dir() and not subdir.name.startswith("."):
                 index_file = subdir / "index.md"
-                readme_file = subdir / "README.md"
-                if index_file.exists() or (subdir.name == "typst-collection" and readme_file.exists()):
+                if index_file.exists():
                     categories.add(subdir.name)
 
         for category in categories:
@@ -462,14 +401,12 @@ class BlogGenerator:
             f.write(index_html)
         print(f"Generated {index_file}")
 
-        # Generate category index pages (only for categories with index.md or README.md files)
+        # Generate category index pages (only for categories with index.md files)
         for category in categories:
             if category != "blog":
-                # Check for index.md or README.md (special case for typst-collection)
                 category_index_md = self.src_dir / category / "index.md"
-                category_readme_md = self.src_dir / category / "README.md"
                 
-                if category_index_md.exists() or (category == "typst-collection" and category_readme_md.exists()):
+                if category_index_md.exists():
                     category_index_html = self.generate_index_html(posts, category)
                     category_index_file = self.docs_dir / category / "index.html"
 
@@ -495,12 +432,11 @@ class BlogHandler(FileSystemEventHandler):
         if event.is_directory:
             return
 
-        # Rebuild for markdown files, CSS files, JS files, template files, and typst files
+        # Rebuild for markdown files, CSS files, JS files, and template files
         if (event.src_path.endswith(".md") or 
             event.src_path.endswith(".css") or 
             event.src_path.endswith(".js") or
-            event.src_path.endswith(".html") or
-            event.src_path.endswith(".typ")):
+            event.src_path.endswith(".html")):
             current_time = time.time()
             if current_time - self.last_build > self.debounce_delay:
                 print(f"\n📝 File changed: {event.src_path}")
@@ -516,16 +452,14 @@ class BlogHandler(FileSystemEventHandler):
         if not event.is_directory and (event.src_path.endswith(".md") or 
                                      event.src_path.endswith(".css") or 
                                      event.src_path.endswith(".js") or
-                                     event.src_path.endswith(".html") or
-                                     event.src_path.endswith(".typ")):
+                                     event.src_path.endswith(".html")):
             self.on_modified(event)
 
     def on_deleted(self, event):
         if not event.is_directory and (event.src_path.endswith(".md") or 
                                      event.src_path.endswith(".css") or 
                                      event.src_path.endswith(".js") or
-                                     event.src_path.endswith(".html") or
-                                     event.src_path.endswith(".typ")):
+                                     event.src_path.endswith(".html")):
             print(f"\n🗑️  File deleted: {event.src_path}")
             print("🔄 Rebuilding blog...")
             try:

@@ -18,26 +18,27 @@
         {% for item in gallery_items %}
         <div class="gallery-item">
             <div class="pdf-thumbnail">
-                <embed src="../{{ item.pdf_path }}#toolbar=0&navpanes=0&scrollbar=0" 
-                       type="application/pdf"
-                       aria-label="PDF preview of {{ item.title }}">
+                <div class="pdf-placeholder">
+                    <div class="pdf-icon">📄</div>
+                    <div class="pdf-title">{{ item.title }}</div>
+                </div>
             </div>
             <div class="gallery-item-info">
                 <h3 class="gallery-item-title">{{ item.title }}</h3>
                 <div class="gallery-item-links">
-                    <a href="../{{ item.pdf_path }}" 
+                    <a href="{{ item.pdf_path }}" 
                        target="_blank" 
                        rel="noopener" 
                        class="gallery-link pdf-link"
                        aria-label="Open {{ item.title }} PDF in new tab">
-                        PDF
+                        📄 PDF
                     </a>
                     <a href="{{ item.typ_path }}" 
                        target="_blank" 
                        rel="noopener" 
                        class="gallery-link source-link"
                        aria-label="View {{ item.title }} source code in new tab">
-                        Source
+                        📝 Source
                     </a>
                 </div>
             </div>
