@@ -287,3 +287,4 @@ scratch.py
 docs/.cache/
 docs/temp/
 docs/tmp/ 
+node_modules/
