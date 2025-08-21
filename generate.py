@@ -150,7 +150,7 @@ class BlogGenerator:
         return re.sub(pattern, replace_post_list, content)
 
     def get_all_posts(self):
-        """Get all markdown posts from src directory and subdirectories, excluding index.md files"""
+        """Get all markdown posts from src directory and subdirectories, excluding index.md files and README.md for typst-collection"""
         posts = []
 
         # Get posts from root src directory (excluding index.md)
@@ -165,13 +165,15 @@ class BlogGenerator:
             except Exception as e:
                 print(f"Error processing {md_file}: {e}")
 
-        # Get posts from subdirectories (excluding index.md)
+        # Get posts from subdirectories (excluding index.md and README.md for typst-collection)
         for subdir in self.src_dir.iterdir():
             if subdir.is_dir() and not subdir.name.startswith("."):
                 category = subdir.name
                 for md_file in subdir.glob("*.md"):
                     if md_file.name == "index.md":
                         continue  # Skip index.md files
+                    if category == "typst-collection" and md_file.name == "README.md":
+                        continue  # Skip README.md files for typst-collection
                     try:
                         post_data = self.process_markdown_file(md_file)
                         post_data["category"] = category
@@ -206,7 +208,11 @@ class BlogGenerator:
     def get_index_content(self, category=None, all_posts=None):
         """Get content from index.md file for a category or the homepage"""
         if category:
-            index_file = self.src_dir / category / "index.md"
+            # Special case for typst-collection: check for README.md
+            if category == "typst-collection":
+                index_file = self.src_dir / category / "README.md"
+            else:
+                index_file = self.src_dir / category / "index.md"
         else:
             index_file = self.src_dir / "index.md"
 
@@ -259,15 +265,17 @@ class BlogGenerator:
         )
 
     def get_navigation_links(self):
-        """Generate navigation links based on src subdirectories that have index.md"""
+        """Generate navigation links based on src subdirectories that have index.md or README.md"""
         nav_links = [{"name": "Home", "url": "index.html"}]
 
-        # Add links for each subdirectory in src that has an index.md file
+        # Add links for each subdirectory in src that has an index.md or README.md file
         for subdir in self.src_dir.iterdir():
             if subdir.is_dir() and not subdir.name.startswith("."):
-                # Only include directories that have an index.md file
+                # Check for index.md or README.md (special case for typst-collection)
                 index_file = subdir / "index.md"
-                if index_file.exists():
+                readme_file = subdir / "README.md"
+                
+                if index_file.exists() or (subdir.name == "typst-collection" and readme_file.exists()):
                     nav_links.append(
                         {
                             "name": subdir.name.title(),
@@ -417,11 +425,12 @@ class BlogGenerator:
         # Create category directories
         categories = set(post.get("category", "blog") for post in posts)
 
-        # Also include directories that have index.md files (even if no posts)
+        # Also include directories that have index.md or README.md files (even if no posts)
         for subdir in self.src_dir.iterdir():
             if subdir.is_dir() and not subdir.name.startswith("."):
                 index_file = subdir / "index.md"
-                if index_file.exists():
+                readme_file = subdir / "README.md"
+                if index_file.exists() or (subdir.name == "typst-collection" and readme_file.exists()):
                     categories.add(subdir.name)
 
         for category in categories:
@@ -453,12 +462,14 @@ class BlogGenerator:
             f.write(index_html)
         print(f"Generated {index_file}")
 
-        # Generate category index pages (only for categories with index.md files)
+        # Generate category index pages (only for categories with index.md or README.md files)
         for category in categories:
             if category != "blog":
-                # Only generate index page if the category has an index.md file
+                # Check for index.md or README.md (special case for typst-collection)
                 category_index_md = self.src_dir / category / "index.md"
-                if category_index_md.exists():
+                category_readme_md = self.src_dir / category / "README.md"
+                
+                if category_index_md.exists() or (category == "typst-collection" and category_readme_md.exists()):
                     category_index_html = self.generate_index_html(posts, category)
                     category_index_file = self.docs_dir / category / "index.html"
 
