@@ -290,11 +290,17 @@ class BlogGenerator:
         else:
             page_title = "Aaron PM"
 
+        # Special handling for typst-collection category: include gallery data
+        gallery_items = None
+        if category == "typst-collection":
+            gallery_items = self.get_typst_gallery_data()
+
         return template.render(
             nav_links=nav_links,
             page_title=page_title,
             current_category=category,
             index_content=index_content,
+            gallery_items=gallery_items,
         )
 
     def compile_typst_files(self):
@@ -366,21 +372,6 @@ class BlogGenerator:
                 })
                 
         return gallery_items
-
-    def generate_typst_gallery_html(self, gallery_items):
-        """Generate HTML for the typst gallery page"""
-        template = self.jinja_env.get_template("typst_gallery.html")
-        nav_links = self.get_navigation_links()
-        
-        # Get content from typst-collection/index.md
-        index_content = self.get_index_content("typst-collection")
-        
-        return template.render(
-            nav_links=nav_links,
-            page_title="Typst Collection - Aaron PM",
-            gallery_items=gallery_items,
-            index_content=index_content
-        )
 
     def copy_static_files(self):
         """Copy CSS, JS, image files, and PDFs from src directory to docs directory"""
@@ -474,16 +465,6 @@ class BlogGenerator:
                     with open(category_index_file, "w", encoding="utf-8") as f:
                         f.write(category_index_html)
                     print(f"Generated {category_index_file}")
-
-        # Generate Typst gallery page
-        gallery_items = self.get_typst_gallery_data()
-        if gallery_items:
-            gallery_html = self.generate_typst_gallery_html(gallery_items)
-            gallery_file = self.docs_dir / "typst-collection.html"
-            
-            with open(gallery_file, "w", encoding="utf-8") as f:
-                f.write(gallery_html)
-            print(f"Generated {gallery_file}")
 
         # Copy static files
         self.copy_static_files()
