@@ -18,9 +18,16 @@
         {% for item in gallery_items %}
         <div class="gallery-item">
             <div class="pdf-thumbnail">
-                <embed src="{{ item.pdf_path }}#toolbar=0&navpanes=0&scrollbar=0" 
-                       type="application/pdf"
-                       aria-label="PDF preview of {{ item.title }}">
+                <iframe src="https://docs.google.com/gview?url={{ item.pdf_path | urlencode }}&embedded=true&start=0&end=0" 
+                        frameborder="0"
+                        aria-label="PDF preview of {{ item.title }}"
+                        onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                </iframe>
+                <div class="pdf-fallback" style="display: none;">
+                    <div class="pdf-icon">📄</div>
+                    <div class="pdf-title">{{ item.title }}</div>
+                    <div class="pdf-message">Click PDF link below to view</div>
+                </div>
             </div>
             <div class="gallery-item-info">
                 <h3 class="gallery-item-title">{{ item.title }}</h3>
