@@ -10,6 +10,7 @@ import shutil
 import yaml
 import time
 import sys
+import requests
 
 from datetime import datetime
 from pathlib import Path
@@ -303,13 +304,40 @@ class BlogGenerator:
             gallery_items=gallery_items,
         )
 
-
-
-
+    def download_pdfs_from_github(self):
+        """Download PDFs from GitHub releases to local docs/typst-collection directory"""
+        typst_dir = self.src_dir / "typst-collection"
+        docs_typst_dir = self.docs_dir / "typst-collection"
+        
+        if not typst_dir.exists():
+            return
+            
+        # Create docs/typst-collection directory if it doesn't exist
+        docs_typst_dir.mkdir(parents=True, exist_ok=True)
+        
+        # Find all .typ files and download corresponding PDFs
+        for typ_file in typst_dir.rglob("*.typ"):
+            pdf_filename = typ_file.with_suffix(".pdf").name
+            github_pdf_url = f"https://github.com/aaronmurniadi/typst-collection/releases/download/latest/{pdf_filename}"
+            local_pdf_path = docs_typst_dir / pdf_filename
+            
+            try:
+                print(f"Downloading {pdf_filename}...")
+                response = requests.get(github_pdf_url, timeout=30)
+                response.raise_for_status()
+                
+                with open(local_pdf_path, 'wb') as f:
+                    f.write(response.content)
+                print(f"Downloaded {pdf_filename} to {local_pdf_path}")
+                
+            except requests.exceptions.RequestException as e:
+                print(f"Failed to download {pdf_filename}: {e}")
+                # If download fails, we'll still show the item but with fallback
 
     def get_typst_gallery_data(self):
-        """Get data for typst gallery - find all .typ files and link to GitHub release PDFs"""
+        """Get data for typst gallery - find all .typ files and use local PDFs"""
         typst_dir = self.src_dir / "typst-collection" 
+        docs_typst_dir = self.docs_dir / "typst-collection"
         gallery_items = []
         
         if not typst_dir.exists():
@@ -320,16 +348,24 @@ class BlogGenerator:
             # Calculate relative path from typst-collection directory
             typ_relative_to_typst_collection = typ_file.relative_to(typst_dir)
             
-            # Generate GitHub release URL for the PDF
+            # Use local PDF path
             pdf_filename = typ_file.with_suffix(".pdf").name
-            github_pdf_url = f"https://github.com/aaronmurniadi/typst-collection/releases/download/latest/{pdf_filename}"
+            local_pdf_path = docs_typst_dir / pdf_filename
+            
+            # Check if local PDF exists, otherwise use GitHub URL as fallback
+            if local_pdf_path.exists():
+                # Use relative path from the current page (typst-collection/index.html)
+                pdf_url = f"{pdf_filename}"
+            else:
+                # Fallback to GitHub release URL
+                pdf_url = f"https://github.com/aaronmurniadi/typst-collection/releases/download/latest/{pdf_filename}"
             
             # Generate GitHub URL for the .typ source file
             github_source_url = f"https://github.com/aaronmurniadi/typst-collection/blob/main/{typ_relative_to_typst_collection}"
             
             gallery_items.append({
                 "title": typ_file.stem.replace("_", " ").replace("-", " ").title(),
-                "pdf_path": github_pdf_url,
+                "pdf_path": pdf_url,
                 "typ_path": github_source_url,
                 "filename": pdf_filename
             })
@@ -357,6 +393,9 @@ class BlogGenerator:
 
         # Create docs directory if it doesn't exist
         self.docs_dir.mkdir(exist_ok=True)
+        
+        # Download PDFs from GitHub releases
+        self.download_pdfs_from_github()
 
         # Get all posts
         posts = self.get_all_posts()
