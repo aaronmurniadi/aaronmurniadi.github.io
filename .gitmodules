@@ -1,3 +1,6 @@
 [submodule "src/typst-collection"]
 	path = src/typst-collection
 	url = git@github.com:aaronmurniadi/typst-collection.git
+[submodule "src/cv-typst"]
+	path = src/cv-typst
+	url = git@github.com:aaronmurniadi/cv-typst.git
