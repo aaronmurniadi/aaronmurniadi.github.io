@@ -10,7 +10,6 @@ import shutil
 import yaml
 import time
 import sys
-import requests
 
 from datetime import datetime
 from pathlib import Path
@@ -304,8 +303,8 @@ class BlogGenerator:
             gallery_items=gallery_items,
         )
 
-    def download_pdfs_from_github(self):
-        """Download PDFs from GitHub releases to local docs/typst-collection directory"""
+    def generate_typst_assets(self):
+        """Generate PNG thumbnails and PDF files from Typst files using typst compile command"""
         typst_dir = self.src_dir / "typst-collection"
         docs_typst_dir = self.docs_dir / "typst-collection"
         
@@ -315,27 +314,49 @@ class BlogGenerator:
         # Create docs/typst-collection directory if it doesn't exist
         docs_typst_dir.mkdir(parents=True, exist_ok=True)
         
-        # Find all .typ files and download corresponding PDFs
+        # Find all .typ files and generate PNG thumbnails and PDFs
         for typ_file in typst_dir.rglob("*.typ"):
+            png_filename = typ_file.with_suffix(".png").name
             pdf_filename = typ_file.with_suffix(".pdf").name
-            github_pdf_url = f"https://github.com/aaronmurniadi/typst-collection/releases/download/latest/{pdf_filename}"
+            local_png_path = docs_typst_dir / png_filename
             local_pdf_path = docs_typst_dir / pdf_filename
             
             try:
-                print(f"Downloading {pdf_filename}...")
-                response = requests.get(github_pdf_url, timeout=30)
-                response.raise_for_status()
+                print(f"Generating assets for {typ_file.name}...")
+                import subprocess
                 
-                with open(local_pdf_path, 'wb') as f:
-                    f.write(response.content)
-                print(f"Downloaded {pdf_filename} to {local_pdf_path}")
+                # Generate PNG thumbnail directly to docs directory
+                png_result = subprocess.run([
+                    "typst", "compile", str(typ_file), 
+                    "--pages=1", "--format", "png", 
+                    str(local_png_path)
+                ], capture_output=True, text=True, timeout=30)
                 
-            except requests.exceptions.RequestException as e:
-                print(f"Failed to download {pdf_filename}: {e}")
-                # If download fails, we'll still show the item but with fallback
+                if png_result.returncode == 0:
+                    print(f"Generated {png_filename} at {local_png_path}")
+                else:
+                    print(f"Failed to generate {png_filename}: {png_result.stderr}")
+                
+                # Generate PDF
+                pdf_result = subprocess.run([
+                    "typst", "compile", str(typ_file), 
+                    str(local_pdf_path)
+                ], capture_output=True, text=True, timeout=30)
+                
+                if pdf_result.returncode == 0:
+                    print(f"Generated {pdf_filename} at {local_pdf_path}")
+                else:
+                    print(f"Failed to generate {pdf_filename}: {pdf_result.stderr}")
+                    
+            except subprocess.TimeoutExpired:
+                print(f"Timeout generating assets for {typ_file.name}")
+            except FileNotFoundError:
+                print("Error: 'typst' command not found. Please install Typst CLI.")
+            except Exception as e:
+                print(f"Failed to generate assets for {typ_file.name}: {e}")
 
     def get_typst_gallery_data(self):
-        """Get data for typst gallery - find all .typ files and use local PDFs"""
+        """Get data for typst gallery - find all .typ files and use PNG thumbnails"""
         typst_dir = self.src_dir / "typst-collection" 
         docs_typst_dir = self.docs_dir / "typst-collection"
         gallery_items = []
@@ -348,11 +369,23 @@ class BlogGenerator:
             # Calculate relative path from typst-collection directory
             typ_relative_to_typst_collection = typ_file.relative_to(typst_dir)
             
-            # Use local PDF path
+            # Use local PNG thumbnail path
+            png_filename = typ_file.with_suffix(".png").name
+            local_png_path = docs_typst_dir / png_filename
+            
+            # Use PNG thumbnail if it exists
+            if local_png_path.exists():
+                # Use relative path from the current page (typst-collection/index.html)
+                thumbnail_url = f"{png_filename}"
+            else:
+                # Fallback to placeholder if PNG doesn't exist
+                thumbnail_url = None
+            
+            # PDF path for viewing in browser (using local PDF with Content-Disposition: inline)
             pdf_filename = typ_file.with_suffix(".pdf").name
             local_pdf_path = docs_typst_dir / pdf_filename
             
-            # Check if local PDF exists, otherwise use GitHub URL as fallback
+            # Use local PDF if it exists, otherwise fallback to GitHub releases
             if local_pdf_path.exists():
                 # Use relative path from the current page (typst-collection/index.html)
                 pdf_url = f"{pdf_filename}"
@@ -365,6 +398,7 @@ class BlogGenerator:
             
             gallery_items.append({
                 "title": typ_file.stem.replace("_", " ").replace("-", " ").title(),
+                "thumbnail_path": thumbnail_url,
                 "pdf_path": pdf_url,
                 "typ_path": github_source_url,
                 "filename": pdf_filename
@@ -373,9 +407,9 @@ class BlogGenerator:
         return gallery_items
 
     def copy_static_files(self):
-        """Copy CSS, JS, image files, and PDFs from src directory to docs directory"""
-        # Define file extensions to copy
-        static_extensions = {'.css', '.js', '.png', '.jpg', '.jpeg', '.gif', '.svg', '.webp', '.ico', '.bmp', '.pdf'}
+        """Copy CSS, JS, and image files from src directory to docs directory"""
+        # Define file extensions to copy (excluding PDFs as they are linked to GitHub)
+        static_extensions = {'.css', '.js', '.png', '.jpg', '.jpeg', '.gif', '.svg', '.webp', '.ico', '.bmp'}
         
         # Scan src directory for static files
         for file_path in self.src_dir.iterdir():
@@ -384,6 +418,9 @@ class BlogGenerator:
                 dest_path = self.docs_dir / file_path.name
                 shutil.copy2(file_path, dest_path)
                 print(f"Copied {file_path} to docs/{file_path.name}")
+        
+        # Note: PNG and PDF files are generated directly to docs/typst-collection 
+        # by generate_typst_assets(), so no copying needed
                 
 
 
@@ -394,8 +431,8 @@ class BlogGenerator:
         # Create docs directory if it doesn't exist
         self.docs_dir.mkdir(exist_ok=True)
         
-        # Download PDFs from GitHub releases
-        self.download_pdfs_from_github()
+        # Generate PNG thumbnails and PDF files from Typst files
+        self.generate_typst_assets()
 
         # Get all posts
         posts = self.get_all_posts()

@@ -17,16 +17,19 @@
     <div class="gallery-grid">
         {% for item in gallery_items %}
         <div class="gallery-item">
-            <div class="pdf-thumbnail">
-                <object data="{{ item.pdf_path }}#page=1&toolbar=0&navpanes=0&scrollbar=0&zoom=FitH" 
-                        type="application/pdf" 
-                        aria-label="PDF preview of {{ item.title }}">
-                    <div class="pdf-fallback">
-                        <div class="pdf-icon">📄</div>
-                        <div class="pdf-title">{{ item.title }}</div>
-                        <div class="pdf-message">PDF preview not available. Click PDF link below to view.</div>
-                    </div>
-                </object>
+            <div class="thumbnail-container">
+                {% if item.thumbnail_path %}
+                <img src="{{ item.thumbnail_path }}" 
+                     alt="Thumbnail of {{ item.title }}" 
+                     class="thumbnail-image"
+                     loading="lazy">
+                {% else %}
+                <div class="thumbnail-fallback">
+                    <div class="thumbnail-icon">📄</div>
+                    <div class="thumbnail-title">{{ item.title }}</div>
+                    <div class="thumbnail-message">Thumbnail not available</div>
+                </div>
+                {% endif %}
             </div>
             <div class="gallery-item-info">
                 <h3 class="gallery-item-title">{{ item.title }}</h3>
@@ -35,15 +38,15 @@
                        target="_blank" 
                        rel="noopener" 
                        class="gallery-link pdf-link"
-                       aria-label="Open {{ item.title }} PDF in new tab">
-                        📄 PDF
+                       aria-label="View {{ item.title }} PDF in new tab">
+                        View PDF
                     </a>
                     <a href="{{ item.typ_path }}" 
                        target="_blank" 
                        rel="noopener" 
                        class="gallery-link source-link"
                        aria-label="View {{ item.title }} source code in new tab">
-                        📝 Source
+                        Source
                     </a>
                 </div>
             </div>
