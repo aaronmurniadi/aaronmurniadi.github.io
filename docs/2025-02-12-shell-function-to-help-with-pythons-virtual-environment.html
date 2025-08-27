@@ -212,38 +212,38 @@
     
     <div class="post-content">
         <p>Managing Python projects often involves juggling multiple dependencies and Python versions. Virtual environments are a lifesaver, allowing you to isolate project dependencies and avoid conflicts. While Python&rsquo;s <code>venv</code> module is excellent, creating and activating environments can be a bit repetitive. To streamline this process, I&rsquo;ve created a simple Bash function called <code>ve()</code> that simplifies virtual environment management:</p>
-<pre class="codehilite"><code class="language-shell">ve() {
-    local py=&quot;${1:-python3}&quot;
-    local venv=&quot;${2:-.venv}&quot;
-    local venv_path=&quot;./${venv}&quot;
+<div class="codehilite"><pre><span></span><code>ve<span class="o">()</span><span class="w"> </span><span class="o">{</span>
+<span class="w">    </span><span class="nb">local</span><span class="w"> </span><span class="nv">py</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">1</span><span class="k">:-</span><span class="nv">python3</span><span class="si">}</span><span class="s2">&quot;</span>
+<span class="w">    </span><span class="nb">local</span><span class="w"> </span><span class="nv">venv</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">2</span><span class="k">:-</span><span class="p">.venv</span><span class="si">}</span><span class="s2">&quot;</span>
+<span class="w">    </span><span class="nb">local</span><span class="w"> </span><span class="nv">venv_path</span><span class="o">=</span><span class="s2">&quot;./</span><span class="si">${</span><span class="nv">venv</span><span class="si">}</span><span class="s2">&quot;</span>
 
-    local activate_script=&quot;${venv_path}/bin/activate&quot;
+<span class="w">    </span><span class="nb">local</span><span class="w"> </span><span class="nv">activate_script</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">venv_path</span><span class="si">}</span><span class="s2">/bin/activate&quot;</span>
 
-    if [[ -n &quot;$VIRTUAL_ENV&quot; ]]; then
-        echo &quot;Already in a virtual environment: $VIRTUAL_ENV&quot;
-        return 0
-    fi
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span>-n<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$VIRTUAL_ENV</span><span class="s2">&quot;</span><span class="w"> </span><span class="o">]]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<span class="w">        </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Already in a virtual environment: </span><span class="nv">$VIRTUAL_ENV</span><span class="s2">&quot;</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="m">0</span>
+<span class="w">    </span><span class="k">fi</span>
 
-    if [[ ! -d &quot;$venv_path&quot; ]]; then
-        echo &quot;Creating virtual environment: $venv_path&quot;
-        &quot;$py&quot; -m venv &quot;$venv_path&quot; --system-site-packages || return 1
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span>!<span class="w"> </span>-d<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$venv_path</span><span class="s2">&quot;</span><span class="w"> </span><span class="o">]]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<span class="w">        </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Creating virtual environment: </span><span class="nv">$venv_path</span><span class="s2">&quot;</span>
+<span class="w">        </span><span class="s2">&quot;</span><span class="nv">$py</span><span class="s2">&quot;</span><span class="w"> </span>-m<span class="w"> </span>venv<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$venv_path</span><span class="s2">&quot;</span><span class="w"> </span>--system-site-packages<span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="m">1</span>
 
-        echo &quot;export PYTHON=$py&quot; &gt;&gt; &quot;$activate_script&quot;
+<span class="w">        </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;export PYTHON=</span><span class="nv">$py</span><span class="s2">&quot;</span><span class="w"> </span>&gt;&gt;<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$activate_script</span><span class="s2">&quot;</span>
 
-        echo &quot;Upgrading pip in new virtual environment...&quot;
-        source &quot;$activate_script&quot;
-        &quot;$py&quot; -m pip install --upgrade pip || return 1
-        deactivate # Deactivate to avoid confusion
-        echo &quot;Virtual environment created and pip upgraded.&quot;
+<span class="w">        </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Upgrading pip in new virtual environment...&quot;</span>
+<span class="w">        </span><span class="nb">source</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$activate_script</span><span class="s2">&quot;</span>
+<span class="w">        </span><span class="s2">&quot;</span><span class="nv">$py</span><span class="s2">&quot;</span><span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>--upgrade<span class="w"> </span>pip<span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="m">1</span>
+<span class="w">        </span>deactivate<span class="w"> </span><span class="c1"># Deactivate to avoid confusion</span>
+<span class="w">        </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Virtual environment created and pip upgraded.&quot;</span>
 
-    else
-        echo &quot;Activating existing virtual environment: $venv_path&quot;
-    fi
+<span class="w">    </span><span class="k">else</span>
+<span class="w">        </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Activating existing virtual environment: </span><span class="nv">$venv_path</span><span class="s2">&quot;</span>
+<span class="w">    </span><span class="k">fi</span>
 
-    source &quot;$activate_script&quot; || return 1
-    echo &quot;Virtual environment activated.&quot;
-}
-</code></pre>
+<span class="w">    </span><span class="nb">source</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$activate_script</span><span class="s2">&quot;</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="m">1</span>
+<span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Virtual environment activated.&quot;</span>
+<span class="o">}</span>
+</code></pre></div>
 
 <p>The function first checks if a virtual environment is already active by looking for the <code>VIRTUAL_ENV</code> environment variable. If we&rsquo;re in a virtual environment already, the script will exit gracefully.</p>
 <p>If we are not in a virtual environment AND there&rsquo;s no <code>.venv</code> folder found in the current directory, it will create a new virtual environment and then activates the environment.</p>
