@@ -143,9 +143,6 @@ body {
   display: flex;
   flex-direction: column;
   text-align: justify;
-  hyphens: auto;
-  -webkit-hyphens: auto;
-  -ms-hyphens: auto;
   line-height: 1.4rem;
   word-break: normal;
   overflow-wrap: anywhere;
