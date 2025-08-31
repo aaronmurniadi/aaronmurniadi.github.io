@@ -157,6 +157,7 @@ body {
   hanging-punctuation: first;
   color: #cecece;
   background-color: #282A36;
+  font-variation-settings: 'opsz' 26;
 }
 
 html,
