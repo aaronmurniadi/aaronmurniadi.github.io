@@ -11,7 +11,7 @@ Dalam upaya memahami hakikat keberadaan, filsafat kerap menempuh jalan berliku, 
 
 Ringkasan ini berupaya menghadirkan pokok-pokok pemikiran Heidegger sebagaimana ia menelusurinya: dengan ketekunan seorang peziarah intelektual, yang tak puas dengan jawaban-jawaban dangkal. Marilah kita menelusuri masalah-masalah dasar fenomenologi menurut Heidegger—dari pertanyaan tentang makna Ada, struktur eksistensi manusia (Dasein), hingga relasi antara subjek dan dunia. Semoga ringkasan ini dapat menjadi pintu masuk bagi pembaca untuk merenungkan kembali, dengan kesadaran kritis, persoalan-persoalan mendasar yang menjadi inti dari filsafat keberadaan.
 
-## §1. Pemaparan dan Pembagian Umum Tema
+## §1. Pemaparan dan Pembagian Buku
 
 Tujuan pokok buku ini bukanlah sekadar menelusuri sejarah gerakan fenomenologi, melainkan mengajukan, mengelaborasi, dan menapaki jalan pemecahan persoalan-persoalan dasar fenomenologi itu sendiri. Yang hendak dicari bukanlah definisi *apriori* tentang fenomenologi, melainkan penyingkapan isi dan jalinan sistematis persoalan-persoalan yang menjadi inti fenomenologi, sehingga para peserta didorong untuk sungguh-sungguh berfilsafat, bukan sekadar menjadi penonton sejarah pemikiran.
 
@@ -30,7 +30,7 @@ Perlu dibedakan secara tegas antara filsafat sebagai "ilmu murni" dan filsafat s
 Akhirnya, segala pembahasan tentang konsep filsafat di sini bersifat sementara dan terbuka. Sebab, konsep filsafat itu sendiri adalah hasil tertinggi dan paling otentik dari penelusuran filsafat, dan kemungkinannya hanya dapat ditentukan oleh filsafat itu sendiri.
 
 
-## §2. Konsep Filsafat. Filsafat \[vs.\] Pandangan Hidup
+## §2. Filsafat vs. Pandangan Hidup
 
 Bagian kedua dari pembahasan ini menyoroti secara tajam perbedaan antara filsafat sebagai ilmu yang sungguh-sungguh ilmiah dan filsafat yang sekadar menjadi "pandangan hidup" (*Weltanschauung*). 
 
@@ -107,7 +107,7 @@ Akhirnya, perbedaan ontologis antara Ada dan yang-ada kembali ditekankan sebagai
 
 Dengan demikian, empat tesis dan empat masalah dasar ini menjadi peta jalan bagi seluruh penyelidikan fenomenologis, dan menegaskan kembali panggilan filsafat sebagai ilmu tentang Ada, bukan sekadar ilmu tentang yang-ada.
 
-## §5. Karakter dari Metode Ontologis
+## §5. Metode Ontologis
 
 Bagian ini akan menguraikan jalan metodis filsafat sebagai ilmu tentang Ada. Di sini, Heidegger menuntun kita menelusuri sendi-sendi pokok yang menjadi dasar pijakan penelaran ontologis.
 

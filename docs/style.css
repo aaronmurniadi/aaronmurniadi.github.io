@@ -284,6 +284,15 @@ p {
   overflow-wrap: break-word;
 }
 
+/* Bold elements using font-variation-settings */
+strong,
+b,
+.bold {
+  font-variation-settings: 'wght' 600;
+  font-weight: 600;
+  /* Fallback for non-variable fonts */
+}
+
 p:has(time) {
   text-align: left;
 }
