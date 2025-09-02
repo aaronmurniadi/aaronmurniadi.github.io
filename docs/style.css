@@ -121,7 +121,7 @@
 }
 
 html {
-  font-size: clamp(15px, 2.5cqw, 17px);
+  font-size: 1em;
 }
 
 body {
