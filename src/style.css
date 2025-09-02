@@ -258,7 +258,7 @@ subtitle {
   float: left;
   padding-right: 0.25ch;
   padding-top: 1.41rem;
-  padding-left: 0.15ch;
+  font-variation-settings: 'wght' 600;
   text-transform: uppercase;
   font-family: "Minion Variable Concept", serif;
   font-weight: normal;
@@ -269,7 +269,7 @@ subtitle {
   font-family: "Minion Variable Concept", serif;
   font-variant: small-caps;
   font-weight: normal;
-  letter-spacing: 0.02rem;
+  letter-spacing: 0.05rem;
 }
 
 /* ========================================
