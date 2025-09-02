@@ -256,8 +256,9 @@ subtitle {
   color: #e96262;
   font-size: 5.15rem;
   float: left;
-  padding-right: 0.3ch;
+  padding-right: 0.25ch;
   padding-top: 1.41rem;
+  padding-left: 0.15ch;
   text-transform: uppercase;
   font-family: "Minion Variable Concept", serif;
   font-weight: normal;
