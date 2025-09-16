@@ -5,21 +5,21 @@ Converts Markdown files from src/ to HTML files in docs/
 Supports GitHub Flavored Markdown with real-time watching and dynamic navigation
 """
 
-import shutil
-import yaml
-import time
-import sys
 import re
+import shutil
 import subprocess
+import sys
+import time
 from dataclasses import dataclass
 from datetime import datetime
 from pathlib import Path
-from typing import List, Dict, Any, Optional
+from typing import Any, Dict, List, Optional, Set, Union
 
-from jinja2 import Environment, FileSystemLoader
 import markdown
+import yaml
+from jinja2 import Environment, FileSystemLoader
+from watchdog.events import FileSystemEvent, FileSystemEventHandler
 from watchdog.observers import Observer
-from watchdog.events import FileSystemEventHandler
 
 # Configuration
 SRC_DIR = Path("src")
@@ -41,7 +41,7 @@ class Post:
     content_html: str = ""
     date: Optional[datetime] = None
 
-    def __post_init__(self):
+    def __post_init__(self) -> None:
         self.date = self._parse_date()
 
     def _parse_date(self) -> Optional[datetime]:
@@ -61,7 +61,9 @@ class Post:
 class ContentParser:
     """Parses markdown files with frontmatter."""
 
-    def __init__(self):
+    md: markdown.Markdown
+
+    def __init__(self) -> None:
         self.md = markdown.Markdown(
             extensions=[
                 "markdown.extensions.fenced_code",
@@ -104,6 +106,14 @@ class ContentParser:
 class Site:
     """Represents the entire site's data."""
 
+    src_dir: Path
+    content_dir: Path
+    page_dir: Path
+    content_parser: ContentParser
+    posts: List[Post]
+    nav_links: List[Dict[str, str]]
+    categories: Set[str]
+
     def __init__(self, src_dir: Path, content_parser: ContentParser):
         self.src_dir = src_dir
         self.content_dir = self.src_dir / "content"
@@ -113,7 +123,7 @@ class Site:
         self.nav_links: List[Dict[str, str]] = []
         self.categories: set[str] = set()
 
-    def load(self):
+    def load(self) -> None:
         """Load all posts and site data."""
         self.posts = self._discover_and_parse_posts()
         self.nav_links = self._generate_nav_links()
@@ -195,12 +205,16 @@ class Site:
 class TypstManager:
     """Handles Typst file processing."""
 
+    src_dir: Path
+    typst_src_dir: Path
+    typst_docs_dir: Path
+
     def __init__(self, src_dir: Path, docs_dir: Path):
         self.src_dir = src_dir
         self.typst_src_dir = self.src_dir / "page" / "typst-collection"
         self.typst_docs_dir = docs_dir / "typst-collection"
 
-    def generate_assets(self):
+    def generate_assets(self) -> None:
         """Generate PNGs and PDFs from .typ files."""
         if not self.typst_src_dir.exists():
             return
@@ -209,7 +223,7 @@ class TypstManager:
         for typ_file in self.typst_src_dir.rglob("*.typ"):
             self._compile_typst_file(typ_file)
 
-    def _compile_typst_file(self, typ_file: Path):
+    def _compile_typst_file(self, typ_file: Path) -> None:
         """Compile a single Typst file to PDF and PNG."""
         png_path = self.typst_docs_dir / typ_file.with_suffix(".png").name
         pdf_path = self.typst_docs_dir / typ_file.with_suffix(".pdf").name
@@ -239,7 +253,7 @@ class TypstManager:
         except Exception as e:
             print(f"Failed to generate assets for {typ_file.name}: {e}")
 
-    def _run_typst_command(self, command: List[str], asset_name: str):
+    def _run_typst_command(self, command: List[str], asset_name: str) -> None:
         """Runs a typst command and handles output."""
         try:
             subprocess.run(
@@ -251,7 +265,7 @@ class TypstManager:
         except subprocess.TimeoutExpired:
             print(f"Timeout generating {asset_name}")
 
-    def get_gallery_data(self) -> list[dict[str, str | None]]:
+    def get_gallery_data(self) -> List[Dict[str, Optional[str]]]:
         """Get data for the Typst gallery."""
         if not self.typst_src_dir.exists():
             return []
@@ -266,7 +280,7 @@ class TypstManager:
                 if (self.typst_docs_dir / png_filename).exists()
                 else None
             )
-            pdf_url = (
+            pdf_url: Optional[str] = (
                 f"{pdf_filename}"
                 if (self.typst_docs_dir / pdf_filename).exists()
                 else f"https://github.com/aaronmurniadi/typst-collection/releases/download/latest/{pdf_filename}"
@@ -286,6 +300,10 @@ class TypstManager:
 
 class Renderer:
     """Handles rendering HTML from templates."""
+
+    jinja_env: Environment
+    site_data: Site
+    content_parser: ContentParser
 
     def __init__(self, templates_dir: Path, site_data: Site):
         self.jinja_env = Environment(loader=FileSystemLoader(templates_dir))
@@ -359,7 +377,7 @@ class Renderer:
         """Process {{ posts|tag:tagname }} syntax."""
         pattern = r"\{\{\s*posts\|tag:([^}]+)\s*\}\}"
 
-        def replace_with_posts(match):
+        def replace_with_posts(match: re.Match[str]) -> str:
             tag_name = match.group(1).strip()
 
             filtered_posts = [
@@ -376,7 +394,8 @@ class Renderer:
                 url = self._get_relative_url(post, current_category)
                 date_str = post.date.strftime("%Y-%m-%d") if post.date else ""
                 post_list_items.append(
-                    f"- <div class='post-date'>{date_str}</div> <div class='post-title'>[{post.title}]({url})</div>"
+                    f"- <div class='post-date'>{date_str}</div> "
+                    f"<div class='post-title'>[{post.title}]({url})</div>"
                 )
 
             return "\n".join(post_list_items)
@@ -396,6 +415,14 @@ class Renderer:
 class SiteBuilder:
     """Orchestrates the blog generation process."""
 
+    src_dir: Path
+    docs_dir: Path
+    content_parser: ContentParser
+    site: Site
+    renderer: Renderer
+    typst_manager: TypstManager
+    templates_dir: Path
+
     def __init__(self, src_dir: Path, docs_dir: Path, templates_dir: Path):
         self.src_dir = src_dir
         self.docs_dir = docs_dir
@@ -403,8 +430,9 @@ class SiteBuilder:
         self.site = Site(src_dir, self.content_parser)
         self.renderer = Renderer(templates_dir, self.site)
         self.typst_manager = TypstManager(src_dir, docs_dir)
+        self.templates_dir = templates_dir
 
-    def build(self):
+    def build(self) -> None:
         """Build the entire blog."""
         print("Starting blog generation...")
 
@@ -447,7 +475,7 @@ class SiteBuilder:
 
         print("Blog generation complete!")
 
-    def copy_static_files(self):
+    def copy_static_files(self) -> None:
         """Copy static files from src/static to docs/static."""
         src_static_dir = self.src_dir / "static"
         docs_static_dir = self.docs_dir / "static"
@@ -465,22 +493,32 @@ class SiteBuilder:
 class BlogHandler(FileSystemEventHandler):
     """File system event handler for watching files."""
 
+    builder: SiteBuilder
+    last_build: float
+    debounce_delay: Union[int, float]
+
     def __init__(self, builder: SiteBuilder):
         self.builder = builder
         self.last_build = 0
         self.debounce_delay = 1  # seconds
 
-    def on_any_event(self, event):
+    def on_any_event(self, event: FileSystemEvent) -> None:
         if event.is_directory:
             return
 
+        src_path_str = (
+            event.src_path.decode("utf-8")
+            if isinstance(event.src_path, bytes)
+            else event.src_path
+        )
+        src_path = Path(src_path_str)
         if any(
-            event.src_path.endswith(ext)
+            src_path.match(f"*{ext}")
             for ext in [".md", ".css", ".js", ".html", ".typ"]
         ):
             current_time = time.time()
             if current_time - self.last_build > self.debounce_delay:
-                print(f"\n📝 File changed: {event.src_path}")
+                print(f"\n📝 File changed: {src_path}")
                 print("🔄 Rebuilding blog...")
                 try:
                     self.builder.build()
@@ -490,13 +528,13 @@ class BlogHandler(FileSystemEventHandler):
                 self.last_build = current_time
 
 
-def main():
+def main() -> None:
     """Main function for one-time blog generation."""
     builder = SiteBuilder(SRC_DIR, DOCS_DIR, TEMPLATES_DIR)
     builder.build()
 
 
-def watch_main():
+def watch_main() -> None:
     """Main function for watching and auto-rebuilding."""
     builder = SiteBuilder(SRC_DIR, DOCS_DIR, TEMPLATES_DIR)
 
@@ -509,7 +547,7 @@ def watch_main():
     observer.schedule(event_handler, str(builder.templates_dir), recursive=True)
     observer.start()
 
-    print(f"\n👀 Watching for changes in:")
+    print("\n👀 Watching for changes in:")
     print(f"   📁 {builder.src_dir}")
     print(f"   📁 {builder.templates_dir}")
     print("\n📡 Server running... Press Ctrl+C to stop")
