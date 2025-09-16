@@ -6,7 +6,7 @@
 
 {% if index_content %}
 <section class="index-content">
-    {{ index_content.content | safe }}
+    {{ index_content.content_html | safe }}
 </section>
 {% else %}
 <p>No content found. Create an index.md file in the appropriate directory.</p>

@@ -5,32 +5,63 @@ Converts Markdown files from src/ to HTML files in docs/
 Supports GitHub Flavored Markdown with real-time watching and dynamic navigation
 """
 
-import os
 import shutil
 import yaml
 import time
 import sys
-
+import re
+import subprocess
+from dataclasses import dataclass
 from datetime import datetime
 from pathlib import Path
-from typing import List, Dict, Any
+from typing import List, Dict, Any, Optional
+
 from jinja2 import Environment, FileSystemLoader
 import markdown
-from markdown.extensions import codehilite, fenced_code, tables, toc
 from watchdog.observers import Observer
 from watchdog.events import FileSystemEventHandler
 
+# Configuration
+SRC_DIR = Path("src")
+DOCS_DIR = Path("docs")
+TEMPLATES_DIR = Path("templates")
 
-class BlogGenerator:
-    def __init__(self, src_dir="src", docs_dir="docs", templates_dir="templates"):
-        self.src_dir = Path(src_dir)
-        self.docs_dir = Path(docs_dir)
-        self.templates_dir = Path(templates_dir)
 
-        # Set up Jinja2 environment
-        self.jinja_env = Environment(loader=FileSystemLoader(self.templates_dir))
+@dataclass
+class Post:
+    """Represents a blog post."""
 
-        # Configure markdown with GitHub Flavored Markdown extensions
+    path: Path
+    title: str
+    slug: str
+    category: str
+    url_path: str
+    metadata: Dict[str, Any]
+    content_md: str
+    content_html: str = ""
+    date: Optional[datetime] = None
+
+    def __post_init__(self):
+        self.date = self._parse_date()
+
+    def _parse_date(self) -> Optional[datetime]:
+        """Parse date from metadata or file stats."""
+        date_val = self.metadata.get("date")
+        if isinstance(date_val, datetime):
+            return date_val
+        if isinstance(date_val, str):
+            try:
+                return datetime.strptime(date_val, "%Y-%m-%d")
+            except ValueError:
+                pass
+        stat = self.path.stat()
+        return datetime.fromtimestamp(stat.st_mtime)
+
+
+class ContentParser:
+    """Parses markdown files with frontmatter."""
+
+    def __init__(self):
         self.md = markdown.Markdown(
             extensions=[
                 "markdown.extensions.fenced_code",
@@ -47,11 +78,10 @@ class BlogGenerator:
             },
         )
 
-    def parse_frontmatter(self, content):
-        """Parse YAML frontmatter from markdown content"""
+    def parse_frontmatter(self, content: str) -> tuple[Dict[str, Any], str]:
+        """Parse YAML frontmatter from markdown content."""
         if not content.startswith("---"):
             return {}, content
-
         try:
             _, frontmatter, markdown_content = content.split("---", 2)
             metadata = yaml.safe_load(frontmatter.strip())
@@ -59,519 +89,429 @@ class BlogGenerator:
         except ValueError:
             return {}, content
 
-    def process_markdown_file(self, file_path, all_posts=None, current_category=None):
-        """Process a single markdown file and return metadata and HTML content"""
+    def parse_file(self, file_path: Path) -> tuple[Dict[str, Any], str]:
+        """Reads a file and parses frontmatter."""
         with open(file_path, "r", encoding="utf-8") as f:
             content = f.read()
+        return self.parse_frontmatter(content)
 
-        metadata, markdown_content = self.parse_frontmatter(content)
-
-        # Process post list syntax before converting to HTML
-        if all_posts:
-            markdown_content = self.process_post_list_syntax(
-                markdown_content, all_posts, current_category
-            )
-
-        # Reset the markdown processor to clear any state from previous files
-        # This is crucial for footnotes to work correctly across multiple files
+    def convert_to_html(self, markdown_content: str) -> str:
+        """Converts markdown content to HTML."""
         self.md.reset()
-        
-        # Convert markdown to HTML
-        html_content = self.md.convert(markdown_content)
+        return self.md.convert(markdown_content)
 
-        # Set default metadata
-        if "title" not in metadata:
-            metadata["title"] = file_path.stem.replace("-", " ").title()
 
-        if "date" not in metadata:
-            # Use file modification time as fallback
-            stat = file_path.stat()
-            metadata["date"] = datetime.fromtimestamp(stat.st_mtime).strftime(
-                "%Y-%m-%d"
-            )
+class Site:
+    """Represents the entire site's data."""
 
-        metadata["slug"] = file_path.stem
-        metadata["content"] = html_content
+    def __init__(self, src_dir: Path, content_parser: ContentParser):
+        self.src_dir = src_dir
+        self.content_dir = self.src_dir / "content"
+        self.page_dir = self.src_dir / "page"
+        self.content_parser = content_parser
+        self.posts: List[Post] = []
+        self.nav_links: List[Dict[str, str]] = []
+        self.categories: set[str] = set()
 
-        return metadata
+    def load(self):
+        """Load all posts and site data."""
+        self.posts = self._discover_and_parse_posts()
+        self.nav_links = self._generate_nav_links()
+        self.categories = {post.category for post in self.posts if post.category}
+        # Also include directories that have index.md files (even if no posts)
+        if self.page_dir.exists():
+            for subdir in self.page_dir.iterdir():
+                if (
+                    subdir.is_dir()
+                    and not subdir.name.startswith(".")
+                    and (subdir / "index.md").exists()
+                ):
+                    self.categories.add(subdir.name)
 
-    def process_post_list_syntax(self, content, all_posts, current_category=None):
-        """Process {{ posts|tag:tagname }} syntax in markdown content"""
-        import re
-
-        # Pattern to match {{ posts|tag:tagname }}
-        pattern = r"\{\{\s*posts\|tag:([^}]+)\s*\}\}"
-
-        def replace_post_list(match):
-            tag_name = match.group(1).strip()
-
-            # Filter posts by tag
-            filtered_posts = []
-            for post in all_posts:
-                post_tags = post.get("tags", [])
-                if isinstance(post_tags, list) and tag_name in post_tags:
-                    filtered_posts.append(post)
-                elif isinstance(post_tags, str):
-                    # Handle case where tags might be a string
-                    if tag_name in post_tags:
-                        filtered_posts.append(post)
-
-            # Generate markdown list of posts
-            if not filtered_posts:
-                return f"*No posts found with tag '{tag_name}'*"
-
-            post_list = []
-            for post in filtered_posts:
-                date_str = post.get("date", "")
-                title = post.get("title", post.get("slug", "Untitled"))
-
-                # Determine the correct URL path based on context and post category
-                if post.get("category") == "blog":
-                    url = f"{post['slug']}.html"
-                elif current_category and current_category == post.get("category"):
-                    # If we're on the same category page, use relative path
-                    url = f"{post['slug']}.html"
-                else:
-                    # For cross-category links or homepage, include the category path
-                    if current_category:
-                        # We're on a category page linking to a different category
-                        url = f"../{post.get('category', '')}/{post['slug']}.html"
-                    else:
-                        # We're on the homepage
-                        url = post.get(
-                            "url_path",
-                            f"{post.get('category', '')}/{post['slug']}.html",
-                        )
-
-                post_list.append(f"- <div class='post-date'>{date_str}</div> <div class='post-title'>[{title}]({url})</div>")
-
-            return "\n".join(post_list)
-
-        return re.sub(pattern, replace_post_list, content)
-
-    def get_all_posts(self):
-        """Get all markdown posts from src directory and subdirectories, excluding index.md files"""
+    def _discover_and_parse_posts(self) -> List[Post]:
+        """Finds all markdown files and parses them into Post objects."""
         posts = []
+        md_files = [p for p in self.content_dir.rglob("*.md") if p.name != "index.md"]
 
-        # Get posts from root src directory (excluding index.md)
-        for md_file in self.src_dir.glob("*.md"):
-            if md_file.name == "index.md":
-                continue  # Skip index.md files
+        for md_file in md_files:
             try:
-                post_data = self.process_markdown_file(md_file)
-                post_data["category"] = "blog"  # Default category
-                post_data["url_path"] = f"{post_data['slug']}.html"
-                posts.append(post_data)
+                metadata, md_content = self.content_parser.parse_file(md_file)
+
+                relative_path = md_file.relative_to(self.content_dir)
+                category = (
+                    relative_path.parent.name
+                    if relative_path.parent.name != "."
+                    else "blog"
+                )
+                slug = md_file.stem
+
+                post = Post(
+                    path=md_file,
+                    title=metadata.get("title", slug.replace("-", " ").title()),
+                    slug=slug,
+                    category=category,
+                    url_path=f"{category}/{slug}.html"
+                    if category != "blog"
+                    else f"{slug}.html",
+                    metadata=metadata,
+                    content_md=md_content,
+                )
+                posts.append(post)
             except Exception as e:
                 print(f"Error processing {md_file}: {e}")
 
-        # Get posts from subdirectories (excluding index.md)
-        for subdir in self.src_dir.iterdir():
-            if subdir.is_dir() and not subdir.name.startswith("."):
-                category = subdir.name
-                for md_file in subdir.glob("*.md"):
-                    if md_file.name == "index.md":
-                        continue  # Skip index.md files
-                    try:
-                        post_data = self.process_markdown_file(md_file)
-                        post_data["category"] = category
-                        post_data["url_path"] = f"{category}/{post_data['slug']}.html"
-                        posts.append(post_data)
-                    except Exception as e:
-                        print(f"Error processing {md_file}: {e}")
-
-        # Sort posts by date (newest first)
-        def get_sort_key(post):
-            date_value = post.get("date", "")
-            if isinstance(date_value, str):
-                # Convert string date to comparable format
-                try:
-                    return datetime.strptime(date_value, "%Y-%m-%d").date()
-                except (ValueError, TypeError):
-                    # If parsing fails, return a very old date
-                    return datetime(1900, 1, 1).date()
-            elif hasattr(date_value, "date"):
-                # If it's a datetime object, get the date part
-                return date_value.date()
-            elif hasattr(date_value, "year"):
-                # If it's already a date object
-                return date_value
-            else:
-                # Fallback for any other type
-                return datetime(1900, 1, 1).date()
-
-        posts.sort(key=get_sort_key, reverse=True)
+        posts.sort(key=lambda p: p.date or datetime.min, reverse=True)
         return posts
 
-    def get_index_content(self, category=None, all_posts=None):
-        """Get content from index.md file for a category or the homepage"""
-        if category:
-            index_file = self.src_dir / category / "index.md"
-        else:
-            index_file = self.src_dir / "index.md"
-
-        if index_file.exists():
-            try:
-                return self.process_markdown_file(
-                    index_file, all_posts, current_category=category
-                )
-            except Exception as e:
-                print(f"Error processing {index_file}: {e}")
-                return None
-        return None
-
-    def generate_post_html(self, post_data, all_posts):
-        """Generate HTML for a single post with previous/next navigation"""
-        template = self.jinja_env.get_template("post.html")
-        nav_links = self.get_navigation_links()
-        current_category = (
-            post_data.get("category") if post_data.get("category") != "blog" else None
-        )
-
-        # Find previous and next posts
-        current_index = None
-        for i, post in enumerate(all_posts):
-            if post["slug"] == post_data["slug"] and post.get(
-                "category"
-            ) == post_data.get("category"):
-                current_index = i
-                break
-
-        prev_post = None
-        next_post = None
-
-        if current_index is not None:
-            if current_index > 0:
-                next_post = all_posts[
-                    current_index - 1
-                ]  # Next is newer (earlier in list)
-            if current_index < len(all_posts) - 1:
-                prev_post = all_posts[
-                    current_index + 1
-                ]  # Previous is older (later in list)
-
-        return template.render(
-            post=post_data,
-            nav_links=nav_links,
-            current_category=current_category,
-            prev_post=prev_post,
-            next_post=next_post,
-        )
-
-    def get_navigation_links(self):
-        """Generate navigation links based on src subdirectories that have index.md"""
+    def _generate_nav_links(self) -> List[Dict[str, str]]:
+        """Generate navigation links based on src/page subdirectories with index.md."""
         nav_links = [{"name": "Home", "url": "index.html"}]
-
-        # Add links for each subdirectory in src that has an index.md file
-        for subdir in self.src_dir.iterdir():
-            if subdir.is_dir() and not subdir.name.startswith("."):
-                index_file = subdir / "index.md"
-                
-                if index_file.exists():
+        if self.page_dir.exists():
+            for subdir in sorted(self.page_dir.iterdir()):
+                if subdir.is_dir() and (subdir / "index.md").exists():
                     nav_links.append(
                         {
-                            "name": subdir.name.title(),
+                            "name": subdir.name.replace("_", " ").title(),
                             "url": f"{subdir.name}/index.html",
                         }
                     )
-
         return nav_links
 
-    def generate_index_html(self, posts, category=None):
-        """Generate index.html with custom content from index.md files"""
-        template = self.jinja_env.get_template("index.html")
-        nav_links = self.get_navigation_links()
+    def get_post_context(self, post: Post) -> Dict[str, Optional[Post]]:
+        """Get previous and next post for navigation."""
+        try:
+            current_index = self.posts.index(post)
+            prev_post = (
+                self.posts[current_index + 1]
+                if current_index < len(self.posts) - 1
+                else None
+            )
+            next_post = self.posts[current_index - 1] if current_index > 0 else None
+            return {"prev_post": prev_post, "next_post": next_post}
+        except ValueError:
+            return {"prev_post": None, "next_post": None}
 
-        # Get custom content from index.md if available, passing all posts for processing
-        index_content = self.get_index_content(category, posts)
 
-        if category:
-            page_title = f"{category.title()} - Aaron PM"
-        else:
-            page_title = "Aaron PM"
+class TypstManager:
+    """Handles Typst file processing."""
 
-        # Special handling for typst-collection category: include gallery data
-        gallery_items = None
-        if category == "typst-collection":
-            gallery_items = self.get_typst_gallery_data()
+    def __init__(self, src_dir: Path, docs_dir: Path):
+        self.src_dir = src_dir
+        self.typst_src_dir = self.src_dir / "page" / "typst-collection"
+        self.typst_docs_dir = docs_dir / "typst-collection"
+
+    def generate_assets(self):
+        """Generate PNGs and PDFs from .typ files."""
+        if not self.typst_src_dir.exists():
+            return
+        self.typst_docs_dir.mkdir(parents=True, exist_ok=True)
+
+        for typ_file in self.typst_src_dir.rglob("*.typ"):
+            self._compile_typst_file(typ_file)
+
+    def _compile_typst_file(self, typ_file: Path):
+        """Compile a single Typst file to PDF and PNG."""
+        png_path = self.typst_docs_dir / typ_file.with_suffix(".png").name
+        pdf_path = self.typst_docs_dir / typ_file.with_suffix(".pdf").name
+
+        try:
+            print(f"Generating assets for {typ_file.name}...")
+            # Generate PNG
+            self._run_typst_command(
+                [
+                    "typst",
+                    "compile",
+                    str(typ_file),
+                    "--pages=1",
+                    "--format",
+                    "png",
+                    str(png_path),
+                ],
+                f"PNG for {typ_file.name}",
+            )
+            # Generate PDF
+            self._run_typst_command(
+                ["typst", "compile", str(typ_file), str(pdf_path)],
+                f"PDF for {typ_file.name}",
+            )
+        except FileNotFoundError:
+            print("Error: 'typst' command not found. Please install Typst CLI.")
+        except Exception as e:
+            print(f"Failed to generate assets for {typ_file.name}: {e}")
+
+    def _run_typst_command(self, command: List[str], asset_name: str):
+        """Runs a typst command and handles output."""
+        try:
+            subprocess.run(
+                command, capture_output=True, text=True, timeout=30, check=True
+            )
+            print(f"Successfully generated {asset_name}")
+        except subprocess.CalledProcessError as e:
+            print(f"Failed to generate {asset_name}: {e.stderr}")
+        except subprocess.TimeoutExpired:
+            print(f"Timeout generating {asset_name}")
+
+    def get_gallery_data(self) -> list[dict[str, str | None]]:
+        """Get data for the Typst gallery."""
+        if not self.typst_src_dir.exists():
+            return []
+
+        gallery_items = []
+        for typ_file in self.typst_src_dir.rglob("*.typ"):
+            png_filename = typ_file.with_suffix(".png").name
+            pdf_filename = typ_file.with_suffix(".pdf").name
+
+            thumbnail_url = (
+                f"{png_filename}"
+                if (self.typst_docs_dir / png_filename).exists()
+                else None
+            )
+            pdf_url = (
+                f"{pdf_filename}"
+                if (self.typst_docs_dir / pdf_filename).exists()
+                else f"https://github.com/aaronmurniadi/typst-collection/releases/download/latest/{pdf_filename}"
+            )
+
+            gallery_items.append(
+                {
+                    "title": typ_file.stem.replace("_", " ").title(),
+                    "thumbnail_path": thumbnail_url,
+                    "pdf_path": pdf_url,
+                    "typ_path": f"https://github.com/aaronmurniadi/typst-collection/blob/main/{typ_file.relative_to(self.typst_src_dir)}",
+                    "filename": pdf_filename,
+                }
+            )
+        return gallery_items
+
+
+class Renderer:
+    """Handles rendering HTML from templates."""
+
+    def __init__(self, templates_dir: Path, site_data: Site):
+        self.jinja_env = Environment(loader=FileSystemLoader(templates_dir))
+        self.site_data = site_data
+        self.content_parser = ContentParser()  # For post-list processing
+
+    def render_post_page(self, post: Post) -> str:
+        """Render a single post page."""
+        template = self.jinja_env.get_template("post.html")
+        post.content_html = self.content_parser.convert_to_html(post.content_md)
+        context = self.site_data.get_post_context(post)
 
         return template.render(
-            nav_links=nav_links,
-            page_title=page_title,
+            post=post,
+            nav_links=self.site_data.nav_links,
+            current_category=post.category if post.category != "blog" else None,
+            prev_post=context["prev_post"],
+            next_post=context["next_post"],
+        )
+
+    def render_index_page(self, category: Optional[str] = None) -> str:
+        """Render an index page for the site or a category."""
+        template = self.jinja_env.get_template("index.html")
+        index_content_post = self._get_index_content(category)
+
+        gallery_items = None
+        if category == "typst-collection":
+            typst_manager = TypstManager(SRC_DIR, DOCS_DIR)
+            gallery_items = typst_manager.get_gallery_data()
+
+        return template.render(
+            nav_links=self.site_data.nav_links,
+            page_title=f"{category.title()} - Aaron PM" if category else "Aaron PM",
             current_category=category,
-            index_content=index_content,
+            index_content=index_content_post,
             gallery_items=gallery_items,
         )
 
-    def generate_typst_assets(self):
-        """Generate PNG thumbnails and PDF files from Typst files using typst compile command"""
-        typst_dir = self.src_dir / "typst-collection"
-        docs_typst_dir = self.docs_dir / "typst-collection"
-        
-        if not typst_dir.exists():
-            return
-            
-        # Create docs/typst-collection directory if it doesn't exist
-        docs_typst_dir.mkdir(parents=True, exist_ok=True)
-        
-        # Find all .typ files and generate PNG thumbnails and PDFs
-        for typ_file in typst_dir.rglob("*.typ"):
-            png_filename = typ_file.with_suffix(".png").name
-            pdf_filename = typ_file.with_suffix(".pdf").name
-            local_png_path = docs_typst_dir / png_filename
-            local_pdf_path = docs_typst_dir / pdf_filename
-            
-            try:
-                print(f"Generating assets for {typ_file.name}...")
-                import subprocess
-                
-                # Generate PNG thumbnail directly to docs directory
-                png_result = subprocess.run([
-                    "typst", "compile", str(typ_file), 
-                    "--pages=1", "--format", "png", 
-                    str(local_png_path)
-                ], capture_output=True, text=True, timeout=30)
-                
-                if png_result.returncode == 0:
-                    print(f"Generated {png_filename} at {local_png_path}")
-                else:
-                    print(f"Failed to generate {png_filename}: {png_result.stderr}")
-                
-                # Generate PDF
-                pdf_result = subprocess.run([
-                    "typst", "compile", str(typ_file), 
-                    str(local_pdf_path)
-                ], capture_output=True, text=True, timeout=30)
-                
-                if pdf_result.returncode == 0:
-                    print(f"Generated {pdf_filename} at {local_pdf_path}")
-                else:
-                    print(f"Failed to generate {pdf_filename}: {pdf_result.stderr}")
-                    
-            except subprocess.TimeoutExpired:
-                print(f"Timeout generating assets for {typ_file.name}")
-            except FileNotFoundError:
-                print("Error: 'typst' command not found. Please install Typst CLI.")
-            except Exception as e:
-                print(f"Failed to generate assets for {typ_file.name}: {e}")
+    def _get_index_content(self, category: Optional[str] = None) -> Optional[Post]:
+        """Get content from index.md file for a category or the homepage."""
+        if category:
+            index_file = self.site_data.page_dir / category / "index.md"
+        else:
+            index_file = self.site_data.src_dir / "index.md"
 
-    def get_typst_gallery_data(self):
-        """Get data for typst gallery - find all .typ files and use PNG thumbnails"""
-        typst_dir = self.src_dir / "typst-collection" 
-        docs_typst_dir = self.docs_dir / "typst-collection"
-        gallery_items = []
-        
-        if not typst_dir.exists():
-            return gallery_items
-            
-        # Find all .typ files in the typst-collection directory
-        for typ_file in typst_dir.rglob("*.typ"):
-            # Calculate relative path from typst-collection directory
-            typ_relative_to_typst_collection = typ_file.relative_to(typst_dir)
-            
-            # Use local PNG thumbnail path
-            png_filename = typ_file.with_suffix(".png").name
-            local_png_path = docs_typst_dir / png_filename
-            
-            # Use PNG thumbnail if it exists
-            if local_png_path.exists():
-                # Use relative path from the current page (typst-collection/index.html)
-                thumbnail_url = f"{png_filename}"
-            else:
-                # Fallback to placeholder if PNG doesn't exist
-                thumbnail_url = None
-            
-            # PDF path for viewing in browser (using local PDF with Content-Disposition: inline)
-            pdf_filename = typ_file.with_suffix(".pdf").name
-            local_pdf_path = docs_typst_dir / pdf_filename
-            
-            # Use local PDF if it exists, otherwise fallback to GitHub releases
-            if local_pdf_path.exists():
-                # Use relative path from the current page (typst-collection/index.html)
-                pdf_url = f"{pdf_filename}"
-            else:
-                # Fallback to GitHub release URL
-                pdf_url = f"https://github.com/aaronmurniadi/typst-collection/releases/download/latest/{pdf_filename}"
-            
-            # Generate GitHub URL for the .typ source file
-            github_source_url = f"https://github.com/aaronmurniadi/typst-collection/blob/main/{typ_relative_to_typst_collection}"
-            
-            gallery_items.append({
-                "title": typ_file.stem.replace("_", " ").replace("-", " ").title(),
-                "thumbnail_path": thumbnail_url,
-                "pdf_path": pdf_url,
-                "typ_path": github_source_url,
-                "filename": pdf_filename
-            })
-                
-        return gallery_items
+        if not index_file.exists():
+            return None
 
-    def copy_static_files(self):
-        """Copy CSS, JS, and image files from src directory to docs directory"""
-        # Define file extensions to copy (excluding PDFs as they are linked to GitHub)
-        static_extensions = {'.css', '.js', '.png', '.jpg', '.jpeg', '.gif', '.svg', '.webp', '.ico', '.bmp'}
-        
-        # Scan src directory for static files
-        for file_path in self.src_dir.iterdir():
-            if file_path.is_file() and file_path.suffix.lower() in static_extensions:
-                # Copy to docs directory with just the filename
-                dest_path = self.docs_dir / file_path.name
-                shutil.copy2(file_path, dest_path)
-                print(f"Copied {file_path} to docs/{file_path.name}")
-        
-        # Note: PNG and PDF files are generated directly to docs/typst-collection 
-        # by generate_typst_assets(), so no copying needed
-                
+        try:
+            metadata, md_content = self.content_parser.parse_file(index_file)
+            processed_md = self._process_post_list_syntax(md_content, category)
+            html_content = self.content_parser.convert_to_html(processed_md)
 
+            return Post(
+                path=index_file,
+                title=metadata.get("title", "Index"),
+                slug="index",
+                category=category or "home",
+                url_path=f"{category}/index.html" if category else "index.html",
+                metadata=metadata,
+                content_md=processed_md,
+                content_html=html_content,
+            )
+        except Exception as e:
+            print(f"Error processing {index_file}: {e}")
+            return None
+
+    def _process_post_list_syntax(
+        self, content: str, current_category: Optional[str]
+    ) -> str:
+        """Process {{ posts|tag:tagname }} syntax."""
+        pattern = r"\{\{\s*posts\|tag:([^}]+)\s*\}\}"
+
+        def replace_with_posts(match):
+            tag_name = match.group(1).strip()
+
+            filtered_posts = [
+                p
+                for p in self.site_data.posts
+                if tag_name in (p.metadata.get("tags") or [])
+            ]
+
+            if not filtered_posts:
+                return f"*No posts found with tag '{tag_name}'*"
+
+            post_list_items = []
+            for post in filtered_posts:
+                url = self._get_relative_url(post, current_category)
+                date_str = post.date.strftime("%Y-%m-%d") if post.date else ""
+                post_list_items.append(
+                    f"- <div class='post-date'>{date_str}</div> <div class='post-title'>[{post.title}]({url})</div>"
+                )
+
+            return "\n".join(post_list_items)
+
+        return re.sub(pattern, replace_with_posts, content)
+
+    def _get_relative_url(self, post: Post, current_category: Optional[str]) -> str:
+        """Calculate relative URL for a post from an index page."""
+        if not current_category:  # Homepage
+            return post.url_path
+        if post.category == current_category:  # Same category
+            return f"{post.slug}.html"
+        # Different category
+        return f"../{post.url_path}"
+
+
+class SiteBuilder:
+    """Orchestrates the blog generation process."""
+
+    def __init__(self, src_dir: Path, docs_dir: Path, templates_dir: Path):
+        self.src_dir = src_dir
+        self.docs_dir = docs_dir
+        self.content_parser = ContentParser()
+        self.site = Site(src_dir, self.content_parser)
+        self.renderer = Renderer(templates_dir, self.site)
+        self.typst_manager = TypstManager(src_dir, docs_dir)
 
     def build(self):
-        """Build the entire blog"""
+        """Build the entire blog."""
         print("Starting blog generation...")
 
-        # Create docs directory if it doesn't exist
         self.docs_dir.mkdir(exist_ok=True)
-        
-        # Generate PNG thumbnails and PDF files from Typst files
-        self.generate_typst_assets()
 
-        # Get all posts
-        posts = self.get_all_posts()
-        print(f"Found {len(posts)} posts")
+        self.typst_manager.generate_assets()
 
-        # Create category directories
-        categories = set(post.get("category", "blog") for post in posts)
+        self.site.load()
+        print(f"Found {len(self.site.posts)} posts.")
 
-        # Also include directories that have index.md files (even if no posts)
-        for subdir in self.src_dir.iterdir():
-            if subdir.is_dir() and not subdir.name.startswith("."):
-                index_file = subdir / "index.md"
-                if index_file.exists():
-                    categories.add(subdir.name)
-
-        for category in categories:
-            if category != "blog":  # blog posts go in root
-                category_dir = self.docs_dir / category
-                category_dir.mkdir(exist_ok=True)
-
-        # Generate individual post pages
-        for post in posts:
-            post_html = self.generate_post_html(post, posts)
-
-            if post.get("category") == "blog":
-                post_file = self.docs_dir / f"{post['slug']}.html"
-            else:
-                post_file = self.docs_dir / post["url_path"]
-
-            # Ensure directory exists
-            post_file.parent.mkdir(parents=True, exist_ok=True)
-
-            with open(post_file, "w", encoding="utf-8") as f:
-                f.write(post_html)
-            print(f"Generated {post_file}")
-
-        # Generate main index page
-        index_html = self.generate_index_html(posts)
-        index_file = self.docs_dir / "index.html"
-
-        with open(index_file, "w", encoding="utf-8") as f:
-            f.write(index_html)
-        print(f"Generated {index_file}")
-
-        # Generate category index pages (only for categories with index.md files)
-        for category in categories:
+        for category in self.site.categories:
             if category != "blog":
-                category_index_md = self.src_dir / category / "index.md"
-                
-                if category_index_md.exists():
-                    category_index_html = self.generate_index_html(posts, category)
-                    category_index_file = self.docs_dir / category / "index.html"
+                (self.docs_dir / category).mkdir(exist_ok=True)
 
-                    with open(category_index_file, "w", encoding="utf-8") as f:
+        for post in self.site.posts:
+            html_content = self.renderer.render_post_page(post)
+            output_path = self.docs_dir / post.url_path
+            output_path.parent.mkdir(parents=True, exist_ok=True)
+            with open(output_path, "w", encoding="utf-8") as f:
+                f.write(html_content)
+            print(f"Generated {output_path}")
+
+        main_index_html = self.renderer.render_index_page()
+        with open(self.docs_dir / "index.html", "w", encoding="utf-8") as f:
+            f.write(main_index_html)
+        print(f"Generated {self.docs_dir / 'index.html'}")
+
+        # Category indexes
+        if self.site.page_dir.exists():
+            for page_dir in self.site.page_dir.iterdir():
+                if page_dir.is_dir() and (page_dir / "index.md").exists():
+                    category = page_dir.name
+                    category_index_html = self.renderer.render_index_page(category)
+                    index_path = self.docs_dir / category / "index.html"
+                    with open(index_path, "w", encoding="utf-8") as f:
                         f.write(category_index_html)
-                    print(f"Generated {category_index_file}")
+                    print(f"Generated {index_path}")
 
-        # Copy static files
         self.copy_static_files()
 
         print("Blog generation complete!")
 
+    def copy_static_files(self):
+        """Copy static files from src/static to docs/static."""
+        src_static_dir = self.src_dir / "static"
+        docs_static_dir = self.docs_dir / "static"
+        if not src_static_dir.exists():
+            return
+
+        docs_static_dir.mkdir(exist_ok=True)
+
+        for file_path in src_static_dir.iterdir():
+            if file_path.is_file():
+                shutil.copy2(file_path, docs_static_dir / file_path.name)
+                print(f"Copied {file_path.name} to {docs_static_dir.name}/")
+
 
 class BlogHandler(FileSystemEventHandler):
-    """File system event handler for watching markdown files"""
+    """File system event handler for watching files."""
 
-    def __init__(self, generator: BlogGenerator):
-        self.generator = generator
+    def __init__(self, builder: SiteBuilder):
+        self.builder = builder
         self.last_build = 0
         self.debounce_delay = 1  # seconds
 
-    def on_modified(self, event):
+    def on_any_event(self, event):
         if event.is_directory:
             return
 
-        # Rebuild for markdown files, CSS files, JS files, and template files
-        if (event.src_path.endswith(".md") or 
-            event.src_path.endswith(".css") or 
-            event.src_path.endswith(".js") or
-            event.src_path.endswith(".html")):
+        if any(
+            event.src_path.endswith(ext)
+            for ext in [".md", ".css", ".js", ".html", ".typ"]
+        ):
             current_time = time.time()
             if current_time - self.last_build > self.debounce_delay:
                 print(f"\n📝 File changed: {event.src_path}")
                 print("🔄 Rebuilding blog...")
                 try:
-                    self.generator.build()
+                    self.builder.build()
                     print("✅ Blog rebuilt successfully!")
                 except Exception as e:
                     print(f"❌ Error rebuilding blog: {e}")
                 self.last_build = current_time
 
-    def on_created(self, event):
-        if not event.is_directory and (event.src_path.endswith(".md") or 
-                                     event.src_path.endswith(".css") or 
-                                     event.src_path.endswith(".js") or
-                                     event.src_path.endswith(".html")):
-            self.on_modified(event)
-
-    def on_deleted(self, event):
-        if not event.is_directory and (event.src_path.endswith(".md") or 
-                                     event.src_path.endswith(".css") or 
-                                     event.src_path.endswith(".js") or
-                                     event.src_path.endswith(".html")):
-            print(f"\n🗑️  File deleted: {event.src_path}")
-            print("🔄 Rebuilding blog...")
-            try:
-                self.generator.build()
-                print("✅ Blog rebuilt successfully!")
-            except Exception as e:
-                print(f"❌ Error rebuilding blog: {e}")
-
 
 def main():
-    """Main function for one-time blog generation"""
-    generator = BlogGenerator()
-    generator.build()
+    """Main function for one-time blog generation."""
+    builder = SiteBuilder(SRC_DIR, DOCS_DIR, TEMPLATES_DIR)
+    builder.build()
 
 
 def watch_main():
-    """Main function for watching and auto-rebuilding"""
-    generator = BlogGenerator()
+    """Main function for watching and auto-rebuilding."""
+    builder = SiteBuilder(SRC_DIR, DOCS_DIR, TEMPLATES_DIR)
 
-    # Initial build
     print("🚀 Starting blog generator with file watching...")
-    generator.build()
+    builder.build()
 
-    # Set up file watcher
-    event_handler = BlogHandler(generator)
+    event_handler = BlogHandler(builder)
     observer = Observer()
-
-    # Watch the src directory and templates directory
-    observer.schedule(event_handler, str(generator.src_dir), recursive=True)
-    observer.schedule(event_handler, str(generator.templates_dir), recursive=True)
-
+    observer.schedule(event_handler, str(builder.src_dir), recursive=True)
+    observer.schedule(event_handler, str(builder.templates_dir), recursive=True)
     observer.start()
 
     print(f"\n👀 Watching for changes in:")
-    print(f"   📁 {generator.src_dir} (markdown, CSS, and JS files)")
-    print(f"   📁 {generator.templates_dir} (template files)")
+    print(f"   📁 {builder.src_dir}")
+    print(f"   📁 {builder.templates_dir}")
     print("\n📡 Server running... Press Ctrl+C to stop")
 
     try:
@@ -586,7 +526,6 @@ def watch_main():
 
 
 if __name__ == "__main__":
-    print(sys.argv[0])
     if len(sys.argv) > 1 and sys.argv[1] == "watch":
         watch_main()
     else:

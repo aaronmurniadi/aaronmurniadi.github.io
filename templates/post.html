@@ -13,7 +13,7 @@
     {% endif %}
     
     <div class="post-content">
-        {{ post.content | safe }}
+        {{ post.content_html | safe }}
     </div>
     
     {% if post.tags %}

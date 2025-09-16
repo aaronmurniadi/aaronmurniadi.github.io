@@ -150,10 +150,10 @@
     </style>
 
     <title>{% block title %}Blog{% endblock %}</title>
-    <link rel="stylesheet" href="{% if current_category %}../{% endif %}style.css" media="print"
+    <link rel="stylesheet" href="{% if current_category %}../{% endif %}static/style.css" media="print"
         onload="this.media='all'">
     <noscript>
-        <link rel="stylesheet" href="{% if current_category %}../{% endif %}style.css">
+        <link rel="stylesheet" href="{% if current_category %}../{% endif %}static/style.css">
     </noscript>
 
     <!-- Load MathJax only when needed -->
@@ -179,8 +179,8 @@
     {% endif %}
 
     <!-- Additional performance optimizations -->
-    <link rel="preload" href="{% if current_category %}../{% endif %}style.css" as="style">
-    <link rel="preload" href="{% if current_category %}../{% endif %}script.js" as="script">
+    <link rel="preload" href="{% if current_category %}../{% endif %}static/style.css" as="style">
+    <link rel="preload" href="{% if current_category %}../{% endif %}static/script.js" as="script">
 
     <!-- Favicon and app icons -->
     <link rel="icon"
@@ -219,7 +219,7 @@
 
         <footer>
             <p class="copyright">© 2025 Aaron P. Murniadi</p>
-            <script async src="{% if current_category %}../{% endif %}script.js"></script>
+            <script async src="{% if current_category %}../{% endif %}static/script.js"></script>
         </footer>
     </div> <!-- End main-content wrapper -->
     </body>
