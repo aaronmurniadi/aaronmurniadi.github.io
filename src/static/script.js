@@ -270,7 +270,15 @@ document.querySelectorAll('.footnote-ref').forEach((ref) => {
 // RIVER OF WHITE DETECTOR
 // ========================================
 
-const SHOW_RIVER_BORDER = false; // Set to false to disable the red border
+const SHOW_RIVER_BORDER = true; // Set to false to disable the red border
+
+// --- Algorithm Parameters ---
+const GAP_THRESHOLD_MULTIPLIER = 3;
+const MAX_WORD_SPACING_ITERATIONS = 30;
+const MAX_LETTER_SPACING_ITERATIONS = 10; // Less aggressive on letter spacing
+const WORD_SPACING_STEP = -0.003; // em
+const LETTER_SPACING_STEP = -0.003; // em
+// --- End of Parameters ---
 
 // Debounce function to limit how often a function can run.
 function debounce(func, wait) {
@@ -387,7 +395,6 @@ function checkElementForRivers(element) {
       lines.get(top).push(span);
     });
 
-    const GAP_THRESHOLD_MULTIPLIER = 4;
     const largeGapThreshold = spaceWidth * GAP_THRESHOLD_MULTIPLIER;
 
     for (const lineSpans of lines.values()) {
@@ -416,12 +423,8 @@ function checkElementForRivers(element) {
 
 // Iteratively adjusts spacing to try and fix rivers.
 function iterativelyAdjustSpacing(element) {
-  const MAX_ITERATIONS_PER_PROPERTY = 20;
-  const WORD_SPACING_STEP = -0.005; // em
-  const LETTER_SPACING_STEP = -0.005; // em
-
   // Phase 1: Adjust word-spacing first, as it's generally more effective.
-  for (let i = 1; i <= MAX_ITERATIONS_PER_PROPERTY; i++) {
+  for (let i = 1; i <= MAX_WORD_SPACING_ITERATIONS; i++) {
     element.style.wordSpacing = `${WORD_SPACING_STEP * i}em`;
     if (!checkElementForRivers(element)) {
       return true; // Problem solved.
@@ -430,7 +433,7 @@ function iterativelyAdjustSpacing(element) {
 
   // Phase 2: If not solved, also adjust letter-spacing.
   // word-spacing is kept at its most adjusted value from Phase 1.
-  for (let i = 1; i <= MAX_ITERATIONS_PER_PROPERTY; i++) {
+  for (let i = 1; i <= MAX_LETTER_SPACING_ITERATIONS; i++) {
     element.style.letterSpacing = `${LETTER_SPACING_STEP * i}em`;
     if (!checkElementForRivers(element)) {
       return true; // Problem solved.
