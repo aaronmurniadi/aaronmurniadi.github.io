@@ -14,7 +14,7 @@ This blog serves as a platform for me to share my ideas, projects, and reflectio
 
 ## Articles
 
-This collection consists of articles and lengthy texts, mainly centered on philosophy—traces of my unfinished journey in Philosophy, if you will. Almost all of the content is in Bahasa Indonesia, but you can translate each one by clicking the `Translate this Article` button after opening it, if you prefer reading in English or another language.
+This collection consists of articles and lengthy texts, mainly centered on philosophy—traces of my unfinished journey in Philosophy, if you will. Almost all of the content is in Bahasa Indonesia.
 
 ### Published Articles (external links)
 

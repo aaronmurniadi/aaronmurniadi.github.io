@@ -178,7 +178,7 @@ h1 {
   font-weight: 600;
   margin-top: 4rem;
   margin-bottom: 1.5rem;
-  font-size: 1.8rem;
+  font-size: 2rem;
   line-height: 1.25;
   text-align: left;
 }
@@ -382,6 +382,10 @@ ul.embedded.blog-posts>time[datetime] {
   margin: 1rem 0;
 }
 
+.post-content ol>li {
+  margin-bottom: 0.5rem;
+}
+
 /* ========================================
    NAVIGATION & LAYOUT SECTIONS
    ======================================== */
@@ -485,15 +489,18 @@ select {
    ======================================== */
 
 table {
-  margin-left: 2ch;
-  margin-right: 2ch;
+  width: fit-content;
+  margin-left: auto;
+  margin-right: auto;
   margin-bottom: 1rem;
   border-collapse: collapse;
 }
 
-table td {
+table td,
+table th {
   padding: 1rem 1ch;
   border-bottom: 1px solid #e2e8f0;
+  text-align: left;
 }
 
 /* ========================================
@@ -1124,7 +1131,8 @@ code {
     border-top-color: #3a3a3a;
   }
 
-  table td {
+  table td,
+  table th {
     border-bottom-color: #3a3a3a;
   }
 

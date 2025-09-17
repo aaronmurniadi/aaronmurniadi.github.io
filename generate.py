@@ -229,25 +229,35 @@ class TypstManager:
         pdf_path = self.typst_docs_dir / typ_file.with_suffix(".pdf").name
 
         try:
-            print(f"Generating assets for {typ_file.name}...")
-            # Generate PNG
-            self._run_typst_command(
-                [
-                    "typst",
-                    "compile",
-                    str(typ_file),
-                    "--pages=1",
-                    "--format",
-                    "png",
-                    str(png_path),
-                ],
-                f"PNG for {typ_file.name}",
-            )
-            # Generate PDF
-            self._run_typst_command(
-                ["typst", "compile", str(typ_file), str(pdf_path)],
-                f"PDF for {typ_file.name}",
-            )
+            typ_mtime = typ_file.stat().st_mtime
+
+            # Check if PNG needs regeneration
+            if not png_path.exists() or typ_mtime > png_path.stat().st_mtime:
+                print(f"Generating PNG for {typ_file.name}...")
+                self._run_typst_command(
+                    [
+                        "typst",
+                        "compile",
+                        str(typ_file),
+                        "--format=png",
+                        "--page=1",
+                        str(png_path),
+                    ],
+                    f"PNG for {typ_file.name}",
+                )
+            else:
+                print(f"PNG for {typ_file.name} is up to date.")
+
+            # Check if PDF needs regeneration
+            if not pdf_path.exists() or typ_mtime > pdf_path.stat().st_mtime:
+                print(f"Generating PDF for {typ_file.name}...")
+                self._run_typst_command(
+                    ["typst", "compile", str(typ_file), str(pdf_path)],
+                    f"PDF for {typ_file.name}",
+                )
+            else:
+                print(f"PDF for {typ_file.name} is up to date.")
+
         except FileNotFoundError:
             print("Error: 'typst' command not found. Please install Typst CLI.")
         except Exception as e:
@@ -513,8 +523,7 @@ class BlogHandler(FileSystemEventHandler):
         )
         src_path = Path(src_path_str)
         if any(
-            src_path.match(f"*{ext}")
-            for ext in [".md", ".css", ".js", ".html", ".typ"]
+            src_path.match(f"*{ext}") for ext in [".md", ".css", ".js", ".html", ".typ"]
         ):
             current_time = time.time()
             if current_time - self.last_build > self.debounce_delay:
