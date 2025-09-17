@@ -273,11 +273,11 @@ document.querySelectorAll('.footnote-ref').forEach((ref) => {
 const SHOW_RIVER_BORDER = true; // Set to false to disable the red border
 
 // --- Algorithm Parameters ---
-const GAP_THRESHOLD_MULTIPLIER = 3;
+const GAP_THRESHOLD_MULTIPLIER = 3.5;
 const MAX_WORD_SPACING_ITERATIONS = 30;
 const MAX_LETTER_SPACING_ITERATIONS = 10; // Less aggressive on letter spacing
-const WORD_SPACING_STEP = -0.005; // em
-const LETTER_SPACING_STEP = -0.005; // em
+const WORD_SPACING_STEP = -0.003; // em
+const LETTER_SPACING_STEP = -0.003; // em
 // --- End of Parameters ---
 
 // Debounce function to limit how often a function can run.
