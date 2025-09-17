@@ -12,7 +12,7 @@ function initializeFontLoading() {
   const fontLoadingPromise = document.fonts.ready;
 
   // Set a maximum timeout to prevent infinite loading
-  const timeoutPromise = new Promise(resolve => {
+  const timeoutPromise = new Promise((resolve) => {
     setTimeout(resolve, 3000); // 3 second timeout (reduced from 5)
   });
 
@@ -47,7 +47,9 @@ if (document.readyState === 'loading') {
 // EXISTING FUNCTIONALITY
 // ========================================
 
-const firstPWithoutTime = document.querySelector('main p:not(:has(time)):not(blockquote p)');
+const firstPWithoutTime = document.querySelector(
+  'main p:not(:has(time)):not(blockquote p)'
+);
 if (firstPWithoutTime) {
   firstPWithoutTime.classList.add('drop-cap');
 
@@ -81,7 +83,7 @@ if (firstPWithoutTime) {
     let node;
 
     // Collect all text nodes and count words
-    while (node = walker.nextNode()) {
+    while ((node = walker.nextNode())) {
       textNodes.push(node);
     }
 
@@ -92,7 +94,10 @@ if (firstPWithoutTime) {
 
     for (let textNode of textNodes) {
       const nodeText = textNode.textContent;
-      const nodeWords = nodeText.trim().split(/\s+/).filter(word => word.length > 0);
+      const nodeWords = nodeText
+        .trim()
+        .split(/\s+/)
+        .filter((word) => word.length > 0);
 
       if (currentWordCount + nodeWords.length >= targetWordCount) {
         // The split point is in this node
@@ -196,7 +201,7 @@ if (firstPWithoutTime) {
 // addHeaderNumbering();
 
 // Add tooltip for footnotes
-document.querySelectorAll('.footnote-ref').forEach(ref => {
+document.querySelectorAll('.footnote-ref').forEach((ref) => {
   const tooltip = document.getElementById('footnote-tooltip');
 
   ref.addEventListener('mouseenter', () => {
@@ -260,3 +265,185 @@ document.querySelectorAll('.footnote-ref').forEach(ref => {
     }
   });
 });
+
+// ========================================
+// RIVER OF WHITE DETECTOR
+// ========================================
+
+const SHOW_RIVER_BORDER = false; // Set to false to disable the red border
+
+// Debounce function to limit how often a function can run.
+function debounce(func, wait) {
+  let timeout;
+  return function executedFunction(...args) {
+    const later = () => {
+      clearTimeout(timeout);
+      func(...args);
+    };
+    clearTimeout(timeout);
+    timeout = setTimeout(later, wait);
+  };
+}
+
+const modifiedElements = new Map();
+
+// This script detects "rivers of white" in justified text blocks.
+// It works by measuring the gaps between words and highlights elements
+// where these gaps are excessively large, which is a common typography issue.
+function detectAndCorrectRivers() {
+  // Restore any previously modified elements to their original state before re-running.
+  modifiedElements.forEach(
+    ({ originalHTML, originalLetterSpacing, originalWordSpacing }, element) => {
+      element.innerHTML = originalHTML;
+      if (SHOW_RIVER_BORDER) {
+        element.style.outline = '';
+        element.style.outlineOffset = '';
+      }
+      element.style.letterSpacing = originalLetterSpacing;
+      element.style.wordSpacing = originalWordSpacing;
+    }
+  );
+  modifiedElements.clear();
+
+  // Select all paragraphs and list items within the main content area.
+  const elements = document.querySelectorAll('main p, main li');
+
+  elements.forEach((element) => {
+    const style = window.getComputedStyle(element);
+    // Only process elements with justified text alignment.
+    if (style.textAlign !== 'justify') {
+      return;
+    }
+
+    const originalHTML = element.innerHTML;
+    const originalLetterSpacing = style.letterSpacing;
+    const originalWordSpacing = style.wordSpacing;
+
+    if (checkElementForRivers(element)) {
+      // Store original state before attempting to fix.
+      modifiedElements.set(element, {
+        originalHTML,
+        originalLetterSpacing,
+        originalWordSpacing,
+      });
+
+      // Attempt to fix the issue iteratively.
+      iterativelyAdjustSpacing(element);
+
+      // Mark the element as adjusted, regardless of success.
+      if (SHOW_RIVER_BORDER) {
+        element.style.outline = '1px solid rgba(255, 0, 0, 0.5)';
+        element.style.outlineOffset = '2px';
+      }
+    }
+  });
+}
+
+// Checks a single element for "rivers of white" without permanent DOM changes.
+function checkElementForRivers(element) {
+  const originalHTML = element.innerHTML;
+  let hasLargeGap = false;
+
+  // Wrap words in temporary spans to measure their positions.
+  function wrapWordsInSpans(node) {
+    if (node.nodeType === Node.TEXT_NODE && node.nodeValue.trim().length > 0) {
+      const fragment = document.createDocumentFragment();
+      const words = node.nodeValue.split(/(\s+)/);
+      words.forEach((word) => {
+        if (word.trim().length > 0) {
+          const span = document.createElement('span');
+          span.className = 'word-span-for-river-detection';
+          span.textContent = word;
+          fragment.appendChild(span);
+        } else {
+          fragment.appendChild(document.createTextNode(word));
+        }
+      });
+      node.parentNode.replaceChild(fragment, node);
+    } else if (node.nodeType === Node.ELEMENT_NODE) {
+      Array.from(node.childNodes).forEach(wrapWordsInSpans);
+    }
+  }
+
+  wrapWordsInSpans(element);
+
+  const wordSpans = element.querySelectorAll('.word-span-for-river-detection');
+
+  if (wordSpans.length >= 15) {
+    const spaceMeasure = document.createElement('span');
+    spaceMeasure.style.visibility = 'hidden';
+    spaceMeasure.style.whiteSpace = 'pre';
+    spaceMeasure.textContent = ' ';
+    element.appendChild(spaceMeasure);
+    const spaceWidth = spaceMeasure.getBoundingClientRect().width;
+    element.removeChild(spaceMeasure);
+
+    const lines = new Map();
+    wordSpans.forEach((span) => {
+      const top = Math.round(span.getBoundingClientRect().top);
+      if (!lines.has(top)) {
+        lines.set(top, []);
+      }
+      lines.get(top).push(span);
+    });
+
+    const GAP_THRESHOLD_MULTIPLIER = 4;
+    const largeGapThreshold = spaceWidth * GAP_THRESHOLD_MULTIPLIER;
+
+    for (const lineSpans of lines.values()) {
+      if (lineSpans.length < 2) continue;
+      lineSpans.sort(
+        (a, b) =>
+          a.getBoundingClientRect().left - b.getBoundingClientRect().left
+      );
+      for (let i = 0; i < lineSpans.length - 1; i++) {
+        const currentRect = lineSpans[i].getBoundingClientRect();
+        const nextRect = lineSpans[i + 1].getBoundingClientRect();
+        const gap = nextRect.left - currentRect.right;
+        if (gap > largeGapThreshold) {
+          hasLargeGap = true;
+          break;
+        }
+      }
+      if (hasLargeGap) break;
+    }
+  }
+
+  // Restore the original content to undo the temporary spans.
+  element.innerHTML = originalHTML;
+  return hasLargeGap;
+}
+
+// Iteratively adjusts spacing to try and fix rivers.
+function iterativelyAdjustSpacing(element) {
+  const MAX_ITERATIONS_PER_PROPERTY = 20;
+  const WORD_SPACING_STEP = -0.005; // em
+  const LETTER_SPACING_STEP = -0.005; // em
+
+  // Phase 1: Adjust word-spacing first, as it's generally more effective.
+  for (let i = 1; i <= MAX_ITERATIONS_PER_PROPERTY; i++) {
+    element.style.wordSpacing = `${WORD_SPACING_STEP * i}em`;
+    if (!checkElementForRivers(element)) {
+      return true; // Problem solved.
+    }
+  }
+
+  // Phase 2: If not solved, also adjust letter-spacing.
+  // word-spacing is kept at its most adjusted value from Phase 1.
+  for (let i = 1; i <= MAX_ITERATIONS_PER_PROPERTY; i++) {
+    element.style.letterSpacing = `${LETTER_SPACING_STEP * i}em`;
+    if (!checkElementForRivers(element)) {
+      return true; // Problem solved.
+    }
+  }
+
+  // If the process completes and the issue wasn't fixed, reset to avoid overly tight text.
+  element.style.letterSpacing = '';
+  element.style.wordSpacing = '';
+  return false; // Could not solve.
+}
+
+// Run the river detection script after the page has fully loaded,
+// ensuring all styles and assets are in place for accurate measurements.
+window.addEventListener('load', detectAndCorrectRivers);
+window.addEventListener('resize', debounce(detectAndCorrectRivers, 250));
