@@ -274,7 +274,7 @@ const SHOW_RIVER_BORDER = true; // Set to false to disable the red border
 
 // --- Algorithm Parameters ---
 const GAP_THRESHOLD_MULTIPLIER = 3;
-const MAX_WORD_SPACING_ITERATIONS = 30;
+const MAX_WORD_SPACING_ITERATIONS = 20;
 const MAX_LETTER_SPACING_ITERATIONS = 10; // Less aggressive on letter spacing
 const WORD_SPACING_STEP = -0.005; // em
 const LETTER_SPACING_STEP = -0.005; // em
