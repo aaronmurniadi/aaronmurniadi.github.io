@@ -178,7 +178,7 @@ h1 {
   font-weight: 600;
   margin-top: 4rem;
   margin-bottom: 1.5rem;
-  font-size: 2rem;
+  font-size: 1.8rem;
   line-height: 1.25;
   text-align: left;
 }
@@ -1350,4 +1350,28 @@ ul li:last-child {
   .post-date {
     min-width: auto;
   }
+}
+
+.post-list-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1.5rem 0;
+}
+
+.post-list-table td {
+  padding: 0.3rem 0;
+  vertical-align: top;
+  border: none !important;
+}
+
+.post-list-table .post-date {
+  width: 160px;
+  padding-right: 2ch;
+  white-space: nowrap;
+  text-align: left;
+}
+
+.post-list-table .post-title a {
+  font-weight: 600;
+  font-variation-settings: "wght" 600;
 }

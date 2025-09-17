@@ -11,7 +11,7 @@ import subprocess
 import sys
 import time
 from dataclasses import dataclass
-from datetime import datetime
+from datetime import date, datetime
 from pathlib import Path
 from typing import Any, Dict, List, Optional, Set, Union
 
@@ -25,6 +25,18 @@ from watchdog.observers import Observer
 SRC_DIR = Path("src")
 DOCS_DIR = Path("docs")
 TEMPLATES_DIR = Path("templates")
+
+
+def format_date_with_ordinal(dt: Optional[datetime]) -> str:
+    """Formats a datetime object as '4th September 2025'."""
+    if not dt:
+        return ""
+    day = dt.day
+    if 11 <= day <= 13:
+        suffix = "th"
+    else:
+        suffix = {1: "st", 2: "nd", 3: "rd"}.get(day % 10, "th")
+    return f"{day}{suffix} {dt.strftime('%B %Y')}"
 
 
 @dataclass
@@ -49,6 +61,8 @@ class Post:
         date_val = self.metadata.get("date")
         if isinstance(date_val, datetime):
             return date_val
+        if isinstance(date_val, date):
+            return datetime.combine(date_val, datetime.min.time())
         if isinstance(date_val, str):
             try:
                 return datetime.strptime(date_val, "%Y-%m-%d")
@@ -317,6 +331,7 @@ class Renderer:
 
     def __init__(self, templates_dir: Path, site_data: Site):
         self.jinja_env = Environment(loader=FileSystemLoader(templates_dir))
+        self.jinja_env.globals["format_date"] = format_date_with_ordinal
         self.site_data = site_data
         self.content_parser = ContentParser()  # For post-list processing
 
@@ -402,13 +417,15 @@ class Renderer:
             post_list_items = []
             for post in filtered_posts:
                 url = self._get_relative_url(post, current_category)
-                date_str = post.date.strftime("%Y-%m-%d") if post.date else ""
+                date_str = format_date_with_ordinal(post.date)
                 post_list_items.append(
-                    f"- <div class='post-date'>{date_str}</div> "
-                    f"<div class='post-title'>[{post.title}]({url})</div>"
+                    "<tr>"
+                    f"<td class='post-date'>{date_str}</td>"
+                    f"<td class='post-title'><a href='{url}'>{post.title}</a></td>"
+                    "</tr>"
                 )
 
-            return "\n".join(post_list_items)
+            return f"<table class='post-list-table'>{''.join(post_list_items)}</table>"
 
         return re.sub(pattern, replace_with_posts, content)
 
