@@ -270,7 +270,7 @@ document.querySelectorAll('.footnote-ref').forEach((ref) => {
 // RIVER OF WHITE DETECTOR
 // ========================================
 
-const SHOW_RIVER_BORDER = true; // Set to false to disable the red border
+const SHOW_RIVER_BORDER = false; // Set to false to disable the red border
 
 // --- Algorithm Parameters ---
 const GAP_THRESHOLD_MULTIPLIER = 3.5;
