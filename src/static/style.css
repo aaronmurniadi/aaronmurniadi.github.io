@@ -386,9 +386,9 @@ ul.embedded.blog-posts>time[datetime] {
   margin-bottom: 0.5rem;
 }
 
-.post-content p {
+/* .post-content p {
   hyphens: auto;
-}
+} */
 
 /* ========================================
    NAVIGATION & LAYOUT SECTIONS
