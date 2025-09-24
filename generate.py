@@ -238,6 +238,8 @@ class TypstManager:
         self.typst_docs_dir.mkdir(parents=True, exist_ok=True)
 
         for typ_file in self.typst_src_dir.rglob("*.typ"):
+            if "maid_of_orleans" in typ_file.parts and typ_file.name != "main.typ":
+                continue
             self._compile_typst_file(typ_file)
 
     def _compile_typst_file(self, typ_file: Path) -> None:
@@ -299,6 +301,10 @@ class TypstManager:
 
         gallery_items = []
         for typ_file in self.typst_src_dir.rglob("*.typ"):
+            is_maid_of_orleans = "maid_of_orleans" in typ_file.parts
+            if is_maid_of_orleans and typ_file.name != "main.typ":
+                continue
+
             png_filename = typ_file.with_suffix(".png").name
             pdf_filename = typ_file.with_suffix(".pdf").name
 
@@ -313,9 +319,15 @@ class TypstManager:
                 else f"https://github.com/aaronmurniadi/typst-collection/releases/download/latest/{pdf_filename}"
             )
 
+            title = (
+                typ_file.parent.name.replace("_", " ").title()
+                if is_maid_of_orleans
+                else typ_file.stem.replace("_", " ").title()
+            )
+
             gallery_items.append(
                 {
-                    "title": typ_file.stem.replace("_", " ").title(),
+                    "title": title,
                     "thumbnail_path": thumbnail_url,
                     "pdf_path": pdf_url,
                     "typ_path": f"https://github.com/aaronmurniadi/typst-collection/blob/main/{typ_file.relative_to(self.typst_src_dir)}",
