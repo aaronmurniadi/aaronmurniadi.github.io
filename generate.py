@@ -257,7 +257,7 @@ class TypstManager:
                         "compile",
                         str(typ_file),
                         "--format=png",
-                        "--page=1",
+                        "--pages=1",
                         str(png_path),
                     ],
                     f"PNG for {typ_file.name}",
