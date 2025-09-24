@@ -1,0 +1,3 @@
+[submodule "src/page/typst-collection"]
+	path = src/page/typst-collection
+	url = git@github.com:aaronmurniadi/typst-collection.git
