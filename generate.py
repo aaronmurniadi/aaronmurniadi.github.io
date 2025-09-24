@@ -10,10 +10,12 @@ import shutil
 import subprocess
 import sys
 import time
+import xml.etree.ElementTree as ET
 from dataclasses import dataclass
 from datetime import date, datetime
 from pathlib import Path
 from typing import Any, Dict, List, Optional, Set, Union
+from xml.dom import minidom
 
 import markdown
 import yaml
@@ -25,6 +27,7 @@ from watchdog.observers import Observer
 SRC_DIR = Path("src")
 DOCS_DIR = Path("docs")
 TEMPLATES_DIR = Path("templates")
+BASE_URL = "https://aaronmurniadi.github.io"
 
 
 def format_date_with_ordinal(dt: Optional[datetime]) -> str:
@@ -462,6 +465,7 @@ class SiteBuilder:
     def build(self) -> None:
         """Build the entire blog."""
         print("Starting blog generation...")
+        sitemap_entries: List[Dict[str, str]] = []
 
         self.docs_dir.mkdir(exist_ok=True)
 
@@ -481,11 +485,27 @@ class SiteBuilder:
             with open(output_path, "w", encoding="utf-8") as f:
                 f.write(html_content)
             print(f"Generated {output_path}")
+            sitemap_entries.append(
+                {
+                    "loc": f"{BASE_URL}/{post.url_path}",
+                    "lastmod": (
+                        post.date.strftime("%Y-%m-%d")
+                        if post.date
+                        else datetime.now().strftime("%Y-%m-%d")
+                    ),
+                }
+            )
 
         main_index_html = self.renderer.render_index_page()
         with open(self.docs_dir / "index.html", "w", encoding="utf-8") as f:
             f.write(main_index_html)
         print(f"Generated {self.docs_dir / 'index.html'}")
+        sitemap_entries.append(
+            {
+                "loc": f"{BASE_URL}/",
+                "lastmod": datetime.now().strftime("%Y-%m-%d"),
+            }
+        )
 
         # Category indexes
         if self.site.page_dir.exists():
@@ -497,8 +517,15 @@ class SiteBuilder:
                     with open(index_path, "w", encoding="utf-8") as f:
                         f.write(category_index_html)
                     print(f"Generated {index_path}")
+                    sitemap_entries.append(
+                        {
+                            "loc": f"{BASE_URL}/{category}/",
+                            "lastmod": datetime.now().strftime("%Y-%m-%d"),
+                        }
+                    )
 
         self.copy_static_files()
+        self.generate_sitemap(sitemap_entries)
 
         print("Blog generation complete!")
 
@@ -515,6 +542,28 @@ class SiteBuilder:
             if file_path.is_file():
                 shutil.copy2(file_path, docs_static_dir / file_path.name)
                 print(f"Copied {file_path.name} to {docs_static_dir.name}/")
+
+    def generate_sitemap(self, entries: List[Dict[str, str]]) -> None:
+        """Generates a sitemap.xml file."""
+        sitemap_path = self.docs_dir / "sitemap.xml"
+        urlset = ET.Element(
+            "urlset", {"xmlns": "http://www.sitemaps.org/schemas/sitemap/0.9"}
+        )
+
+        for entry in entries:
+            url_element = ET.SubElement(urlset, "url")
+            loc = ET.SubElement(url_element, "loc")
+            loc.text = entry["loc"]
+            lastmod = ET.SubElement(url_element, "lastmod")
+            lastmod.text = entry["lastmod"]
+
+        xml_string = ET.tostring(urlset, "utf-8")
+        reparsed = minidom.parseString(xml_string)
+        pretty_xml_string = reparsed.toprettyxml(indent="  ")
+
+        with open(sitemap_path, "w", encoding="utf-8") as f:
+            f.write(pretty_xml_string)
+        print(f"Generated {sitemap_path}")
 
 
 class BlogHandler(FileSystemEventHandler):
