@@ -10,7 +10,25 @@
     <meta name="theme-color" content="#282A36">
     <meta name="color-scheme" content="dark light">
     <meta name="google-site-verification" content="9AO6NpUScil3XywYYZoRxjfFqBvb9J6VMle9vl9FdjU" />
-
+    
+    <!-- Open Graph meta tags -->
+    <meta property="og:type" content="{% block og_type %}website{% endblock %}">
+    <meta property="og:title" content="{% block og_title %}{{ self.title() }}{% endblock %}">
+    <meta property="og:description" content="{% block og_description %}{{ self.description() }}{% endblock %}">
+    <meta property="og:url" content="{% block og_url %}https://aaronmurniadi.github.io/{% endblock %}">
+    <meta property="og:site_name" content="aaron-pm">
+    <meta property="og:locale" content="en_US">
+    
+    <!-- Twitter Card meta tags -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="{% block twitter_title %}{{ self.title() }}{% endblock %}">
+    <meta name="twitter:description" content="{% block twitter_description %}{{ self.description() }}{% endblock %}">
+    
+    <!-- Additional SEO meta tags -->
+    <meta name="robots" content="index, follow">
+    <meta name="keywords" content="{% block keywords %}software engineering, QA, testing, philosophy, technology, programming{% endblock %}">
+    <link rel="canonical" href="{% block canonical_url %}https://aaronmurniadi.github.io/{% endblock %}">
+    
     <!-- Performance optimizations -->
     <link rel="dns-prefetch" href="https://cdn.jsdelivr.net">
 
@@ -188,6 +206,30 @@
         href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📝</text></svg>">
 
     {% block extra_head %}{% endblock %}
+
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "{% block schema_type %}WebSite{% endblock %}",
+        "name": "aaron-pm",
+        "url": "https://aaronmurniadi.github.io/",
+        "author": {
+            "@type": "Person",
+            "name": "Aaron Purnomo Murniadi",
+            "url": "https://aaronmurniadi.github.io/"
+        },
+        "description": "{% block schema_description %}{{ self.description() }}{% endblock %}",
+        "inLanguage": "en-US",
+        {% block additional_schema %}
+        "potentialAction": {
+            "@type": "SearchAction",
+            "target": "https://aaronmurniadi.github.io/?s={search_term_string}",
+            "query-input": "required name=search_term_string"
+        }
+        {% endblock %}
+    }
+    </script>
 </head>
 <body{% if body_class %} class="{{ body_class }}" {% endif %}>
     <!-- Loading spinner -->
