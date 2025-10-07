@@ -154,7 +154,6 @@ body {
   hanging-punctuation: first;
   color: #cecece;
   background-color: #282A36;
-  font-variation-settings: 'opsz' 26;
 }
 
 html,
@@ -174,13 +173,19 @@ body>main {
 /* ========================================
    TUFTE TYPOGRAPHY & HEADINGS
    ======================================== */
+
+.index-content h1:first-of-type {
+  margin-top: 2rem;
+}
+
 h1 {
   font-weight: 600;
   margin-top: 4rem;
   margin-bottom: 1.5rem;
-  font-size: 1.8rem;
+  font-size: 2rem;
   line-height: 1.25;
   text-align: left;
+  font-variation-settings: 'opsz' 26;
 }
 
 h2 {
@@ -252,24 +257,24 @@ subtitle {
 }
 
 /* Drop cap styling */
-.drop-cap:not(blockquote .drop-cap)::first-letter {
+.first-letter {
   color: #e96262;
-  font-size: 5.15rem;
   float: left;
-  padding-right: 0.2ch;
-  padding-top: 1.41rem;
-  font-variation-settings: 'wght' 600;
-  text-transform: uppercase;
   font-family: "Minion Variable Concept", serif;
+  font-size: 5.5rem;
+  font-variation-settings: 'wght' 600;
   font-weight: normal;
+  padding: 1.41rem 0.3ch 1.4rem 0.05ch;
+  text-transform: uppercase;
 }
 
-.drop-cap .first-three-words {
+.first-three-words {
   text-transform: lowercase;
   font-family: "Minion Variable Concept", serif;
   font-variant: small-caps;
   font-weight: normal;
   letter-spacing: 0.05rem;
+  font-size: 1.3rem;
 }
 
 /* ========================================

@@ -13,11 +13,11 @@
   </p>
   {% endif %}
 
-  <div class="post-content">{{ post.content_html | safe }}</div>
+  <div class="post-content">{{ content_html | safe }}</div>
 
-  {% if post.tags %}
+  {% if post.metadata.tags %}
   <p class="tags">
-    {% for tag in post.tags %}
+    {% for tag in post.metadata.tags %}
     <span class="tag">#{{ tag }}</span>
     {% endfor %}
   </p>

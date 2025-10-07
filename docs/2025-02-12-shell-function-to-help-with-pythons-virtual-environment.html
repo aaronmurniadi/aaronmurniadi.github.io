@@ -250,13 +250,13 @@
 
   
   <p>
-    <time datetime="2025-02-12"
-      >12th February 2025</time
+    <time datetime="2025-10-07"
+      >7th October 2025</time
     >
   </p>
   
 
-  <div class="post-content"><p>Managing Python projects often involves juggling multiple dependencies and Python versions. Virtual environments are a lifesaver, allowing you to isolate project dependencies and avoid conflicts. While Python&rsquo;s <code>venv</code> module is excellent, creating and activating environments can be a bit repetitive. To streamline this process, I&rsquo;ve created a simple Bash function called <code>ve()</code> that simplifies virtual environment management:</p>
+  <div class="post-content"><p>Managing Python projects often involves juggling multiple dependencies and Python versions. Virtual environments are a lifesaver, allowing you to isolate project dependencies and avoid conflicts. While Python's <code>venv</code> module is excellent, creating and activating environments can be a bit repetitive. To streamline this process, I've created a simple Bash function called <code>ve()</code> that simplifies virtual environment management:</p>
 <div class="codehilite"><pre><span></span><code>ve<span class="o">()</span><span class="w"> </span><span class="o">{</span>
 <span class="w">    </span><span class="nb">local</span><span class="w"> </span><span class="nv">py</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">1</span><span class="k">:-</span><span class="nv">python3</span><span class="si">}</span><span class="s2">&quot;</span>
 <span class="w">    </span><span class="nb">local</span><span class="w"> </span><span class="nv">venv</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">2</span><span class="k">:-</span><span class="p">.venv</span><span class="si">}</span><span class="s2">&quot;</span>
@@ -290,11 +290,17 @@
 <span class="o">}</span>
 </code></pre></div>
 
-<p>The function first checks if a virtual environment is already active by looking for the <code>VIRTUAL_ENV</code> environment variable. If we&rsquo;re in a virtual environment already, the script will exit gracefully.</p>
-<p>If we are not in a virtual environment AND there&rsquo;s no <code>.venv</code> folder found in the current directory, it will create a new virtual environment and then activates the environment.</p>
+<p>The function first checks if a virtual environment is already active by looking for the <code>VIRTUAL_ENV</code> environment variable. If we're in a virtual environment already, the script will exit gracefully.</p>
+<p>If we are not in a virtual environment AND there's no <code>.venv</code> folder found in the current directory, it will create a new virtual environment and then activates the environment.</p>
 <p>Finally, it upgrades pip within the new virtual environment to ensure you have the latest version.</p>
 <p>You can add this function to your shell configuration like <code>.bashrc</code>, <code>.zshrc</code>, or equivalent shell configuration file. This will make the <code>ve()</code> function available in your terminal.</p></div>
 
+  
+  <p class="tags">
+    
+    <span class="tag">#blog</span>
+    
+  </p>
   
 
   <nav class="post-navigation">
@@ -303,19 +309,19 @@
       
       <div class="nav-previous">
         <a
-          href="comprehensive-theses/2020-11-24-filsafat-politik.html"
+          href="2025-02-12-notes-from-so-you-think-you-know-git-fosdem-2024.html"
           rel="prev"
         >
-          ← Filsafat Politik
+          ← Notes from "So You Think You Know Git - FOSDEM 2024"
         </a>
       </div>
        
       <div class="nav-next">
         <a
-          href="2025-02-12-notes-from-so-you-think-you-know-git-fosdem-2024.html"
+          href="2025-02-14-time-to-tidy-up-your-github-graveyard.html"
           rel="next"
         >
-          Notes from "So You Think You Know Git - FOSDEM 2024" →
+          Time to tidy up your GitHub graveyard! →
         </a>
       </div>
       

@@ -44,7 +44,7 @@ if (document.readyState === 'loading') {
 }
 
 // ========================================
-// EXISTING FUNCTIONALITY
+// DROPCAP AND FIRST THREE WORDS
 // ========================================
 
 const firstPWithoutTime = document.querySelector(
@@ -54,6 +54,7 @@ if (firstPWithoutTime) {
   firstPWithoutTime.classList.add('drop-cap');
 
   // Wrap first 3 words in a span for small-caps styling while preserving HTML formatting
+  // Also wrap the first letter in a div with class "first-letter"
   const originalHTML = firstPWithoutTime.innerHTML;
 
   // Create a temporary element to work with the HTML content
@@ -67,8 +68,6 @@ if (firstPWithoutTime) {
   if (words.length >= 3) {
     // We need to find where the first 3 words end in the HTML
     // This is a more complex approach that preserves HTML formatting
-    const firstThreeWords = words.slice(0, 3).join(' ');
-
     // Create a walker to traverse text nodes
     const walker = document.createTreeWalker(
       tempDiv,
@@ -77,7 +76,6 @@ if (firstPWithoutTime) {
       false
     );
 
-    let wordCount = 0;
     let targetWordCount = 3;
     let textNodes = [];
     let node;
@@ -105,24 +103,21 @@ if (firstPWithoutTime) {
         const wordsNeeded = targetWordCount - currentWordCount;
 
         // Find the character position after the needed words
-        let charCount = 0;
         let wordsSeen = 0;
-
+        let splitFound = false;
         for (let i = 0; i < nodeText.length; i++) {
           if (nodeText[i].match(/\s/)) {
-            // Found whitespace, check if we've seen enough words
             if (wordsSeen >= wordsNeeded) {
               splitOffset = i;
+              splitFound = true;
               break;
             }
           } else if (i === 0 || nodeText[i - 1].match(/\s/)) {
-            // Starting a new word
             wordsSeen++;
           }
         }
-
         // If we've seen all needed words, find the end of the last word
-        if (wordsSeen >= wordsNeeded) {
+        if (wordsSeen >= wordsNeeded && !splitFound) {
           for (let i = splitOffset; i < nodeText.length; i++) {
             if (nodeText[i].match(/\s/)) {
               splitOffset = i;
@@ -145,15 +140,41 @@ if (firstPWithoutTime) {
       const beforeText = splitNode.textContent.substring(0, splitOffset);
       const afterText = splitNode.textContent.substring(splitOffset);
 
-      // Create the span for first three words
-      const span = document.createElement('span');
-      span.className = 'first-three-words';
-      span.textContent = beforeText.trim();
-
-      // Replace the original text node
+      // Find the first letter to create the drop-cap
+      const firstLetterMatch = beforeText.match(/^\s*(\S)/);
       const parent = splitNode.parentNode;
-      parent.insertBefore(span, splitNode);
 
+      if (firstLetterMatch) {
+        const firstLetter = firstLetterMatch[1];
+        const firstLetterIndex = beforeText.indexOf(firstLetter);
+
+        // Create the div for the first letter
+        const firstLetterDiv = document.createElement('div');
+        firstLetterDiv.className = 'first-letter';
+        firstLetterDiv.textContent = firstLetter;
+
+        // The rest of the text for the first three words span
+        const remainingText =
+          beforeText.slice(0, firstLetterIndex) +
+          beforeText.slice(firstLetterIndex + 1);
+
+        // Create the span for first three words (without the first letter)
+        const threeWordsSpan = document.createElement('span');
+        threeWordsSpan.className = 'first-three-words';
+        threeWordsSpan.textContent = remainingText.trim();
+
+        // Insert the new elements before the original text node
+        parent.insertBefore(firstLetterDiv, splitNode);
+        parent.insertBefore(threeWordsSpan, splitNode);
+      } else {
+        // Fallback for cases where no letter is found (e.g., only whitespace)
+        const span = document.createElement('span');
+        span.className = 'first-three-words';
+        span.textContent = beforeText.trim();
+        parent.insertBefore(span, splitNode);
+      }
+
+      // Handle the text after the first three words
       if (afterText.trim()) {
         splitNode.textContent = afterText;
       } else {
@@ -270,14 +291,14 @@ document.querySelectorAll('.footnote-ref').forEach((ref) => {
 // RIVER OF WHITE DETECTOR
 // ========================================
 
-const SHOW_RIVER_BORDER = false; // Set to false to disable the red border
+const SHOW_RIVER_BORDER = false;
 
 // --- Algorithm Parameters ---
 const GAP_THRESHOLD_MULTIPLIER = 3.5;
-const MAX_WORD_SPACING_ITERATIONS = 20;
-const MAX_LETTER_SPACING_ITERATIONS = 10; // Less aggressive on letter spacing
-const WORD_SPACING_STEP = -0.003; // em
-const LETTER_SPACING_STEP = -0.003; // em
+const MAX_WORD_SPACING_ITERATIONS = 25;
+const MAX_LETTER_SPACING_ITERATIONS = 15; 
+const WORD_SPACING_STEP = -0.002; // em
+const LETTER_SPACING_STEP = -0.002; // em
 // --- End of Parameters ---
 
 // Debounce function to limit how often a function can run.

@@ -4,9 +4,9 @@
 
 {% block content %}
 
-{% if index_content %}
+{% if index_content_html %}
 <section class="index-content">
-    {{ index_content.content_html | safe }}
+    {{ index_content_html | safe }}
 </section>
 {% else %}
 <p>No content found. Create an index.md file in the appropriate directory.</p>

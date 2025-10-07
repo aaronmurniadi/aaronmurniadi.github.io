@@ -1,123 +1,154 @@
-<?xml version="1.0" ?>
+<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url>
-    <loc>https://aaronmurniadi.github.io/summary/heidegger_basic_problems_of_phenomenology.html</loc>
-    <lastmod>2025-08-15</lastmod>
-  </url>
-  <url>
-    <loc>https://aaronmurniadi.github.io/2025-02-15-throwing-out-my-past.html</loc>
-    <lastmod>2025-02-15</lastmod>
-  </url>
-  <url>
-    <loc>https://aaronmurniadi.github.io/2025-02-14-time-to-tidy-up-your-github-graveyard.html</loc>
-    <lastmod>2025-02-14</lastmod>
-  </url>
-  <url>
-    <loc>https://aaronmurniadi.github.io/2025-02-12-notes-from-so-you-think-you-know-git-fosdem-2024.html</loc>
-    <lastmod>2025-02-12</lastmod>
-  </url>
-  <url>
-    <loc>https://aaronmurniadi.github.io/2025-02-12-shell-function-to-help-with-pythons-virtual-environment.html</loc>
-    <lastmod>2025-02-12</lastmod>
-  </url>
-  <url>
-    <loc>https://aaronmurniadi.github.io/comprehensive-theses/2020-11-24-filsafat-politik.html</loc>
-    <lastmod>2020-11-24</lastmod>
-  </url>
-  <url>
-    <loc>https://aaronmurniadi.github.io/comprehensive-theses/2020-11-24-etika.html</loc>
-    <lastmod>2020-11-24</lastmod>
-  </url>
-  <url>
-    <loc>https://aaronmurniadi.github.io/comprehensive-theses/2020-11-24-epistemologi.html</loc>
-    <lastmod>2020-11-24</lastmod>
-  </url>
-  <url>
-    <loc>https://aaronmurniadi.github.io/comprehensive-theses/2020-11-24-filsafat-ketuhanan.html</loc>
-    <lastmod>2020-11-24</lastmod>
-  </url>
-  <url>
-    <loc>https://aaronmurniadi.github.io/comprehensive-theses/2020-11-24-metafisika.html</loc>
-    <lastmod>2020-11-24</lastmod>
-  </url>
-  <url>
-    <loc>https://aaronmurniadi.github.io/comprehensive-theses/2020-11-24-filsafat-manusia.html</loc>
-    <lastmod>2020-11-24</lastmod>
-  </url>
-  <url>
-    <loc>https://aaronmurniadi.github.io/article/2020-11-23-ketidakadilan-epistemik-dalam-dunia-kesehatan.html</loc>
-    <lastmod>2020-11-23</lastmod>
-  </url>
-  <url>
-    <loc>https://aaronmurniadi.github.io/article/2020-06-14-stoikisme-seneca-bersikap-stoik-dalam-dunia-politik-yang-korup.html</loc>
-    <lastmod>2020-06-14</lastmod>
-  </url>
-  <url>
-    <loc>https://aaronmurniadi.github.io/article/2020-06-11-transendensi-dan-waktu-kritik-levinas-atas-heidegger.html</loc>
-    <lastmod>2020-06-11</lastmod>
-  </url>
-  <url>
-    <loc>https://aaronmurniadi.github.io/article/2020-06-04-gaya-filsafat-oxford-dalam-kritik-hla-hart-atas-teori-hukum-john-austin.html</loc>
-    <lastmod>2020-06-04</lastmod>
-  </url>
-  <url>
-    <loc>https://aaronmurniadi.github.io/article/2019-12-04-pendidikan-untuk-perdamaian.html</loc>
-    <lastmod>2019-12-04</lastmod>
-  </url>
-  <url>
-    <loc>https://aaronmurniadi.github.io/article/2019-12-04-cerita-rakyat-sebagai-media-pembelajaran-filsafat-untuk-anak-anak-di-indonesia.html</loc>
-    <lastmod>2019-12-04</lastmod>
-  </url>
-  <url>
-    <loc>https://aaronmurniadi.github.io/article/2019-12-02-refleksi-filosofis-atas-film-hotel-rwanda-2004-berdasarkan-pemikiran-emmanuel-levinas.html</loc>
-    <lastmod>2019-12-02</lastmod>
-  </url>
-  <url>
-    <loc>https://aaronmurniadi.github.io/article/2019-06-11-pertanyaan-pertanyaan-metafisika.html</loc>
-    <lastmod>2019-06-11</lastmod>
-  </url>
-  <url>
-    <loc>https://aaronmurniadi.github.io/article/2019-06-11-emmanuel-levinass-totality-and-infinity-metafisika-dan-transendensi.html</loc>
-    <lastmod>2019-06-11</lastmod>
-  </url>
-  <url>
-    <loc>https://aaronmurniadi.github.io/article/2019-06-09-telaah-metodologi-filsafat-fenomenologi-eksistensial-driyarkara.html</loc>
-    <lastmod>2019-06-09</lastmod>
-  </url>
-  <url>
-    <loc>https://aaronmurniadi.github.io/article/2019-05-26-analisis-pascakolonial-pergulatan-eksistensi-identitas-dan-rekognisi-agama-kaharingan.html</loc>
-    <lastmod>2019-05-26</lastmod>
-  </url>
-  <url>
-    <loc>https://aaronmurniadi.github.io/article/2019-04-07-selayang-pandang-pendekatan-pascakolonial-dari-orientalisme-subaltern-resistensi-sampai-rekognisi-dan-reclaiming.html</loc>
-    <lastmod>2019-04-07</lastmod>
-  </url>
-  <url>
-    <loc>https://aaronmurniadi.github.io/article/2018-11-27-teori-pendidikan-jean-jacques-rousseau-dalam-buku-emile-or-on-education.html</loc>
-    <lastmod>2018-11-27</lastmod>
-  </url>
-  <url>
-    <loc>https://aaronmurniadi.github.io/article/2018-10-24-selayang-pandang-sejarah-perkembangan-kosmologi.html</loc>
-    <lastmod>2018-10-24</lastmod>
-  </url>
-  <url>
-    <loc>https://aaronmurniadi.github.io/article/2018-06-07-pendidikan-karakter-menurut-martin-buber.html</loc>
-    <lastmod>2018-06-07</lastmod>
-  </url>
-  <url>
-    <loc>https://aaronmurniadi.github.io/article/2018-05-30-pertanyaan-pertanyaan-filsafat-manusia.html</loc>
-    <lastmod>2018-05-30</lastmod>
-  </url>
-  <url>
-    <loc>https://aaronmurniadi.github.io/</loc>
-    <lastmod>2025-10-07</lastmod>
-  </url>
-  <url>
-    <loc>https://aaronmurniadi.github.io/contact/</loc>
-    <lastmod>2025-10-07</lastmod>
-  </url>
-  <url>
-    <loc>https://aaronmurniadi.github.io/typst-collection/</loc>
-    <lastmod>2025-10-07</lastmod>
-  </url>
+
+    <url>
+        <loc>https://aaronmurniadi.github.io/summary/heidegger_basic_problems_of_phenomenology.html</loc>
+        <lastmod>2025-10-07</lastmod>
+    </url>
+
+    <url>
+        <loc>https://aaronmurniadi.github.io/comprehensive-theses/2020-11-24-metafisika.html</loc>
+        <lastmod>2025-10-07</lastmod>
+    </url>
+
+    <url>
+        <loc>https://aaronmurniadi.github.io/comprehensive-theses/2020-11-24-filsafat-politik.html</loc>
+        <lastmod>2025-10-07</lastmod>
+    </url>
+
+    <url>
+        <loc>https://aaronmurniadi.github.io/comprehensive-theses/2020-11-24-filsafat-manusia.html</loc>
+        <lastmod>2025-10-07</lastmod>
+    </url>
+
+    <url>
+        <loc>https://aaronmurniadi.github.io/comprehensive-theses/2020-11-24-filsafat-ketuhanan.html</loc>
+        <lastmod>2025-10-07</lastmod>
+    </url>
+
+    <url>
+        <loc>https://aaronmurniadi.github.io/comprehensive-theses/2020-11-24-etika.html</loc>
+        <lastmod>2025-10-07</lastmod>
+    </url>
+
+    <url>
+        <loc>https://aaronmurniadi.github.io/comprehensive-theses/2020-11-24-epistemologi.html</loc>
+        <lastmod>2025-10-07</lastmod>
+    </url>
+
+    <url>
+        <loc>https://aaronmurniadi.github.io/2025-02-15-throwing-out-my-past.html</loc>
+        <lastmod>2025-10-07</lastmod>
+    </url>
+
+    <url>
+        <loc>https://aaronmurniadi.github.io/2025-02-14-time-to-tidy-up-your-github-graveyard.html</loc>
+        <lastmod>2025-10-07</lastmod>
+    </url>
+
+    <url>
+        <loc>https://aaronmurniadi.github.io/2025-02-12-shell-function-to-help-with-pythons-virtual-environment.html</loc>
+        <lastmod>2025-10-07</lastmod>
+    </url>
+
+    <url>
+        <loc>https://aaronmurniadi.github.io/2025-02-12-notes-from-so-you-think-you-know-git-fosdem-2024.html</loc>
+        <lastmod>2025-10-07</lastmod>
+    </url>
+
+    <url>
+        <loc>https://aaronmurniadi.github.io/article/2020-11-23-ketidakadilan-epistemik-dalam-dunia-kesehatan.html</loc>
+        <lastmod>2025-10-07</lastmod>
+    </url>
+
+    <url>
+        <loc>https://aaronmurniadi.github.io/article/2020-06-14-stoikisme-seneca-bersikap-stoik-dalam-dunia-politik-yang-korup.html</loc>
+        <lastmod>2025-10-07</lastmod>
+    </url>
+
+    <url>
+        <loc>https://aaronmurniadi.github.io/article/2020-06-11-transendensi-dan-waktu-kritik-levinas-atas-heidegger.html</loc>
+        <lastmod>2025-10-07</lastmod>
+    </url>
+
+    <url>
+        <loc>https://aaronmurniadi.github.io/article/2020-06-04-gaya-filsafat-oxford-dalam-kritik-hla-hart-atas-teori-hukum-john-austin.html</loc>
+        <lastmod>2025-10-07</lastmod>
+    </url>
+
+    <url>
+        <loc>https://aaronmurniadi.github.io/article/2019-12-04-pendidikan-untuk-perdamaian.html</loc>
+        <lastmod>2025-10-07</lastmod>
+    </url>
+
+    <url>
+        <loc>https://aaronmurniadi.github.io/article/2019-12-04-cerita-rakyat-sebagai-media-pembelajaran-filsafat-untuk-anak-anak-di-indonesia.html</loc>
+        <lastmod>2025-10-07</lastmod>
+    </url>
+
+    <url>
+        <loc>https://aaronmurniadi.github.io/article/2019-12-02-refleksi-filosofis-atas-film-hotel-rwanda-2004-berdasarkan-pemikiran-emmanuel-levinas.html</loc>
+        <lastmod>2025-10-07</lastmod>
+    </url>
+
+    <url>
+        <loc>https://aaronmurniadi.github.io/article/2019-06-11-pertanyaan-pertanyaan-metafisika.html</loc>
+        <lastmod>2025-10-07</lastmod>
+    </url>
+
+    <url>
+        <loc>https://aaronmurniadi.github.io/article/2019-06-11-emmanuel-levinass-totality-and-infinity-metafisika-dan-transendensi.html</loc>
+        <lastmod>2025-10-07</lastmod>
+    </url>
+
+    <url>
+        <loc>https://aaronmurniadi.github.io/article/2019-06-09-telaah-metodologi-filsafat-fenomenologi-eksistensial-driyarkara.html</loc>
+        <lastmod>2025-10-07</lastmod>
+    </url>
+
+    <url>
+        <loc>https://aaronmurniadi.github.io/article/2019-05-26-analisis-pascakolonial-pergulatan-eksistensi-identitas-dan-rekognisi-agama-kaharingan.html</loc>
+        <lastmod>2025-10-07</lastmod>
+    </url>
+
+    <url>
+        <loc>https://aaronmurniadi.github.io/article/2019-04-07-selayang-pandang-pendekatan-pascakolonial-dari-orientalisme-subaltern-resistensi-sampai-rekognisi-dan-reclaiming.html</loc>
+        <lastmod>2025-10-07</lastmod>
+    </url>
+
+    <url>
+        <loc>https://aaronmurniadi.github.io/article/2018-11-27-teori-pendidikan-jean-jacques-rousseau-dalam-buku-emile-or-on-education.html</loc>
+        <lastmod>2025-10-07</lastmod>
+    </url>
+
+    <url>
+        <loc>https://aaronmurniadi.github.io/article/2018-10-24-selayang-pandang-sejarah-perkembangan-kosmologi.html</loc>
+        <lastmod>2025-10-07</lastmod>
+    </url>
+
+    <url>
+        <loc>https://aaronmurniadi.github.io/article/2018-06-07-pendidikan-karakter-menurut-martin-buber.html</loc>
+        <lastmod>2025-10-07</lastmod>
+    </url>
+
+    <url>
+        <loc>https://aaronmurniadi.github.io/article/2018-05-30-pertanyaan-pertanyaan-filsafat-manusia.html</loc>
+        <lastmod>2025-10-07</lastmod>
+    </url>
+
+    <url>
+        <loc>https://aaronmurniadi.github.io/</loc>
+        <lastmod>2025-10-07</lastmod>
+    </url>
+
+    <url>
+        <loc>https://aaronmurniadi.github.io/contact/</loc>
+        <lastmod>2025-10-07</lastmod>
+    </url>
+
+    <url>
+        <loc>https://aaronmurniadi.github.io/typst-collection/</loc>
+        <lastmod>2025-10-07</lastmod>
+    </url>
+
 </urlset>
