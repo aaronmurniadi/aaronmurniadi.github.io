@@ -7,6 +7,10 @@
   ))
 }
 
+#set text(
+  font: "ETBembo",
+)
+
 
 #let template(
   title: none,
@@ -21,20 +25,21 @@
     header: context {
       if (here().page() != 1) {
         set text(
-          font: "ETBembo",
-          weight: "semibold",
-          size: 8pt,
+          weight: "regular",
+          size: 7pt,
           tracking: 1.1pt,
           number-type: "old-style",
           number-width: "tabular",
         )
-        place(right, dy: 6em, dx: 24em)[
-          #upper(authors.join())'S \ "#upper(title)" #h(1em) #text(size: 16pt, counter(page).display())
+        place(right, dy: 8em, dx: 24em)[
+          #upper(authors.join())'S \ "#upper(title)"
+
+          #text(size: 16pt, counter(page).display())
         ]
       } else {
-        set text(font: "ETBembo", size: 8pt, tracking: 1.1pt, number-type: "old-style", number-width: "tabular")
+        set text(size: 8pt, tracking: 1.1pt, number-type: "old-style", number-width: "tabular")
         place(right, dy: 6em, dx: 24em)[
-          #link("https://edwardpackard.com/")[Source: https://edwardpackard.com/]
+          #link("https://edwardpackard.com/")[https://edwardpackard.com/]
         ]
       }
     },
@@ -46,7 +51,7 @@
     width: 100% + 23em - 5em,
     inset: 0pt,
     radius: 4pt,
-    text(font: "TeX Gyre Heros", size: 10pt, tracking: 2pt)[
+    text(size: 10pt, tracking: 2pt)[
       // title
 
       #text(size: 13pt, upper(title))

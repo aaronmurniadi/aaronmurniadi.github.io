@@ -28,7 +28,7 @@ BASE_URL = "https://aaronmurniadi.github.io"
 
 
 def format_date(dt: Optional[datetime]) -> str:
-    """Format datetime as '4th September 2025'."""
+    """Format datetime as '4th September 2019'."""
     if not dt:
         return ""
     day = dt.day
@@ -92,6 +92,17 @@ class BlogGenerator:
                 return datetime.strptime(date_val, "%Y-%m-%d")
             except ValueError:
                 pass
+        
+        # Extract date from filename if it follows the YYYY-MM-DD-* pattern
+        filename = file_path.stem
+        date_match = re.match(r"(\d{4}-\d{2}-\d{2})-", filename)
+        if date_match:
+            try:
+                return datetime.strptime(date_match.group(1), "%Y-%m-%d")
+            except ValueError:
+                pass
+        
+        # Use file modification time as last fallback
         return datetime.fromtimestamp(file_path.stat().st_mtime)
     
     def load_posts(self) -> None:
