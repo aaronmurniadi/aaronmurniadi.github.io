@@ -254,7 +254,7 @@ window.addEventListener('load', () => {
 // // Run the numbering function when the page loads
 // addHeaderNumbering();
 
-// Move footnotes to sidenotes
+// Create sidenotes from footnotes with synchronized positioning
 function moveFootnotesToSidenotes() {
   // Check if we have the sidenote container
   const sidenoteContainer = document.querySelector('.sidenote-container');
@@ -280,29 +280,14 @@ function moveFootnotesToSidenotes() {
     footnoteMap.set(id, content);
   });
 
-  // Check if the column layout is horizontal (side-by-side) or vertical
-  const isColumnLayoutHorizontal = () => {
-    const layout = document.querySelector('.three-column-layout');
-    return layout && window.getComputedStyle(layout).flexDirection === 'row';
-  };
+  // Create a container for the main content with sync markers
+  const contentWrapper = document.querySelector('.column-content');
+  if (contentWrapper) {
+    contentWrapper.classList.add('content-with-sidenotes');
+  }
 
-  // Function to toggle between sidenote and traditional footnote mode
-  const toggleFootnoteMode = () => {
-    const sidenoteElements = document.querySelectorAll('.sidenote-footnote');
-    const isHorizontal = isColumnLayoutHorizontal();
-
-    if (isHorizontal) {
-      // Show sidenotes, hide traditional footnotes
-      sidenoteElements.forEach(el => el.style.display = 'block');
-      if (footnoteDiv) footnoteDiv.style.display = 'none';
-      sidenoteContainer.style.display = 'block';
-    } else {
-      // Hide sidenotes, show traditional footnotes
-      sidenoteElements.forEach(el => el.style.display = 'none');
-      if (footnoteDiv) footnoteDiv.style.display = 'block';
-      sidenoteContainer.style.display = 'none';
-    }
-  };
+  // Clear existing sidenotes
+  sidenoteContainer.innerHTML = '';
 
   // Process each footnote reference
   footnoteRefs.forEach((ref, index) => {
@@ -314,148 +299,205 @@ function moveFootnotesToSidenotes() {
     const footnoteContent = footnoteMap.get(footnoteId);
 
     if (footnoteContent) {
-      // Create a sidenote element
-      const sidenoteFootnote = document.createElement('div');
-      sidenoteFootnote.className = 'sidenote-footnote';
-      sidenoteFootnote.id = `sidenote-${footnoteId}`;
-
-      // Extract just the text content for cleaner display in sidenotes
-      const tempDiv = document.createElement('div');
-      tempDiv.innerHTML = footnoteContent;
-
-      // Remove any nested <p> tags but keep their content
-      const paragraphs = tempDiv.querySelectorAll('p');
-      paragraphs.forEach(p => {
-        const parent = p.parentNode;
-        while (p.firstChild) {
-          parent.insertBefore(p.firstChild, p);
-        }
-        parent.removeChild(p);
-      });
-
-      sidenoteFootnote.innerHTML = tempDiv.innerHTML;
-
-      // Add footnote marker
-      const marker = document.createElement('span');
-      marker.className = 'sidenote-footnote-marker';
-      marker.textContent = ref.textContent;
-      sidenoteFootnote.prepend(marker);
-
-      // Add to sidenote container
-      sidenoteContainer.appendChild(sidenoteFootnote);
-
-      // Get the sup element that contains the reference
+      // Get the parent paragraph or element containing the reference
       const supElement = ref.closest('sup[id^="fnref:"]');
+      const refParent = supElement ? supElement.parentNode : null;
 
-      // Position the sidenote at the same vertical position as the reference
-      positionSidenoteFootnote(supElement || ref, sidenoteFootnote);
+      if (refParent) {
+        // Create a marker element at the reference point
+        const marker = document.createElement('span');
+        marker.className = 'sidenote-marker';
+        marker.id = `marker-${footnoteId}`;
+        marker.dataset.footnoteId = footnoteId;
+        marker.setAttribute('aria-hidden', 'true');
 
-      // Update positioning on window resize
-      window.addEventListener('resize', () => {
-        toggleFootnoteMode();
-        if (isColumnLayoutHorizontal()) {
-          const supElement = ref.closest('sup[id^="fnref:"]');
-          positionSidenoteFootnote(supElement || ref, sidenoteFootnote);
-        }
-      });
-
-      // Make the reference clickable to highlight the sidenote or navigate to footnote
-      ref.addEventListener('click', (e) => {
-        e.preventDefault();
-        if (isColumnLayoutHorizontal()) {
-          highlightSidenoteFootnote(sidenoteFootnote);
+        // Insert the marker right after the sup element
+        if (supElement.nextSibling) {
+          refParent.insertBefore(marker, supElement.nextSibling);
         } else {
-          // Use default behavior to navigate to footnote at the bottom
-          window.location.href = href;
+          refParent.appendChild(marker);
         }
-      });
+
+        // Create a sidenote element
+        const sidenoteFootnote = document.createElement('div');
+        sidenoteFootnote.className = 'sidenote-footnote';
+        sidenoteFootnote.id = `sidenote-${footnoteId}`;
+        sidenoteFootnote.dataset.footnoteId = footnoteId;
+
+        // Add the reference number to the sidenote for identification
+        const refNumber = ref.textContent;
+        sidenoteFootnote.dataset.refNumber = refNumber;
+
+        // Extract just the text content for cleaner display in sidenotes
+        const tempDiv = document.createElement('div');
+        tempDiv.innerHTML = footnoteContent;
+
+        // Remove any nested <p> tags but keep their content
+        const paragraphs = tempDiv.querySelectorAll('p');
+        paragraphs.forEach(p => {
+          const parent = p.parentNode;
+          while (p.firstChild) {
+            parent.insertBefore(p.firstChild, p);
+          }
+          parent.removeChild(p);
+        });
+
+        sidenoteFootnote.innerHTML = tempDiv.innerHTML;
+
+        // Add footnote marker
+        const markerSpan = document.createElement('span');
+        markerSpan.className = 'sidenote-footnote-marker';
+        markerSpan.textContent = refNumber;
+        sidenoteFootnote.prepend(markerSpan);
+
+        // Add to sidenote container
+        sidenoteContainer.appendChild(sidenoteFootnote);
+
+        // Make the reference clickable to highlight the sidenote
+        ref.addEventListener('click', (e) => {
+          if (window.innerWidth >= 1024) {
+            e.preventDefault();
+            // Highlight the sidenote
+            document.querySelectorAll('.sidenote-footnote').forEach(note => {
+              note.classList.remove('highlighted');
+            });
+            sidenoteFootnote.classList.add('highlighted');
+
+            // Scroll the sidenote into view if needed
+            sidenoteFootnote.scrollIntoView({ behavior: 'smooth', block: 'center' });
+
+            // Remove highlight after a delay
+            setTimeout(() => {
+              sidenoteFootnote.classList.remove('highlighted');
+            }, 2000);
+          }
+          // On mobile, let the browser handle the navigation to the footnote
+        });
+      }
     }
   });
 
-  // Initial toggle based on current viewport size
-  toggleFootnoteMode();
+  // Add a class to the body to indicate sidenotes are ready
+  document.body.classList.add('sidenotes-processed');
 }
 
-// Position a sidenote footnote at the same vertical position as its reference
-function positionSidenoteFootnote(reference, footnote) {
-  const refRect = reference.getBoundingClientRect();
-  const mainContent = document.querySelector('.column-content');
-  const sidenoteColumn = document.querySelector('.column-sidenotes');
+// Synchronize sidenotes with their reference positions
+function synchronizeSidenotes(forceUpdate = false) {
+  if (window.innerWidth < 1024) return; // Only run in desktop mode
 
-  if (!mainContent || !sidenoteColumn) return;
+  const markers = document.querySelectorAll('.sidenote-marker');
+  const sidenotes = document.querySelectorAll('.sidenote-footnote');
+  const sidenoteContainer = document.querySelector('.sidenote-container');
 
-  const mainRect = mainContent.getBoundingClientRect();
-  const sidenoteRect = sidenoteColumn.getBoundingClientRect();
+  if (!markers.length || !sidenotes.length || !sidenoteContainer) return;
 
-  // Calculate the vertical position relative to the sidenote container
-  // Add an offset to align the top of the sidenote with the reference
-  const footnoteHeight = footnote.getBoundingClientRect().height;
-  const referenceHeight = refRect.height;
-  const verticalOffset = (referenceHeight - footnoteHeight) / 2;
-  const relativeTop = refRect.top - sidenoteRect.top + verticalOffset;
+  // Get container dimensions
+  const containerRect = sidenoteContainer.getBoundingClientRect();
+  const containerTop = containerRect.top;
+  const containerHeight = containerRect.height;
 
-  // Set the position
-  footnote.style.top = `${relativeTop}px`;
-  footnote.classList.add('positioned');
-}
-
-// Highlight a sidenote footnote when its reference is clicked
-function highlightSidenoteFootnote(footnote) {
-  // Remove highlight from all footnotes
-  document.querySelectorAll('.sidenote-footnote').forEach(note => {
-    note.style.backgroundColor = '';
+  // Create a map for faster lookups
+  const sidenoteMap = new Map();
+  sidenotes.forEach(note => {
+    sidenoteMap.set(note.dataset.footnoteId, note);
   });
 
-  // Highlight this footnote
-  footnote.style.backgroundColor = 'rgba(150, 150, 150, 0.1)';
+  // Position each sidenote based on its marker position
+  markers.forEach(marker => {
+    const footnoteId = marker.dataset.footnoteId;
+    const sidenote = sidenoteMap.get(footnoteId);
 
-  // Scroll the sidenote into view if needed
-  footnote.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    if (sidenote) {
+      const markerRect = marker.getBoundingClientRect();
+      const markerTop = markerRect.top;
 
-  // Remove highlight after a delay
-  setTimeout(() => {
-    footnote.style.backgroundColor = '';
-  }, 2000);
+      // Calculate position relative to the sidenote container
+      let relativeTop = markerTop - containerTop;
+
+      // Ensure the sidenote stays within the container
+      const sidenoteHeight = sidenote.offsetHeight;
+      const maxTop = containerHeight - sidenoteHeight - 20; // Add some bottom margin
+
+      // Adjust position if it would overflow
+      if (relativeTop > maxTop) {
+        relativeTop = maxTop;
+      }
+      if (relativeTop < 0) {
+        relativeTop = 0;
+      }
+
+      // Only update position if it's changed significantly or on force update
+      const currentTop = parseInt(sidenote.style.top) || 0;
+      if (forceUpdate || Math.abs(currentTop - relativeTop) > 5) {
+        // Use transform for smoother animation instead of changing top
+        sidenote.style.transform = `translateY(${relativeTop}px)`;
+      }
+
+      // Check if the marker is in the viewport with some buffer
+      const buffer = 100; // 100px buffer above and below viewport
+      const isInViewport = (
+        markerRect.top >= -buffer &&
+        markerRect.top <= (window.innerHeight + buffer)
+      );
+
+      // Show sidenote if its marker is in viewport
+      if (isInViewport) {
+        if (!sidenote.classList.contains('in-view')) {
+          sidenote.classList.add('in-view');
+        }
+      } else {
+        if (sidenote.classList.contains('in-view')) {
+          sidenote.classList.remove('in-view');
+        }
+      }
+    }
+  });
+}
+
+// Use requestAnimationFrame for smoother scrolling
+let ticking = false;
+function requestSyncUpdate() {
+  if (!ticking) {
+    requestAnimationFrame(() => {
+      synchronizeSidenotes();
+      ticking = false;
+    });
+    ticking = true;
+  }
 }
 
 // Initialize sidenote footnotes when the page is fully loaded
-// Use requestIdleCallback to defer non-critical operations
 document.addEventListener('DOMContentLoaded', () => {
   // Use requestIdleCallback to move footnotes without blocking rendering
   requestIdleCallback(() => {
     moveFootnotesToSidenotes();
-  }, { timeout: 1000 }); // Ensure it runs within 1 second even if the browser is busy
 
-  // Then ensure it works after full page load
-  window.addEventListener('load', () => {
-    // Re-position all sidenotes after everything is loaded
-    requestIdleCallback(() => {
-      document.querySelectorAll('.sidenote-footnote').forEach(footnote => {
-        const footnoteId = footnote.id;
-        if (footnoteId && footnoteId.startsWith('sidenote-fn:')) {
-          const refId = 'fnref:' + footnoteId.replace('sidenote-fn:', '');
-          const reference = document.getElementById(refId);
-          if (reference) {
-            positionSidenoteFootnote(reference, footnote);
-          }
-        }
-      });
-    }, { timeout: 2000 });
-  });
+    // Initial synchronization with forced update
+    synchronizeSidenotes(true);
+
+    // Synchronize on scroll using requestAnimationFrame for smoother performance
+    window.addEventListener('scroll', requestSyncUpdate, { passive: true });
+
+    // Synchronize on resize with debouncing
+    let resizeTimeout;
+    window.addEventListener('resize', () => {
+      clearTimeout(resizeTimeout);
+      resizeTimeout = setTimeout(() => {
+        synchronizeSidenotes(true); // Force update on resize
+      }, 200); // Debounce to run 200ms after resize ends
+    });
+  }, { timeout: 1000 }); // Ensure it runs within 1 second even if the browser is busy
 });
 
-// Add tooltip for footnotes (fallback for mobile or when sidenotes aren't visible)
+// Add tooltip for footnotes (simpler implementation)
 document.querySelectorAll('sup[id^="fnref:"] a.footnote-ref').forEach((ref) => {
   const tooltip = document.getElementById('footnote-tooltip');
   if (!tooltip) return;
 
   ref.addEventListener('mouseenter', () => {
-    // Don't show tooltip if column layout is horizontal and sidenotes are visible
-    if (isColumnLayoutHorizontal()) {
-      const sidenoteColumn = document.querySelector('.column-sidenotes');
-      if (sidenoteColumn && window.getComputedStyle(sidenoteColumn).display !== 'none') {
-        return; // Don't show tooltip if sidenotes are visible
-      }
+    // Only show tooltip in mobile view when sidenotes aren't visible
+    if (window.innerWidth >= 1024) {
+      return; // Don't show tooltip in desktop view
     }
 
     const href = ref.getAttribute('href');
@@ -471,56 +513,20 @@ document.querySelectorAll('sup[id^="fnref:"] a.footnote-ref').forEach((ref) => {
       if (backRef) backRef.remove();
 
       tooltip.innerHTML = clone.innerHTML;
-
-      // Temporarily show tooltip off-screen to measure it
-      tooltip.style.visibility = 'hidden';
       tooltip.style.display = 'block';
-      tooltip.style.left = '-9999px';
-      tooltip.style.top = '-9999px';
 
-      // Wait for layout to complete before showing at real position
-      requestAnimationFrame(() => {
-        const tooltipWidth = tooltip.offsetWidth;
-        const tooltipHeight = tooltip.offsetHeight;
-        const padding = 12;
-        const viewportWidth = window.innerWidth;
-        const viewportHeight = window.innerHeight;
+      // Simple positioning near the reference
+      const refRect = ref.getBoundingClientRect();
+      tooltip.style.top = `${refRect.bottom + window.scrollY + 5}px`;
+      tooltip.style.left = `${refRect.left + window.scrollX}px`;
 
-        const updatePosition = (e) => {
-          let left = e.clientX + 10;
-          let top = e.clientY + 10;
+      // Remove tooltip when mouse leaves
+      const onLeave = () => {
+        tooltip.style.display = 'none';
+        ref.removeEventListener('mouseleave', onLeave);
+      };
 
-          if (left + tooltipWidth + padding > viewportWidth) {
-            left = viewportWidth - tooltipWidth - padding;
-          }
-          if (top + tooltipHeight + padding > viewportHeight) {
-            top = viewportHeight - tooltipHeight - padding;
-          }
-
-          left = Math.max(padding, left);
-          top = Math.max(padding, top);
-
-          tooltip.style.left = `${left}px`;
-          tooltip.style.top = `${top}px`;
-        };
-
-        // Now show tooltip visibly and follow mouse
-        tooltip.style.visibility = 'visible';
-
-        // Save and use a single mousemove handler for this tooltip
-        const onMouseMove = (e) => updatePosition(e);
-        ref.addEventListener('mousemove', onMouseMove);
-
-        // Remove everything on leave
-        const onLeave = () => {
-          tooltip.style.display = 'none';
-          tooltip.style.visibility = 'hidden';
-          ref.removeEventListener('mousemove', onMouseMove);
-          ref.removeEventListener('mouseleave', onLeave);
-        };
-
-        ref.addEventListener('mouseleave', onLeave);
-      });
+      ref.addEventListener('mouseleave', onLeave);
     }
   });
 });

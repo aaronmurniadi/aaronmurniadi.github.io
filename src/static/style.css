@@ -553,17 +553,23 @@ sup.footnote-ref a {
 }
 
 #footnote-tooltip {
-  position: fixed;
-  max-width: 400px;
+  position: absolute;
+  max-width: min(400px, 90vw);
   background: #282A36;
   border: 1px solid #ccc;
   padding: 0.75rem;
-  font-size: 1rem;
+  font-size: 0.9rem;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
   z-index: 9999;
   color: inherit;
   pointer-events: none;
   text-align: left;
+  display: none;
+  
+  /* Only show tooltips on mobile */
+  @media (min-width: 1024px) {
+    display: none !important;
+  }
 }
 
 /* Specific styles for footnote list - override global list styles */
@@ -1411,7 +1417,6 @@ ul li:last-child {
   }
   
   .column-nav {
-    width: 20%;
     min-width: 200px;
     padding: 1.5rem;
     border-right: 1px solid rgba(150, 150, 150, 0.2);
@@ -1426,7 +1431,6 @@ ul li:last-child {
   }
   
   .column-sidenotes {
-    width: 20%;
     min-width: 200px;
     padding: 1.5rem;
     border-left: 1px solid rgba(150, 150, 150, 0.2);
@@ -1466,38 +1470,130 @@ ul li:last-child {
 }
 
 /* ========================================
-   SIDENOTE FOOTNOTES
+   SIDENOTE FOOTNOTES - SYNCHRONIZED POSITIONING
    ======================================== */
 
+/* Hide sidenote markers in the main text */
+.sidenote-marker {
+  display: inline;
+  width: 0;
+  height: 0;
+  opacity: 0;
+  position: relative;
+}
+
+/* Container for all sidenotes */
+.sidenote-container {
+  position: relative;
+  padding-right: 0.5rem;
+  height: 100%;
+}
+
+/* Individual sidenote styling */
 .sidenote-footnote {
   font-size: 0.85rem;
   margin-bottom: 1rem;
-  padding-left: 1rem;
-  position: relative;
-  text-align: left;
-}
-
-.sidenote-footnote-marker {
-  position: absolute;
-  left: 0;
-  transform: translateX(-50%);
-  font-size: 0.75rem;
-  color: rgba(150, 150, 150, 0.8);
-}
-
-.sidenote-container {
-  position: relative;
-}
-
-/* Hide the original footnotes section when they're moved to sidenotes */
-.footnote {
-  display: none;
-}
-
-/* Make sidenote footnotes stick to their reference position */
-.sidenote-footnote.positioned {
+  padding: 0.5rem 0 0.5rem 1rem;
   position: absolute;
   left: 0;
   width: 100%;
-  margin-top: 0;
+  text-align: left;
+  transition: background-color 0.3s ease;
+  box-sizing: border-box;
+}
+
+/* Highlighted sidenote */
+.sidenote-footnote.highlighted {
+  background-color: rgba(150, 150, 150, 0.1);
+  border-left-color: rgba(150, 150, 150, 0.6);
+}
+
+/* Marker for sidenote number */
+.sidenote-footnote-marker {
+  font-size: 0.75rem;
+  color: rgba(150, 150, 150, 0.8);
+  margin-right: 0.5rem;
+  font-weight: bold;
+}
+
+/* Show sidenotes in desktop view, hide in mobile */
+@media (min-width: 1024px) {
+  /* Set up the grid layout for content and sidenotes */
+  .three-column-layout {
+    display: grid;
+    grid-template-columns: 1fr 3fr 1fr;
+    grid-template-areas: "nav content sidenotes";
+    width: 100%;
+    max-width: 100%;
+    min-height: calc(100vh - 120px);
+  }
+  
+  .column-nav {
+    grid-area: nav;
+    padding: 1.5rem;
+    border-right: 1px solid rgba(150, 150, 150, 0.2);
+  }
+  
+  .column-content {
+    grid-area: content;
+    padding: 1.5rem;
+    max-width: 79ch;
+    margin: 0 auto;
+    position: relative;
+  }
+  
+  .column-sidenotes {
+    grid-area: sidenotes;
+    padding: 1.5rem 1.5rem 1.5rem 0;
+    border-left: 1px solid rgba(150, 150, 150, 0.2);
+    overflow: hidden;
+    position: relative;
+  }
+  
+  /* Position sidenotes to align with their markers */
+  .sidenotes-processed .sidenote-footnote {
+    position: absolute;
+    opacity: 0.2;
+    pointer-events: none;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+    transform: translateY(0);
+    will-change: transform, opacity;
+    backface-visibility: hidden;
+  }
+  
+  /* Show sidenotes when they're in the viewport */
+  .sidenotes-processed .sidenote-footnote.in-view {
+    opacity: 1;
+    pointer-events: auto;
+  }
+  
+  /* Hide the original footnotes section when in desktop mode */
+  .footnote {
+    display: none;
+  }
+}
+
+/* Show footnotes in mobile view, hide sidenotes */
+@media (max-width: 1023px) {
+  .sidenote-container {
+    display: none;
+  }
+  
+  /* Show the original footnotes section when in mobile mode */
+  .footnote {
+    display: block;
+    margin-top: 2rem;
+    padding-top: 1rem;
+    border-top: 1px solid rgba(150, 150, 150, 0.2);
+  }
+  
+  /* Reset the three-column layout for mobile */
+  .three-column-layout {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .column-nav, .column-content, .column-sidenotes {
+    width: 100%;
+  }
 }
