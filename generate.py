@@ -17,6 +17,8 @@ from typing import Any, Dict, List, Optional
 import markdown
 import yaml
 from jinja2 import Environment, FileSystemLoader
+from rcssmin import cssmin
+from rjsmin import jsmin
 from watchdog.events import FileSystemEventHandler
 from watchdog.observers import Observer
 
@@ -402,14 +404,33 @@ class BlogGenerator:
                     index_path.write_text(html, encoding="utf-8")
                     print(f"Generated: {index_path}")
         
-        # Copy static files
+        # Copy static files and minify CSS/JS
         src_static = SRC_DIR / "static"
         if src_static.exists():
             docs_static = DOCS_DIR / "static"
             docs_static.mkdir(exist_ok=True)
             for file in src_static.iterdir():
                 if file.is_file():
-                    shutil.copy2(file, docs_static / file.name)
+                    dest_file = docs_static / file.name
+                    
+                    # Copy the file
+                    shutil.copy2(file, dest_file)
+                    
+                    # Minify CSS and JS files
+                    if file.name == "style.css" or file.name.endswith(".css"):
+                        print(f"Minifying CSS: {file.name}")
+                        with open(dest_file, "r", encoding="utf-8") as f:
+                            content = f.read()
+                        minified = cssmin(content)
+                        with open(dest_file, "w", encoding="utf-8") as f:
+                            f.write(minified)
+                    elif file.name == "script.js" or file.name.endswith(".js"):
+                        print(f"Minifying JS: {file.name}")
+                        with open(dest_file, "r", encoding="utf-8") as f:
+                            content = f.read()
+                        minified = jsmin(content)
+                        with open(dest_file, "w", encoding="utf-8") as f:
+                            f.write(minified)
         
         # Generate sitemap.xml
         self.generate_sitemap()

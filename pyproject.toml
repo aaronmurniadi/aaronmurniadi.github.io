@@ -15,6 +15,8 @@ dependencies = [
     "watchdog>=3.0.0",
     "types-markdown>=3.9.0.20250906",
     "types-pyyaml>=6.0.12.20250915",
+    "rcssmin>=1.2.2",
+    "rjsmin>=1.2.5",
 ]
 
 [project.optional-dependencies]
