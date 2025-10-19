@@ -338,6 +338,21 @@ https://www.who.int/news-room/detail/15-07-2019-world-hunger-is-still-not-going-
             <script defer src="../static/script.js"></script>
         </footer>
     </div> <!-- End main-content wrapper -->
+    
+    <!-- Register service worker for font caching -->
+    <script>
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+          navigator.serviceWorker.register('../static/service-worker.js')
+            .then(registration => {
+              console.log('ServiceWorker registration successful with scope:', registration.scope);
+            })
+            .catch(error => {
+              console.error('ServiceWorker registration failed:', error);
+            });
+        });
+      }
+    </script>
     </body>
 
 </html>

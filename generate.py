@@ -424,13 +424,16 @@ class BlogGenerator:
                         minified = cssmin(content)
                         with open(dest_file, "w", encoding="utf-8") as f:
                             f.write(minified)
-                    elif file.name == "script.js" or file.name.endswith(".js"):
+                    elif file.name == "script.js" or (file.name.endswith(".js") and file.name != "service-worker.js"):
                         print(f"Minifying JS: {file.name}")
                         with open(dest_file, "r", encoding="utf-8") as f:
                             content = f.read()
                         minified = jsmin(content)
                         with open(dest_file, "w", encoding="utf-8") as f:
                             f.write(minified)
+                    elif file.name == "service-worker.js":
+                        print(f"Copying service worker: {file.name}")
+                        # Service worker is copied as-is to maintain readability and functionality
         
         # Generate sitemap.xml
         self.generate_sitemap()
