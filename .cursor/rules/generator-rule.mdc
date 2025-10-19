@@ -1,0 +1,14 @@
+---
+alwaysApply: true
+---
+
+# Code Separation Rules
+
+Always maintain strict separation of concerns:
+- **No inline CSS** in HTML (no `style=""` attributes)
+- **No embedded CSS** in HTML (no `<style>` tags)
+- **No embedded JavaScript** in HTML (no `<script>` tags with inline code)
+
+Use external files only:
+- CSS: Link via `<link rel="stylesheet" href="styles.css">`
+- JavaScript: Link via `<script src="script.js"></script>`

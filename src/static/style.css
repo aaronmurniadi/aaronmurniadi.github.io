@@ -402,7 +402,6 @@ ul.embedded.blog-posts>time[datetime] {
 nav {
   text-align: left;
   line-height: 1.5rem;
-  border-bottom: 1px solid #222;
 }
 
 nav a:not(:last-child) {
@@ -1379,4 +1378,114 @@ ul li:last-child {
 .post-list-table .post-title a {
   font-weight: 600;
   font-variation-settings: "wght" 600;
+}
+
+/* ========================================
+   THREE-COLUMN LAYOUT
+   ======================================== */
+
+/* Three-column layout styles */
+.three-column-layout {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 100%;
+}
+
+@media (min-width: 1024px) {
+  body {
+    max-width: 100%;
+    padding: 0;
+  }
+  
+  .three-column-layout {
+    flex-direction: row;
+    min-height: calc(100vh - 120px); /* Adjust based on header/footer height */
+  }
+  
+  .column-nav {
+    width: 20%;
+    min-width: 200px;
+    padding: 1.5rem;
+    border-right: 1px solid rgba(150, 150, 150, 0.2);
+  }
+  
+  .column-content {
+    width: 60%;
+    flex-grow: 1;
+    padding: 1.5rem;
+    max-width: 79ch;
+    margin: 0 auto;
+  }
+  
+  .column-sidenotes {
+    width: 20%;
+    min-width: 200px;
+    padding: 1.5rem;
+    border-left: 1px solid rgba(150, 150, 150, 0.2);
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 1023px) {
+  .column-nav, .column-content, .column-sidenotes {
+    width: 100%;
+    padding: 1rem;
+  }
+  
+  .column-nav {
+    border-bottom: 1px solid rgba(150, 150, 150, 0.2);
+  }
+  
+  .column-sidenotes {
+    border-top: 1px solid rgba(150, 150, 150, 0.2);
+  }
+}
+
+/* Sidenote styles */
+.sidenote {
+  font-size: 0.9rem;
+  margin-bottom: 1.5rem;
+}
+
+.sidenote-title {
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+/* ========================================
+   SIDENOTE FOOTNOTES
+   ======================================== */
+
+.sidenote-footnote {
+  font-size: 0.85rem;
+  margin-bottom: 1rem;
+  padding-left: 1rem;
+  position: relative;
+  text-align: left;
+}
+
+.sidenote-footnote-marker {
+  position: absolute;
+  left: 0;
+  transform: translateX(-50%);
+  font-size: 0.75rem;
+  color: rgba(150, 150, 150, 0.8);
+}
+
+.sidenote-container {
+  position: relative;
+}
+
+/* Hide the original footnotes section when they're moved to sidenotes */
+.footnote {
+  display: none;
+}
+
+/* Make sidenote footnotes stick to their reference position */
+.sidenote-footnote.positioned {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  margin-top: 0;
 }

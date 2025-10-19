@@ -87,26 +87,35 @@
     <!-- Main content wrapper -->
     <div id="main-content" class="main-content">
         <header>
-            <a class="title" href="../index.html" aria-label="Go to homepage">
-                <h1>aaron-pm</h1>
-            </a>
-            <nav role="navigation" aria-label="Main navigation">
-                <p>
-                    
-                    <a href="../index.html">Home</a>
-                    
-                    <a href="../contact/index.html">Contact</a>
-                    
-                    <a href="../typst-collection/index.html">Typst-Collection</a>
-                    
-                    <a href="https://github.com/aaronmurniadi/cv-typst/releases/latest/download/aaron_murniadi_cv.pdf"
-                        aria-label="Open CV (PDF) in new tab" target="_blank" rel="noopener">CV</a>
-                </p>
-            </nav>
+            
         </header>
 
-        <main id="main" role="main">
+        <div class="three-column-layout">
+            <!-- Column A: Navigation -->
+            <aside class="column-nav">
+                <div class="site-nav">
+                    <a class="title" href="../index.html" aria-label="Go to homepage">
+                        <h1>aaron-pm</h1>
+                    </a>
+                    <nav role="navigation" aria-label="Main navigation">
+                        <p>
+                            
+                            <a href="../index.html">Home</a>
+                            
+                            <a href="../contact/index.html">Contact</a>
+                            
+                            <a href="../typst-collection/index.html">Typst-Collection</a>
+                            
+                            <a href="https://github.com/aaronmurniadi/cv-typst/releases/latest/download/aaron_murniadi_cv.pdf"
+                                aria-label="Open CV (PDF) in new tab" target="_blank" rel="noopener">CV</a>
+                        </p>
+                    </nav>
+                </div>
+            </aside>
             
+            <!-- Column B: Main Content -->
+            <main id="main" role="main" class="column-content">
+                
 <article class="post">
   <div id="footnote-tooltip" style="display: none"></div>
 
@@ -234,7 +243,17 @@
   </nav>
 </article>
 
-        </main>
+            </main>
+            
+            <!-- Column C: Side Notes -->
+            <aside class="column-sidenotes">
+                <div class="sidenote-container">
+                    <div class="sidenote"></div>
+                    
+                    <!-- Footnotes will be moved here by JavaScript -->
+                </div>
+            </aside>
+        </div>
 
         <footer>
             <p class="copyright">© 2025 Aaron P. Murniadi</p>
