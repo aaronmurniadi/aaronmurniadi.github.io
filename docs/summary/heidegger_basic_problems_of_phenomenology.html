@@ -32,145 +32,9 @@
     <!-- Performance optimizations -->
     <link rel="dns-prefetch" href="https://cdn.jsdelivr.net">
 
-    <!-- Critical CSS inline -->
-    <style>
-        /* Critical above-the-fold styles */
-        *,
-        *::before,
-        *::after {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0
-        }
-
-        html {
-            font-size: clamp(14px, 2.5vw, 16px)
-        }
-
-        body {
-            font-family: 'Minion Variable Concept', 'Times New Roman', Times, Charter, 'Bitstream Charter', 'Sitka Text', Cambria, serif;
-            font-display: swap;
-            margin: 0 auto;
-            max-width: 79ch;
-            padding: 1.5ch;
-            background-color: #282A36;
-            color: #cecece;
-            line-height: 1.4;
-            display: flex;
-            flex-direction: column;
-            text-align: justify;
-        }
-
-        .loading-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: #282A36;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 9999;
-            transition: opacity 0.5s ease-out;
-        }
-
-        .spinner {
-            position: relative;
-            width: 60px;
-            height: 60px;
-        }
-
-        .spinner-ring {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            border: 3px solid rgba(206, 206, 206, 0.2);
-            border-top: 3px solid #cecece;
-            border-radius: 50%;
-            animation: spin 1s linear infinite;
-        }
-
-        @keyframes spin {
-            0% {
-                transform: rotate(0deg);
-            }
-
-            100% {
-                transform: rotate(360deg);
-            }
-        }
-
-        .main-content {
-            opacity: 0;
-            transition: opacity 0.8s ease-in
-        }
-
-        .main-content.loaded {
-            opacity: 1
-        }
-
-        .loading-overlay.hidden {
-            opacity: 0;
-            pointer-events: none
-        }
-
-        header {
-            padding: 1ch 0em;
-        }
-
-        nav {
-            text-align: left;
-            line-height: 1.5em;
-            border-bottom: 1px solid #222;
-        }
-
-        nav a:not(:last-child) {
-            margin-right: 1ch;
-        }
-
-        h1 {
-            font-weight: 600;
-            margin-top: 4rem;
-            margin-bottom: 1.5rem;
-            font-size: 1.8rem;
-            line-height: 1.25;
-            text-align: left;
-        }
-
-        a,
-        a:visited {
-            color: inherit;
-            text-decoration: none;
-            transition: text-shadow 0.3s ease;
-        }
-
-        @media (prefers-color-scheme: light) {
-            body {
-                background-color: #f3f4f6;
-                color: #1f2937
-            }
-
-            .loading-overlay {
-                background-color: #f3f4f6
-            }
-
-            .spinner-ring {
-                border: 3px solid rgba(31, 41, 55, 0.2);
-                border-top: 3px solid #1f2937;
-            }
-
-            nav {
-                border-bottom-color: #d1d5db;
-            }
-        }
-    </style>
 
     <title>Heidegger, Martin. <i>The Basic Problems of Phenomenology</i>. Translated by Albert Hofstadter. Bloomington & Indianapolis: Indiana University Press, 1988. - My Blog</title>
-    <link rel="stylesheet" href="../static/style.css" media="print"
-        onload="this.media='all'">
+    <link rel="stylesheet" href="../static/style.css">
     <noscript>
         <link rel="stylesheet" href="../static/style.css">
     </noscript>
@@ -250,8 +114,8 @@
 
   
   <p>
-    <time datetime="2025-10-15"
-      >15th October 2025</time
+    <time datetime="2025-08-15"
+      >15th August 2025</time
     >
   </p>
   

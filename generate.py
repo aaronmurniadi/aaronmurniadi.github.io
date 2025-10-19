@@ -23,7 +23,7 @@ from watchdog.observers import Observer
 # Configuration
 SRC_DIR = Path("src")
 DOCS_DIR = Path("docs")
-TEMPLATES_DIR = Path("templates")
+TEMPLATES_DIR = Path("src/templates")
 BASE_URL = "https://aaronmurniadi.github.io"
 
 
@@ -74,24 +74,41 @@ class BlogGenerator:
     
     def parse_frontmatter(self, content: str) -> tuple[Dict[str, Any], str]:
         """Parse YAML frontmatter from markdown."""
+        content = content.strip()
         if not content.startswith("---"):
             return {}, content
         try:
-            _, frontmatter, md_content = content.split("---", 2)
-            return yaml.safe_load(frontmatter.strip()) or {}, md_content.strip()
-        except ValueError:
+            parts = content.split("---", 2)
+            if len(parts) < 3:
+                return {}, content
+            metadata = yaml.safe_load(parts[1]) or {}
+            return metadata, parts[2].strip()
+        except Exception:
             return {}, content
     
     def parse_date(self, metadata: Dict[str, Any], file_path: Path) -> Optional[datetime]:
         """Parse date from metadata or file modification time."""
         date_val = metadata.get("date")
+        
+        # Handle datetime object
         if isinstance(date_val, datetime):
             return date_val
+            
+        # Handle date object (convert to datetime)
+        if hasattr(date_val, 'year') and hasattr(date_val, 'month') and hasattr(date_val, 'day'):
+            return datetime(date_val.year, date_val.month, date_val.day)
+            
+        # Handle string date
         if isinstance(date_val, str):
             try:
                 return datetime.strptime(date_val, "%Y-%m-%d")
             except ValueError:
-                pass
+                # Try other common date formats
+                for fmt in ["%Y-%m-%d", "%d-%m-%Y", "%m-%d-%Y", "%Y/%m/%d"]:
+                    try:
+                        return datetime.strptime(date_val, fmt)
+                    except ValueError:
+                        continue
         
         # Extract date from filename if it follows the YYYY-MM-DD-* pattern
         filename = file_path.stem
@@ -298,6 +315,51 @@ class BlogGenerator:
                 except Exception as e:
                     print(f"Failed to generate PDF: {e}")
     
+    def generate_sitemap(self) -> None:
+        """Generate sitemap.xml for search engines."""
+        print("Generating sitemap.xml...")
+        
+        # Start XML content
+        xml_content = [
+            '<?xml version="1.0" encoding="UTF-8"?>',
+            '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">'
+        ]
+        
+        # Add homepage
+        xml_content.append(f'  <url>\n    <loc>{BASE_URL}/</loc>\n    <priority>1.0</priority>\n  </url>')
+        
+        # Add all posts
+        for post in self.posts:
+            url = f"{BASE_URL}/{post.url_path}"
+            lastmod = post.date.strftime("%Y-%m-%d") if post.date else datetime.now().strftime("%Y-%m-%d")
+            
+            xml_content.append(f'  <url>')
+            xml_content.append(f'    <loc>{url}</loc>')
+            xml_content.append(f'    <lastmod>{lastmod}</lastmod>')
+            xml_content.append(f'    <priority>0.8</priority>')
+            xml_content.append(f'  </url>')
+        
+        # Add category pages
+        page_dir = SRC_DIR / "page"
+        if page_dir.exists():
+            for subdir in page_dir.iterdir():
+                if subdir.is_dir() and (subdir / "index.md").exists():
+                    category = subdir.name
+                    url = f"{BASE_URL}/{category}/"
+                    
+                    xml_content.append(f'  <url>')
+                    xml_content.append(f'    <loc>{url}</loc>')
+                    xml_content.append(f'    <priority>0.9</priority>')
+                    xml_content.append(f'  </url>')
+        
+        # Close XML
+        xml_content.append('</urlset>')
+        
+        # Write to file
+        sitemap_path = DOCS_DIR / "sitemap.xml"
+        sitemap_path.write_text('\n'.join(xml_content), encoding="utf-8")
+        print(f"Generated: {sitemap_path}")
+
     def build(self) -> None:
         """Build the entire site."""
         print("Building blog...")
@@ -349,69 +411,13 @@ class BlogGenerator:
                 if file.is_file():
                     shutil.copy2(file, docs_static / file.name)
         
-        print("Build complete!")
-
-
-class FileWatcher(FileSystemEventHandler):
-    """Watch for file changes and rebuild."""
-    
-    def __init__(self, generator: BlogGenerator):
-        self.generator = generator
-        self.last_build = 0
-        self.debounce = 1
-    
-    def on_any_event(self, event):
-        if event.is_directory:
-            return
+        # Generate sitemap.xml
+        self.generate_sitemap()
         
-        path = Path(event.src_path)
-        if path.suffix in [".md", ".css", ".js", ".html", ".typ"]:
-            current = time.time()
-            if current - self.last_build > self.debounce:
-                print(f"\n📝 Changed: {path.name}")
-                print("🔄 Rebuilding...")
-                try:
-                    self.generator.build()
-                    print("✅ Done!")
-                except Exception as e:
-                    print(f"❌ Error: {e}")
-                self.last_build = current
+        print("Build complete!")
+    
 
-
-def main():
+if __name__ == "__main__":
     """Build once."""
     generator = BlogGenerator()
     generator.build()
-
-
-def watch():
-    """Build and watch for changes."""
-    generator = BlogGenerator()
-    print("🚀 Starting blog generator with file watching...")
-    generator.build()
-    
-    handler = FileWatcher(generator)
-    observer = Observer()
-    observer.schedule(handler, str(SRC_DIR), recursive=True)
-    observer.schedule(handler, str(TEMPLATES_DIR), recursive=True)
-    observer.start()
-    
-    print(f"\n👀 Watching: {SRC_DIR} and {TEMPLATES_DIR}")
-    print("📡 Press Ctrl+C to stop\n")
-    
-    try:
-        while True:
-            time.sleep(1)
-    except KeyboardInterrupt:
-        print("\n🛑 Stopping...")
-        observer.stop()
-    
-    observer.join()
-    print("👋 Stopped!")
-
-
-if __name__ == "__main__":
-    if len(sys.argv) > 1 and sys.argv[1] == "watch":
-        watch()
-    else:
-        main()
