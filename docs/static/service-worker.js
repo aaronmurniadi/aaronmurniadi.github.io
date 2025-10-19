@@ -43,18 +43,18 @@ self.addEventListener('fetch', event => {
             // Return cached font file
             return response;
           }
-          
+
           // If not in cache, fetch it
           return fetch(event.request).then(response => {
             // Clone the response as it can only be consumed once
             const responseToCache = response.clone();
-            
+
             // Open cache and store the fetched font
             caches.open(CACHE_NAME)
               .then(cache => {
                 cache.put(event.request, responseToCache);
               });
-            
+
             return response;
           });
         })
