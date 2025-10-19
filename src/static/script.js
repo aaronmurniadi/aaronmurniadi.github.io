@@ -280,22 +280,26 @@ function moveFootnotesToSidenotes() {
     footnoteMap.set(id, content);
   });
 
-  // Check if viewport is wide enough for sidenotes
-  const isViewportWideEnough = () => window.innerWidth >= 768; // Common breakpoint for tablets and up
+  // Check if the column layout is horizontal (side-by-side) or vertical
+  const isColumnLayoutHorizontal = () => {
+    const layout = document.querySelector('.three-column-layout');
+    return layout && window.getComputedStyle(layout).flexDirection === 'row';
+  };
 
   // Function to toggle between sidenote and traditional footnote mode
   const toggleFootnoteMode = () => {
     const sidenoteElements = document.querySelectorAll('.sidenote-footnote');
+    const isHorizontal = isColumnLayoutHorizontal();
 
-    if (isViewportWideEnough()) {
+    if (isHorizontal) {
       // Show sidenotes, hide traditional footnotes
       sidenoteElements.forEach(el => el.style.display = 'block');
-      footnoteDiv.style.display = 'none';
+      if (footnoteDiv) footnoteDiv.style.display = 'none';
       sidenoteContainer.style.display = 'block';
     } else {
       // Hide sidenotes, show traditional footnotes
       sidenoteElements.forEach(el => el.style.display = 'none');
-      footnoteDiv.style.display = 'block';
+      if (footnoteDiv) footnoteDiv.style.display = 'block';
       sidenoteContainer.style.display = 'none';
     }
   };
@@ -349,7 +353,7 @@ function moveFootnotesToSidenotes() {
       // Update positioning on window resize
       window.addEventListener('resize', () => {
         toggleFootnoteMode();
-        if (isViewportWideEnough()) {
+        if (isColumnLayoutHorizontal()) {
           const supElement = ref.closest('sup[id^="fnref:"]');
           positionSidenoteFootnote(supElement || ref, sidenoteFootnote);
         }
@@ -358,7 +362,7 @@ function moveFootnotesToSidenotes() {
       // Make the reference clickable to highlight the sidenote or navigate to footnote
       ref.addEventListener('click', (e) => {
         e.preventDefault();
-        if (isViewportWideEnough()) {
+        if (isColumnLayoutHorizontal()) {
           highlightSidenoteFootnote(sidenoteFootnote);
         } else {
           // Use default behavior to navigate to footnote at the bottom
@@ -446,10 +450,12 @@ document.querySelectorAll('sup[id^="fnref:"] a.footnote-ref').forEach((ref) => {
   if (!tooltip) return;
 
   ref.addEventListener('mouseenter', () => {
-    // Check if we're on mobile or if sidenotes aren't visible
-    const sidenoteColumn = document.querySelector('.column-sidenotes');
-    if (sidenoteColumn && window.getComputedStyle(sidenoteColumn).display !== 'none') {
-      return; // Don't show tooltip if sidenotes are visible
+    // Don't show tooltip if column layout is horizontal and sidenotes are visible
+    if (isColumnLayoutHorizontal()) {
+      const sidenoteColumn = document.querySelector('.column-sidenotes');
+      if (sidenoteColumn && window.getComputedStyle(sidenoteColumn).display !== 'none') {
+        return; // Don't show tooltip if sidenotes are visible
+      }
     }
 
     const href = ref.getAttribute('href');

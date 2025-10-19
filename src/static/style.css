@@ -1439,6 +1439,11 @@ ul li:last-child {
     width: 100%;
     padding: 1rem;
   }
+
+  .column-content {
+    max-width: 83ch;
+    margin: 0 auto;
+  }
   
   .column-nav {
     border-bottom: 1px solid rgba(150, 150, 150, 0.2);
