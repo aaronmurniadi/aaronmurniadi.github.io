@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://cdn.jsdelivr.net">
     <meta name="description"
         content="Aaron Purnomo Murniadi's blog - QA Software Engineer sharing insights on technology, coding, and philosophy">
     <meta name="author" content="Aaron Purnomo Murniadi">
@@ -31,10 +32,11 @@
     
     <!-- Performance optimizations -->
     <link rel="dns-prefetch" href="https://cdn.jsdelivr.net">
+    <meta http-equiv="Content-Security-Policy" content="script-src 'self' https://cdn.jsdelivr.net 'unsafe-inline'; style-src 'self' 'unsafe-inline';">
 
 
     <title>Filsafat Ketuhanan - My Blog</title>
-    <link rel="stylesheet" href="../static/style.css">
+    <link rel="stylesheet" href="../static/style.css" media="print" onload="this.media='all'">
     <noscript>
         <link rel="stylesheet" href="../static/style.css">
     </noscript>
@@ -42,9 +44,26 @@
     <!-- Load MathJax only when needed -->
     
 
+    <!-- Font preloading for better performance -->
+    <link rel="preload" href="../static/mvc-roman.otf.woff2" as="font" type="font/woff2" crossorigin fetchpriority="high">
+    <link rel="preload" href="../static/mvc-italic.otf.woff2" as="font" type="font/woff2" crossorigin fetchpriority="high">
+    
     <!-- Additional performance optimizations -->
     <link rel="preload" href="../static/style.css" as="style">
     <link rel="preload" href="../static/script.js" as="script">
+    
+    <!-- Critical CSS for faster initial render -->
+    <style>
+      /* Critical styles for initial render */
+      *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+      html{font-size:clamp(14px,2.5vw,16px)}
+      body{font-size:1rem;font-family:"Minion Variable Concept","Apple Garamond","Baskerville","Libre Baskerville","Droid Serif","Times New Roman","Times",serif,"Noto Emoji","Quivira";height:100%;color:#cecece;background-color:#282A36;margin:0 auto;padding:1.5ch}
+      .loading-overlay{position:fixed;top:0;left:0;width:100%;height:100%;background-color:#282A36;display:flex;justify-content:center;align-items:center;z-index:9999;transition:opacity 0.3s ease-out;will-change:opacity}
+      .main-content{opacity:0;transition:opacity 0.8s ease-in}
+      .main-content.loaded{opacity:1}
+      .loading-overlay.hidden{opacity:0;pointer-events:none}
+      @media(prefers-color-scheme:light){body{background-color:#f3f4f6;color:#1f2937}.loading-overlay{background-color:#f3f4f6}}
+    </style>
 
     <!-- Favicon and app icons -->
     <link rel="icon"
@@ -276,7 +295,7 @@
 
         <footer>
             <p class="copyright">© 2025 Aaron P. Murniadi</p>
-            <script async src="../static/script.js"></script>
+            <script defer src="../static/script.js"></script>
         </footer>
     </div> <!-- End main-content wrapper -->
     </body>

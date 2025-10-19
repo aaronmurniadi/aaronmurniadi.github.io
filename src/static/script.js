@@ -7,50 +7,76 @@ function initializeFontLoading() {
   const loadingOverlay = document.getElementById('loading-spinner');
   const mainContent = document.getElementById('main-content');
 
-  // Use document.fonts.ready instead of trying to load individual font files
-  // This waits for all CSS-declared fonts to load
-  const fontLoadingPromise = document.fonts.ready;
+  // Check if the browser supports the Font Loading API
+  if ('fonts' in document) {
+    // Use document.fonts.ready to wait for all CSS-declared fonts to load
+    // This is more efficient than loading individual font files
+    const fontLoadingPromise = document.fonts.ready;
 
-  // Set a maximum timeout to prevent infinite loading
-  const timeoutPromise = new Promise((resolve) => {
-    setTimeout(resolve, 3000); // 3 second timeout (reduced from 5)
-  });
+    // Set a maximum timeout to prevent infinite loading
+    const timeoutPromise = new Promise((resolve) => {
+      setTimeout(resolve, 2000); // 2 second timeout (reduced from 3)
+    });
 
-  // Wait for fonts to load or timeout
-  Promise.race([fontLoadingPromise, timeoutPromise]).then(() => {
-    // Add a small delay for smoother transition
+    // Wait for fonts to load or timeout, whichever comes first
+    Promise.race([fontLoadingPromise, timeoutPromise])
+      .then(() => showContent())
+      .catch(() => showContent()); // Ensure content shows even if font loading fails
+  } else {
+    // Fallback for browsers that don't support the Font Loading API
+    setTimeout(showContent, 1000);
+  }
+
+  // Function to show content and hide loading spinner
+  function showContent() {
+    // Fade out loading spinner
+    loadingOverlay.classList.add('hidden');
+
+    // Fade in main content
+    mainContent.classList.add('loaded');
+
+    // Remove loading overlay from DOM after transition
     setTimeout(() => {
-      // Fade out loading spinner
-      loadingOverlay.classList.add('hidden');
-
-      // Fade in main content
-      mainContent.classList.add('loaded');
-
-      // Remove loading overlay from DOM after transition
-      setTimeout(() => {
-        if (loadingOverlay && loadingOverlay.parentNode) {
-          loadingOverlay.remove();
-        }
-      }, 500);
-    }, 200);
-  });
+      if (loadingOverlay && loadingOverlay.parentNode) {
+        loadingOverlay.remove();
+      }
+    }, 500);
+  }
 }
 
-// Initialize font loading when DOM is ready
+// Initialize font loading as early as possible
 if (document.readyState === 'loading') {
   document.addEventListener('DOMContentLoaded', initializeFontLoading);
 } else {
+  // Execute immediately if DOM is already loaded
   initializeFontLoading();
 }
+
+// Add support for requestIdleCallback for non-critical operations
+const requestIdleCallback = window.requestIdleCallback ||
+  function (cb) {
+    return setTimeout(function () {
+      const start = Date.now();
+      cb({
+        didTimeout: false,
+        timeRemaining: function () {
+          return Math.max(0, 50 - (Date.now() - start));
+        }
+      });
+    }, 1);
+  };
 
 // ========================================
 // DROPCAP AND FIRST THREE WORDS
 // ========================================
 
-const firstPWithoutTime = document.querySelector(
-  'main p:not(:has(time)):not(blockquote p)'
-);
-if (firstPWithoutTime) {
+// Process dropcap and first three words styling after initial render
+function processDropcap() {
+  const firstPWithoutTime = document.querySelector(
+    'main p:not(:has(time)):not(blockquote p)'
+  );
+  if (!firstPWithoutTime) return;
+
   firstPWithoutTime.classList.add('drop-cap');
 
   // Wrap first 3 words in a span for small-caps styling while preserving HTML formatting
@@ -187,39 +213,46 @@ if (firstPWithoutTime) {
   }
 }
 
-// // Add hierarchical numbering to headers starting from H2
-// function addHeaderNumbering() {
-//   const headers = document.querySelectorAll('h2, h3, h4, h5, h6');
-//   const counters = [0, 0, 0, 0, 0]; // counters for h2, h3, h4, h5, h6
+// Defer dropcap processing to not block initial render
+window.addEventListener('load', () => {
+  requestIdleCallback(() => {
+    processDropcap();
+  }, { timeout: 2000 });
+});
 
-//   headers.forEach(header => {
-//     const level = parseInt(header.tagName.charAt(1)) - 2; // h2=0, h3=1, h4=2, etc.
+// Add hierarchical numbering to headers starting from H2
+function addHeaderNumbering() {
+  const headers = document.querySelectorAll('h2, h3, h4, h5, h6');
+  const counters = [0, 0, 0, 0, 0]; // counters for h2, h3, h4, h5, h6
 
-//     // Increment counter for current level
-//     counters[level]++;
+  headers.forEach(header => {
+    const level = parseInt(header.tagName.charAt(1)) - 2; // h2=0, h3=1, h4=2, etc.
 
-//     // Reset all deeper level counters
-//     for (let i = level + 1; i < counters.length; i++) {
-//       counters[i] = 0;
-//     }
+    // Increment counter for current level
+    counters[level]++;
 
-//     // Build the numbering string
-//     let numbering = '';
-//     for (let i = 0; i <= level; i++) {
-//       if (counters[i] > 0) {
-//         numbering += (numbering ? '.' : '') + counters[i];
-//       }
-//     }
+    // Reset all deeper level counters
+    for (let i = level + 1; i < counters.length; i++) {
+      counters[i] = 0;
+    }
 
-//     // Add the numbering prefix to the header text
-//     if (numbering) {
-//       header.textContent = numbering + '. ' + header.textContent;
-//     }
-//   });
-// }
+    // Build the numbering string
+    let numbering = '';
+    for (let i = 0; i <= level; i++) {
+      if (counters[i] > 0) {
+        numbering += (numbering ? '.' : '') + counters[i];
+      }
+    }
 
-// // Run the numbering function when the page loads
-// addHeaderNumbering();
+    // Add the numbering prefix to the header text
+    if (numbering) {
+      header.textContent = numbering + '. ' + header.textContent;
+    }
+  });
+}
+
+// Run the numbering function when the page loads
+addHeaderNumbering();
 
 // Move footnotes to sidenotes
 function moveFootnotesToSidenotes() {
@@ -382,24 +415,28 @@ function highlightSidenoteFootnote(footnote) {
 }
 
 // Initialize sidenote footnotes when the page is fully loaded
-// Use both DOMContentLoaded and window.onload to ensure proper rendering
+// Use requestIdleCallback to defer non-critical operations
 document.addEventListener('DOMContentLoaded', () => {
-  // First attempt on DOMContentLoaded
-  moveFootnotesToSidenotes();
+  // Use requestIdleCallback to move footnotes without blocking rendering
+  requestIdleCallback(() => {
+    moveFootnotesToSidenotes();
+  }, { timeout: 1000 }); // Ensure it runs within 1 second even if the browser is busy
 
   // Then ensure it works after full page load
   window.addEventListener('load', () => {
     // Re-position all sidenotes after everything is loaded
-    document.querySelectorAll('.sidenote-footnote').forEach(footnote => {
-      const footnoteId = footnote.id;
-      if (footnoteId && footnoteId.startsWith('sidenote-fn:')) {
-        const refId = 'fnref:' + footnoteId.replace('sidenote-fn:', '');
-        const reference = document.getElementById(refId);
-        if (reference) {
-          positionSidenoteFootnote(reference, footnote);
+    requestIdleCallback(() => {
+      document.querySelectorAll('.sidenote-footnote').forEach(footnote => {
+        const footnoteId = footnote.id;
+        if (footnoteId && footnoteId.startsWith('sidenote-fn:')) {
+          const refId = 'fnref:' + footnoteId.replace('sidenote-fn:', '');
+          const reference = document.getElementById(refId);
+          if (reference) {
+            positionSidenoteFootnote(reference, footnote);
+          }
         }
-      }
-    });
+      });
+    }, { timeout: 2000 });
   });
 });
 
@@ -481,191 +518,3 @@ document.querySelectorAll('sup[id^="fnref:"] a.footnote-ref').forEach((ref) => {
     }
   });
 });
-
-// ========================================
-// RIVER OF WHITE DETECTOR
-// ========================================
-const ROW_DETECTOR_ENABLED = false;
-
-const SHOW_RIVER_BORDER = false;
-
-// --- Algorithm Parameters ---
-const GAP_THRESHOLD_MULTIPLIER = 3.5;
-const MAX_WORD_SPACING_ITERATIONS = 25;
-const MAX_LETTER_SPACING_ITERATIONS = 15;
-const WORD_SPACING_STEP = -0.002; // em
-const LETTER_SPACING_STEP = -0.002; // em
-// --- End of Parameters ---
-
-if (ROW_DETECTOR_ENABLED) {
-  // Debounce function to limit how often a function can run.
-  function debounce(func, wait) {
-    let timeout;
-    return function executedFunction(...args) {
-      const later = () => {
-        clearTimeout(timeout);
-        func(...args);
-      };
-      clearTimeout(timeout);
-      timeout = setTimeout(later, wait);
-    };
-  }
-
-  const modifiedElements = new Map();
-
-  // This script detects "rivers of white" in justified text blocks.
-  // It works by measuring the gaps between words and highlights elements
-  // where these gaps are excessively large, which is a common typography issue.
-  function detectAndCorrectRivers() {
-    // Restore any previously modified elements to their original state before re-running.
-    modifiedElements.forEach(
-      ({ originalHTML, originalLetterSpacing, originalWordSpacing }, element) => {
-        element.innerHTML = originalHTML;
-        if (SHOW_RIVER_BORDER) {
-          element.style.outline = '';
-          element.style.outlineOffset = '';
-        }
-        element.style.letterSpacing = originalLetterSpacing;
-        element.style.wordSpacing = originalWordSpacing;
-      }
-    );
-    modifiedElements.clear();
-
-    // Select all paragraphs and list items within the main content area.
-    const elements = document.querySelectorAll('main p, main li');
-
-    elements.forEach((element) => {
-      const style = window.getComputedStyle(element);
-      // Only process elements with justified text alignment.
-      if (style.textAlign !== 'justify') {
-        return;
-      }
-
-      const originalHTML = element.innerHTML;
-      const originalLetterSpacing = style.letterSpacing;
-      const originalWordSpacing = style.wordSpacing;
-
-      if (checkElementForRivers(element)) {
-        // Store original state before attempting to fix.
-        modifiedElements.set(element, {
-          originalHTML,
-          originalLetterSpacing,
-          originalWordSpacing,
-        });
-
-        // Attempt to fix the issue iteratively.
-        iterativelyAdjustSpacing(element);
-
-        // Mark the element as adjusted, regardless of success.
-        if (SHOW_RIVER_BORDER) {
-          element.style.outline = '1px solid rgba(255, 0, 0, 0.5)';
-          element.style.outlineOffset = '2px';
-        }
-      }
-    });
-  }
-
-  // Checks a single element for "rivers of white" without permanent DOM changes.
-  function checkElementForRivers(element) {
-    const originalHTML = element.innerHTML;
-    let hasLargeGap = false;
-
-    // Wrap words in temporary spans to measure their positions.
-    function wrapWordsInSpans(node) {
-      if (node.nodeType === Node.TEXT_NODE && node.nodeValue.trim().length > 0) {
-        const fragment = document.createDocumentFragment();
-        const words = node.nodeValue.split(/(\s+)/);
-        words.forEach((word) => {
-          if (word.trim().length > 0) {
-            const span = document.createElement('span');
-            span.className = 'word-span-for-river-detection';
-            span.textContent = word;
-            fragment.appendChild(span);
-          } else {
-            fragment.appendChild(document.createTextNode(word));
-          }
-        });
-        node.parentNode.replaceChild(fragment, node);
-      } else if (node.nodeType === Node.ELEMENT_NODE) {
-        Array.from(node.childNodes).forEach(wrapWordsInSpans);
-      }
-    }
-
-    wrapWordsInSpans(element);
-
-    const wordSpans = element.querySelectorAll('.word-span-for-river-detection');
-
-    if (wordSpans.length >= 15) {
-      const spaceMeasure = document.createElement('span');
-      spaceMeasure.style.visibility = 'hidden';
-      spaceMeasure.style.whiteSpace = 'pre';
-      spaceMeasure.textContent = ' ';
-      element.appendChild(spaceMeasure);
-      const spaceWidth = spaceMeasure.getBoundingClientRect().width;
-      element.removeChild(spaceMeasure);
-
-      const lines = new Map();
-      wordSpans.forEach((span) => {
-        const top = Math.round(span.getBoundingClientRect().top);
-        if (!lines.has(top)) {
-          lines.set(top, []);
-        }
-        lines.get(top).push(span);
-      });
-
-      const largeGapThreshold = spaceWidth * GAP_THRESHOLD_MULTIPLIER;
-
-      for (const lineSpans of lines.values()) {
-        if (lineSpans.length < 2) continue;
-        lineSpans.sort(
-          (a, b) =>
-            a.getBoundingClientRect().left - b.getBoundingClientRect().left
-        );
-        for (let i = 0; i < lineSpans.length - 1; i++) {
-          const currentRect = lineSpans[i].getBoundingClientRect();
-          const nextRect = lineSpans[i + 1].getBoundingClientRect();
-          const gap = nextRect.left - currentRect.right;
-          if (gap > largeGapThreshold) {
-            hasLargeGap = true;
-            break;
-          }
-        }
-        if (hasLargeGap) break;
-      }
-    }
-
-    // Restore the original content to undo the temporary spans.
-    element.innerHTML = originalHTML;
-    return hasLargeGap;
-  }
-
-  // Iteratively adjusts spacing to try and fix rivers.
-  function iterativelyAdjustSpacing(element) {
-    // Phase 1: Adjust word-spacing first, as it's generally more effective.
-    for (let i = 1; i <= MAX_WORD_SPACING_ITERATIONS; i++) {
-      element.style.wordSpacing = `${WORD_SPACING_STEP * i}em`;
-      if (!checkElementForRivers(element)) {
-        return true; // Problem solved.
-      }
-    }
-
-    // Phase 2: If not solved, also adjust letter-spacing.
-    // word-spacing is kept at its most adjusted value from Phase 1.
-    for (let i = 1; i <= MAX_LETTER_SPACING_ITERATIONS; i++) {
-      element.style.letterSpacing = `${LETTER_SPACING_STEP * i}em`;
-      if (!checkElementForRivers(element)) {
-        return true; // Problem solved.
-      }
-    }
-
-    // If the process completes and the issue wasn't fixed, reset to avoid overly tight text.
-    element.style.letterSpacing = '';
-    element.style.wordSpacing = '';
-    return false; // Could not solve.
-  }
-
-  // Run the river detection script after the page has fully loaded,
-  // ensuring all styles and assets are in place for accurate measurements.
-  window.addEventListener('load', detectAndCorrectRivers);
-  window.addEventListener('resize', debounce(detectAndCorrectRivers, 250));
-}
