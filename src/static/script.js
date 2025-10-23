@@ -73,7 +73,7 @@ const requestIdleCallback = window.requestIdleCallback ||
 // Process dropcap and first three words styling after initial render
 function processDropcap() {
   const firstPWithoutTime = document.querySelector(
-    'main p:not(:has(time)):not(blockquote p)'
+    '.column-content p:not(:has(time)):not(blockquote p)'
   );
   if (!firstPWithoutTime) return;
 
@@ -280,7 +280,7 @@ function moveFootnotesToSidenotes() {
     footnoteMap.set(id, content);
   });
 
-  // Create a container for the main content with sync markers
+  // Add content-with-sidenotes class to column-content
   const contentWrapper = document.querySelector('.column-content');
   if (contentWrapper) {
     contentWrapper.classList.add('content-with-sidenotes');
@@ -388,11 +388,12 @@ function synchronizeSidenotes(forceUpdate = false) {
   const markers = document.querySelectorAll('.sidenote-marker');
   const sidenotes = document.querySelectorAll('.sidenote-footnote');
   const sidenoteContainer = document.querySelector('.sidenote-container');
+  const columnSidenotes = document.querySelector('.column-sidenotes');
 
-  if (!markers.length || !sidenotes.length || !sidenoteContainer) return;
+  if (!markers.length || !sidenotes.length || !sidenoteContainer || !columnSidenotes) return;
 
-  // Get container dimensions
-  const containerRect = sidenoteContainer.getBoundingClientRect();
+  // Get container dimensions - use column-sidenotes for positioning context
+  const containerRect = columnSidenotes.getBoundingClientRect();
   const containerTop = containerRect.top;
   const containerHeight = containerRect.height;
 
