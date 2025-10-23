@@ -331,9 +331,8 @@ class BlogGenerator:
             return
             
         try:
-            # Skip if thumbnail already exists and is newer than the source image
-            if output_path.exists() and output_path.stat().st_mtime > image_path.stat().st_mtime:
-                return
+            # Always generate the thumbnail, overwriting any existing one
+            print(f"Generating thumbnail for {image_path.name}...")
                 
             # Open the image
             with Image.open(image_path) as img:
@@ -469,15 +468,19 @@ class BlogGenerator:
                     
                     # Generate thumbnails for images in the photos directory
                     if PILLOW_AVAILABLE and "photos" in file.parts and file.suffix.lower() in ['.jpg', '.jpeg', '.png', '.gif']:
+                        # Skip if the filename already contains "_thumbnail"
+                        if "_thumbnail" in file.stem:
+                            continue
+                            
                         # Create thumbnail filename
                         thumbnail_name = file.stem + "_thumbnail" + file.suffix
                         thumbnail_path = file.parent / thumbnail_name
                         dest_thumbnail_path = dest_file.parent / thumbnail_name
                         
-                        # Generate the thumbnail
+                        # Always generate/overwrite the thumbnail
                         self.generate_thumbnail(file, thumbnail_path, max_size=800)
                         
-                        # Copy the thumbnail to docs directory if it was created
+                        # Copy the thumbnail to docs directory
                         if thumbnail_path.exists():
                             shutil.copy2(thumbnail_path, dest_thumbnail_path)
                             print(f"Copied thumbnail: {thumbnail_path} -> {dest_thumbnail_path}")
