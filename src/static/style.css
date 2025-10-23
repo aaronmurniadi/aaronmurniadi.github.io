@@ -73,12 +73,14 @@
 
 /* Main content wrapper - initially hidden */
 .main-content {
+  margin: 0 auto;
   opacity: 0;
   transition: opacity 0.8s ease-in;
 }
 
 /* Show main content when fonts are loaded */
 .main-content.loaded {
+  margin: 0 auto;
   opacity: 1;
 }
 
@@ -694,7 +696,6 @@ html:not(:has(meta[property="og:type"][content="article"])) h4::before {
   padding: 0.5rem 1ch;
   font-size: 0.9rem;
   line-height: 1.4;
-  max-width: 100%;
   overflow-wrap: break-word;
   transition: color 0.2s ease;
 }
@@ -1396,64 +1397,44 @@ ul li:last-child {
   display: flex;
   flex-direction: column;
   width: 100%;
-  max-width: 100%;
+  min-height: calc(100vh - 120px); /* Account for footer */
 }
 
 @media (min-width: 1024px) {
   body {
-    max-width: 83ch;
     padding: 0;
   }
   
+  /* Grid layout for desktop */
   .three-column-layout {
-    flex-direction: row;
-    min-height: calc(100vh - 120px); /* Adjust based on header/footer height */
+    display: grid;
+    grid-template-columns: minmax(200px, 1fr) minmax(auto, 80ch) minmax(200px, 1fr);
+    grid-template-areas: "nav content sidenotes";
+    width: 100%;
+    margin: 0 auto;
   }
   
   .column-nav {
-    min-width: 200px;
+    grid-area: nav;
     padding: 1.5rem;
     position: sticky;
-    top: 0;
-    align-self: flex-start;
+    top: 1.5rem;
+    align-self: start;
     overflow-y: auto;
   }
   
-  .site-nav {
-    position: sticky;
-    top: 1.5rem;
-  }
-  
   .column-content {
-    flex-grow: 1;
+    grid-area: content;
     padding: 1.5rem;
     margin: 0 auto;
-  }
-  
-  .column-sidenotes {
-    min-width: 200px;
-    padding: 1.5rem;
-  }
-}
-
-/* Responsive adjustments */
-@media (max-width: 1023px) {
-  .column-nav, .column-content, .column-sidenotes {
     width: 100%;
-    padding: 1rem;
-  }
-
-  .column-content {
-    max-width: 83ch;
-    margin: 0 auto;
-  }
-  
-  .column-nav {
-    border-bottom: 1px solid rgba(150, 150, 150, 0.2);
   }
   
   .column-sidenotes {
-    border-top: 1px solid rgba(150, 150, 150, 0.2);
+    grid-area: sidenotes;
+    padding: 1.5rem;
+    position: relative;
+    overflow: hidden;
   }
 }
 
@@ -1483,8 +1464,6 @@ ul li:last-child {
 
 /* Container for all sidenotes */
 .sidenote-container {
-  position: relative;
-  padding-right: 0.5rem;
   height: 100%;
 }
 
@@ -1493,9 +1472,6 @@ ul li:last-child {
   font-size: 0.85rem;
   margin-bottom: 1rem;
   padding: 0.5rem 0 0.5rem 1rem;
-  position: absolute;
-  left: 0;
-  width: 100%;
   text-align: left;
   transition: background-color 0.3s ease;
   box-sizing: border-box;
@@ -1516,45 +1492,6 @@ ul li:last-child {
 
 /* Show sidenotes in desktop view, hide in mobile */
 @media (min-width: 1024px) {
-  /* Set up the grid layout for content and sidenotes */
-  .three-column-layout {
-    display: grid;
-    grid-template-columns: 1fr 3fr 1fr;
-    grid-template-areas: "nav content sidenotes";
-    width: 100%;
-    max-width: 100%;
-    min-height: calc(100vh - 120px);
-  }
-  
-  .column-nav {
-    grid-area: nav;
-    padding: 1.5rem;
-    position: sticky;
-    top: 0;
-    align-self: start;
-    overflow-y: auto;
-  }
-  
-  .site-nav {
-    position: sticky;
-    top: 1.5rem;
-  }
-  
-  .column-content {
-    grid-area: content;
-    padding: 1.5rem;
-    max-width: 79ch;
-    margin: 0 auto;
-    position: relative;
-  }
-  
-  .column-sidenotes {
-    grid-area: sidenotes;
-    padding: 1.5rem 1.5rem 1.5rem 0;
-    overflow: hidden;
-    position: relative;
-  }
-  
   /* Position sidenotes to align with their markers */
   .sidenotes-processed .sidenote-footnote {
     position: absolute;
@@ -1578,13 +1515,39 @@ ul li:last-child {
   }
 }
 
-/* Show footnotes in mobile view, hide sidenotes */
+/* Responsive adjustments for mobile */
 @media (max-width: 1023px) {
+  /* Layout adjustments */
+  .column-nav, .column-content, .column-sidenotes {
+    width: 100%;
+    max-width: 80ch;
+    padding: 1rem;
+  }
+
+  .main-content {
+    margin: 0 auto;
+    width: 100%;
+    opacity: 0;
+    transition: opacity 0.8s ease-in;
+  }
+
+  .column-content {
+    margin: 0 auto;
+  }
+  
+  .column-nav {
+    border-bottom: 1px solid rgba(150, 150, 150, 0.2);
+  }
+  
+  .column-sidenotes {
+    border-top: 1px solid rgba(150, 150, 150, 0.2);
+  }
+
+  /* Hide sidenotes, show footnotes */
   .sidenote-container {
     display: none;
   }
   
-  /* Show the original footnotes section when in mobile mode */
   .footnote {
     display: block;
     margin-top: 2rem;
@@ -1595,9 +1558,5 @@ ul li:last-child {
   .three-column-layout {
     display: flex;
     flex-direction: column;
-  }
-  
-  .column-nav, .column-content, .column-sidenotes {
-    width: 100%;
   }
 }
