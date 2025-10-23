@@ -46,10 +46,14 @@ function initializeFontLoading() {
 
 // Initialize font loading as early as possible
 if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', initializeFontLoading);
+  document.addEventListener('DOMContentLoaded', () => {
+    initializeFontLoading();
+    initPhotoGallery();
+  });
 } else {
   // Execute immediately if DOM is already loaded
   initializeFontLoading();
+  initPhotoGallery();
 }
 
 // Add support for requestIdleCallback for non-critical operations
@@ -65,6 +69,78 @@ const requestIdleCallback = window.requestIdleCallback ||
       });
     }, 1);
   };
+
+// Photography lightbox functionality
+function initPhotoGallery() {
+  const lightbox = document.getElementById('lightbox');
+  const lightboxImg = document.getElementById('lightbox-img');
+  const lightboxCaption = document.getElementById('lightbox-caption');
+  const closeButton = document.querySelector('.close-button');
+
+  if (!lightbox || !lightboxImg) return;
+
+  // Find all photo links
+  const photoLinks = document.querySelectorAll('.photo-link');
+
+  photoLinks.forEach(link => {
+    link.addEventListener('click', function (e) {
+      e.preventDefault();
+
+      // Get the full-size image URL
+      const fullSizeUrl = this.getAttribute('href');
+
+      // Get caption content from the next sibling
+      const captionElement = this.nextElementSibling;
+      let captionHTML = '';
+
+      if (captionElement && captionElement.classList.contains('photo-caption')) {
+        captionHTML = captionElement.innerHTML;
+      }
+
+      // Set the lightbox image source
+      lightboxImg.src = fullSizeUrl;
+
+      // Set caption
+      lightboxCaption.innerHTML = captionHTML;
+
+      // Show the lightbox
+      lightbox.classList.add('active');
+
+      // Prevent scrolling on the body
+      document.body.style.overflow = 'hidden';
+    });
+  });
+
+  // Close lightbox when clicking the close button
+  if (closeButton) {
+    closeButton.addEventListener('click', closeLightbox);
+  }
+
+  // Close lightbox when clicking outside the image
+  lightbox.addEventListener('click', function (e) {
+    if (e.target === lightbox) {
+      closeLightbox();
+    }
+  });
+
+  // Close lightbox when pressing ESC key
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && lightbox.classList.contains('active')) {
+      closeLightbox();
+    }
+  });
+
+  function closeLightbox() {
+    lightbox.classList.remove('active');
+    document.body.style.overflow = '';
+
+    // Clear the image src after a short delay to prevent image flashing
+    setTimeout(() => {
+      lightboxImg.src = '';
+      lightboxCaption.innerHTML = '';
+    }, 300);
+  }
+}
 
 // ========================================
 // DROPCAP AND FIRST THREE WORDS

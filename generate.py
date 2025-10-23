@@ -22,6 +22,14 @@ from rjsmin import jsmin
 from watchdog.events import FileSystemEventHandler
 from watchdog.observers import Observer
 
+try:
+    from PIL import Image
+    PILLOW_AVAILABLE = True
+except ImportError:
+    print("Warning: Pillow not installed. Thumbnail generation will be skipped.")
+    print("Install with: pip install Pillow")
+    PILLOW_AVAILABLE = False
+
 # Configuration
 SRC_DIR = Path("src")
 DOCS_DIR = Path("docs")
@@ -317,6 +325,36 @@ class BlogGenerator:
                 except Exception as e:
                     print(f"Failed to generate PDF: {e}")
     
+    def generate_thumbnail(self, image_path: Path, output_path: Path, max_size: int = 800) -> None:
+        """Generate a thumbnail for an image."""
+        if not PILLOW_AVAILABLE:
+            return
+            
+        try:
+            # Skip if thumbnail already exists and is newer than the source image
+            if output_path.exists() and output_path.stat().st_mtime > image_path.stat().st_mtime:
+                return
+                
+            # Open the image
+            with Image.open(image_path) as img:
+                # Calculate new dimensions while maintaining aspect ratio
+                width, height = img.size
+                if width > height:
+                    new_width = max_size
+                    new_height = int(height * (max_size / width))
+                else:
+                    new_height = max_size
+                    new_width = int(width * (max_size / height))
+                
+                # Resize the image
+                resized_img = img.resize((new_width, new_height), Image.Resampling.LANCZOS)
+                
+                # Save the thumbnail
+                resized_img.save(output_path, quality=85, optimize=True)
+                print(f"Generated thumbnail: {output_path}")
+        except Exception as e:
+            print(f"Error generating thumbnail for {image_path}: {e}")
+
     def generate_sitemap(self) -> None:
         """Generate sitemap.xml for search engines."""
         print("Generating sitemap.xml...")
@@ -409,31 +447,60 @@ class BlogGenerator:
         if src_static.exists():
             docs_static = DOCS_DIR / "static"
             docs_static.mkdir(exist_ok=True)
-            for file in src_static.iterdir():
+            
+            # First, recursively copy all directories
+            for item in src_static.rglob('*'):
+                if item.is_dir():
+                    relative_path = item.relative_to(src_static)
+                    target_dir = docs_static / relative_path
+                    target_dir.mkdir(exist_ok=True)
+                    print(f"Created directory: {target_dir}")
+            
+            # Then copy all files
+            for file in src_static.rglob('*'):
                 if file.is_file():
-                    dest_file = docs_static / file.name
+                    relative_path = file.relative_to(src_static)
+                    dest_file = docs_static / relative_path
+                    dest_file.parent.mkdir(exist_ok=True)
                     
                     # Copy the file
                     shutil.copy2(file, dest_file)
+                    print(f"Copied: {file} -> {dest_file}")
                     
-                    # Minify CSS and JS files
-                    if file.name == "style.css" or file.name.endswith(".css"):
-                        print(f"Minifying CSS: {file.name}")
-                        with open(dest_file, "r", encoding="utf-8") as f:
-                            content = f.read()
-                        minified = cssmin(content)
-                        with open(dest_file, "w", encoding="utf-8") as f:
-                            f.write(minified)
-                    elif file.name == "script.js" or (file.name.endswith(".js") and file.name != "service-worker.js"):
-                        print(f"Minifying JS: {file.name}")
-                        with open(dest_file, "r", encoding="utf-8") as f:
-                            content = f.read()
-                        minified = jsmin(content)
-                        with open(dest_file, "w", encoding="utf-8") as f:
-                            f.write(minified)
-                    elif file.name == "service-worker.js":
-                        print(f"Copying service worker: {file.name}")
-                        # Service worker is copied as-is to maintain readability and functionality
+                    # Generate thumbnails for images in the photos directory
+                    if PILLOW_AVAILABLE and "photos" in file.parts and file.suffix.lower() in ['.jpg', '.jpeg', '.png', '.gif']:
+                        # Create thumbnail filename
+                        thumbnail_name = file.stem + "_thumbnail" + file.suffix
+                        thumbnail_path = file.parent / thumbnail_name
+                        dest_thumbnail_path = dest_file.parent / thumbnail_name
+                        
+                        # Generate the thumbnail
+                        self.generate_thumbnail(file, thumbnail_path, max_size=800)
+                        
+                        # Copy the thumbnail to docs directory if it was created
+                        if thumbnail_path.exists():
+                            shutil.copy2(thumbnail_path, dest_thumbnail_path)
+                            print(f"Copied thumbnail: {thumbnail_path} -> {dest_thumbnail_path}")
+                    
+                    # Minify CSS and JS files (only at the top level)
+                    if file.parent == src_static:
+                        if file.name == "style.css" or file.name.endswith(".css"):
+                            print(f"Minifying CSS: {file.name}")
+                            with open(dest_file, "r", encoding="utf-8") as f:
+                                content = f.read()
+                            minified = cssmin(content)
+                            with open(dest_file, "w", encoding="utf-8") as f:
+                                f.write(minified)
+                        elif file.name == "script.js" or (file.name.endswith(".js") and file.name != "service-worker.js"):
+                            print(f"Minifying JS: {file.name}")
+                            with open(dest_file, "r", encoding="utf-8") as f:
+                                content = f.read()
+                            minified = jsmin(content)
+                            with open(dest_file, "w", encoding="utf-8") as f:
+                                f.write(minified)
+                        elif file.name == "service-worker.js":
+                            print(f"Copying service worker: {file.name}")
+                            # Service worker is copied as-is to maintain readability and functionality
         
         # Generate sitemap.xml
         self.generate_sitemap()
