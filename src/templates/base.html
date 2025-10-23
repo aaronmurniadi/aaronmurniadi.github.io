@@ -158,24 +158,9 @@
         <footer>
             <p class="copyright">© 2025 Aaron P. Murniadi</p>
             <script defer src="{% if current_category %}../{% endif %}static/script.js"></script>
-            <script defer src="{% if current_category %}../{% endif %}static/prefetcher.js"></script>
         </footer>
     </div> <!-- End main-content wrapper -->
     
-    <!-- Register service worker for font caching -->
-    <script>
-      if ('serviceWorker' in navigator) {
-        window.addEventListener('load', () => {
-          navigator.serviceWorker.register('{% if current_category %}../{% endif %}static/service-worker.js')
-            .then(registration => {
-              console.log('ServiceWorker registration successful with scope:', registration.scope);
-            })
-            .catch(error => {
-              console.error('ServiceWorker registration failed:', error);
-            });
-        });
-      }
-    </script>
     </body>
 
 </html>
