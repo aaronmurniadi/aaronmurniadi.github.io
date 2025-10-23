@@ -169,5 +169,4 @@ Welcome to my photography showcase. Here, you'll find a selection of photographs
 <div id="lightbox" class="lightbox">
   <span class="close-button">&times;</span>
   <img class="lightbox-content" id="lightbox-img">
-  <div id="lightbox-caption"></div>
 </div>

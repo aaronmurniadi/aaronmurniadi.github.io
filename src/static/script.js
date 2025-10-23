@@ -74,7 +74,6 @@ const requestIdleCallback = window.requestIdleCallback ||
 function initPhotoGallery() {
   const lightbox = document.getElementById('lightbox');
   const lightboxImg = document.getElementById('lightbox-img');
-  const lightboxCaption = document.getElementById('lightbox-caption');
   const closeButton = document.querySelector('.close-button');
 
   if (!lightbox || !lightboxImg) return;
@@ -99,9 +98,6 @@ function initPhotoGallery() {
 
       // Set the lightbox image source
       lightboxImg.src = fullSizeUrl;
-
-      // Set caption
-      lightboxCaption.innerHTML = captionHTML;
 
       // Show the lightbox
       lightbox.classList.add('active');
@@ -137,7 +133,6 @@ function initPhotoGallery() {
     // Clear the image src after a short delay to prevent image flashing
     setTimeout(() => {
       lightboxImg.src = '';
-      lightboxCaption.innerHTML = '';
     }, 300);
   }
 }
