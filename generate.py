@@ -477,13 +477,15 @@ class BlogGenerator:
                         thumbnail_path = file.parent / thumbnail_name
                         dest_thumbnail_path = dest_file.parent / thumbnail_name
                         
-                        # Always generate/overwrite the thumbnail
-                        self.generate_thumbnail(file, thumbnail_path, max_size=800)
-                        
-                        # Copy the thumbnail to docs directory
-                        if thumbnail_path.exists():
-                            shutil.copy2(thumbnail_path, dest_thumbnail_path)
-                            print(f"Copied thumbnail: {thumbnail_path} -> {dest_thumbnail_path}")
+                        # Only generate thumbnails for files in the src directory
+                        if str(file).startswith(str(SRC_DIR)):
+                            # Generate the thumbnail
+                            self.generate_thumbnail(file, thumbnail_path, max_size=800)
+                            
+                            # Copy the thumbnail to docs directory
+                            if thumbnail_path.exists():
+                                shutil.copy2(thumbnail_path, dest_thumbnail_path)
+                                print(f"Copied thumbnail: {thumbnail_path} -> {dest_thumbnail_path}")
                     
                     # Minify CSS and JS files (only at the top level)
                     if file.parent == src_static:

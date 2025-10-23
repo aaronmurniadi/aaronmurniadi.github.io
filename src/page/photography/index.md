@@ -9,6 +9,12 @@ Welcome to my photography showcase. Here, you'll find a selection of photographs
 <div class="gallery">
 
 <div class="photo-container">
+  <a href="../static/photos/kodak_ektar_100_kodak_2383.jpg" class="photo-link">
+    <img src="../static/photos/kodak_ektar_100_kodak_2383_thumbnail.jpg" alt="Beach - Fujifilm C200" class="photo-thumbnail">
+  </a>
+</div>
+
+<div class="photo-container">
   <a href="../static/photos/beach_fujifilm_c200_fujifilm_crystal_archive_typeii.jpg" class="photo-link">
     <img src="../static/photos/beach_fujifilm_c200_fujifilm_crystal_archive_typeii_thumbnail.jpg" alt="Beach - Fujifilm C200" class="photo-thumbnail">
   </a>
