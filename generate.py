@@ -348,8 +348,8 @@ class BlogGenerator:
                 # Resize the image
                 resized_img = img.resize((new_width, new_height), Image.Resampling.LANCZOS)
                 
-                # Save the thumbnail
-                resized_img.save(output_path, quality=85, optimize=True)
+                # Save the thumbnail as progressive JPEG
+                resized_img.save(output_path, format='JPEG', quality=90, optimize=True, progressive=True)
                 print(f"Generated thumbnail: {output_path}")
         except Exception as e:
             print(f"Error generating thumbnail for {image_path}: {e}")
@@ -462,25 +462,38 @@ class BlogGenerator:
                     dest_file = docs_static / relative_path
                     dest_file.parent.mkdir(exist_ok=True)
                     
-                    # Copy the file
-                    shutil.copy2(file, dest_file)
-                    print(f"Copied: {file} -> {dest_file}")
-                    
-                    # Generate thumbnails for images in the photos directory
+                    # Handle images in the photos directory
                     if PILLOW_AVAILABLE and "photos" in file.parts and file.suffix.lower() in ['.jpg', '.jpeg', '.png', '.gif']:
-                        # Skip if the filename already contains "_thumbnail"
-                        if "_thumbnail" in file.stem:
-                            continue
-                            
-                        # Create thumbnail filename
-                        thumbnail_name = file.stem + "_thumbnail" + file.suffix
-                        dest_thumbnail_path = dest_file.parent / thumbnail_name
-                        
-                        # Only generate thumbnails in docs directory for photos from src directory
-                        if str(file).startswith(str(SRC_DIR)):
-                            # Generate the thumbnail directly in the docs directory
-                            self.generate_thumbnail(file, dest_thumbnail_path, max_size=800)
-                            print(f"Generated thumbnail in docs: {dest_thumbnail_path}")
+                        # Convert to progressive JPEG with quality 90
+                        try:
+                            print(f"Converting to progressive JPEG: {file}")
+                            with Image.open(file) as img:
+                                # Ensure the destination has .jpg extension
+                                dest_file = dest_file.with_suffix('.jpg')
+                                # Save as progressive JPEG with quality 90
+                                img.save(dest_file, format='JPEG', quality=90, optimize=True, progressive=True)
+                                print(f"Converted: {file} -> {dest_file}")
+                                
+                                # Skip if the filename already contains "_thumbnail"
+                                if "_thumbnail" not in file.stem:
+                                    # Create thumbnail filename
+                                    thumbnail_name = file.stem + "_thumbnail.jpg"
+                                    dest_thumbnail_path = dest_file.parent / thumbnail_name
+                                    
+                                    # Only generate thumbnails in docs directory for photos from src directory
+                                    if str(file).startswith(str(SRC_DIR)):
+                                        # Generate the thumbnail directly in the docs directory
+                                        self.generate_thumbnail(file, dest_thumbnail_path, max_size=800)
+                                        print(f"Generated thumbnail in docs: {dest_thumbnail_path}")
+                        except Exception as e:
+                            print(f"Error converting image {file}: {e}")
+                            # Fall back to regular copy if conversion fails
+                            shutil.copy2(file, dest_file)
+                            print(f"Copied (fallback): {file} -> {dest_file}")
+                    else:
+                        # Copy non-image files normally
+                        shutil.copy2(file, dest_file)
+                        print(f"Copied: {file} -> {dest_file}")
                     
                     # Minify CSS and JS files (only at the top level)
                     if file.parent == src_static:
