@@ -83,10 +83,13 @@ class BlogGenerator:
         self.posts: List[Post] = []
         self.nav_links: List[Dict[str, str]] = []
         self.changed_files: Set[str] = set()
-        self.load_changed_files()
+        self.has_changes = self.load_changed_files()
     
-    def load_changed_files(self) -> None:
-        """Load list of changed files using Git."""
+    def load_changed_files(self) -> bool:
+        """
+        Load list of changed files using Git.
+        Returns True if changes were detected, False otherwise.
+        """
         try:
             # Check if we're in a Git repository
             subprocess.run(
@@ -128,14 +131,17 @@ class BlogGenerator:
             
             if self.changed_files:
                 print(f"Detected {len(self.changed_files)} changed files")
+                return True
             else:
-                print("No changed files detected, will process all files")
+                print("No changed files detected, skipping build process")
+                return False
                 
         except Exception as e:
             print(f"Error detecting changed files: {e}")
-            print("Will process all files")
+            print("Will process all files due to error")
             # If Git commands fail, assume all files are changed
             self.changed_files = set()
+            return True  # Process all files if there's an error
     
     def is_file_modified(self, file_path: Path) -> bool:
         """Check if a file has been modified using Git."""
@@ -530,6 +536,12 @@ class BlogGenerator:
     def build(self) -> None:
         """Build the entire site."""
         print("Building blog...")
+        
+        # Early exit if no changes detected
+        if not self.has_changes:
+            print("No changes detected. Build skipped.")
+            return
+            
         DOCS_DIR.mkdir(exist_ok=True)
         
         # Compile Typst files
