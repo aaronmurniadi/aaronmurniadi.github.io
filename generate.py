@@ -681,17 +681,29 @@ class BlogGenerator:
         print("Build complete!")
     
 def put_interpreter_path_into_cursor_settings():
-        """Create .cursor/settings.json with python.defaultInterpreterPath if it doesn't exist."""
-        cursor_settings_path = Path(".cursor/settings.json")
-        if not cursor_settings_path.exists():
-            cursor_settings_path.parent.mkdir(parents=True, exist_ok=True)
-            cursor_settings = {
-                "python.defaultInterpreterPath": str(Path(sys.executable).expanduser())
-            }
-            import json
-            with open(cursor_settings_path, "w", encoding="utf-8") as f:
-                json.dump(cursor_settings, f, indent=2)
-            print(f"Created {cursor_settings_path}")
+    """Ensure .cursor/settings.json contains python.defaultInterpreterPath, appending/updating if needed."""
+    import json
+    cursor_settings_path = Path(".cursor/settings.json")
+    cursor_settings_path.parent.mkdir(parents=True, exist_ok=True)
+    if cursor_settings_path.exists():
+        # Load and update existing settings
+        with open(cursor_settings_path, "r", encoding="utf-8") as f:
+            try:
+                cursor_settings = json.load(f)
+            except Exception:
+                cursor_settings = {}
+        cursor_settings["python.defaultInterpreterPath"] = str(Path(sys.executable).expanduser())
+        with open(cursor_settings_path, "w", encoding="utf-8") as f:
+            json.dump(cursor_settings, f, indent=2)
+        print(f"Updated {cursor_settings_path}")
+    else:
+        # Create with only the interpreter path
+        cursor_settings = {
+            "python.defaultInterpreterPath": str(Path(sys.executable).expanduser())
+        }
+        with open(cursor_settings_path, "w", encoding="utf-8") as f:
+            json.dump(cursor_settings, f, indent=2)
+        print(f"Created {cursor_settings_path}")
 
 if __name__ == "__main__":
     """Build the blog."""
