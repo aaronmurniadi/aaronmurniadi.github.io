@@ -16,8 +16,6 @@
 import re
 import shutil
 import subprocess
-import sys
-import time
 from dataclasses import dataclass
 from datetime import datetime
 from pathlib import Path
@@ -25,6 +23,7 @@ from typing import Any, Dict, List, Optional, Set
 
 import markdown
 import yaml
+import sys
 from jinja2 import Environment, FileSystemLoader
 from PIL import Image
 from rcssmin import cssmin
@@ -681,8 +680,21 @@ class BlogGenerator:
         
         print("Build complete!")
     
+def put_interpreter_path_into_cursor_settings():
+        """Create .cursor/settings.json with python.defaultInterpreterPath if it doesn't exist."""
+        cursor_settings_path = Path(".cursor/settings.json")
+        if not cursor_settings_path.exists():
+            cursor_settings_path.parent.mkdir(parents=True, exist_ok=True)
+            cursor_settings = {
+                "python.defaultInterpreterPath": str(Path(sys.executable).expanduser())
+            }
+            import json
+            with open(cursor_settings_path, "w", encoding="utf-8") as f:
+                json.dump(cursor_settings, f, indent=2)
+            print(f"Created {cursor_settings_path}")
 
 if __name__ == "__main__":
-    """Build once."""
+    """Build the blog."""
+    put_interpreter_path_into_cursor_settings()
     generator = BlogGenerator()
     generator.build()

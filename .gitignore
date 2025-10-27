@@ -288,3 +288,4 @@ docs/.cache/
 docs/temp/
 docs/tmp/ 
 node_modules/
+.cursor/settings.json
