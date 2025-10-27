@@ -4,18 +4,19 @@ A vibe-coded Python-based static blog generator with real-time watch.
 
 ## Development
 
-To get started, install the project and its development dependencies using `uv`:
+The `generate.py` script now supports PEP 723 inline metadata for dependencies, allowing it to be run directly with `uv`:
 
 ```bash
-$ uv venv
-$ source .venv/bin/activate
-$ uv pip install -e '.[dev]'
+$ ./generate.py
 ```
 
-Then you can run the generator:
+Or explicitly:
+
 ```bash
-$ generate
+$ uv run generate.py
 ```
+
+This will automatically create an isolated environment with all required dependencies.
 
 **Happy blogging!** 🚀✨
 

@@ -1,8 +1,17 @@
-#!/usr/bin/env python3
-"""
-Static Blog Generator - Simplified
-Converts Markdown files to HTML with watching support
-"""
+#!/usr/bin/env -S uv run --script
+# /// script
+# requires-python = ">=3.9"
+# dependencies = [
+#     "markdown>=3.4.0",
+#     "pymdown-extensions>=10.0.0",
+#     "PyYAML>=6.0",
+#     "jinja2>=3.1.0",
+#     "watchdog>=3.0.0",
+#     "rcssmin>=1.2.2",
+#     "rjsmin>=1.2.5",
+#     "pillow",
+# ]
+# ///
 
 import re
 import shutil
@@ -12,23 +21,16 @@ import time
 from dataclasses import dataclass
 from datetime import datetime
 from pathlib import Path
-from typing import Any, Dict, List, Optional
+from typing import Any, Dict, List, Optional, Set
 
 import markdown
 import yaml
 from jinja2 import Environment, FileSystemLoader
+from PIL import Image
 from rcssmin import cssmin
 from rjsmin import jsmin
 from watchdog.events import FileSystemEventHandler
 from watchdog.observers import Observer
-
-try:
-    from PIL import Image
-    PILLOW_AVAILABLE = True
-except ImportError:
-    print("Warning: Pillow not installed. Thumbnail generation will be skipped.")
-    print("Install with: pip install Pillow")
-    PILLOW_AVAILABLE = False
 
 # Configuration
 SRC_DIR = Path("src")
@@ -81,6 +83,82 @@ class BlogGenerator:
         self.jinja_env.globals["format_date"] = format_date
         self.posts: List[Post] = []
         self.nav_links: List[Dict[str, str]] = []
+        self.changed_files: Set[str] = set()
+        self.load_changed_files()
+    
+    def load_changed_files(self) -> None:
+        """Load list of changed files using Git."""
+        try:
+            # Check if we're in a Git repository
+            subprocess.run(
+                ["git", "rev-parse", "--is-inside-work-tree"],
+                capture_output=True, 
+                check=True
+            )
+            
+            # Get list of modified files (including untracked files)
+            result = subprocess.run(
+                ["git", "ls-files", "--modified", "--others", "--exclude-standard"],
+                capture_output=True, 
+                text=True, 
+                check=False  # Don't raise exception if command fails
+            )
+            modified_files = result.stdout.strip().split("\n") if result.returncode == 0 else []
+            
+            # Get list of files with uncommitted changes
+            result = subprocess.run(
+                ["git", "diff", "--name-only"],
+                capture_output=True, 
+                text=True, 
+                check=False
+            )
+            diff_files = result.stdout.strip().split("\n") if result.returncode == 0 else []
+            
+            # Get list of staged files
+            result = subprocess.run(
+                ["git", "diff", "--cached", "--name-only"],
+                capture_output=True, 
+                text=True, 
+                check=False
+            )
+            staged_files = result.stdout.strip().split("\n") if result.returncode == 0 else []
+            
+            # Combine all lists and filter out empty strings
+            all_changed = modified_files + diff_files + staged_files
+            self.changed_files = set(f for f in all_changed if f)
+            
+            if self.changed_files:
+                print(f"Detected {len(self.changed_files)} changed files")
+            else:
+                print("No changed files detected, will process all files")
+                
+        except Exception as e:
+            print(f"Error detecting changed files: {e}")
+            print("Will process all files")
+            # If Git commands fail, assume all files are changed
+            self.changed_files = set()
+    
+    def is_file_modified(self, file_path: Path) -> bool:
+        """Check if a file has been modified using Git."""
+        # Convert to string path, handling both absolute and relative paths
+        if file_path.is_absolute():
+            try:
+                # Try to make it relative to the current directory
+                rel_path = file_path.relative_to(Path.cwd())
+                str_path = str(rel_path)
+            except ValueError:
+                # If that fails, just use the string representation
+                str_path = str(file_path)
+        else:
+            # Already a relative path
+            str_path = str(file_path)
+        
+        # If we couldn't get changed files from Git, assume all files are changed
+        if not self.changed_files:
+            return True
+            
+        # Check if the file is in the list of changed files
+        return str_path in self.changed_files
     
     def parse_frontmatter(self, content: str) -> tuple[Dict[str, Any], str]:
         """Parse YAML frontmatter from markdown."""
@@ -143,12 +221,34 @@ class BlogGenerator:
             if md_file.name == "index.md":
                 continue
             
-            with open(md_file, "r", encoding="utf-8") as f:
-                metadata, md_content = self.parse_frontmatter(f.read())
+            # Check if the file has been modified since last build
+            file_modified = self.is_file_modified(md_file)
             
+            # Check if the output file exists
             relative_path = md_file.relative_to(content_dir)
             category = relative_path.parent.name if relative_path.parent != Path(".") else "blog"
             slug = md_file.stem
+            output_path = DOCS_DIR / (f"{category}/{slug}.html" if category != "blog" else f"{slug}.html")
+            
+            # If the file hasn't been modified and the output exists, skip processing
+            if not file_modified and output_path.exists():
+                # Load minimal info for navigation without parsing content
+                post = Post(
+                    path=md_file,
+                    title=slug.replace("-", " ").title(),  # Use a default title
+                    slug=slug,
+                    category=category,
+                    metadata={},
+                    content_md="",
+                    date=datetime.fromtimestamp(md_file.stat().st_mtime)
+                )
+                posts.append(post)
+                print(f"Skipping unchanged file: {md_file}")
+                continue
+            
+            # Process modified or new files
+            with open(md_file, "r", encoding="utf-8") as f:
+                metadata, md_content = self.parse_frontmatter(f.read())
             
             post = Post(
                 path=md_file,
@@ -327,11 +427,7 @@ class BlogGenerator:
     
     def generate_thumbnail(self, image_path: Path, output_path: Path, max_size: int = 800) -> None:
         """Generate a thumbnail for an image."""
-        if not PILLOW_AVAILABLE:
-            return
-            
         try:
-            # Always generate the thumbnail, overwriting any existing one
             print(f"Generating thumbnail for {image_path.name}...")
                 
             # Open the image
@@ -358,6 +454,23 @@ class BlogGenerator:
         """Generate sitemap.xml for search engines."""
         print("Generating sitemap.xml...")
         
+        # Read existing sitemap if it exists
+        existing_lastmod = {}
+        sitemap_path = DOCS_DIR / "sitemap.xml"
+        if sitemap_path.exists():
+            try:
+                content = sitemap_path.read_text(encoding="utf-8")
+                # Extract URLs and their lastmod dates using regex
+                import re
+                url_pattern = re.compile(r'<loc>(.*?)</loc>.*?<lastmod>(.*?)</lastmod>', re.DOTALL)
+                for match in url_pattern.finditer(content):
+                    url = match.group(1)
+                    lastmod = match.group(2)
+                    existing_lastmod[url] = lastmod
+                print(f"Loaded {len(existing_lastmod)} existing lastmod dates from sitemap")
+            except Exception as e:
+                print(f"Error reading existing sitemap: {e}")
+        
         # Start XML content
         xml_content = [
             '<?xml version="1.0" encoding="UTF-8"?>',
@@ -370,7 +483,17 @@ class BlogGenerator:
         # Add all posts
         for post in self.posts:
             url = f"{BASE_URL}/{post.url_path}"
-            lastmod = post.date.strftime("%Y-%m-%d") if post.date else datetime.now().strftime("%Y-%m-%d")
+            
+            # Check if the post has been modified
+            src_path = post.path
+            is_modified = self.is_file_modified(src_path)
+            
+            # Use existing lastmod if available and file hasn't changed
+            if url in existing_lastmod and not is_modified:
+                lastmod = existing_lastmod[url]
+            else:
+                # Use post date or current date for modified files
+                lastmod = post.date.strftime("%Y-%m-%d") if post.date else datetime.now().strftime("%Y-%m-%d")
             
             xml_content.append(f'  <url>')
             xml_content.append(f'    <loc>{url}</loc>')
@@ -382,12 +505,19 @@ class BlogGenerator:
         page_dir = SRC_DIR / "page"
         if page_dir.exists():
             for subdir in page_dir.iterdir():
-                if subdir.is_dir() and (subdir / "index.md").exists():
+                index_file = subdir / "index.md"
+                if subdir.is_dir() and index_file.exists():
                     category = subdir.name
                     url = f"{BASE_URL}/{category}/"
                     
                     xml_content.append(f'  <url>')
                     xml_content.append(f'    <loc>{url}</loc>')
+                    
+                    # Check if index file has been modified
+                    is_modified = self.is_file_modified(index_file)
+                    if url in existing_lastmod and not is_modified:
+                        xml_content.append(f'    <lastmod>{existing_lastmod[url]}</lastmod>')
+                    
                     xml_content.append(f'    <priority>0.9</priority>')
                     xml_content.append(f'  </url>')
         
@@ -395,7 +525,6 @@ class BlogGenerator:
         xml_content.append('</urlset>')
         
         # Write to file
-        sitemap_path = DOCS_DIR / "sitemap.xml"
         sitemap_path.write_text('\n'.join(xml_content), encoding="utf-8")
         print(f"Generated: {sitemap_path}")
 
@@ -421,25 +550,40 @@ class BlogGenerator:
         
         # Render posts
         for post in self.posts:
+            # Skip posts that were already identified as unchanged
+            if not post.content_md:
+                continue
+                
             html = self.render_post(post)
             output_path = DOCS_DIR / post.url_path
             output_path.parent.mkdir(parents=True, exist_ok=True)
             output_path.write_text(html, encoding="utf-8")
             print(f"Generated: {output_path}")
         
-        # Render main index
-        (DOCS_DIR / "index.html").write_text(self.render_index(), encoding="utf-8")
-        print("Generated: index.html")
+        # Check if main index needs updating
+        main_index_file = SRC_DIR / "index.md"
+        main_index_output = DOCS_DIR / "index.html"
+        if self.is_file_modified(main_index_file) or not main_index_output.exists():
+            main_index_output.write_text(self.render_index(), encoding="utf-8")
+            print(f"Generated: {main_index_output}")
+        else:
+            print(f"Skipping unchanged index: {main_index_output}")
         
         # Render category indexes
         if page_dir.exists():
             for subdir in page_dir.iterdir():
-                if subdir.is_dir() and (subdir / "index.md").exists():
+                index_md = subdir / "index.md"
+                if subdir.is_dir() and index_md.exists():
                     category = subdir.name
-                    html = self.render_index(category)
                     index_path = DOCS_DIR / category / "index.html"
-                    index_path.write_text(html, encoding="utf-8")
-                    print(f"Generated: {index_path}")
+                    
+                    # Check if category index needs updating
+                    if self.is_file_modified(index_md) or not index_path.exists():
+                        html = self.render_index(category)
+                        index_path.write_text(html, encoding="utf-8")
+                        print(f"Generated: {index_path}")
+                    else:
+                        print(f"Skipping unchanged index: {index_path}")
         
         # Copy static files and minify CSS/JS
         src_static = SRC_DIR / "static"
@@ -462,8 +606,16 @@ class BlogGenerator:
                     dest_file = docs_static / relative_path
                     dest_file.parent.mkdir(exist_ok=True)
                     
+                    # Check if file has been modified
+                    file_modified = self.is_file_modified(file)
+                    
+                    # Skip if file hasn't been modified and destination exists
+                    if not file_modified and dest_file.exists():
+                        print(f"Skipping unchanged file: {file}")
+                        continue
+                    
                     # Handle images in the photos directory
-                    if PILLOW_AVAILABLE and "photos" in file.parts and file.suffix.lower() in ['.jpg', '.jpeg', '.png', '.gif']:
+                    if "photos" in file.parts and file.suffix.lower() in ['.jpg', '.jpeg', '.png', '.gif']:
                         # Convert to progressive JPEG with quality 90
                         try:
                             print(f"Converting to progressive JPEG: {file}")
@@ -482,9 +634,18 @@ class BlogGenerator:
                                     
                                     # Only generate thumbnails in docs directory for photos from src directory
                                     if str(file).startswith(str(SRC_DIR)):
-                                        # Generate the thumbnail directly in the docs directory
-                                        self.generate_thumbnail(file, dest_thumbnail_path, max_size=800)
-                                        print(f"Generated thumbnail in docs: {dest_thumbnail_path}")
+                                        # Check if thumbnail needs regeneration - simpler now with Git
+                                        thumbnail_needs_update = (
+                                            not dest_thumbnail_path.exists() or 
+                                            file_modified
+                                        )
+                                        
+                                        if thumbnail_needs_update:
+                                            # Generate the thumbnail directly in the docs directory
+                                            self.generate_thumbnail(file, dest_thumbnail_path, max_size=800)
+                                            print(f"Generated thumbnail in docs: {dest_thumbnail_path}")
+                                        else:
+                                            print(f"Skipping unchanged thumbnail: {dest_thumbnail_path}")
                         except Exception as e:
                             print(f"Error converting image {file}: {e}")
                             # Fall back to regular copy if conversion fails
