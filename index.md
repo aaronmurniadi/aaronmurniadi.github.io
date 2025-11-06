@@ -14,17 +14,26 @@ This blog serves as a platform for me to share my ideas, projects, and reflectio
 <ul>
   {% for post in site.posts %}
     <li>
-      <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
       {% if post.date %}
-        <span>— {{ post.date | date: "%b %d, %Y" }}</span>
+        <span>{{ post.date | date: "%b %d, %Y" }} — </span>
       {% endif %}
+      <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
     </li>
   {% endfor %}
 </ul>
 
 ## Summaries
 
-{{ posts|tag:summary }}
+<ul>
+  {% for summary in site.summaries %}
+    <li>
+      {% if summary.date %}
+        <span>{{ summary.date | date: "%b %d, %Y" }} — </span>
+      {% endif %}
+      <a href="{{ summary.url | relative_url }}">{{ summary.title }}</a>
+    </li>
+  {% endfor %}
+</ul>
 
 ## Articles
 
@@ -42,10 +51,10 @@ This collection consists of articles and lengthy texts, mainly centered on philo
 <ul>
   {% for article in site.articles %}
     <li>
-      <a href="{{ article.url | relative_url }}">{{ article.title }}</a>
       {% if article.date %}
-        <span>— {{ article.date | date: "%b %d, %Y" }}</span>
+        <span>{{ article.date | date: "%b %d, %Y" }} — </span>
       {% endif %}
+      <a href="{{ article.url | relative_url }}">{{ article.title }}</a>
     </li>
   {% endfor %}
 </ul>

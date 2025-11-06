@@ -74,10 +74,19 @@ collections:
   posts:
     permalink: '/:collection/:path/'
     output: true
-
   articles:
     permalink: '/:collection/:path/'
     output: true
+  summaries:
+    permalink: '/:collection/:path/'
+    output: true
+
+aux_links:
+  'This blog on GitHub':
+    - '//github.com/aaronmurniadi/aaronmurniadi.github.io'
+
+# Makes Aux links open in a new tab. Default is false
+aux_links_new_tab: false
 
 just_the_docs:
   # Define which collections are used in just-the-docs nav
@@ -96,12 +105,16 @@ just_the_docs:
       # search_exclude: true
     articles:
       name: Articles
+      nav_fold: true
+    summaries:
+      name: Summaries
       nav_fold: false
 
 # Plugins
 plugins:
   - jekyll-feed
   - jekyll-remote-theme
+  - jekyll-minifier
 
 markdown: kramdown
 kramdown:
