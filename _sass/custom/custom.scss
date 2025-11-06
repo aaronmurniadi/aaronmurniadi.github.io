@@ -1,12 +1,27 @@
-@import url('https://fonts.googleapis.com/css2?family=Averia+Serif+Libre:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&display=swap');
 
 .main-content {
-  font-family: 'Averia Serif Libre', serif;
+  font-family: 'EB Garamond', serif;
+  font-variation-settings: 'opsz' 12;
   font-kerning: auto;
-  font-weight: 200;
-  max-width: 60ch;
+  font-weight: 400;
+  max-width: 70ch;
+}
+
+.main-content ul li p {
+  text-align: left;
+}
+
+.main-content ol li p {
+  text-align: left;
 }
 
 .main-content p {
   text-align: justify;
+}
+
+@media (max-width: 31.25rem) {
+  .main-content p {
+    text-align: left;
+  }
 }
