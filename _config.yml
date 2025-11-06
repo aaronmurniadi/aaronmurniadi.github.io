@@ -96,14 +96,16 @@ just_the_docs:
       # search_exclude: true
     articles:
       name: Articles
-      nav_fold: true
+      nav_fold: false
 
 # Plugins
 plugins:
   - jekyll-feed
   - jekyll-remote-theme
 
-nav_footer_custom: 'test'
+markdown: kramdown
+kramdown:
+  smartquotes: ['apos', 'rsquo', 'ldquo', 'rdquo']
 
 mermaid:
   version: '9.1.3'
