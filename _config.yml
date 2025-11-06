@@ -29,7 +29,7 @@ url: 'https://aaronmurniadi.github.io' # the base hostname & protocol for your s
 github_username: aaronmurniadi
 
 # Build settings
-theme: just-the-docs
+remote_theme: just-the-docs/just-the-docs
 color_scheme: light
 search_enabled: true
 search:
@@ -101,6 +101,9 @@ just_the_docs:
 # Plugins
 plugins:
   - jekyll-feed
+  - jekyll-remote-theme
+
+nav_footer_custom: 'test'
 
 mermaid:
   version: '9.1.3'
