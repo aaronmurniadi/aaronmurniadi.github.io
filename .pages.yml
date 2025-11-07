@@ -15,10 +15,32 @@ content:
     type: collection
     path: '_posts'
     view:
-      fields: [title, published, date]
+      fields: [title, date, last_modified_date]
     fields:
       - name: date
         label: Date
+        type: date
+      - name: last_modified_date
+        label: Last Modified Date
+        type: date
+      - name: title
+        label: Title
+        type: string
+      - name: body
+        label: Body
+        type: rich-text
+  - name: summaries
+    label: Summaries
+    type: collection
+    path: '_summaries'
+    view:
+      fields: [title, date, last_modified_date]
+    fields:
+      - name: date
+        label: Date
+        type: date
+      - name: last_modified_date
+        label: Last Modified Date
         type: date
       - name: title
         label: Title
@@ -31,10 +53,13 @@ content:
     type: collection
     path: '_articles'
     view:
-      fields: [title, published, date]
+      fields: [title, date, last_modified_date]
     fields:
       - name: date
         label: Date
+        type: date
+      - name: last_modified_date
+        label: Last Modified Date
         type: date
       - name: title
         label: Title
