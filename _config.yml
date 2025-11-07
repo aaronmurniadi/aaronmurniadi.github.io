@@ -115,6 +115,7 @@ plugins:
   - jekyll-feed
   - jekyll-remote-theme
   - jekyll-minifier
+  - jekyll-sitemap
 
 markdown: kramdown
 kramdown:
