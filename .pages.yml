@@ -50,18 +50,9 @@ content:
       - name: title
         label: Website title
         type: string
-      - name: description
-        label: Website description
-        type: string
-        description: Will be used for any page with no description.
-      - name: url
-        label: Website URL
-        type: string
-        pattern: ^(https?:\/\/)?(www\.)?[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}(\/[^\s]*)?$
-      - name: cover
-        label: Preview image
-        type: image
-        description: Image used in the social preview on social networks (e.g. Facebook, Twitter...)
+      - name: body
+        label: Jekyll config
+        type: rich-text
   - name: typst_collection
     label: Typst Collection
     path: typst_collection.md
@@ -71,5 +62,5 @@ content:
         label: Title
         type: string
       - name: body
-        label: Body
+        label: Typst Collection
         type: rich-text
