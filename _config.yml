@@ -80,6 +80,9 @@ collections:
   summaries:
     permalink: '/:collection/:path/'
     output: true
+  typst_collection:
+    permalink: '/:collection/:path/'
+    output: true
 
 aux_links:
   'This blog on GitHub':
@@ -108,6 +111,9 @@ just_the_docs:
       nav_fold: true
     summaries:
       name: Summaries
+      nav_fold: false
+    typst_collection:
+      name: Typst Collection
       nav_fold: false
 
 # Plugins
