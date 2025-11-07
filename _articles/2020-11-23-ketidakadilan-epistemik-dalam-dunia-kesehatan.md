@@ -4,6 +4,8 @@ title: 'Ketidakadilan Epistemik dalam Dunia Kesehatan'
 date: 2020-11-23
 ---
 
+# Ketidakadilan Epistemik dalam Dunia Kesehatan
+
 Setelah merenungkan pengaruh rasa sakit terhadap cara seseorang berinteraksi dengan dunianya secara umum, kini Carel membawa kita pada sebuah persinggungan yang lebih konkrit: _pertemuan orang sakit dengan dunia kesehatan modern_. Persinggungan ini, menurut Carel, adalah lahan subur bagi munculnya _Ketidakadilan Epistemik_---sebuah gagasan yang dibingkai oleh Miranda Fricker, yang akan kita dalami di bagian pertama. Bagi Carel, ketidakadilan inilah akar dari kusutnya komunikasi antara pasien dan dokter. Di bagian kedua, kita akan disajikan contoh-contoh konkret bagaimana ketidakadilan ini merugikan, bahkan bisa berakibat fatal, bagi pasien.
 
 Carel tidak hanya menyoroti faktor personal---pasien yang sulit bersaksi atau dokter yang sulit mengerti---tetapi juga mengungkap faktor sistemik yang melanggengkan ketidakadilan epistemik. Salah satunya adalah _Hak Khusus Epistemik_ (_Epistemic Privilege_) yang dipegang dokter. Berbekal pelatihan dan pendidikan medis, dokter memiliki otoritas untuk menginterpretasi dan mengambil tindakan atas penyakit, acap kali tanpa benar-benar mendengar atau melibatkan kesaksian pasien. Faktor sistemik lain, tak kalah pentingnya, adalah tuntutan efektivitas dan kinerja kuantitatif dalam dunia kesehatan modern. Akibatnya, dokter seolah tak punya waktu lagi untuk menyimak testimoni pasien. Hal ini akan kita telaah lebih lanjut di bagian ketiga.

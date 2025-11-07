@@ -35,3 +35,4 @@ gem "http_parser.rb", "~> 0.6.0", :platforms => [:jruby]
 gem "kramdown"
 gem "jekyll-sitemap"
 gem "pdf-reader", "~> 1.4"
+gem "jekyll-thumbnail-img"

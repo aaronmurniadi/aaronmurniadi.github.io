@@ -116,7 +116,6 @@ GEM
     http_parser.rb (0.8.0)
     i18n (1.14.7)
       concurrent-ruby (~> 1.0)
-    iconv (1.1.0)
     jekyll (3.10.0)
       addressable (~> 2.4)
       colorator (~> 1.0)
@@ -161,9 +160,6 @@ GEM
     jekyll-optional-front-matter (0.3.2)
       jekyll (>= 3.0, < 5.0)
     jekyll-paginate (1.1.0)
-    jekyll-pdf-thumbnail (0.3.0)
-      jekyll (>= 3.7, < 5.0)
-      pdftoimage (~> 0.2.0)
     jekyll-readme-index (0.3.0)
       jekyll (>= 3.0, < 5.0)
     jekyll-redirect-from (0.16.0)
@@ -222,6 +218,9 @@ GEM
     jekyll-theme-time-machine (0.2.0)
       jekyll (> 3.5, < 5.0)
       jekyll-seo-tag (~> 2.0)
+    jekyll-thumbnail-img (0.1.3)
+      jekyll
+      mini_magick
     jekyll-titles-from-headings (0.5.3)
       jekyll (>= 3.3, < 5.0)
     jekyll-watch (2.2.1)
@@ -246,6 +245,8 @@ GEM
       rb-inotify (~> 0.9, >= 0.9.10)
     logger (1.7.0)
     mercenary (0.3.6)
+    mini_magick (5.3.1)
+      logger
     minima (2.5.1)
       jekyll (>= 3.5, < 5.0)
       jekyll-feed (~> 0.9)
@@ -280,9 +281,6 @@ GEM
       hashery (~> 2.0)
       ruby-rc4
       ttfunk
-    pdftoimage (0.2.1)
-      iconv (~> 1.0)
-      shellwords (~> 0.2.2)
     public_suffix (5.1.1)
     racc (1.8.1)
     rake (13.3.1)
@@ -303,7 +301,6 @@ GEM
       addressable (>= 2.3.5)
       faraday (>= 0.17.3, < 3)
     securerandom (0.4.1)
-    shellwords (0.2.2)
     simpleidn (0.2.3)
     terminal-table (1.8.0)
       unicode-display_width (~> 1.1, >= 1.1.1)
@@ -331,12 +328,11 @@ DEPENDENCIES
   github-pages
   http_parser.rb (~> 0.6.0)
   jekyll-feed (~> 0.12)
-  jekyll-pdf-thumbnail (~> 0.3.0)
   jekyll-sitemap
+  jekyll-thumbnail-img
   just-the-docs
   kramdown
   pdf-reader (~> 1.4)
-  pdftoimage (~> 0.2.1)
   tzinfo (>= 1, < 3)
   tzinfo-data
   wdm (~> 0.1)

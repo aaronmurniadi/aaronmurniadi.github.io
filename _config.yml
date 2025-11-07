@@ -61,7 +61,7 @@ search:
 heading_anchors: true
 footer_content: 'Copyright &copy; 2017-2025 Aaron P. Murniadi.'
 last_edit_timestamp: true
-last_edit_time_format: '%b %e %Y at %I:%M %p' # uses ruby's time format: https://ruby-doc.org/stdlib-2.7.0/libdoc/time/rdoc/Time.html
+last_edit_time_format: '%Y-%m-%d' # outputs in format YYYY-MM-dd
 gh_edit_link: true # show or hide edit this page link
 gh_edit_link_text: 'Edit this page on GitHub.'
 gh_edit_repository: 'https://github.com/aaronmurniadi/aaronmurniadi.github.io' # the github URL for your repo
@@ -107,7 +107,7 @@ just_the_docs:
       # nav_exclude: true
       # Fold the collection in the navigation
       # Supports true or false (default)
-      # nav_fold: false # note: this option is new in v0.4
+      nav_fold: true # note: this option is new in v0.4
       # Exclude the collection from the search
       # Supports true or false (default)
       # search_exclude: true
@@ -125,6 +125,7 @@ plugins:
   - jekyll-minifier
   - jekyll-sitemap
   - jekyll-pdf-thumbnail
+  - jekyll-thumbnail-img
 
 markdown: kramdown
 kramdown:

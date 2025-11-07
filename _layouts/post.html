@@ -1,0 +1,11 @@
+---
+layout: default
+---
+
+{% if site.last_edit_timestamp and site.last_edit_time_format and page.date %}
+<p class="text-small text-grey-dk-000 mb-0 mr-2">
+  Written on: {{ page.date | date: site.last_edit_time_format }}{% if
+  page.last_modified_date %}, Last modified: {{ page.last_modified_date | date:
+  site.last_edit_time_format }}{% endif %}
+</p>
+{% endif %} {{ content }}
