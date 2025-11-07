@@ -1,9 +1,10 @@
 ---
-layout: post
-title: 'Heidegger, Martin. <i>The Basic Problems of Phenomenology</i>. Translated by Albert Hofstadter. Bloomington & Indianapolis: Indiana University Press, 1988.'
 date: 2025-08-15
+last_modified_date: 2025-11-07
+title: "Heidegger, Martin. _The Basic Problems of Phenomenology_. Translated by
+  Albert Hofstadter. Bloomington & Indianapolis: Indiana University Press,
+  1988."
 ---
-
 # Heidegger, Martin. _The Basic Problems of Phenomenology_. Translated by Albert Hofstadter. Bloomington & Indianapolis: Indiana University Press, 1988.
 
 ## Pembukaan
@@ -20,9 +21,9 @@ Pendekatan terhadap persoalan-persoalan dasar ini bersifat tidak langsung. Alih-
 
 Struktur buku dibagi dalam tiga bagian besar:
 
-1. Penyelidikan fenomenologis konkret yang menuntun pada penemuan persoalan-persoalan dasar.
-2. Penelusuran sistematis atas persoalan-persoalan dasar fenomenologi, baik urutan maupun fondasinya.
-3. Pembahasan tentang cara ilmiah menangani persoalan-persoalan tersebut, serta penegasan gagasan pokok fenomenologi.
+1.  Penyelidikan fenomenologis konkret yang menuntun pada penemuan persoalan-persoalan dasar.
+2.  Penelusuran sistematis atas persoalan-persoalan dasar fenomenologi, baik urutan maupun fondasinya.
+3.  Pembahasan tentang cara ilmiah menangani persoalan-persoalan tersebut, serta penegasan gagasan pokok fenomenologi.
 
 Salah satu tujuan sentral kuliah ini ialah memperlihatkan bahwa penelitian fenomenologis, dalam tendensi dasarnya, merupakan pemahaman yang lebih eksplisit dan radikal atas filsafat ilmiah—sebuah usaha yang telah digarap para filsuf Barat sejak zaman kuno hingga Hegel. Dengan kata lain, memperjelas gagasan fenomenologi berarti sekaligus merumuskan hakikat filsafat sebagai ilmu.
 
@@ -38,11 +39,11 @@ Bagian kedua dari pembahasan ini menyoroti secara tajam perbedaan antara filsafa
 
 **Asal-usul dan makna "_Weltanschauung_":** Kata _Weltanschauung_ berasal dari bahasa Jerman, pertama kali muncul dalam karya Kant, _Critique of Judgment_, dengan makna lebih dekat kepada "intuisi dunia" atau permenungan atas dunia inderawi. Goethe dan Humboldt memakai istilah ini dalam arti serupa. Namun, di tangan para Romantik dan Schelling, maknanya bergeser: _Weltanschauung_ menjadi hasil dari kecerdasan (bahkan kecerdasan tak sadar), suatu cara kreatif dan sadar dalam menafsirkan semesta. Contoh-contoh pergeseran makna ini antara lain:
 
-- "pandangan hidup moral" (Hegel)
-- "pandangan hidup puitis" (Gorres)
-- "pandangan hidup religius dan Kristen" (Ranke)
-- "pandangan hidup demokratis" atau "pesimistis".
-- dst.
+*   "pandangan hidup moral" (Hegel)
+*   "pandangan hidup puitis" (Gorres)
+*   "pandangan hidup religius dan Kristen" (Ranke)
+*   "pandangan hidup demokratis" atau "pesimistis".
+*   dst.
 
 _Weltanschauung_ selalu memuat baik gambaran tentang dunia alam maupun tafsiran atas makna dan tujuan Dasein manusia serta sejarahnya—dengan kata lain, selalu mengandung "pandangan hidup".
 
@@ -76,9 +77,9 @@ Filsafat, dalam babak ini, menampakkan wajah aslinya: bukan sekadar perenungan t
 
 Tiga gerak utama metode fenomenologis adalah:
 
-- **Reduksi fenomenologis:** Mengarahkan pandangan dari yang-ada kembali kepada Ada dari yang-ada itu sendiri. Reduksi ini berbeda dari Husserl, sebab di sini tujuannya adalah penyingkapan struktur Ada.
-- **Konstruksi:** Membangun pemahaman tentang Ada secara aktif, bukan sekadar menerima begitu saja.
-- **Dekonstruksi/Destruksi:** Membongkar konsep-konsep tradisional melalui penelusuran historis, bukan untuk menolak tradisi, melainkan untuk mengambil-alih secara positif dan kritis.
+*   **Reduksi fenomenologis:** Mengarahkan pandangan dari yang-ada kembali kepada Ada dari yang-ada itu sendiri. Reduksi ini berbeda dari Husserl, sebab di sini tujuannya adalah penyingkapan struktur Ada.
+*   **Konstruksi:** Membangun pemahaman tentang Ada secara aktif, bukan sekadar menerima begitu saja.
+*   **Dekonstruksi/Destruksi:** Membongkar konsep-konsep tradisional melalui penelusuran historis, bukan untuk menolak tradisi, melainkan untuk mengambil-alih secara positif dan kritis.
 
 Dengan demikian, fenomenologi adalah tata-cara ilmiah filsafat, yang memungkinkan filsafat mendefinisikan dirinya secara konkret sebagai ilmu tentang Ada. Filsafat bukan sekadar menambah pengetahuan, melainkan menajamkan kesadaran akan Ada, menuntun manusia untuk bertanya secara radikal, dan dengan demikian, menjadi sungguh-sungguh manusia.
 
@@ -88,17 +89,17 @@ Bagian keempat ini menandai titik tolak yang menentukan dalam seluruh penyelidik
 
 Untuk menelusuri pertanyaan ini, Heidegger mengajak kita menelusuri empat tesis pokok tentang Ada yang telah mewarnai sejarah filsafat Barat. Keempat tesis ini bukan sekadar pendapat terpisah, melainkan simpul-simpul pemikiran yang saling bertaut dan membentuk medan masalah ontologis yang menjadi inti fenomenologi.
 
-1. **Tesis Kant:** "Ada bukanlah predikat nyata.” Dalam pemikiran Kant, Ada tidak menambah sifat apapun pada sesuatu; ia bukanlah kualitas yang dapat ditempelkan pada suatu yang-ada.
-2. **Tesis Ontologi Abad Pertengahan (Skolastik/Aristoteles):** Dalam susunan sesuatu yang-ada, selalu terdapat dua unsur: _essentia_ (apa-nya, hakikat) dan _existentia_ (ada-nya, keberadaan).
-3. **Tesis Ontologi Modern:** Ada menampakkan diri dalam dua cara pokok: sebagai ada-di-alam (_res extensa_) dan ada-di-jiwa atau pikiran (_res cogitans_).
-4. **Tesis Logika:** Segala sesuatu yang-ada dapat dibicarakan dan ditunjuk melalui kata "adalah” (kopula).
+1.  **Tesis Kant:** "Ada bukanlah predikat nyata.” Dalam pemikiran Kant, Ada tidak menambah sifat apapun pada sesuatu; ia bukanlah kualitas yang dapat ditempelkan pada suatu yang-ada.
+2.  **Tesis Ontologi Abad Pertengahan (Skolastik/Aristoteles):** Dalam susunan sesuatu yang-ada, selalu terdapat dua unsur: _essentia_ (apa-nya, hakikat) dan _existentia_ (ada-nya, keberadaan).
+3.  **Tesis Ontologi Modern:** Ada menampakkan diri dalam dua cara pokok: sebagai ada-di-alam (_res extensa_) dan ada-di-jiwa atau pikiran (_res cogitans_).
+4.  **Tesis Logika:** Segala sesuatu yang-ada dapat dibicarakan dan ditunjuk melalui kata "adalah” (kopula).
 
 Keempat tesis ini, meski tampak terpisah, sesungguhnya saling mengandaikan dan saling menuntut. Jika diselami secara kritis, kita akan menemukan bahwa di baliknya tersembunyi empat masalah dasar yang menjadi jantung fenomenologi:
 
-1. **Masalah Perbedaan Ontologis:** Apa perbedaan mutlak antara Ada dan yang-ada.
-2. **Masalah Artikulasi Dasar Ada:** Bagaimana Ada terartikulasi dalam _essentia_ dan _existentia_.
-3. **Masalah Modifikasi Ada dan Kesatuan Konsep Ada:** Bagaimana Ada dapat mengalami pelbagai modifikasi, dan bagaimana kesatuan makna Ada tetap terjaga dalam segala ambiguitas dan perubahannya.
-4. **Masalah Karakter Kebenaran Ada:** Bagaimana Ada itu sendiri mengandung kebenaran, dan apa artinya "kebenaran” dalam konteks Ada.
+1.  **Masalah Perbedaan Ontologis:** Apa perbedaan mutlak antara Ada dan yang-ada.
+2.  **Masalah Artikulasi Dasar Ada:** Bagaimana Ada terartikulasi dalam _essentia_ dan _existentia_.
+3.  **Masalah Modifikasi Ada dan Kesatuan Konsep Ada:** Bagaimana Ada dapat mengalami pelbagai modifikasi, dan bagaimana kesatuan makna Ada tetap terjaga dalam segala ambiguitas dan perubahannya.
+4.  **Masalah Karakter Kebenaran Ada:** Bagaimana Ada itu sendiri mengandung kebenaran, dan apa artinya "kebenaran” dalam konteks Ada.
 
 Jalan menuju pemahaman tentang makna Ada hanya dapat ditempuh melalui analisis ontologis atas Dasein manusia. Dasein, sebagai eksistensi yang selalu sudah berada di dunia, memikul pemahaman tentang Ada di akar segala sikap terhadap yang-ada. Analisis ini menyingkap bahwa struktur asli Dasein adalah temporalitas—waktu sebagai cakrawala di mana Ada menjadi mungkin untuk dimengerti. Dengan demikian, temporalitas menjadi medan pokok penelitian ontologis: penentuan makna Ada hanya dapat dilakukan melalui waktu.
 
@@ -112,10 +113,10 @@ Bagian ini akan menguraikan jalan metodis filsafat sebagai ilmu tentang Ada. Di 
 
 Pertama-tama, Heidegger menandaskan adanya empat gugus persoalan utama yang akan menjadi medan garapan bagian kedua kuliah ini, yang erat terjalin dengan empat tesis sementara yang telah dibahas sebelumnya:
 
-1. Persoalan perbedaan ontologis—yakni perbedaan antara Ada dan yang-ada.
-2. Persoalan artikulasi dasar Ada.
-3. Persoalan kemungkinan-kemungkinan modifikasi Ada.
-4. Persoalan karakter kebenaran dari Ada itu sendiri.
+1.  Persoalan perbedaan ontologis—yakni perbedaan antara Ada dan yang-ada.
+2.  Persoalan artikulasi dasar Ada.
+3.  Persoalan kemungkinan-kemungkinan modifikasi Ada.
+4.  Persoalan karakter kebenaran dari Ada itu sendiri.
 
 Filsafat, dalam pengertian Heidegger, tidak dapat dilepaskan dari keberadaan manusia (Dasein), dari temporalitas dan historisitasnya. Maka, sebelum menegaskan sifat ilmiah dari ontologi, kita mesti terlebih dahulu menyingkap fondasi ontisnya dalam eksistensi manusia. Ontologi tidak melayang di awang-awang, melainkan berakar pada pengalaman dan keberadaan manusia yang konkret.
 
@@ -127,9 +128,9 @@ Perbedaan antara filsafat (sebagai ilmu tentang Ada) dan ilmu-ilmu positif (sepe
 
 Metode fenomenologis sendiri berpijak pada tiga gerak dasar yang saling terkait dan saling menuntut:
 
-1. Reduksi: mengarahkan perhatian penelaahan dari yang-ada yang ditangkap secara naif, kembali kepada Ada-nya.
-2. Konstruksi: membangun dan membentuk konsep-konsep filsafat secara aktif dan bertanggung jawab.
-3. Destruksi: membongkar konsep-konsep tradisional dengan menelusuri asal-usulnya yang terdalam. Destruksi di sini bukanlah penolakan tradisi, melainkan pengambilan-alih yang positif, sehingga pengetahuan filsafat selalu bersifat historis.
+1.  Reduksi: mengarahkan perhatian penelaahan dari yang-ada yang ditangkap secara naif, kembali kepada Ada-nya.
+2.  Konstruksi: membangun dan membentuk konsep-konsep filsafat secara aktif dan bertanggung jawab.
+3.  Destruksi: membongkar konsep-konsep tradisional dengan menelusuri asal-usulnya yang terdalam. Destruksi di sini bukanlah penolakan tradisi, melainkan pengambilan-alih yang positif, sehingga pengetahuan filsafat selalu bersifat historis.
 
 Dengan menelusuri dan menegaskan metode ontologis ini, menjadi teranglah bahwa fenomenologi adalah tata-cara ilmiah filsafat, dan dengan demikian, kita memperoleh pemahaman yang lebih konkret tentang apa itu filsafat sebagai ilmu.
 
