@@ -84,6 +84,11 @@ collections:
     permalink: '/:collection/:path/'
     output: true
 
+nav_external_links:
+  - title: CV
+    url: /assets/files/cv_aaron_murniadi.pdf
+    opens_in_new_tab: true
+
 aux_links:
   'This blog on GitHub':
     - '//github.com/aaronmurniadi/aaronmurniadi.github.io'
@@ -111,10 +116,7 @@ just_the_docs:
       nav_fold: true
     summaries:
       name: Summaries
-      nav_fold: false
-    typst_collection:
-      name: Typst Collection
-      nav_fold: false
+      nav_fold: true
 
 # Plugins
 plugins:
@@ -122,6 +124,7 @@ plugins:
   - jekyll-remote-theme
   - jekyll-minifier
   - jekyll-sitemap
+  - jekyll-pdf-thumbnail
 
 markdown: kramdown
 kramdown:
