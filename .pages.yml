@@ -65,7 +65,7 @@ content:
   - name: typst_collection
     label: Typst Collection
     path: typst_collection.md
-    type: markdown
+    type: file
     fields:
       - name: title
         label: Title
