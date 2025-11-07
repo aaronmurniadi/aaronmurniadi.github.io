@@ -17,8 +17,10 @@ title: 'Typst Collection'
 My CV
 {%- elsif pdf.name == "edward_packard_nine_things.pdf" -%}
 Edward Packard's "Nine Things I Learned In Ninety Years"
-{%- elsif pdf.name == "example_thesis.pdf" -%}
-Example Thesis
+{%- elsif pdf.name == "philosophical_review.pdf" -%}
+The Philosophical Review
+{%- elsif pdf.name == "two_column_article.pdf" -%}
+Simple Two Column Article
 {%- elsif site.data.pdf_titles and site.data.pdf_titles[pdf.name] -%}
 {{ site.data.pdf_titles[pdf.name] }}
 {%- else -%}
