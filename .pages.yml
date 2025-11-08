@@ -6,8 +6,8 @@ media:
     categories: [document]
   - name: images
     label: Images
-    input: assets/images
-    output: /assets/images
+    input: assets/files/images
+    output: /assets/files/images
     extensions: [png, webp, jpg, jpeg, gif, svg, webp]
 content:
   - name: posts
