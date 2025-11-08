@@ -2,11 +2,11 @@ media:
   - name: files
     label: Files
     input: media/files
-    output: /media/files
+    output: media/files
   - name: images
     label: Images
     input: media/images
-    output: /media/images
+    output: media/images
 content:
   - name: posts
     label: Posts
