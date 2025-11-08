@@ -3,6 +3,10 @@ media:
     label: Files
     input: assets/files
     output: /assets/files
+  - name: images
+    label: Images
+    input: images
+    output: images
 content:
   - name: posts
     label: Posts
