@@ -11,7 +11,8 @@ layout: default
 {% if page.translated == false or page.translated == nil %}
 <p class="text-small text-grey-dk-000 mb-0 mr-2">
   <a
-    href="http://translate.google.com/translate?sl=id&u={{ site.url }}{{ page.url | uri_escape }}"
+    target="_blank"
+    href="https://translate.google.com/translate?&sl=id&tl=en&op=translate&u={{ site.url }}{{ page.url | uri_escape }}"
   >
     Translate this page to English</a
   >
