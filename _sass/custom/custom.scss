@@ -41,6 +41,10 @@
 main:has(#photography) {
   /* Styles for the main parent of #photography */
 
+  p {
+    text-align: left;
+  }
+  
   img {
     display: block;
     max-width: 100%;
@@ -52,5 +56,6 @@ main:has(#photography) {
     margin-top: 0.5em;
     margin-bottom: 2em;
     font-style: italic;
+    text-align: center;
   }
 }
