@@ -26,6 +26,9 @@ content:
       - name: title
         label: Title
         type: string
+      - name: layout
+        label: Layout
+        type: string
       - name: body
         label: Body
         type: rich-text
@@ -45,6 +48,9 @@ content:
       - name: title
         label: Title
         type: string
+      - name: layout
+        label: Layout
+        type: string
       - name: body
         label: Body
         type: rich-text
@@ -63,6 +69,9 @@ content:
         type: date
       - name: title
         label: Title
+        type: string
+      - name: layout
+        label: Layout
         type: string
       - name: body
         label: Body
