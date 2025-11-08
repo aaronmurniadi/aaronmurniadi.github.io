@@ -13,7 +13,7 @@ Define a mapping between filenames and their titles
 {% assign pdf_title_map = pdf_title_map | push: "philosophical_review.pdf:The Philosophical Review" %}
 {% assign pdf_title_map = pdf_title_map | push: "two_column_article.pdf:Simple Two Column Article" %}
 
-{% assign files = site.static_files | where_exp:"file","file.path contains 'assets/files/'" %}
+{% assign files = site.static_files | where_exp:"file","file.path contains 'media/files/'" %}
 {% assign pdfs = files | where_exp:"file", "file.extname == '.pdf'" %}
 
 {% for pdf in pdfs %}

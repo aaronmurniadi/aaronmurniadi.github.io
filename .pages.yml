@@ -1,12 +1,12 @@
 media:
   - name: files
     label: Files
-    input: assets/files
-    output: /assets/files
+    input: media/files
+    output: /media/files
   - name: images
     label: Images
-    input: images
-    output: images
+    input: media/images
+    output: /media/images
 content:
   - name: posts
     label: Posts
