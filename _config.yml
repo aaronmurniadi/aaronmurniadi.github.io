@@ -91,7 +91,7 @@ nav_external_links:
 
 aux_links:
   'This blog on GitHub':
-    - '//github.com/aaronmurniadi/aaronmurniadi.github.io'
+    - 'https://github.com/aaronmurniadi/aaronmurniadi.github.io'
 
 # Makes Aux links open in a new tab. Default is false
 aux_links_new_tab: false
