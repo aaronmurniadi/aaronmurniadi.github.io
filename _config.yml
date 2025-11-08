@@ -54,12 +54,12 @@ search:
   rel_url: true
   # Enable or disable the search button that appears in the bottom right corner of every page
   # Supports true or false (default)
-  button: true
+  button: false
   # Focus the search input by pressing `ctrl + focus_shortcut_key` (or `cmd + focus_shortcut_key` on macOS)
   focus_shortcut_key: 'k'
 
 heading_anchors: true
-footer_content: 'Copyright &copy; 2017-2025 Aaron P. Murniadi.'
+footer_content: 'Copyright &copy; 2017–2025 Aaron P. Murniadi.'
 last_edit_timestamp: true
 last_edit_time_format: '%Y-%m-%d' # outputs in format YYYY-MM-dd
 gh_edit_link: true # show or hide edit this page link
@@ -72,6 +72,7 @@ ga_tracking: 'G-5HB33FCT7Y'
 collections:
   # Define a collection named "posts", its documents reside in the "_posts" directory
   posts:
+    label: '📝 Posts'
     permalink: '/:collection/:path/'
     output: true
   articles:
@@ -85,13 +86,17 @@ collections:
     output: true
 
 nav_external_links:
-  - title: CV
+  - title: '📷 Photography'
+    url: /photography
+    opens_in_new_tab: false
+    hide_icon: true
+  - title: '📚 Typst Collection'
+    url: /typst_collection
+    opens_in_new_tab: false
+    hide_icon: true
+  - title: '📄 My CV'
     url: /media/files/cv_aaron_murniadi.pdf
     opens_in_new_tab: true
-
-aux_links:
-  'This blog on GitHub':
-    - 'https://github.com/aaronmurniadi/aaronmurniadi.github.io'
 
 # Makes Aux links open in a new tab. Default is false
 aux_links_new_tab: false
@@ -101,7 +106,7 @@ just_the_docs:
   collections:
     posts:
       # Give the collection a name
-      name: Posts
+      name: '📝 Posts'
       # Exclude the collection from the navigation
       # Supports true or false (default)
       # nav_exclude: true
@@ -112,10 +117,10 @@ just_the_docs:
       # Supports true or false (default)
       # search_exclude: true
     articles:
-      name: Articles
+      name: '📚 Articles'
       nav_fold: true
     summaries:
-      name: Summaries
+      name: '🗂️ Summaries'
       nav_fold: true
 
 # Plugins

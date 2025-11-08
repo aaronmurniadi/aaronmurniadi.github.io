@@ -1,9 +1,10 @@
 ---
 layout: post
 title: 'Typst Collection'
+nav_exclude: true
 ---
 
-# Typst Collection
+# 📚 Typst Collection
 
 {% comment %}
 Define a mapping between filenames and their titles

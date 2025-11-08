@@ -1,11 +1,12 @@
 ---
 date: 2025-08-15
 last_modified_date: 2025-11-07
-title: "Heidegger, Martin. _The Basic Problems of Phenomenology_. Translated by
+title: 'Heidegger, Martin. The Basic Problems of Phenomenology. Translated by
   Albert Hofstadter. Bloomington & Indianapolis: Indiana University Press,
-  1988."
+  1988.'
 layout: post
 ---
+
 # Heidegger, Martin. _The Basic Problems of Phenomenology_. Translated by Albert Hofstadter. Bloomington & Indianapolis: Indiana University Press, 1988.
 
 ## Pembukaan
@@ -40,11 +41,11 @@ Bagian kedua dari pembahasan ini menyoroti secara tajam perbedaan antara filsafa
 
 **Asal-usul dan makna "_Weltanschauung_":** Kata _Weltanschauung_ berasal dari bahasa Jerman, pertama kali muncul dalam karya Kant, _Critique of Judgment_, dengan makna lebih dekat kepada "intuisi dunia" atau permenungan atas dunia inderawi. Goethe dan Humboldt memakai istilah ini dalam arti serupa. Namun, di tangan para Romantik dan Schelling, maknanya bergeser: _Weltanschauung_ menjadi hasil dari kecerdasan (bahkan kecerdasan tak sadar), suatu cara kreatif dan sadar dalam menafsirkan semesta. Contoh-contoh pergeseran makna ini antara lain:
 
-*   "pandangan hidup moral" (Hegel)
-*   "pandangan hidup puitis" (Gorres)
-*   "pandangan hidup religius dan Kristen" (Ranke)
-*   "pandangan hidup demokratis" atau "pesimistis".
-*   dst.
+- "pandangan hidup moral" (Hegel)
+- "pandangan hidup puitis" (Gorres)
+- "pandangan hidup religius dan Kristen" (Ranke)
+- "pandangan hidup demokratis" atau "pesimistis".
+- dst.
 
 _Weltanschauung_ selalu memuat baik gambaran tentang dunia alam maupun tafsiran atas makna dan tujuan Dasein manusia serta sejarahnya—dengan kata lain, selalu mengandung "pandangan hidup".
 
@@ -78,9 +79,9 @@ Filsafat, dalam babak ini, menampakkan wajah aslinya: bukan sekadar perenungan t
 
 Tiga gerak utama metode fenomenologis adalah:
 
-*   **Reduksi fenomenologis:** Mengarahkan pandangan dari yang-ada kembali kepada Ada dari yang-ada itu sendiri. Reduksi ini berbeda dari Husserl, sebab di sini tujuannya adalah penyingkapan struktur Ada.
-*   **Konstruksi:** Membangun pemahaman tentang Ada secara aktif, bukan sekadar menerima begitu saja.
-*   **Dekonstruksi/Destruksi:** Membongkar konsep-konsep tradisional melalui penelusuran historis, bukan untuk menolak tradisi, melainkan untuk mengambil-alih secara positif dan kritis.
+- **Reduksi fenomenologis:** Mengarahkan pandangan dari yang-ada kembali kepada Ada dari yang-ada itu sendiri. Reduksi ini berbeda dari Husserl, sebab di sini tujuannya adalah penyingkapan struktur Ada.
+- **Konstruksi:** Membangun pemahaman tentang Ada secara aktif, bukan sekadar menerima begitu saja.
+- **Dekonstruksi/Destruksi:** Membongkar konsep-konsep tradisional melalui penelusuran historis, bukan untuk menolak tradisi, melainkan untuk mengambil-alih secara positif dan kritis.
 
 Dengan demikian, fenomenologi adalah tata-cara ilmiah filsafat, yang memungkinkan filsafat mendefinisikan dirinya secara konkret sebagai ilmu tentang Ada. Filsafat bukan sekadar menambah pengetahuan, melainkan menajamkan kesadaran akan Ada, menuntun manusia untuk bertanya secara radikal, dan dengan demikian, menjadi sungguh-sungguh manusia.
 
