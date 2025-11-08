@@ -85,23 +85,10 @@ content:
     label: Jekyll config
     path: _config.yml
     type: file
-    fields:
-      - name: title
-        label: Website title
-        type: string
-      - name: body
-        label: Jekyll config
-        type: code
-        options:
-          language: yaml
   - name: css
     label: CSS
     path: _sass/custom/custom.scss
     type: file
-    fields:
-      - name: body
-        label: CSS
-        type: code
   - name: typst_collection
     label: Typst Collection
     path: typst_collection.md
