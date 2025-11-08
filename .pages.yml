@@ -3,12 +3,6 @@ media:
     label: Files
     input: assets/files
     output: /assets/files
-    categories: [document]
-  - name: images
-    label: Images
-    input: assets/files/images
-    output: /assets/files/images
-    extensions: [png, webp, jpg, jpeg, gif, svg, webp]
 content:
   - name: posts
     label: Posts
