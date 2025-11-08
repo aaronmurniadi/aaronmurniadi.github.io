@@ -76,6 +76,17 @@ content:
       - name: body
         label: Body
         type: rich-text
+  - name: photography
+    label: Photography
+    path: photography.md
+    type: file
+    fields:
+      - name: title
+        label: Title
+        type: string
+      - name: body
+        label: Body
+        type: rich-text
   - name: config
     label: Jekyll config
     path: _config.yml
