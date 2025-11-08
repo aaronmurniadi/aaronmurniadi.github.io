@@ -4,6 +4,7 @@ last_modified_date: 2025-11-07
 title: "Heidegger, Martin. _The Basic Problems of Phenomenology_. Translated by
   Albert Hofstadter. Bloomington & Indianapolis: Indiana University Press,
   1988."
+layout: post
 ---
 # Heidegger, Martin. _The Basic Problems of Phenomenology_. Translated by Albert Hofstadter. Bloomington & Indianapolis: Indiana University Press, 1988.
 
