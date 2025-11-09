@@ -22,3 +22,5 @@ A man sitss alone at Jatinegara Station in the early morning, where the first li
 ![](/media/images/kodak_vision3_500t_kodak_ektacolor_edge.jpg)
 
 Taken from my office on the 9th floor of Bidakara 2 building. Dark clouds gather above Jakarta’s skyline—a silent warning of the coming rain and thunders.
+
+![](/media/images/tim_kodak_vision3_500t_kodak_supra_endura.jpg) The interior of Taman Ismail Marzuki, just in front of the Jakarta Planetarium.
