@@ -2,6 +2,7 @@
 layout: gallery
 title: Photography
 nav_enabled: false
+nav_exclude: true
 ---
 
 # 📷 Photography
