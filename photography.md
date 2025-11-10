@@ -1,5 +1,8 @@
 ---
 title: Photography
+layout: gallery
+nav_enabled: false
+nav_exclude: true
 ---
 # 📷 Photography
 
