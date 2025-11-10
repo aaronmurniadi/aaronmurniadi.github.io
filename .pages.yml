@@ -96,6 +96,9 @@ content:
       - name: nav_exclude
         label: Exclude from Navigation Sidebar
         type: boolean
+      - name: body
+        label: Body
+        type: rich-text  
   - name: config
     label: Jekyll config
     path: _config.yml
