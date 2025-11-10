@@ -129,8 +129,8 @@ plugins:
   - jekyll-remote-theme
   - jekyll-minifier
   - jekyll-sitemap
-  - jekyll-pdf-thumbnail
-  - jekyll-thumbnail-img
+  - jekyll-feed
+  - jekyll-loading-lazy
 
 markdown: kramdown
 kramdown:
