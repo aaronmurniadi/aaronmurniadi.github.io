@@ -37,3 +37,7 @@ Soekarno–Hatta International Airport. Incomplete or deserted portion, potentia
 ![](/media/images/kodak_vision3_200t_kodak_2393.jpg)
 
 SOHO Pancoran building. Construction by Agung Podomoro Land group. Used for office space and residential apartment.
+
+![](/media/images/kodak_ultramax_400_kodak_endura_premier.jpg)
+
+Bidakara Tower 1 on cloudy weather.
