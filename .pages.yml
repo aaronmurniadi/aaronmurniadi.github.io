@@ -87,9 +87,6 @@ content:
       - name: layout
         label: Layout
         type: string
-      - name: layout
-        label: Layout
-        type: string
       - name: nav_enabled
         label: Navigation Sidebar
         type: boolean
