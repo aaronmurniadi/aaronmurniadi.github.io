@@ -1,11 +1,15 @@
 ---
+layout: gallery
 title: Photography
+nav_enabled: false
+nav_exclude: true
 ---
+
 # 📷 Photography
 
 Welcome to my little photography corner! Here you'll find a selection of images I’ve taken. I enjoy capturing moments from daily life and unique scenes that catch my attention.
 
-* * *
+---
 
 ![](/media/images/chair_fujifilm_c200_kodak_2383.jpg)
 
@@ -17,10 +21,8 @@ Jakarta Planetarium, Taman Ismail Marzuki. One of the oldest planetarium in Indo
 
 ![](/media/images/kodak_ultramax_400_kodak_portra_endura_manggarai_station.jpg)
 
-A man sitss alone at Jatinegara Station in the early morning, where the first light meets the quiet rhythm of departing trains.
+A man sits alone at Jatinegara Station in the early morning, where the first light meets the quiet rhythm of departing trains.
 
 ![](/media/images/kodak_vision3_500t_kodak_ektacolor_edge.jpg)
 
 Taken from my office on the 9th floor of Bidakara 2 building. Dark clouds gather above Jakarta’s skyline—a silent warning of the coming rain and thunders.
-
-![](/media/images/tim_kodak_vision3_500t_kodak_supra_endura.jpg) The interior of Taman Ismail Marzuki, just in front of the Jakarta Planetarium.
