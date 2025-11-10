@@ -32,4 +32,8 @@ Taken from my office on the 9th floor of Bidakara 2 building. Dark clouds gather
 
 ![](/media/images/soetta_fujifilm_c200_kodak_portra_endura.jpg)
 
-Soekarno–Hatta International Airport. Unfinished/abandoned section, possibly being build for additional parking area.
+Soekarno–Hatta International Airport. Incomplete or deserted portion, potentially intended as extra parking space.
+
+![](/media/images/kodak_vision3_200t_kodak_2393.jpg)
+
+SOHO Pancoran building. Construction by Agung Podomoro Land group. Used for office space and residential apartment.
