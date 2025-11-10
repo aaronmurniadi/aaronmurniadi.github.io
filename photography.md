@@ -3,14 +3,12 @@ title: Photography
 layout: gallery
 nav_enabled: false
 nav_exclude: true
-search_enabled: false
 ---
-
 # 📷 Photography
 
 Welcome to my little photography corner! Here you'll find a selection of images I’ve taken. I enjoy capturing moments from daily life and unique scenes that catch my attention.
 
----
+* * *
 
 ![](/media/images/kodak_vision3_50d_kodak_supra_endura.jpg)
 
@@ -31,3 +29,7 @@ A man sits alone at Jatinegara Station in the early morning, where the first lig
 ![](/media/images/kodak_vision3_500t_kodak_ektacolor_edge.jpg)
 
 Taken from my office on the 9th floor of Bidakara 2 building. Dark clouds gather above Jakarta’s skyline—a silent warning of the coming rain and thunders.
+
+![](/media/images/soetta_fujifilm_c200_kodak_portra_endura.jpg)
+
+Soekarno–Hatta International Airport. Unfinished/abandoned section, possibly being build for additional parking area.
