@@ -3,6 +3,7 @@ title: Photography
 layout: gallery
 nav_enabled: false
 nav_exclude: true
+search_enabled: false
 ---
 # 📷 Photography
 
