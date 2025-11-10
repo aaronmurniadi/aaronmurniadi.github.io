@@ -84,9 +84,18 @@ content:
       - name: title
         label: Title
         type: string
-      - name: body
-        label: Body
-        type: rich-text
+      - name: layout
+        label: Layout
+        type: string
+      - name: layout
+        label: Layout
+        type: string
+      - name: nav_enabled
+        label: Navigation Sidebar
+        type: boolean
+      - name: nav_exclude
+        label: Exclude from Navigation Sidebar
+        type: boolean
   - name: config
     label: Jekyll config
     path: _config.yml
