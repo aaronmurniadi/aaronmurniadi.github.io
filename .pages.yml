@@ -93,6 +93,9 @@ content:
       - name: nav_exclude
         label: Exclude from Navigation Sidebar
         type: boolean
+      - name: search_enabled
+        label: Show search top bar
+        type: boolean
       - name: body
         label: Body
         type: rich-text  
