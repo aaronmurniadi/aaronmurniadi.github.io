@@ -18,7 +18,7 @@
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
 
-title: Aaron P. Murniadi
+title: Contemplative Coder
 email: aaronmurniadi@gmail.com
 description: >- # this means to ignore newlines until "baseurl:"
   WA Software Engineer with a passion for technology, coding, and open-source software. 
