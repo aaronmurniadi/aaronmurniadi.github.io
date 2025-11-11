@@ -4,11 +4,12 @@ layout: gallery
 nav_enabled: false
 nav_exclude: true
 ---
+
 # 📷 Photography
 
 Welcome to my little photography corner! Here you'll find a selection of images I’ve taken. I enjoy capturing moments from daily life and unique scenes that catch my attention.
 
-* * *
+---
 
 ![](/media/images/kodak_vision3_50d_kodak_supra_endura.jpg)
 
