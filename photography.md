@@ -4,12 +4,11 @@ layout: gallery
 nav_enabled: false
 nav_exclude: true
 ---
-
 # 📷 Photography
 
 Welcome to my little photography corner! Here you'll find a selection of images I’ve taken. I enjoy capturing moments from daily life and unique scenes that catch my attention.
 
----
+* * *
 
 ![](/media/images/kodak_vision3_50d_kodak_supra_endura.jpg)
 
@@ -42,3 +41,7 @@ SOHO Pancoran building. Construction by Agung Podomoro Land group. Used for offi
 ![](/media/images/kodak_ultramax_400_kodak_endura_premier.jpg)
 
 Bidakara Tower 1 on cloudy weather.
+
+![](/media/images/kodak_ektar_100.jpg)
+
+Constellation of lights hanging above the table of decisions—silent witnesses to every verdict and hesitation.
