@@ -1,11 +1,16 @@
-@import url('https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,200..900;1,200..900&display=swap');
+@font-face {
+  font-family: 'Minion Variable Concept';
+  src: url('/media/files/minion_variable_concept.otf') format('opentype');
+}
 
 .main-content {
-  font-family: 'Crimson Pro', serif;
+  font-family: 'Minion Variable Concept', 'Apple Garamond', 'Baskerville',
+    'Libre Baskerville', 'Droid Serif', 'Times New Roman', 'Times', serif,
+    'Noto Emoji', 'Quivira';
   font-kerning: auto;
-  font-weight: 400;
-  max-width: 60ch;
-  font-size: 1.15rem;
+  font-variation-settings: 'wght' 520, 'opsz' 10;
+  font-size: 1rem;
+  max-width: 65ch;
 }
 
 .main-content ul li p {
@@ -23,6 +28,7 @@
 @media (max-width: 31.25rem) {
   .main-content p {
     text-align: left;
+    hyphens: none;
   }
 }
 
@@ -93,5 +99,5 @@
 }
 
 .main-content h1 {
-  font-weight: 500;
+  font-variation-settings: 'wght' 460, 'opsz' 20;
 }
