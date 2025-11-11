@@ -1,11 +1,11 @@
-@import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,200..900;1,200..900&display=swap');
 
 .main-content {
-  font-family: 'EB Garamond', serif;
-  font-variation-settings: 'opsz' 12;
+  font-family: 'Crimson Pro', serif;
   font-kerning: auto;
   font-weight: 400;
-  max-width: 70ch;
+  max-width: 60ch;
+  font-size: 1.15rem;
 }
 
 .main-content ul li p {
@@ -22,7 +22,7 @@
 
 @media (max-width: 31.25rem) {
   .main-content p {
-    text-align: justify;
+    text-align: left;
   }
 }
 
@@ -90,4 +90,8 @@
 
 .site-title {
   font-size: 1.2rem !important;
+}
+
+.main-content h1 {
+  font-weight: 500;
 }
