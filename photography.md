@@ -45,3 +45,7 @@ Bidakara Tower 1 on cloudy weather.
 ![](/media/images/kodak_ektar_100.jpg)
 
 Constellation of lights hanging above the table of decisions—silent witnesses to every verdict and hesitation.
+
+![](/media/images/kodak_vision3_500t_kodak_2393_jatinegara_station.jpg)
+
+Jatinegara Station. Morning view with sunrise and brittle clouds.
