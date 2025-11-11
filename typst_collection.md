@@ -49,6 +49,6 @@ Define a mapping between filenames and their titles
   {% endif %}
 </p>
 
-<embed src="{{ site.url }}/{{ pdf.path }}" type="application/pdf" width="100%" height="720px" toolbar="0" />
+{% pdf "{{ site.url }}/{{ pdf.path }}" no_link %}
 
 {% endfor %}

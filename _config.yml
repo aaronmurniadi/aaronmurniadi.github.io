@@ -130,7 +130,7 @@ plugins:
   - jekyll-minifier
   - jekyll-sitemap
   - jekyll-feed
-  - jekyll-loading-lazy
+  - jekyll-pdf-embed
 
 markdown: kramdown
 kramdown:
