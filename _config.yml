@@ -20,10 +20,7 @@
 
 title: Contemplative Coder
 email: aaronmurniadi@gmail.com
-description: >- # this means to ignore newlines until "baseurl:"
-  WA Software Engineer with a passion for technology, coding, and open-source software. 
-  My background includes four years of studying philosophy (though I didn't finish the degree), 
-  which has profoundly shaped my thinking and continues to influence my work and writing.
+description: A Software Engineer with a passion for technology, coding, and open-source software.
 baseurl: '' # the subpath of your site, e.g. /blog
 url: 'https://aaronmurniadi.github.io' # the base hostname & protocol for your site, e.g. http://example.com
 github_username: aaronmurniadi
@@ -131,6 +128,7 @@ plugins:
   - jekyll-sitemap
   - jekyll-feed
   - jekyll-pdf-embed
+  - jekyll-seo-tag
 
 markdown: kramdown
 kramdown:

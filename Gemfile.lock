@@ -314,6 +314,7 @@ DEPENDENCIES
   http_parser.rb (~> 0.6.0)
   jekyll-feed (~> 0.17)
   jekyll-pdf-embed
+  jekyll-seo-tag
   jekyll-sitemap
   just-the-docs
   kramdown
