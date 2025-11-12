@@ -36,13 +36,13 @@ _Pembedaan ontologis_---pembedaan antara _Sein_ (_Be_/Ada) dan _Seindes_ (_being
 
 Bayangkan seseorang yang mau membeli buah-buahan. Ia ke pasar, lalu berkata pada pedagang buah: “Saya mau membeli buah, Pak.” Pedagang buah lalu menawarkan buah apel, buah pisang, buah mangga, buah jeruk, dan buah delima, dan segala buah-buahan yang ada di warungnya. Tetapi orang itu selalu menjawab “Tidak, Pak. Saya mau membeli buah.” Meskipun benda-benda yang ditawarkan pedagang toh juga buah-buahan, “buah” yang dicari oleh si pembeli tidak juga ketemu.
 
-Ternyata, orang tersebut adalah seorang metafisikus, dan yang dicarinya adalah ke-_buah_-an. “Ke-_buah_-an” yang dicari itu semacam karakter paling umum dan paling mulia atau tinggi dari segala buah-buahan yang ada. Sedangkan “buah” hanyalah adalah nama generik dan umum yang merangkumi segala macam-macam buah-buahan yang ada.
+Ternyata, orang tersebut adalah seorang metafisikus, dan yang dicarinya adalah ke-buah-an. “Ke-buah-an” yang dicari itu semacam karakter paling umum dan paling mulia atau tinggi dari segala buah-buahan yang ada. Sedangkan “buah” hanyalah adalah nama generik dan umum yang merangkumi segala macam-macam buah-buahan yang ada.
 
 Apakah seperti itu yang dimaksudkan Heidegger dengan “Pembedaan ontologis” antara _Be_ dan _being_? Apakah _kebuahan_ merupakan _Be_, dan ‘buah-buah’ partikular itu adalah _beings_? Bukan! Apakah kalau _beings_ itu semua dikumpulkan lalu didapatkan _Be_? Bukan! _Be_ bukanlah kumpulan atau karakter umum dari _beings_.
 
 _Be_ yang Heidegger maksud ‘dalam arti tertentu’ adalah yang mendasari, dasar yang menopang, yang menjadi _ground_, yang meng-ada-kan semua _beings_. Disebut ‘dalam arti tertentu,’ karena _Be_ yang mendasari ada-nya _beings_ itu juga bukanlah sebuah “landasan.” _Be_ tidak meng-ada-kan _beings_ melalui hubungan kausal-kausal yang rasional (karena ada _Be_, maka _beings_ dapat ada), melainkan lewat aktivitas “perwahyuan” atau “ketersingkapan.”
 
-Pembedaan ontologis ini menurut Heidegger berawal dari Platon dalam penjelasannya tentang _khora_. Konsep _khora_ merujuk pada suatu _gap_ atau ruang di antara dunia real dengan dunia Forma. Disebut juga suatu rahim, atau matriks. Dalam Timaeos, diceritakan tentang penciptaan dunia, yaitu bahwa dunia itu diciptakan menurut apa yang Demiurgos membayangkan mengenai Paradeigma. Khora adalah sebuah wadah atau tempat di mana yang sensibel (air, api, udara, tanah) dibuat. Karena yang sensibel merupakan hasil bayangan Demiurgos, maka tidak se-ideal _paradeigma_. Khora ini juga termasuk ke dalam “bentuk ke tiga” (_the 3\*\*rd_ _kind_), setelah yang sensibel dan inteligibel.
+Pembedaan ontologis ini menurut Heidegger berawal dari Platon dalam penjelasannya tentang _khora_. Konsep _khora_ merujuk pada suatu _gap_ atau ruang di antara dunia real dengan dunia Forma. Disebut juga suatu rahim, atau matriks. Dalam Timaeos, diceritakan tentang penciptaan dunia, yaitu bahwa dunia itu diciptakan menurut apa yang Demiurgos membayangkan mengenai Paradeigma. Khora adalah sebuah wadah atau tempat di mana yang sensibel (air, api, udara, tanah) dibuat. Karena yang sensibel merupakan hasil bayangan Demiurgos, maka tidak se-ideal _paradeigma_. Khora ini juga termasuk ke dalam “bentuk ke tiga” (_the 3rd kind_), setelah yang sensibel dan inteligibel.
 
 Dalam pemikiran Heidegger, _khora_ kemudian menjadi suatu ruang di antara _Being_ dan _beings_. Khora adalah _ontological differance_ itu sendiri, pembeda ontologiss antara _Being_ dan _beings_. Ia berasal dari yang ‘lain,’ _the 3rd kind_, yang tidak bisa dipikirkan dan tidak bisa dibicarakan.
 
@@ -90,7 +90,7 @@ Heidegger dalam pemikirannya kemudian akan mengubah fenomenologi menjadi sebuah 
 
 #### c) Apa itu _phusis_ bagi Heidegger?
 
-_Phusis_ bagi Heidegger adalah _segala realitas yang ada secara keseluruhan,_ \*t**he self forming prevailing of beings as a whole\***.\*\* _Phusis_ menunjuk pada apa pun yang ada di dekat manusia, yang menopang dan melingkupinya, apapun yang dimengerti manusia sebagai “ada”. (Singkat=Ada/Being; meja, kursi, termasuk yang inteligibel).
+_Phusis_ bagi Heidegger adalah _segala realitas yang ada secara keseluruhan, the self forming prevailing of beings as a whole_. _Phusis_ menunjuk pada apa pun yang ada di dekat manusia, yang menopang dan melingkupinya, apapun yang dimengerti manusia sebagai “ada”. (Singkat=Ada/Being; meja, kursi, termasuk yang inteligibel).
 
 _Phusis_ jangan disempitkan hanya untuk menunjuk fenomen “tanaman” atau “binatang” belaka. _Nature_ tidak boleh direduksi sebagaimana dilakukan kebanyakan orang menjadi sekadar _object of natural science_ atau merujuk pada sesuatu yang pra-saintifik.
 
@@ -244,7 +244,7 @@ Yang Satu: _huper (beyond)-on_. Plotinos memberi sumbangan kemungkinan dengan �
 
 ### 5. Konteks Pemikiran _Immanuel Kant_
 
-#### a) Kant menunjukkan batas-batas pengetahuan kita tentang Metafisika. Uraikan bagaimana teori Kant tentang pengetahuan dapat menunjukkan kemustahilan Metafisika! (dalam _Critique of_ _Pure_ _Reason_)
+#### a) Kant menunjukkan batas-batas pengetahuan kita tentang Metafisika. Uraikan bagaimana teori Kant tentang pengetahuan dapat menunjukkan kemustahilan Metafisika! (dalam _Critique of Pure Reason_)
 
 Dalam _Kritik Rasio Murni,_ Kant menguraikan teori tentang pengetahuan yang menunjukkan kemustahilan Metafisika.
 
@@ -274,7 +274,7 @@ Metafisika tradisional yang mengklaim memiliki pengetahuan tentang jiwa, dunia d
 
 Metafisika menjad sekadar ilusi dan Paralogisme atau pseudo pengetahuan (tampaknya logis, padahal palsu). Akan tetapi, dengan mengatakan bahwa jiwa, dunia dan Allah tidak dibahas secara rasional oleh rasio murni (nalar teoretis) bukan berarti ketiga hal itu tidak ada. Ada jalan lain, yakni lewat nalar praktis yang mana ketiga hal itu ditempatkan sebagai postulat. Jadi meski tidak bisa menjadi pengetahuan (sains) yang sebenarnya, “metafisika kritis” toh diakui sebagai postulat penting bagi hidup moral.
 
-#### b) Bagaimana kemudian _Critique of_ _P\*\*ractical_ _Reason_ membuka kemungkinan Metafisika?
+#### b) Bagaimana kemudian _Critique of Practical Reason_ membuka kemungkinan Metafisika?
 
 Teori Kant tentang Nalar Praktis _(Critique of Practical Reason)_ membuka kemungkinan Metafisika. Kant menyatakan apa yang seharusnya dilakukan sebagai hasil dari intuisi _idea regulative_ (adanya jiwa, dunia, dan Allah) dengan konsep imperatif kategoris, yaitu tindakan moral. _Idea regulative_ ini menjadi hal-hal yang diandaikan harus ada agar tindakan moral menjadi masuk akal. Akan tetapi, dengan mempostulatkan _idea regulative_ sebagai dasar dari tindakan moral, Kant membuka jalan kepada metafisika. Jiwa mengandaikan kebebasan untuk masuk wilayah moral (dan imortalitas jiwa). Dunia mengandaikan adanya prinsip universal yang tertata, dan Allah sebagai penjamin. Dengan demikian, ide mengenai jiwa, dunia, dan Allah bukan berarti tidak ada. Lewat jalan Nalar Praktis ini, kita bisa mengetahui bahwa ketiganya itu ada.
 

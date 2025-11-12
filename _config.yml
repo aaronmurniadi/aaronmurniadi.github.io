@@ -139,6 +139,12 @@ markdown: kramdown
 kramdown:
   smartquotes: ['apos', 'rsquo', 'ldquo', 'rdquo']
 
+hyphenate_filter:
+  language: idn
+  left: 4
+  right: 3
+  hyphen: '&shy;'
+
 # Exclude from processing.
 # The following items will not be processed, by default.
 # Any item listed under the `exclude:` key here will be automatically added to

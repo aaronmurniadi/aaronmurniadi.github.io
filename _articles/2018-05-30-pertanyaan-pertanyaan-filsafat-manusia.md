@@ -124,7 +124,7 @@ Insight bukanlah keseluruhan kegiatan intelektual. Apa yang dipahami dalam insig
 
 6. Berpikir dan Bebas: Berbicara dan mengisyaratkan berarti mengemukakan hal-hal dengan objektif, dan bukan hanya dari segi keinginan dan rasa subjektif. Dengan mengungkapkan realitas secara apa adanya (objektif) dan tanpa prasangka (tidak subjektif), manusia bisa membuat diri sederajat dengan realitas sebagai pengada hidup yang berpikir dan bebas.
 
-### Sebut dan jelaskan 2 (du- kemiripan antara tindakan afektif dan tindakan mengenal, serta 5 (lim- perbedaan di antara keduanya! [ImIn-PED-ReaPer]
+### Sebut dan jelaskan 2 (dua) kemiripan antara tindakan afektif dan tindakan mengenal, serta 5 (lima) perbedaan di antara keduanya! [ImIn-PED-ReaPer]
 
 Dua Kemiripan:
 
@@ -174,7 +174,7 @@ Keaslian kehendak memperlihatkan keasliannya dalam:
 
 - Perhatian sengaja: yaitu kemampuan untuk memusatkan indera dan kesadaran kita pada suatu objek tertentu. Kita memusatkan diri pada objek tertentu karena kita menghendakinya. Kita menghendakinya karena inteligensi mengatakan kepada kita bahwa tindakan memusatkan diri itu adalah sesuatu yang baik untuk dilakukan (fokus pada dosen, misalnya).
 
-### Sebut dan jelaskan tiga (3. argumen yang memperlihatkan adanya kebebasan!
+### Sebut dan jelaskan tiga (3) argumen yang memperlihatkan adanya kebebasan!
 
 1. Argumen Kesepakatan Umum: Kebanyakan orang berkeyakinan bahwa manusia memiliki kebebasan. Keyakinan ini penting karena memengaruhi seseorang melalui pengharapan, sikap, tindakan, dan rasa tanggung jawabnya. Oleh karena itu, jika ternyata selama ini kehidupan manusia di dunia koheren dan konsisten, keyakinan sebagian besar umat manusia ini tidak boleh dan tidak mungkin keliru. Jadi, ada kebebasan pada diri manusia.
 
@@ -202,7 +202,7 @@ Kebebasan itu terjadi pada tingkat alasan atau motif-motif subjek, dan bukan pad
 
 Secara umum, determinisme disebut tidak koheren karena ia bersifat mematikan dirinya sendiri (self-destroying). Jika paham determinisme itu dianggap benar, artinya para penganut determinisme sendiri menyampaikan gagasan determinismenya hanya karena faktor-faktor di luar kendalinya (hanya bagian dari rangkaian kausalitas). Dengan begitu, determinisme menjadi gagasan yang tidak objektif, dan bukan argumen yang otentik hasil pemikiran rasional. Maka, paham determinisme tidak perlu diterima sebagai kebenaran objektif. Inilah yang membuat determinisme kehilangan kredibilitasnya.
 
-### Sebut dan jelaskan tiga (3. segi historisitas manusia yang memungkinkan manusia menjadi pengada yang menyejarah!
+### Sebut dan jelaskan tiga (3) segi historisitas manusia yang memungkinkan manusia menjadi pengada yang menyejarah!
 
 Tiga segi historisitas manusia:
 
@@ -232,7 +232,7 @@ Dari uraian pandangan masing-masing tokoh di atas, perbedaannya terletak dari as
 
 Makna hidup adalah hal yang dipandang penting dan bernilai oleh seseorang, yang secara eksistensial merupakan alasan utamanya untuk hidup (atau menjalani hidup ini). Bagi Frankl, manusia tidak dapat hidup tanpa makna. Makna merupakan tujuan utama manusia untuk hidup (the will to meaning). Karena itu, manusia sepanjang hidupnya terus mencari makna hidup. Dari situ, bisa dilihat bahwa Frankl juga mengasumsikan bahwa makna hidup bisa ditemukan oleh manusia.
 
-Tiga (3. sifat makna hidup:
+Tiga (3) sifat makna hidup:
 
 1. Subjektif: makna hidup setiap orang berbeda-beda, dan tidak harus baik secara moral.
 
@@ -240,7 +240,7 @@ Tiga (3. sifat makna hidup:
 
 3. Dapat berubah dan hilang: dalam hidupnya, makna hidup seseorang dapat berubah. Misalnya, memiliki impian baru setelah impian sebelumnya tidak bisa dicapai. Makna hidup juga bisa menghilang, misalnya ketika istrinya, yang selama ini menjadi makna hidupnya, meninggal.
 
-Jika makna hidup ternyata subjektif, tidak selalu disadari, dapat berubah-ubah, dan bahkan dapat hilang, lalu bagaimana sebenarnya seseorang bisa menemukan makna hidupnya? Menurut Frankl, seseorang bisa menemukan makna hidup lewat tiga (3. cara:
+Jika makna hidup ternyata subjektif, tidak selalu disadari, dapat berubah-ubah, dan bahkan dapat hilang, lalu bagaimana sebenarnya seseorang bisa menemukan makna hidupnya? Menurut Frankl, seseorang bisa menemukan makna hidup lewat tiga (3) cara:
 
 1. Pekerjaan: dengan bekerja, seseorang yang kehilangan atau belum menyadari makna hidupnya dapat merasa dirinya masih berguna. Dengan mengalami sesuatu dan berjumpa dengan dunia, seseorang dapat menemukan makna hidupnya.
 
@@ -298,7 +298,7 @@ Relasi antar manusia seperti itu memiliki sifat:
 
 - Kreativitas – mengembangkan relasi yang sudah ada. Ini hanya terjadi jika sudah masuk dalam suatu relasi.
 
-### Sebut dan jelaskan dengan singkat argumen-argumen yang mendukung paham kekekalan jiwa berdasarkan (1. Etika; (2. Argumen filosofis dan teknis; (3. Tuntutan cinta kasih! Berikan juga penilaian Anda mengenai argumen-argumen ini!
+### Sebut dan jelaskan dengan singkat argumen-argumen yang mendukung paham kekekalan jiwa berdasarkan (1) Etika; (2) Argumen filosofis dan teknis; (3) Tuntutan cinta kasih! Berikan juga penilaian Anda mengenai argumen-argumen ini!
 
 1. Argumen Etis: Dalam hidup, banyak ketidakadilan terjadi. Orang yang jahat tambah bahagia, tetapi orang yang baik malah menderita. Maka, ketidakadilan yang terjadi mesti ada sanksinya dalam suatu kehidupan, entah sekarang atau sesudahnya.
 
