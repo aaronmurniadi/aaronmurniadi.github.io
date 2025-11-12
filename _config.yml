@@ -140,7 +140,7 @@ kramdown:
   smartquotes: ['apos', 'rsquo', 'ldquo', 'rdquo']
 
 hyphenate_filter:
-  language: idn
+  language: id
   left: 4
   right: 3
   hyphen: '&shy;'
