@@ -1,15 +1,11 @@
-@font-face {
-  font-family: 'Minion Variable Concept';
-  src: url('/media/files/minion_variable_concept.otf') format('opentype');
-}
+@import url('https://fonts.googleapis.com/css2?family=Libertinus+Serif:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&display=swap');
 
 .main-content {
-  font-family: 'Minion Variable Concept', 'Apple Garamond', 'Baskerville',
+  font-family: 'Libertinus Serif', 'Apple Garamond', 'Baskerville',
     'Libre Baskerville', 'Droid Serif', 'Times New Roman', 'Times', serif,
     'Noto Emoji', 'Quivira';
-  font-kerning: auto;
-  font-variation-settings: 'wght' 520, 'opsz' 10;
-  font-size: 1rem;
+  font-kerning: normal;
+  font-size: 1.05rem;
   max-width: 65ch;
 }
 
@@ -21,7 +17,7 @@
   text-align: left;
 }
 
-.main-content p {
+.main-content > main > p {
   text-align: justify;
 }
 
@@ -33,9 +29,11 @@
 }
 
 .sidenote {
+  font-family: 'Libertinus Serif', 'Apple Garamond', 'Baskerville',
+    'Libre Baskerville', 'Droid Serif', 'Times New Roman', 'Times', serif,
+    'Noto Emoji', 'Quivira';
   padding-left: 20px;
   margin-bottom: 1.5em;
-  font-style: italic;
   font-size: 0.8em;
 }
 
