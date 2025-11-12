@@ -149,9 +149,6 @@ GEM
     jekyll-github-metadata (2.16.1)
       jekyll (>= 3.4, < 5.0)
       octokit (>= 4, < 7, != 4.4.0)
-    jekyll-hyphenate_filter (0.0.2)
-      nokogiri (~> 1.6)
-      text-hyphen (~> 1.4)
     jekyll-include-cache (0.2.1)
       jekyll (>= 3.7, < 5.0)
     jekyll-mentions (1.6.0)
@@ -294,7 +291,6 @@ GEM
     simpleidn (0.2.3)
     terminal-table (1.8.0)
       unicode-display_width (~> 1.1, >= 1.1.1)
-    text-hyphen (1.5.0)
     typhoeus (1.5.0)
       ethon (>= 0.9.0, < 0.16.0)
     tzinfo (2.0.6)
@@ -317,7 +313,6 @@ DEPENDENCIES
   github-pages
   http_parser.rb (~> 0.6.0)
   jekyll-feed (~> 0.17)
-  jekyll-hyphenate_filter (~> 0.0.2)
   jekyll-pdf-embed
   jekyll-seo-tag
   jekyll-sitemap

@@ -133,16 +133,10 @@ plugins:
   - jekyll-feed
   - jekyll-pdf-embed
   - jekyll-seo-tag
-  - jekyll-hyphenate_filter
 
 markdown: kramdown
 kramdown:
   smartquotes: ['apos', 'rsquo', 'ldquo', 'rdquo']
-
-hyphenate_filter:
-  language: id
-  left: 4
-  right: 3
 
 # Exclude from processing.
 # The following items will not be processed, by default.
