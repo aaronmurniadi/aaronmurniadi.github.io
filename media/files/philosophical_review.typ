@@ -25,7 +25,8 @@
 // Front Page Title
 #align(center)[
   #v(1fr)
-  #text(size: 24pt, weight: "bold")[#upper[#journal-prefix]]\
+  #text(size: 24pt, weight: "bold")[#upper[#journal-prefix]]
+  #v(0.25fr)
   #text(size: 55pt, tracking: -2pt, style: "italic", font: "Libre Caslon Text")[#journal-name]
   #v(1fr)
   #text(size: 12pt, weight: "bold", spacing: 5pt)[#upper[#subtitle]]
