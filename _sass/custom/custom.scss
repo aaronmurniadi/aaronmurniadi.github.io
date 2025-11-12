@@ -19,10 +19,11 @@
 
 .main-content > main > p {
   text-align: justify;
+  hyphens: auto;
 }
 
 @media (max-width: 31.25rem) {
-  .main-content p {
+  .main-content > main > p {
     text-align: left;
     hyphens: none;
   }

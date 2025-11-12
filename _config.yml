@@ -133,6 +133,7 @@ plugins:
   - jekyll-feed
   - jekyll-pdf-embed
   - jekyll-seo-tag
+  - jekyll-hyphenate_filter
 
 markdown: kramdown
 kramdown:
