@@ -52,7 +52,7 @@
     max-height: 85vh;
     height: auto;
     margin: 0 auto -0.8em auto;
-    border: 0.2em solid #000;
+    border: 0.15em solid #000;
   }
 
   p {
@@ -71,13 +71,27 @@
   }
 }
 
+.home-avatar {
+  border-radius: 50%;
+  border: 0.1em solid #000;
+  max-width: 180px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 @media (min-width: 50rem) {
   .main:has(#gallery-container) {
     position: relative;
     max-width: 90%;
   }
   .main-content:has(#gallery-container) img {
-    border: 0.3em solid #000;
+    border: 0.25em solid #000;
+  }
+  .home-avatar {
+    max-width: 200px;
+    margin-left: 0;
+    margin-right: auto;
   }
 }
 
@@ -134,4 +148,52 @@
 
 .main-content h6 {
   font-size: 1rem;
+}
+
+.image-pair {
+  display: flex;
+  flex-direction: column;
+}
+
+@media (min-width: 50rem) {
+  .image-pair {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+    margin-bottom: 2em;
+  }
+
+  .main-content:has(#gallery-container) .image-pair {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: start;
+  }
+
+  .main-content:has(#gallery-container) .image-pair > p {
+    margin: 0;
+  }
+
+  .main-content:has(#gallery-container) .image-pair > p:has(img) {
+    grid-column: 1;
+    grid-row: 1;
+  }
+
+  .main-content:has(#gallery-container) .image-pair > p:has(img) + p {
+    grid-column: 1;
+    grid-row: 2;
+  }
+
+  .main-content:has(#gallery-container) .image-pair > p:has(img) ~ p:has(img) {
+    grid-column: 2;
+    grid-row: 1;
+  }
+
+  .main-content:has(#gallery-container)
+    .image-pair
+    > p:has(img)
+    ~ p:has(img)
+    + p {
+    grid-column: 2;
+    grid-row: 2;
+  }
 }

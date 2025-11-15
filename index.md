@@ -3,6 +3,8 @@ title: 'Home'
 layout: home
 ---
 
+![Aaron Purnomo Murniadi](/media/images/avatar.jpg){: .home-avatar }
+
 ## Hi, my name is Aaron Purnomo Murniadi
 
 A Software Engineer with a passion for technology, coding, and open-source software. My background includes four years of studying philosophy (though I didn't finish the degree), which has profoundly shaped my thinking and continues to influence my work and writing.
