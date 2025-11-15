@@ -254,8 +254,3 @@ mempertimbangkan juga keadilan seturut pandangan atau "kaca mata" masyarakat
 agama leluhur. Rekognisi harus diteruskan dengan _Reclaiming_, suatu pengambilan
 kembali hak-hak mereka yang selama ini direbut, dan akhirnya mendapat tempatnya
 yang setara di dalam suatu negara.
-
-## Catatan Akhir
-
-> Tulisan ini dibuat sebagai Tugas Terstruktur 2 Mata Kuliah Agama Lokal
-> Indonesia

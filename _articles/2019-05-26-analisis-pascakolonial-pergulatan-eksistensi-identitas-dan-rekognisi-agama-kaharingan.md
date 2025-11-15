@@ -441,8 +441,3 @@ independen.
 [^2]:
     Hindu Kaharingan yang sekarang mengartikan Kaharingan sebagai "kehidupan,
     sumber kehidupan yang berakar dari Tuhan" (Baier 2007:173)
-
-## Catatan Akhir
-
-> Tulisan ini dibuat sebagai Tugas Akhir Semester mata kuliah Agama-agama Lokal
-> di Indonesia

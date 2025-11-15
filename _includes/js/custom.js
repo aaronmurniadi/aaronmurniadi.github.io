@@ -89,3 +89,18 @@ window.addEventListener("load", function () {
     document.body.appendChild(div);
   }
 });
+
+document.addEventListener('DOMContentLoaded', function () {
+  const footnotes = document.querySelectorAll('p a.reversefootnote');
+
+  footnotes.forEach(link => {
+    const href = link.getAttribute('href');
+    const match = href.match(/fnref:(\d+)/);
+
+    if (match) {
+      const num = match[1];
+      const paragraph = link.closest('p');
+      paragraph.setAttribute('data-footnote-num', num);
+    }
+  });
+});

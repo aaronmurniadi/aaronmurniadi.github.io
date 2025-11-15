@@ -482,15 +482,14 @@ berada di dunia sebagai manusia.
 - Triyudo, Christian. “Driyarkara dan Filsafat sebagai Cara Manusia Menyelami
   Realtias Sedalam-dalamnya.” _Jurnal Driyarkara_ 2 (2013): 7–26.
 
-## Catatan Kaki
-
 [^1]:
     Driyarkara, “Buku Keenam: Menalar Dasar Negara Indonesia, Bab II:
     Pemikiran Pancasila Sesudah 1965,” 355–418.
 
 [^2]: Driyarkara dan Sudiarja, _KLD_, xxvi.
-[^3]:
-    Triyatmoko, “Biografi Singkat,” 7. [^4]: Triyudo, “Driyarkara dan Filsafat
+[^3]: Triyatmoko, “Biografi Singkat,” 7.
+[^4]:
+    Triyudo, “Driyarkara dan Filsafat
     sebagai Cara Manusia Menyelami Realtias Sedalam-dalamnya,” 11.
 
 [^5]: Ibid., 10.
@@ -499,8 +498,9 @@ berada di dunia sebagai manusia.
 [^8]: Ibid., 123.
 [^9]: Ibid., 122.
 [^10]: Ibid., 124.
-[^11]:
-    Driyarkara, “Bab IV: Fenomenologi,” 120–63. [^12]: Driyarkara, “Buku
+[^11]: Driyarkara, “Bab IV: Fenomenologi,” 120–63.
+[^12]:
+    Driyarkara, “Buku
     Keempat: Homo Homini Socius, Bab II: Sosialitas Sebagai Eksistensial,” 651–98.
 
 [^13]:
@@ -512,22 +512,25 @@ berada di dunia sebagai manusia.
     Pemikiran Pancasila Sesudah 1965,” 370.
 
 [^15]: Ibid., 938–59.
-[^16]:
-    Driyarkara dan Sudiarja, _KLD_, 591–92. [^17]: Driyarkara, “Buku Kedua:
+[^16]: Driyarkara dan Sudiarja, _KLD_, 591–92.
+[^17]:
+    Driyarkara, “Buku Kedua:
     Hominisasi dan Humanisasi, Bab II: Fenomena Pendidikan,” 377.
 
 [^18]: Ibid., 382.
 [^19]: Mohanty, “Phenomenology,” 285.
 [^20]: Driyarkara, _Pertjikan Filsafat_, 126.
-[^21]:
-    Ibid., 127–28. [^22]: Driyarkara, “Buku Kedua: Hominisasi dan Humanisasi,
+[^21]: Ibid., 127–28.
+[^22]:
+    Driyarkara, “Buku Kedua: Hominisasi dan Humanisasi,
     Bab II: Fenomena Pendidikan,” 360–61.
 
 [^23]: Ibid., 356.
 [^24]: Driyarkara, _Pertjikan Filsafat_, 140, 143, 144.
 [^25]: Driyarkara, “Bab IV: Fenomenologi,” 143.
-[^26]:
-    Ibid., 148. [^27]: Driyarkara, “Buku Kedua: Hominisasi dan Humanisasi,
+[^26]: Ibid., 148.
+[^27]:
+    Driyarkara, “Buku Kedua: Hominisasi dan Humanisasi,
     Bab II: Fenomena Pendidikan,” 415–17.
 
 [^28]:

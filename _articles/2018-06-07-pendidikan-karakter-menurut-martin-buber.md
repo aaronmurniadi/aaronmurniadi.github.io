@@ -280,12 +280,6 @@ berlangsungnya pendidikan karakter.
 - K. Bertens, _Filsafat Barat Kontemporer: Inggris–Jerman_. (Jakarta: Penerbit
   Gramedia, 2002).
 
-## Catatan Akhir
-
-> Tulisan ini ditulis dalam rangka memenuhi tugas akhir mata kuliah Filsafat
-> Yahudi di <a href='https://www.driyarkara.ac.id'>Sekolah Tinggi Filsafat
-> Driyarkara</a>.
-
 [^1]: K. Bertens, Filsafat Barat Kontemporer: Inggris–Jerman. (Jakarta: Penerbit Gramedia, 2002) Hlm. 124
 [^2]:
     Martin Buber (auth.) & R. G. Smith (trans.), Between Man and Man. (New

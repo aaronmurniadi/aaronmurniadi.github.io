@@ -156,7 +156,3 @@ berjalan, sebab ada wajah Yang-Lain yang menunggu jawaban kita.
   Press, 1993. (Ch.5, "A Key to _Totality and Infinity_," pp. 120--208).
 - [THT] Tjaya, Thomas Hidya. _Emmanuel Levinas: Enigma Wajah Orang Lain_,
   Jakarta: KPG, 2018.
-
-## Catatan Akhir
-
-> Tulisan ini dibuat sebagai Tugas Pengganti UTS Mata Kuliah "Emmanuel Levinas"

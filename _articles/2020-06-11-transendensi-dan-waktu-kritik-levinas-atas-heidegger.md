@@ -408,8 +408,6 @@ own_" (BK 600).
 - [THT] Tjaya, Thomas Hidya. _Emmanuel Levinas: Enigma Wajah Orang Lain_,
   Jakarta: KPG, 2018.
 
-## Catatan Kaki
-
 [^1]:
     Disarikan dari artikel Branko Klun. "Transcendence and Time: Levinas's
     Criticism of Heidegger." _Gregorianum_ Vol. 88, No. 3 (2007): 587–603.

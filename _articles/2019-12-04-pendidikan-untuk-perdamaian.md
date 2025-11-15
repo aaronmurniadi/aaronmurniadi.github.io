@@ -150,8 +150,3 @@ di dalam hati setiap warga negara.
 - Hornedo, Florentino H., _Christian Education: Becoming Person-for-Others: Essays
   in Philosophy of Education_, (Manila: Santo Tomas University Press, 1995), pp.
   111–119.
-
-## Catatan Akhir
-
-> Tulisan ini disusun sebagai Tugas Terstruktur untuk mata kuliah Filsafat
-> Pendidikan.

@@ -539,12 +539,6 @@ dimulai dari generasi kita, tetapi harus diingat bahwa anak-anak kitalah yang
 akan menghidupi dunia selanjutnya, sehingga mereka juga harus dapat
 mempertahankan warisan kita.
 
-## Catatan Akhir
-
-> Tulisan ini ditulis dalam rangka memenuhi tugas akhir mata kuliah Sejarah
-> Filsafat Barat Modern di <a href='https://www.driyarkara.ac.id'>Sekolah Tinggi
-> Filsafat Driyarkara</a>.
-
 [^1]:
     Oxford Advanced Learner’s Dictionary: _roué (n): a man who drinks too much
     alcohol, uses illegal drugs, or is sexually immoral, especially a man who is

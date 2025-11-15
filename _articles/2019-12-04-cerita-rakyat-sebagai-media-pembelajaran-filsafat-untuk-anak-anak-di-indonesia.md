@@ -551,8 +551,3 @@ bangsa Indonesia.
 [^9]:
     Vickers, John. "The Problem of Induction", _The Stanford Encyclopedia of
     Philosophy_ (Spring 2016 Edition), Edward N. Zalta (ed.), par. 3
-
-## Catatan Akhir
-
-> Tulisan ini ditulis sebagai tugas pengganti UAS Mata Kuliah "Alam Pikiran
-> Indonesia" di Sekolah Tinggi Filsafat Driyarkara, tanggal 5 Desember 2019

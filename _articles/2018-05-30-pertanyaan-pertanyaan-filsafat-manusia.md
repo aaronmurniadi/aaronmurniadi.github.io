@@ -507,10 +507,3 @@ dikontemplasikan. Jalan tengah penghayatan absurditas menurut Camus adalah
 detik hidupnya". Manusia absurd mencapai kebebasan batin ketika ia meninggalkan
 ilusi yang selama ini mendasari hidupnya dan menerima bahwa ia tidak dapat
 menemukan makna di dunia ini.
-
-**Catatan Akhir**
-
-Tulisan ini disusun sebagai bagian dari persiapan ujian akhir mata kuliah
-Filsafat Manusia di Sekolah Tinggi Filsafat Driyarkara. Materi pembahasan
-bersumber dari buku Louis Leahy, _Siapakah Manusia?_ (Yogyakarta: Kanisius,
-2001).

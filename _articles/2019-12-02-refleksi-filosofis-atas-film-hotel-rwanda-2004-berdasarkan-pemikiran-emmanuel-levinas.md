@@ -494,7 +494,3 @@ KPG, 2018.
     three years and obesity is still growing--UN report," 15 July 2019.
     https://www.who.int/news-room/detail/15-07-2019-world-hunger-is-still-not-going-down-after-three-years-and-obesity-is-still-growing-un-report
     (diakses tanggal 30 Desember 2019).
-
-## Catatan Akhir
-
-> Tulisan ini dibuat sebagai Tugas Akhir Mata Kuliah "Emmanuel Levinas"

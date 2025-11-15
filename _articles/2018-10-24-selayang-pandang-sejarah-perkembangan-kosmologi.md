@@ -121,9 +121,3 @@ menuliskan dengan hati-hati bahwa, "Hipotesis-hipotesis ini tidak perlu benar
 atau bahkan mungkin benar. Sebaliknya, jika mereka menyediakan perhitungan yang
 konsisten dengan pengamatan, itu saja sudah cukup." Sebuah pernyataan yang penuh
 kebijaksanaan dan kehati-hatian, demi keberlangsungan ilmu pengetahuan.
-
-## Catatan Akhir
-
-> Tulisan ini ditulis dalam rangka memenuhi tugas pengganti UTS mata kuliah
-> Kosmologi di <a href='https://www.driyarkara.ac.id'>Sekolah Tinggi Filsafat
-> Driyarkara</a>.

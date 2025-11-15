@@ -593,8 +593,3 @@ bentuknya yang prima.
 [^6]:
     *https://www.britannica.com/topic/custom-English-law* (diakses 3 Maret
     2020).
-
-## Catatan Akhir
-
-> Tulisan ini dibuat sebagai Tugas Akhir Mata Kuliah "Filsafat Hukum
-> Kontemporer," STF Driyarkara 2020.
