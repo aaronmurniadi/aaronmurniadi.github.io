@@ -54,3 +54,11 @@ Constellation of lights hanging above the table of decisions—silent witnesses 
 ![](/media/images/kodak_vision3_500t_kodak_2393_jatinegara_station.jpg)
 
 Jatinegara Station. Morning view with sunrise and brittle clouds.
+
+![](/media/images/kodak_vision3_250d_kodak_supra_endura_ibwe.jpg)
+
+Ibwe—the quiet matriarch who started it all.
+
+![](/media/images/kodak_gold_200_kodak_ektacolor_edge_water.jpg)
+
+Rain striking the ledge, breaking into brief, silver bursts.
