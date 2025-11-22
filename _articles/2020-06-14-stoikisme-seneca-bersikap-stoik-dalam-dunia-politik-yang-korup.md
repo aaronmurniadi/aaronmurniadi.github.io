@@ -305,7 +305,6 @@ ketidaksempurnaan, dan tetap menjadi manusia yang berkeutamaan.
 - [MPE] L.A. Seneca, J.M. Cooper dan J.F. Procope (eds.), _Seneca: Moral and
   Political Essays_, Cambridge: University Press, 1995.
 
-> Tulisan ini dibuat sebagai Tugas Akhir Kuliah "Stoikisme" di STF Driyarkara, 2020.
 
 [^1]:
     Nama yang sama dengan Seneca. Seneca sang pemikir yang dibahas dalam
