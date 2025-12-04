@@ -293,3 +293,20 @@ pre,
   background-color: var(--accent-color) !important;
   background-image: none !important;
 }
+
+table,
+tbody,
+tr,
+th,
+td {
+  background-color: var(--bg-color) !important;
+}
+
+th,
+td {
+  border-color: var(--text-color) !important;
+}
+
+.table-wrapper {
+  box-shadow: none !important;
+}
