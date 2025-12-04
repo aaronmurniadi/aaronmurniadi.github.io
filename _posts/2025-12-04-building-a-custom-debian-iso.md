@@ -1,13 +1,15 @@
 ---
-date: 2025-12-01
-last_modified_date: 2025-12-04
 title: Building a Custom Debian ISO
 layout: post
+date: 2025-12-01
+last_modified_date: 2025-12-04
 ---
 
 # Building a Custom Debian ISO
 
-Every project must begin with definitions of need. For me, it was:
+_This post details the journey of creating a bespoke Debian ISO tailored to specific deployment needs._
+
+Every project must begin with a concise requirements. For me, it was:
 
 - Deploy a consistent Linux environment across multiple machines.
 - Deployment must be possible where reliable internet access might not exist.

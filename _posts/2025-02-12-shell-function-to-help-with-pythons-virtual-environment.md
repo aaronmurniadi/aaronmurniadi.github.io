@@ -2,10 +2,12 @@
 layout: post
 title: "Shell function to help with Python's Virtual Environment"
 date: 2025-02-12
-last_modified_date: 2025-02-12
+last_modified_date: 2025-12-04
 ---
 
 # Shell function to help with Python's Virtual Environment
+
+_Managing Python projects often involves juggling multiple dependencies and Python versions._
 
 Managing Python projects often involves juggling multiple dependencies and Python versions. Virtual environments are a lifesaver, allowing you to isolate project dependencies and avoid conflicts. While Python's `venv` module is excellent, creating and activating environments can be a bit repetitive. To streamline this process, I've created a simple Bash function called `ve()` that simplifies virtual environment management:
 

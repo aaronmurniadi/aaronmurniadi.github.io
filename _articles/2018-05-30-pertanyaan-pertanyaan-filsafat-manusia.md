@@ -1,6 +1,6 @@
 ---
 layout: post
-title: 'Pertanyaan-pertanyaan Filsafat Manusia'
+title: "Pertanyaan-pertanyaan Filsafat Manusia"
 date: 2018-05-30
 nav_order: 16
 ---
@@ -8,6 +8,8 @@ nav_order: 16
 # Pertanyaan-pertanyaan Filsafat Manusia
 
 ## Perbedaan Filsafat Manusia dengan Ilmu-ilmu Kemanusiaan (Antropologi dan Psikologi): Apa yang menjadi ciri khasnya?
+
+_Filsafat manusia_ adalah ilmu yang mempelajari tentang manusia, yaitu pengada hidup yang paling tinggi di antara semua pengada hidup. Ia mempelajari tentang sifat dan tindakan manusia, serta prinsip dan prinsipnya.
 
 Ilmu-ilmu kemanusiaan, seperti antropologi dan psikologi, berupaya menemukan
 hukum-hukum tindakan manusia yang semata-mata bersifat empiris. Mereka membatasi
@@ -29,6 +31,8 @@ intelektual terhadap _prinsip ada_ (_the principle of being_): hal yang
 memungkinkan manusia memiliki sifat keberadaan yang otentik.
 
 ## Maksud dari 'Kesatuan Substansial' pada Pengada Hidup dan Enam Cirinya.
+
+_Kesatuan substansial adalah konsep kunci yang menjelaskan bagaimana sebuah entitas hidup mempertahankan identitasnya meskipun mengalami perubahan._
 
 Kesatuan substansial berarti pengada hidup tinggal identik dengan dirinya secara
 fundamental, mulai dari kelahiran, pertumbuhan, hingga akhir hayatnya. Karena
@@ -57,6 +61,8 @@ substansial yang paling tinggi di antara semua pengada hidup.
 
 ## Kekhasan Tubuh Manusia Dibandingkan dengan Tubuh Hewan.
 
+_Tubuh manusia memiliki kekhasan yang membedakannya dari tubuh hewan._
+
 Tubuh manusia menampilkan kekhasan yang membedakannya dari tubuh hewan. **Postur
 Tegak** adalah yang pertama, yang memungkinkannya melihat benda-benda dari atas
 dan memperluas jangkauan pandangnya, yang memudahkan peningkatan aktivitas roh,
@@ -79,6 +85,8 @@ kiri memiliki fungsi masing-masing.
 
 ## Prasyarat Pengetahuan dari Sisi Subjek dan Objek.
 
+_Pengetahuan tidak muncul begitu saja, melainkan membutuhkan prasyarat baik dari sisi subjek maupun objek yang hendak diketahui._
+
 Dari sisi subjek, pengetahuan mengandaikan adanya **Keterbukaan**, yaitu
 kapasitas untuk menyadari eksistensi dan kodrat realitas di sekitarnya. Kedua,
 adanya **Kemampuan Menyambut**, yaitu kemampuan subjek untuk dapat dipengaruhi
@@ -96,6 +104,8 @@ suatu benda dapat menunjukkan pada subjek apa orientasi, tujuan, dan hakikat,
 sekaligus tujuan tertentu dari objek tersebut.
 
 ## Perbedaan antara Pancaindra dan Inteligensi dalam Pencapaian Pengetahuan.
+
+_Pancaindra dan inteligensi memiliki peran yang berbeda namun saling melengkapi dalam proses pencapaian pengetahuan._
 
 Kekhasan pancaindra adalah kemampuannya mencapai kualitas luar dari objek
 konkret yang ada di hadapannya secara langsung. Maka, dengan pancaindra kita
@@ -126,6 +136,8 @@ sendiri.
 
 ## Perbedaan antara Persepsi, Aprehensi, dan _Insight_.
 
+_Persepsi, aprehensi, dan insight adalah tiga tingkatan dalam proses kognitif manusia yang berbeda namun saling berkaitan._
+
 **Persepsi** adalah pengetahuan spontan pra-sadar dan pra-pribadi tentang dunia
 di sekitar kita. Persepsi merupakan dasar bagi segala kegiatan kita yang sadar
 dan dipikirkan. Misalnya, ketika kita sedang melamun, pancaindra kita secara
@@ -150,6 +162,8 @@ intelektual.
 
 ## Enam Perbedaan antara Bahasa Hewan dan Bahasa Manusia.
 
+_Bahasa hewan dan bahasa manusia memiliki perbedaan yang signifikan._
+
 Proses memperoleh bahasa pada hewan didapat sejak lahir dan tidak perlu
 dipelajari atau diajari. Berbeda dengan manusia, bahasa harus dipelajari, sebab
 jika tidak diajari oleh orang tua, ia tidak akan pernah mengerti. Dari segi
@@ -169,6 +183,8 @@ berteriak; di antara keadaan afektif dan ucapannya, manusia berpikir sejenak dan
 mempertimbangkan terlebih dahulu.
 
 ## Enam Unsur Kodrat Manusia yang Tersimpulkan Melalui Fenomena Bahasa.
+
+_Fenomena bahasa mengungkapkan enam unsur kodrat manusia._
 
 Fenomena bahasa mengungkapkan enam unsur kodrat manusia. Pertama, **Kesatuan
 Substansial**; dengan berbahasa (mengisyaratkan dan berbicara), manusia
@@ -198,6 +214,8 @@ subjektif), manusia bisa membuat diri sederajat dengan realitas sebagai pengada
 hidup yang berpikir dan bebas.
 
 ## Kemiripan dan Perbedaan antara Tindakan Afektif dan Tindakan Mengenal.
+
+_Tindakan afektif dan tindakan mengenal memiliki perbedaan dan kemiripan._
 
 Kedua tindakan ini memiliki dua kemiripan mendasar. Keduanya adalah perbuatan
 **imanen**, yang berarti sama-sama berasal dari diri sendiri, di mana subjek
@@ -240,6 +258,8 @@ yaitu untuk menentukan tahap evolusi selanjutnya. Oleh karena itu, masa depan
 evolusi merupakan interaksi fundamental antara hukum alam dan kebebasan manusia.
 
 ## Hubungan antara Kehendak dan Kebaikan, serta Ekspresi Keaslian Kehendak.
+
+_Kehendak dan kebaikan memiliki hubungan yang erat._
 
 Kebaikan merupakan objek sekaligus tujuan hakiki dari kehendak. Kehendak selalu
 mengarahkan diri pada kebaikan karena kebaikanlah yang dikehendaki oleh manusia

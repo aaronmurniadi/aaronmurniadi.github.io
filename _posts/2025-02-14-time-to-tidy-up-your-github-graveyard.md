@@ -1,11 +1,13 @@
 ---
 layout: post
-title: 'Time to tidy up your GitHub graveyard!'
+title: "Time to tidy up your GitHub graveyard!"
 date: 2025-02-14
-last_modified_date: 2025-02-14
+last_modified_date: 2025-12-04
 ---
 
 # Time to tidy up your GitHub graveyard!
+
+_It's time to declutter your digital space and give your GitHub profile a fresh start._
 
 So, I logged in into my GitHub account today and saw: 71 repositories! That is all the projects I've started, forks I've looked into, and then just abandoned. Let's be real; no way am I really keeping track of that many projects. Most of them are just remnants of things I was interested in for a short time.
 
