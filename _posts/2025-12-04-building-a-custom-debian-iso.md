@@ -262,7 +262,13 @@ gnome-core
 
 The Docker repository’s use of HTTPS breaks the build because SSL certificate verification fails. The `ca-certificates` package is required, but the build cannot install it since the sources must be updated first, creating a bootstrap deadlock.
 
-This is why I used the `--apt-options '--yes -o Acquire::https::Verify-Peer=false -o Acquire::https::Verify-Host=false -o APT::Get::AllowUnauthenticated=true'` argument to the `lb config` command. This is unsafe to use in installed system, but okay for building ISO.
+This is why I used this argument to the `lb config` command:
+
+```shell
+--apt-options '--yes -o Acquire::https::Verify-Peer=false -o Acquire::https::Verify-Host=false -o APT::Get::AllowUnauthenticated=true'`
+```
+
+This is unsafe to use in installed system, but okay for building ISO.
 
 Finally, just run `lb build` and grab a cup of coffee. The build takes quite a long time and generated a lot of new files artifacts that is irrelevant and can be ignored in `.gitignore` file:
 
