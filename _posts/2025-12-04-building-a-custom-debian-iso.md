@@ -150,6 +150,76 @@ config/includes.chroot/
 
 Note: `skel` directory is copied to `/home/<username>` during installation.
 
+Another important file is `config/includes.installer/preseed.cfg`. This is the preseed file that is used to configure the system during installation. I put the hostname, timezone, and other important settings there.
+
+```shell
+## https://www.debian.org/releases/trixie/amd64/apbs04.en.html
+#### B.4.1. Localization
+d-i debian-installer/locale string en_US.UTF-8
+d-i keyboard-configuration/xkb-keymap select us
+d-i keyboard-configuration/variant select USA
+
+#### B.4.3. Network configuration
+# Disable network configuration entirely. This is useful for cdrom
+# installations on non-networked devices where the network questions,
+# warning and long timeouts are a nuisance.
+d-i netcfg/enable boolean false
+d-i netcfg/ipv6 boolean false
+d-i netcfg/choose_interface select auto
+d-i netcfg/disable_autoconfig boolean true
+
+#### B.4.6. Account setup
+d-i passwd/root-login boolean false
+d-i passwd/user-fullname string <fullname>
+d-i passwd/username string <username>
+d-i passwd/user-password password <password>
+d-i passwd/user-password-again password <password>
+d-i passwd/user-default-groups string audio cdrom video sudo netdev plugdev docker
+
+#### B.4.7. Clock and time zone setup
+# Controls whether or not the hardware clock is set to UTC.
+d-i clock-setup/utc boolean true
+# Controls whether to use NTP to set the clock during the install
+# Set to false because we don't have a network
+d-i clock-setup/ntp boolean false
+
+#### B.4.8. Partitioning
+# Single partition using all available space + swap
+d-i partman-auto/choose_recipe select atomic
+d-i partman-auto/confirm_write_new_label boolean true
+d-i partman-auto/disk string /dev/sda
+d-i partman-auto/method string regular
+d-i partman-basicfilesystems/choose_partition select finish
+d-i partman-basicfilesystems/no_swap boolean false
+d-i partman-partitioning/confirm_write_new_label boolean true
+d-i partman/choose_partition select finish
+# Request user confirmation before writing changes to disk
+d-i partman/confirm boolean false
+d-i partman/confirm_nooverwrite boolean false
+
+#### B.4.9. Base system installation
+d-i hw-detect/load_firmware boolean true
+d-i base-installer/kernel/image string linux-image-amd64
+
+#### B.4.10. Apt setup
+d-i apt-setup/cdrom/set-first boolean false
+d-i apt-setup/contrib boolean true
+d-i apt-setup/non-free boolean true
+d-i apt-setup/non-free-firmware boolean true
+d-i apt-setup/disable-cdrom-entries boolean true
+d-i apt-setup/use_mirror boolean false
+
+#### B.4.11. Package selection
+tasksel tasksel/first multiselect desktop, gnome-desktop, standard
+d-i pkgsel/upgrade select none
+popularity-contest popularity-contest/participate boolean false
+
+#### B.4.12. Boot loader installation
+d-i grub-installer/only_debian boolean true
+d-i grub-installer/with_other_os boolean false
+d-i grub-installer/bootdev string /dev/sda
+```
+
 ## The Offline Challenge
 
 **The Problem:** The ISO needed to install fully offline. This meant I couldn't rely on `apt-get install docker-ce` during installation because the target machine might be air-gapped.
