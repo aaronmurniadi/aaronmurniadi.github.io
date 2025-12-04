@@ -116,13 +116,13 @@ This ensures every time I run this script, it'll cleanup left overs artifacts ge
 
 Explanation about some of the arguments:
 
-| Argument                                                                                                                                 | Description                                                                                                                                                                                                                            |
-| ---------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `--apt "apt"`                                                                                                                            | Use apt to manage the packages during installation                                                                                                                                                                                     |
-| `--apt-options '--yes -o Acquire::https::Verify-Peer=false -o Acquire::https::Verify-Host=false -o APT::Get::AllowUnauthenticated=true'` | Disable SSL verification during building the ISO, because `ca-certificate` is not installed during build stage, any custom apt source using https will fail and prevent us from building the ISO image. (in \`/etc/apt/sources.list\`) |
-| `<br>--apt-indices false<br>--apt-recommends false <br>--backports false<br>--proposed-updates false<br>--update false<br>`              | This make the ISO images smaller.                                                                                                                                                                                                      |
-| `--binary-images iso-hybrid`                                                                                                             | Make the ISO able to be flashed to USB or burned to CD/DVDs.                                                                                                                                                                           |
-| `--bootloaders "grub-pc grub-efi"`                                                                                                       | Use Grub and make sure it's compatible with both UEFI and BIOS systems.                                                                                                                                                                |
+| Argument                                                                                                                                 | Description                                                                                                                                                                                             |
+| ---------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `--apt "apt"`                                                                                                                            | Use apt to manage the packages during installation                                                                                                                                                      |
+| `--apt-options '--yes -o Acquire::https::Verify-Peer=false -o Acquire::https::Verify-Host=false -o APT::Get::AllowUnauthenticated=true'` | Disable SSL verification during building the ISO, because `ca-certificate` is not installed during build stage, any custom apt source using https will fail and prevent us from building the ISO image. |
+| `--apt-indices false`<br>`--apt-recommends false`<br>`--backports false`<br>`--proposed-updates false`<br>`--update false`               | This make the ISO images smaller.                                                                                                                                                                       |
+| `--binary-images iso-hybrid`                                                                                                             | Make the ISO able to be flashed to USB or burned to CD/DVDs.                                                                                                                                            |
+| `--bootloaders "grub-pc grub-efi"`                                                                                                       | Use Grub and make sure it's compatible with both UEFI and BIOS systems.                                                                                                                                 |
 
 ## Customization Hooks & Packages
 
@@ -132,7 +132,7 @@ In `config/package-lists/pkgs.list.chroot`, I put the name of packages I needed 
 
 In the `config/includes.chroot/` directory, any files I put there are copied directly into the ISO's filesystem. This is where I put my custom wallpapers, configuration files, and the critical `autostart.sh`. The structure inside is directly related to the standard Linux system starting from the root `/` :
 
-```
+```shell
 config/includes.chroot/
 └── etc
     ├── default
@@ -154,7 +154,7 @@ config/includes.chroot/
 
 So, the docker package must be baked into the generated ISO file. Unfortunately `docker-ce` is not available in the default Debian repository. I need to add the custom Docker repository to APT's sources list. Easy enough:
 
-```
+```shell
 config/includes.chroot/
 └── archives
 │   ├── docker.list
