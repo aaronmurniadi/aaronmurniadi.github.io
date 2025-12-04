@@ -1,16 +1,16 @@
 ---
 layout: post
-title: 'Gaya Filsafat Oxford dalam Kritik H.L.A. Hart atas Teori Hukum John Austin'
+title: "Gaya Filsafat Oxford dalam Kritik H.L.A. Hart atas Teori Hukum John Austin"
 date: 2020-06-04
 nav_order: 4
 ---
 
 # Gaya Filsafat Oxford dalam Kritik H.L.A. Hart atas Teori Hukum John Austin
 
-## Pendahuluan: Gaya Filsafat Oxford
-
 > Disarikan dari artikel: Weitz, M., "Oxford Philosophy," _The Philosophical
 > Review_, Vol. 62, No. 2, April 1953, hlm. 187--233.[^1]
+
+## Pendahuluan: Gaya Filsafat Oxford
 
 Filsafat Oxford, istilah tersebut merupakan pembagian filsafat yang relatif
 sempit jika dibandingkan dengan pembagian-pembagian filsafat lainnya. Dalam
