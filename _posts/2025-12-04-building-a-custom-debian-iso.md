@@ -143,10 +143,12 @@ config/includes.chroot/
     │   └── 99-custom-netcfg.yaml
     ├── os-release
     └── skel
-        └── dwsv2
+        └── <username>
             ├── autostart.sh
             └── compose.yaml
 ```
+
+Note: `skel` directory is copied to `/home/<username>` during installation.
 
 ## The Offline Challenge
 
