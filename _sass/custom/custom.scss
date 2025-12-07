@@ -17,13 +17,13 @@
   text-align: left;
 }
 
-.main-content>main>p {
+.main-content > main > p {
   text-align: justify;
   hyphens: auto;
 }
 
 @media (max-width: 31.25rem) {
-  .main-content>main>p {
+  .main-content > main > p {
     text-align: left;
     hyphens: none;
   }
@@ -45,6 +45,7 @@
 
 .main-content:has(#gallery-container) {
   max-width: 100%;
+  text-align: center;
 
   img {
     display: block;
@@ -55,14 +56,10 @@
     border: 0.15em solid #000;
   }
 
-  p {
-    text-align: left;
-  }
-
-  p:has(img)+p {
-    margin: 0.5em 2em 2em 2em;
+  p:has(img) + p {
+    margin: 0em auto 2em auto;
     font-style: italic;
-    text-align: center;
+    max-width: 80ch;
   }
 
   .main {
@@ -177,26 +174,32 @@
     align-items: start;
   }
 
-  .main-content:has(#gallery-container) .image-pair>p {
+  .main-content:has(#gallery-container) .image-pair > p {
     margin: 0;
   }
 
-  .main-content:has(#gallery-container) .image-pair>p:has(img) {
+  .main-content:has(#gallery-container) .image-pair > p:has(img) {
     grid-column: 1;
     grid-row: 1;
   }
 
-  .main-content:has(#gallery-container) .image-pair>p:has(img)+p {
+  .main-content:has(#gallery-container) .image-pair > p:has(img) + p {
     grid-column: 1;
     grid-row: 2;
+    text-align: center;
+    margin: 0em auto 0em auto;
   }
 
-  .main-content:has(#gallery-container) .image-pair>p:has(img)~p:has(img) {
+  .main-content:has(#gallery-container) .image-pair > p:has(img) ~ p:has(img) {
     grid-column: 2;
     grid-row: 1;
   }
 
-  .main-content:has(#gallery-container) .image-pair>p:has(img)~p:has(img)+p {
+  .main-content:has(#gallery-container)
+    .image-pair
+    > p:has(img)
+    ~ p:has(img)
+    + p {
     grid-column: 2;
     grid-row: 2;
   }
