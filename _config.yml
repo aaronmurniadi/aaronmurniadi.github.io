@@ -183,7 +183,7 @@ webp:
   gifs: [".gif"]
 
   # Set to true to always regenerate existing webp files
-  regenerate: false
+  regenerate: true
 
   # List of files or directories to exclude
   # e.g. custom or hand generated webp conversion files
