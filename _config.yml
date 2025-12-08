@@ -21,8 +21,8 @@
 title: Contemplative Coder
 email: aaronmurniadi@gmail.com
 description: A Software Engineer with a passion for technology, coding, and open-source software.
-baseurl: '' # the subpath of your site, e.g. /blog
-url: 'https://aaronmurniadi.github.io' # the base hostname & protocol for your site, e.g. http://example.com
+baseurl: "" # the subpath of your site, e.g. /blog
+url: "https://aaronmurniadi.github.io" # the base hostname & protocol for your site, e.g. http://example.com
 github_username: aaronmurniadi
 
 # Build settings
@@ -53,48 +53,48 @@ search:
   # Supports true or false (default)
   button: false
   # Focus the search input by pressing `ctrl + focus_shortcut_key` (or `cmd + focus_shortcut_key` on macOS)
-  focus_shortcut_key: 'k'
+  focus_shortcut_key: "k"
 
 heading_anchors: true
-footer_content: 'Copyright &copy; 2017–2025 Aaron P. Murniadi.'
+footer_content: "Copyright &copy; 2017–2025 Aaron P. Murniadi."
 last_edit_timestamp: true
-last_edit_time_format: '%Y-%m-%d' # outputs in format YYYY-MM-dd
+last_edit_time_format: "%Y-%m-%d" # outputs in format YYYY-MM-dd
 gh_edit_link: true # show or hide edit this page link
-gh_edit_link_text: 'Edit this page on GitHub.'
-gh_edit_repository: 'https://github.com/aaronmurniadi/aaronmurniadi.github.io' # the github URL for your repo
-gh_edit_branch: 'main' # the branch that your docs is served from
-gh_edit_view_mode: 'edit' # "tree" or "edit" if you want the user to jump into the editor immediately
-ga_tracking: 'G-5HB33FCT7Y'
+gh_edit_link_text: "Edit this page on GitHub."
+gh_edit_repository: "https://github.com/aaronmurniadi/aaronmurniadi.github.io" # the github URL for your repo
+gh_edit_branch: "main" # the branch that your docs is served from
+gh_edit_view_mode: "edit" # "tree" or "edit" if you want the user to jump into the editor immediately
+ga_tracking: "G-5HB33FCT7Y"
 
 collections:
   # Define a collection named "posts", its documents reside in the "_posts" directory
   posts:
-    label: '📝 Posts'
-    permalink: '/:collection/:path/'
+    label: "📝 Posts"
+    permalink: "/:collection/:path/"
     output: true
   articles:
-    permalink: '/:collection/:path/'
+    permalink: "/:collection/:path/"
     output: true
   summaries:
-    permalink: '/:collection/:path/'
+    permalink: "/:collection/:path/"
     output: true
   typst_collection:
-    permalink: '/:collection/:path/'
+    permalink: "/:collection/:path/"
     output: true
 
 nav_external_links:
-  - title: '📷 Photography'
+  - title: "📷 Photography"
     url: /photography
     opens_in_new_tab: false
     hide_icon: true
-  - title: '📚 Typst Collection'
+  - title: "📚 Typst Collection"
     url: /typst_collection
     opens_in_new_tab: false
     hide_icon: true
-  - title: '📄 My CV'
+  - title: "📄 My CV"
     url: /media/files/cv_aaron_murniadi.pdf
     opens_in_new_tab: true
-  - title: '📞 Contact'
+  - title: "📞 Contact"
     url: /contact
     opens_in_new_tab: false
     hide_icon: true
@@ -107,7 +107,7 @@ just_the_docs:
   collections:
     posts:
       # Give the collection a name
-      name: '📝 Posts'
+      name: "📝 Posts"
       # Exclude the collection from the navigation
       # Supports true or false (default)
       # nav_exclude: true
@@ -118,10 +118,10 @@ just_the_docs:
       # Supports true or false (default)
       # search_exclude: true
     articles:
-      name: '📚 Articles'
+      name: "📚 Articles"
       nav_fold: true
     summaries:
-      name: '🗂️ Summaries'
+      name: "🗂️ Summaries"
       nav_fold: true
 
 # Plugins
@@ -136,7 +136,7 @@ plugins:
 
 markdown: kramdown
 kramdown:
-  smartquotes: ['apos', 'rsquo', 'ldquo', 'rdquo']
+  smartquotes: ["apos", "rsquo", "ldquo", "rdquo"]
 
 # Exclude from processing.
 # The following items will not be processed, by default.
@@ -164,30 +164,26 @@ exclude:
 # The values here represent the defaults if nothing is set
 webp:
   enabled: true
+  threads: 4
 
   # The quality of the webp conversion 0 to 100 (where 100 is least lossy)
   quality: 80
 
   # List of directories containing images to optimize, nested directories will only be checked if `nested` is true
   # By default the generator will search for a folder called `/img` under the site root and process all jpg, png and tiff image files found there.
-  img_dir: ['/media/images']
+  img_dir: ["/media/images"]
 
   # Whether to search in nested directories or not
   nested: false
 
   # add ".gif" to the format list to generate webp for animated gifs as well
-  formats: ['.jpeg', '.jpg', '.png', '.tiff']
+  formats: [".jpeg", ".jpg", ".png", ".tiff"]
 
   # File extensions for animated gif files
-  gifs: ['.gif']
+  gifs: [".gif"]
 
   # Set to true to always regenerate existing webp files
   regenerate: false
-
-  # Local path to the WebP utilities to use (relative or absolute)
-  # Omit or leave as nil to use the utilities shipped with the gem, override only to use your local install
-  # Eg : "/usr/local/bin/cwebp"
-  webp_path: nil
 
   # List of files or directories to exclude
   # e.g. custom or hand generated webp conversion files
