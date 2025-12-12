@@ -11,6 +11,10 @@ Welcome to my little photography corner! Here you'll find a selection of images 
 
 ---
 
+![](/media/images/kalibata_fire_2.webp)
+
+December 12th, 2025---Sunset with smokes from a fire in a food court near Kalibata City.
+
 ![](/media/images/pano_kodak_vision3_500t.webp)
 
 December 12th, 2025---My first attempt at panorama photography.
