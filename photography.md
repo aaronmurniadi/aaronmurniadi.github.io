@@ -11,6 +11,10 @@ Welcome to my little photography corner! Here you'll find a selection of images 
 
 ---
 
+![](/media/images/pano_kodak_vision3_500t.webp)
+
+December 12th, 2025---My first attempt at panorama photography.
+
 ![](/media/images/dkpkp2_kodak_pro_image_100_kodak_2393.webp)
 
 December 6th, 2025---People working hard, either by hand or bike.
