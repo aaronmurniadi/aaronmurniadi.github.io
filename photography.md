@@ -27,7 +27,7 @@ December 12th, 2025---My first attempt at panorama photography.
 
 December 6th, 2025---People working hard, either by hand or bike.
 
-![](/media/images/dkpkp_kodak_pro_image_100_kodak_2393.webp)
+![](/media/images/dkpkp_kodak_pro_image_100_kodak_2393.jpg)
 
 December 6th, 2025---Saw this cool bike in front of Indomaret while waiting for my cat's appointment at DKPKP.
 
@@ -59,7 +59,7 @@ October 31st, 2025---Taken from my office on the 9th floor of Bidakara 2 buildin
 
 October 15th, 2025---Elevator selfie. Loving the reflections, lighting, and the dull reflective surface.
 
-![](/media/images/chair_fujifilm_c200_kodak_2383.webp)
+![](/media/images/chair_fujifilm_c200_kodak_2383.jpg)
 
 August 2nd, 2025---A bench placed on the balcony of Indonesia’s National Library. Somehow it is unreachable by visitors.
 
