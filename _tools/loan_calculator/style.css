@@ -1,0 +1,19 @@
+table {
+  max-width: 100%;
+  width: 100%;
+  box-sizing: border-box;
+  overflow-x: auto;
+  font-family: monospace;
+}
+
+th,
+td {
+  border-bottom: 0px !important;
+  border-left: 0px !important;
+}
+
+/* Ensure results table is positioned correctly */
+#amortization-table {
+  margin-top: 20px;
+  clear: both;
+}

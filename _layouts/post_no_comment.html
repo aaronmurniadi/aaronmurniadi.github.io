@@ -1,0 +1,20 @@
+---
+layout: default
+---
+
+{% if site.last_edit_timestamp and site.last_edit_time_format and page.date %}
+<p class="text-small text-grey-dk-000 mb-0 mr-2">
+  Written on: {{ page.date | date: site.last_edit_time_format }} {% if
+  page.last_modified_date %}, Last modified: {{ page.last_modified_date | date:
+  site.last_edit_time_format }} {% endif %}
+</p>
+{% if page.translated == false or page.translated == nil %}
+<p class="text-small text-grey-dk-000 mb-0 mr-2">
+  <a
+    target="_blank"
+    href="https://translate.google.com/translate?&sl=id&tl=en&op=translate&u={{ site.url }}{{ page.url | uri_escape }}"
+  >
+    Translate this page to English</a
+  >
+</p>
+{% endif %} {% endif %} {{ content | hyphenate }}
