@@ -1,8 +1,7 @@
 ---
 layout: post_no_comment
+title: 🧰 Toolbox
 ---
-
-# 🧰 Toolbox
 
 <style>
 .toolbox-grid {
