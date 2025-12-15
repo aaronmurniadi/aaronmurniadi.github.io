@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Ketidakadilan Epistemik dalam Dunia Kesehatan"
+title: 'Ketidakadilan Epistemik dalam Dunia Kesehatan'
 date: 2020-11-23
 nav_order: 1
 ---
@@ -8,8 +8,8 @@ nav_order: 1
 # Ketidakadilan Epistemik dalam Dunia Kesehatan
 
 > Disarikan dari Carel, Havi. _Phenomenology of Illness_. Oxford: Oxford
-> University Press, 2016, Bab 8, hlm. 180–203. Selanjutnya, acuan pada karya
-> ini akan ditulis dengan ‘PI’ diikuti dengan nomor halaman. E.g.: (PI 180).
+> University Press, 2016, Bab 8, hlm. 180–203. Selanjutnya, acuan pada karya ini
+> akan ditulis dengan ‘PI’ diikuti dengan nomor halaman. E.g.: (PI 180).
 
 Setelah merenungkan pengaruh rasa sakit terhadap cara seseorang berinteraksi
 dengan dunianya secara umum, kini Carel membawa kita pada sebuah persinggungan

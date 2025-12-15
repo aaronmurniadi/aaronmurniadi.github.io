@@ -7,33 +7,42 @@ last_modified_date: 2025-12-04
 
 # Building a Custom Debian ISO
 
-_This post details the journey of creating a bespoke Debian ISO tailored to specific deployment needs._
-
 Every project must begin with a concise requirements. For me, it was:
 
 - Deploy a consistent Linux environment across multiple machines.
 - Deployment must be possible where reliable internet access might not exist.
 - The installation contains everything needed and pre-configured.
-- The machine just need to be turned on and start the app and components automatically.
+- The machine just need to be turned on and start the app and components
+  automatically.
 - As secure as possible.
 
-This is the story of how I built it, the tools I used, and the headaches I suffered along the way.
+This is the story of how I built it, the tools I used, and the headaches I
+suffered along the way.
 
 ## Research & Planning
 
 _But how do you actually build a Linux ISO?_
 
-I didn't want to build a new Linux Distro from scratch (Linux From Scratch was a bit too ambitious). I wanted a customized **Debian-based** distro which have the reputation to be stable. My research led me quickly to **Debian Live Build** (`live-build`). It's the standard tool used to build official Debian Live images. From initial reading, it's powerful, flexible, and the build process is straightforward.
+I didn't want to build a new Linux Distro from scratch (Linux From Scratch was a
+bit too ambitious). I wanted a customized **Debian-based** distro which have the
+reputation to be stable. My research led me quickly to **Debian Live Build**
+(`live-build`). It's the standard tool used to build official Debian Live
+images. From initial reading, it's powerful, flexible, and the build process is
+straightforward.
 
-The documentation around `live-build` itself is worth of praise. Detailed yet concise, and covered every aspect you need in structured manner:
+The documentation around `live-build` itself is worth of praise. Detailed yet
+concise, and covered every aspect you need in structured manner:
 
 - [https://live-team.pages.debian.net/live-manual/html/live-manual/index.en.html](https://live-team.pages.debian.net/live-manual/html/live-manual/index.en.html)
 
 ## Implementation
 
-First I need to install Debian 13 to use as host machine to build the Debian ISO, I got the ISO from [the Debian official site](https://www.debian.org/distrib/).
+First I need to install Debian 13 to use as host machine to build the Debian
+ISO, I got the ISO from [the Debian official
+site](https://www.debian.org/distrib/).
 
-On the host machine, I need to install the `live-build` alongside some dependencies:
+On the host machine, I need to install the `live-build` alongside some
+dependencies:
 
 ```shell
 sudo apt-get update && \
@@ -54,9 +63,11 @@ cd debian-iso
 git init
 ```
 
-_Yup, I learned the hard way to always use git versioning to save progress along the way._
+_Yup, I learned the hard way to always use git versioning to save progress along
+the way._
 
-Then, simply run `lb config`. This will create a directory structure for our build project, along with some scripts filled with default values.
+Then, simply run `lb config`. This will create a directory structure for our
+build project, along with some scripts filled with default values.
 
 ```shell
 .
@@ -114,7 +125,8 @@ lb config \
 sudo lb build
 ```
 
-This ensures every time I run this script, it'll cleanup left overs artifacts generated from the previous run.
+This ensures every time I run this script, it'll cleanup left overs artifacts
+generated from the previous run.
 
 Explanation about some of the arguments:
 
@@ -128,11 +140,15 @@ Explanation about some of the arguments:
 
 ## Customization Hooks & Packages
 
-The real magic happens in the `config/` directory.
+_The real magic happens in the `config/` directory._
 
-In `config/package-lists/pkgs.list.chroot`, I put the name of packages I needed to install (GNOME, Docker, etc.).
+In `config/package-lists/pkgs.list.chroot`, I put the name of packages I needed
+to install (GNOME, Docker, etc.).
 
-In the `config/includes.chroot/` directory, any files I put there are copied directly into the ISO's filesystem. This is where I put my custom wallpapers, configuration files, and the critical `autostart.sh`. The structure inside is directly related to the standard Linux system starting from the root `/` :
+In the `config/includes.chroot/` directory, any files I put there are copied
+directly into the ISO's filesystem. This is where I put my custom wallpapers,
+configuration files, and the critical `autostart.sh`. The structure inside is
+directly related to the standard Linux system starting from the root `/` :
 
 ```shell
 config/includes.chroot/
@@ -152,7 +168,9 @@ config/includes.chroot/
 
 Note: `skel` directory is copied to `/home/<username>` during installation.
 
-Another important file is `config/includes.installer/preseed.cfg`. This is the preseed file that is used to configure the system during installation. I put the hostname, timezone, and other important settings there.
+Another important file is `config/includes.installer/preseed.cfg`. This is the
+preseed file that is used to configure the system during installation. I put the
+hostname, timezone, and other important settings there.
 
 ```shell
 ## https://www.debian.org/releases/trixie/amd64/apbs04.en.html
@@ -224,9 +242,13 @@ d-i grub-installer/bootdev string /dev/sda
 
 ## The Offline Challenge
 
-**The Problem:** The ISO needed to install fully offline. This meant I couldn't rely on `apt-get install docker-ce` during installation because the target machine might be air-gapped.
+**The Problem:** The ISO needed to install fully offline. This meant I couldn't
+rely on `apt-get install docker-ce` during installation because the target
+machine might be air-gapped.
 
-So, the docker package must be baked into the generated ISO file. Unfortunately `docker-ce` is not available in the default Debian repository. I need to add the custom Docker repository to APT's sources list. Easy enough:
+So, the docker package must be baked into the generated ISO file. Unfortunately
+`docker-ce` is not available in the default Debian repository. I need to add the
+custom Docker repository to APT's sources list. Easy enough:
 
 ```shell
 config/includes.chroot/
@@ -260,7 +282,10 @@ gnome-core
 ... (any package you need here)
 ```
 
-The Docker repository’s use of HTTPS breaks the build because SSL certificate verification fails. The `ca-certificates` package is required, but the build cannot install it since the sources must be updated first, creating a bootstrap deadlock.
+The Docker repository’s use of HTTPS breaks the build because SSL certificate
+verification fails. The `ca-certificates` package is required, but the build
+cannot install it since the sources must be updated first, creating a bootstrap
+deadlock.
 
 This is why I used this argument to the `lb config` command:
 
@@ -270,7 +295,9 @@ This is why I used this argument to the `lb config` command:
 
 This is unsafe to use in installed system, but okay for building ISO.
 
-Finally, just run `lb build` and grab a cup of coffee. The build takes quite a long time and generated a lot of new files artifacts that is irrelevant and can be ignored in `.gitignore` file:
+Finally, just run `lb build` and grab a cup of coffee. The build takes quite a
+long time and generated a lot of new files artifacts that is irrelevant and can
+be ignored in `.gitignore` file:
 
 ```shell
 .build/
@@ -296,6 +323,8 @@ unpacked-initrd/
 
 ## Conclusion
 
-The result of this process will be generated in the root of the projcet, `live-image-amd64.hybrid.iso` a self-contained, automated installer that deploys a production-ready environment in minutes.
+The result of this process will be generated in the root of the projcet,
+`live-image-amd64.hybrid.iso` a self-contained, automated installer that deploys
+a production-ready environment in minutes.
 
 Cheers!

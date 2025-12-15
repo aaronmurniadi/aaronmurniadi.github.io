@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Pertanyaan-pertanyaan Filsafat Manusia"
+title: 'Pertanyaan-pertanyaan Filsafat Manusia'
 date: 2018-05-30
 nav_order: 16
 ---
@@ -9,7 +9,9 @@ nav_order: 16
 
 ## Perbedaan Filsafat Manusia dengan Ilmu-ilmu Kemanusiaan (Antropologi dan Psikologi): Apa yang menjadi ciri khasnya?
 
-_Filsafat manusia_ adalah ilmu yang mempelajari tentang manusia, yaitu pengada hidup yang paling tinggi di antara semua pengada hidup. Ia mempelajari tentang sifat dan tindakan manusia, serta prinsip dan prinsipnya.
+_Filsafat manusia_ adalah ilmu yang mempelajari tentang manusia, yaitu pengada
+hidup yang paling tinggi di antara semua pengada hidup. Ia mempelajari tentang
+sifat dan tindakan manusia, serta prinsip dan prinsipnya.
 
 Ilmu-ilmu kemanusiaan, seperti antropologi dan psikologi, berupaya menemukan
 hukum-hukum tindakan manusia yang semata-mata bersifat empiris. Mereka membatasi
@@ -32,7 +34,8 @@ memungkinkan manusia memiliki sifat keberadaan yang otentik.
 
 ## Maksud dari 'Kesatuan Substansial' pada Pengada Hidup dan Enam Cirinya.
 
-_Kesatuan substansial adalah konsep kunci yang menjelaskan bagaimana sebuah entitas hidup mempertahankan identitasnya meskipun mengalami perubahan._
+_Kesatuan substansial adalah konsep kunci yang menjelaskan bagaimana sebuah
+entitas hidup mempertahankan identitasnya meskipun mengalami perubahan._
 
 Kesatuan substansial berarti pengada hidup tinggal identik dengan dirinya secara
 fundamental, mulai dari kelahiran, pertumbuhan, hingga akhir hayatnya. Karena
@@ -85,7 +88,8 @@ kiri memiliki fungsi masing-masing.
 
 ## Prasyarat Pengetahuan dari Sisi Subjek dan Objek.
 
-_Pengetahuan tidak muncul begitu saja, melainkan membutuhkan prasyarat baik dari sisi subjek maupun objek yang hendak diketahui._
+_Pengetahuan tidak muncul begitu saja, melainkan membutuhkan prasyarat baik dari
+sisi subjek maupun objek yang hendak diketahui._
 
 Dari sisi subjek, pengetahuan mengandaikan adanya **Keterbukaan**, yaitu
 kapasitas untuk menyadari eksistensi dan kodrat realitas di sekitarnya. Kedua,
@@ -105,7 +109,8 @@ sekaligus tujuan tertentu dari objek tersebut.
 
 ## Perbedaan antara Pancaindra dan Inteligensi dalam Pencapaian Pengetahuan.
 
-_Pancaindra dan inteligensi memiliki peran yang berbeda namun saling melengkapi dalam proses pencapaian pengetahuan._
+_Pancaindra dan inteligensi memiliki peran yang berbeda namun saling melengkapi
+dalam proses pencapaian pengetahuan._
 
 Kekhasan pancaindra adalah kemampuannya mencapai kualitas luar dari objek
 konkret yang ada di hadapannya secara langsung. Maka, dengan pancaindra kita
@@ -136,7 +141,8 @@ sendiri.
 
 ## Perbedaan antara Persepsi, Aprehensi, dan _Insight_.
 
-_Persepsi, aprehensi, dan insight adalah tiga tingkatan dalam proses kognitif manusia yang berbeda namun saling berkaitan._
+_Persepsi, aprehensi, dan insight adalah tiga tingkatan dalam proses kognitif
+manusia yang berbeda namun saling berkaitan._
 
 **Persepsi** adalah pengetahuan spontan pra-sadar dan pra-pribadi tentang dunia
 di sekitar kita. Persepsi merupakan dasar bagi segala kegiatan kita yang sadar
