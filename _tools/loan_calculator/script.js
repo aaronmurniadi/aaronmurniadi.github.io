@@ -72,7 +72,7 @@ class LoanCalculator {
             <td><label for="duration-${this.segmentCount}">Duration (Years)</label></td>
             <td><input type="number" id="duration-${this.segmentCount}" value="1" /></td>
             <td><button type="button" class="delete-segment">🗑️</button></td>
-        `;
+              `;
 
     table.appendChild(rateRow);
     table.appendChild(durationRow);

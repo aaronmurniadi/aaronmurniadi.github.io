@@ -1,9 +1,20 @@
 table {
-  max-width: 100%;
   width: 100%;
   box-sizing: border-box;
-  overflow-x: auto;
   font-family: monospace;
+}
+
+/* Container for scrollable tables */
+#table-result-wrapper {
+  overflow-x: auto;
+  width: 100%;
+  max-width: 100%;
+}
+
+/* Allow tables to expand beyond container width when needed */
+#table-result-wrapper table {
+  min-width: 100%;
+  width: auto;
 }
 
 th,
@@ -16,4 +27,8 @@ td {
 #amortization-table {
   margin-top: 20px;
   clear: both;
+}
+
+.interest-rates {
+  border: 1px solid #000 !important;
 }
