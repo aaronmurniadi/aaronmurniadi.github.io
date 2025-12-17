@@ -2,6 +2,7 @@ table {
   width: 100%;
   box-sizing: border-box;
   font-family: monospace;
+  border-collapse: collapse;
 }
 
 /* Container for scrollable tables */
@@ -30,5 +31,5 @@ td {
 }
 
 .interest-rates {
-  border: 1px solid #000 !important;
+  border: 1px solid #eeebee !important;
 }

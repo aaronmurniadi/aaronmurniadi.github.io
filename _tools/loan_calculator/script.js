@@ -62,6 +62,7 @@ class LoanCalculator {
     }
 
     const rateRow = document.createElement('tr');
+    rateRow.style.borderTop = '1px solid #000';
     rateRow.innerHTML = `
             <td><label for="rate-${this.segmentCount}">Interest Rate (%)</label></td>
             <td><input type="number" id="rate-${this.segmentCount}" value="5" /></td>
@@ -290,6 +291,8 @@ class LoanCalculator {
     }
 
     summaryDiv.innerHTML = `
+            <hr />
+            <h3>Simulation Result</h3>
             <div><strong>Principal:</strong> ${this.formatCurrency(loanAmount)}</div>
             <div><strong>Total Interest:</strong> ${this.formatCurrency(lastEntry.totalPaidInterest)}</div>
             <div><strong>Total Payment:</strong> ${this.formatCurrency(lastEntry.totalPaidPrincipal + lastEntry.totalPaidInterest)}</div>
