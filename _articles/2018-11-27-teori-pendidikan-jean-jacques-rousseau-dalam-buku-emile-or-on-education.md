@@ -128,7 +128,7 @@ penting dan terlihat dalam keseluruhan buku _Emile_. Rousseau menggunakan term
 ‘_Nature_’ bergantian dengan bentuk sifatnya ‘_Natural_’, tetapi ia tidak pernah
 mendefinisikannya secara pasti.[^10] Di bagian ini, Rousseau menyempitkan arti
 _Nature_ sebagai “perkembangan-perkembangan internal dari bagian tubuh dan
-organ-organ kita” (Dengan begitu, makna Nature di sini lebih dekat dengan
+organ-organ kita” (Dengan begitu, makna _Nature_ di sini lebih dekat dengan
 ‘kodrat’ seseorang sebagai manusia). Rousseau memulai pendahuluannya dengan
 membahas tiga (3) aspek yang paling berperan dalam pendidikan seseorang selama
 hidupnya, yaitu “_Nature_”, manusia, dan benda-benda (EM 38:3). Dari manusia,
@@ -137,7 +137,7 @@ hasil pendidikan dari benda-benda adalah “pengalaman mengenai berbagai benda
 yang mempengaruhi kita.” (EM 38:3). Tentang seberapa jauh manusia punya kendali
 atas ketiga aspek pendidikan itu, Rousseau menjelaskan:
 
-> Dari ketiga [aspek] pendidikan ini, yang datang dari nature berada di luar
+> Dari ketiga [aspek] pendidikan ini, yang datang dari _Nature_ berada di luar
 > kendali kita; yang datang dari benda-benda berada dalam kendali kita hanya
 > dalam beberapa hal; yang datang dari manusia ialah satu-satunya yang ada dalam
 > kendali kita secara penuh. Tetapi, kendali yang kita miliki itu hanya ada
@@ -168,17 +168,14 @@ aspek pendidikan). Rousseau bertanya, “Dari mana asalnya praktik yang tidak
 masuk akal ini?” Oleh Rousseau, praktik membedung bayi disebut praktik yang
 _denatured_---yang tidak _natural_.
 
-> (…) Para ibu yang meremehkan tugas pertama mereka, yang tidak lagi ingin
+> (...) Para ibu yang meremehkan tugas pertama mereka, yang tidak lagi ingin
 > memberi makan anak-anak mereka, akan menyerahkan anaknya kepada wanita-wanita
 > bayaran, yang menemukan diri mereka sebagai ibu dari anak-anak asing, dan alam
-> (nature) tidak pernah mengajarkan apa-apa [tentang kewajibannya terhadap
->
-> > anak-anak tersebut]. Karena itu, wanita-wanita tersebut hanya berusaha untuk
-> > menyelamatkan diri mereka sendiri. Mereka harus selalu waspada atas [seorang
-> >
-> > > > anak yang bebas bergerak]. Tetapi, ketika bayi itu terikat dengan baik,
-> > > > ia dapat membiarkannya di sudut tanpa terganggu oleh tangisannya. (EM
-> > > > 44: 1)
+> tidak pernah mengajarkan apa-apa [tentang kewajibannya terhadap anak-anak tersebut].
+> Karena itu, wanita-wanita tersebut hanya berusaha untuk
+> menyelamatkan diri mereka sendiri. Mereka harus selalu waspada atas [seorang anak yang bebas bergerak].
+> Tetapi, ketika bayi itu terikat dengan baik, ia
+> dapat membiarkannya di sudut tanpa terganggu oleh tangisannya. (EM 44: 1)
 
 Menyusui, merawat, dan mengurus bayi secara langsung adalah tugas pertama
 (_first duty_) ibu, dan dengan begitu seorang bayi harus disusui oleh ibunya,
@@ -186,13 +183,12 @@ bukan wanita lain. Menurut Rousseau, kebaikan yang didapat jika seorang ibu
 melaksanakan tugasnya, tidak hanya berkaitan dengan hubungan kasih antara ibu
 dan anak, tetapi juga keharmonisan keluarga secara keseluruhan:
 
-> “Biarkanlah para ibu berkenan untuk menyusui anak-anak mereka, [pada
->
-> > gilirannya] moral akan mereformasi dirinya sendiri, sentimen alam [(nature)]
-> > akan terbangun di setiap hati, dan membawa semuanya kembali bersama. (…)
-> > dari koreksi satu kesalahan ini akan muncul suatu reformasi; alam akan
-> > mendapatkan kembali semua haknya. Biarkan wanita sekali lagi menjadi ibu,
-> > [dan] pria akan segera menjadi ayah dan suami lagi.” (EM 46:1)
+> “Biarkanlah para ibu berkenan untuk menyusui anak-anak mereka, [pada gilirannya]
+> moral akan mereformasi dirinya sendiri, sentimen alamiah
+> akan terbangun di setiap hati, dan membawa semuanya kembali bersama. (...) dari
+> koreksi satu kesalahan ini akan muncul suatu reformasi; alam akan mendapatkan
+> kembali semua haknya. Biarkan wanita sekali lagi menjadi ibu, [dan] pria akan
+> segera menjadi ayah dan suami lagi.” (EM 46:1)
 
 Rousseau juga mengkritik ayah-ayah yang menggunakan bisnis, kantor, dan
 pekerjaan-pekerjaan sebagai alasan untuk tidak ikut mengurus anak secara
@@ -202,7 +198,7 @@ membangun relasi dengan anak-anaknya sendiri. Dengan uangnya ia mengirim anaknya
 ke sekolah-sekolah, ke tangan orang lain. Bahkan dengan saudaranya sendiri
 saling terpisah, dan saat bertemu bersama di rumah, mereka akan berperilaku
 sopan, tetapi melihat satu sama lain sebagai orang asing. Konsekuensinya adalah
-“… segera setelah lingkungan keluarga kehilangan manisnya kehidupan, [seorang
+“... segera setelah lingkungan keluarga kehilangan manisnya kehidupan, [seorang
 anak] akan menjadi buruk moral [dalam usaha untuk mendapatkannya kembali].
 Manusia mana yang begitu bodohnya sampai tidak dapat melihat rangkaian
 [sebab-akibat] ini?” (EM 48:5)
@@ -277,7 +273,7 @@ fisik dari anak. Mereka direbut dari alam dan dikurung di rumah seperti ‘budak
 dapur’. Seharusnya, anak-anak bermain di luar supaya tubuh dan pikiran dapat
 bekerja bersama untuk mengalami dunia. “Maka untuk belajar berpikir, kita harus
 menggerakkan tangan-kaki kita, menggunakan indera-indera kita, dan organ-organ
-kita … Pendapat yang selama ini mengatakan bahwa perkembangan nalar (reason)
+kita ... Pendapat yang selama ini mengatakan bahwa perkembangan nalar (reason)
 terlepas dari tubuh itu jauh dari kebenaran. Keadaan jasmani yang sehat lah yang
 membuat kegiatan berpikir lebih mudah dan pasti” (EM 125:3).
 
@@ -294,10 +290,10 @@ penglihatan. “Penglihatan adalah indera yang paling berkaitan dengan keputusan
 yang dibuat pikiran, dibutuhkan waktu lama untuk belajar melihat” (EM 143:1).
 Jadi, Rousseau menganjurkan anak-anak untuk diajari menggambar, supaya ia dapat
 mengukur, menilai, memperkirakan jarak, dan tinggi dari benda-benda. Dengan
-melihat dan menggambar bentuk objek-objek nyata, Alam (Nature) akan masuk
+melihat dan menggambar bentuk objek-objek nyata, Alam akan masuk
 menjadi bagian dalam imajinasi anak. Rousseau menekankan menggambar objek nyata
 dengan menulis, “Aku bahkan akan menghalanginya [Emile] untuk menggambar apa pun
-dari ingatan … karena ketika gambaran yang aneh dan luar biasa [dari imajinasi]
+dari ingatan ... karena ketika gambaran yang aneh dan luar biasa [dari imajinasi]
 menggantikan kenyataan yang ada pada benda, dia akan kehilangan proporsi dan
 selera terhadap keindahan Alam.” (EM 144:1)
 
@@ -420,7 +416,7 @@ _amour-propre_.
 > saat kebutuhan kita dipenuhi. Tetapi _amour-propre_ yang
 > membanding-bandingkan, tidak pernah puas dan tidak akan pernah, karena
 > sentimen ini bukan hanya mementingkan diri sendiri, tetapi juga menuntut orang
-> lain untuk mementingkan diri kita, yang memang tidak mungkin. (…) Dari
+> lain untuk mementingkan diri kita, yang memang tidak mungkin. (...) Dari
 > _Self-love_ lahir keinginan yang lembut dan penuh kasih sayang, dan keinginan
 > yang penuh benci dan meledak-ledak lahir dari _amour-prope_.” (EM 214:1)
 
@@ -444,7 +440,7 @@ dengan konstitusi spesiesnya dan gendernya demi memenuhi tempatnya di dunia
 fisik dan moral.” (EM 357: 2) Dengan itu, Rousseau mengemukakan suatu gagasan
 mengenai kesetaraan gender, “Yang kita tahu dengan pasti hanyalah bahwa
 satu-satunya kesamaan antara pria dan wanita adalah spesiesnya, dan satu-satunya
-perbedaan adalah dalam hal gender. (…) Dalam hal-hal yang sama, keduanya setara.
+perbedaan adalah dalam hal gender. (...) Dalam hal-hal yang sama, keduanya setara.
 Dalam hal-hal yang berbeda, mereka tidak dapat dibandingkan.” (EM 358:1)”
 Tetapi, Rousseau berpendapat bahwa Alam mau tidak mau membuat gender memengaruhi
 pendidikan, baik itu mengenai tubuh, agama, dan moral seseorang. Ia menuliskan,
@@ -549,16 +545,16 @@ mempertahankan warisan kita.
     Grimsley, Ronald. “Jean-Jacques Rousseau” dalam _Encyclopedia of
     Philosophy_. Edited by Donald M. Borchert, 2nd ed., vol. 8. (Detroit:
     Thomson Gale/Macmillan Reference USA, 2006): 507–516. Setelah Rousseau
-    terkenal, masa lalunya ini diketahui publik dan membuat Rousseau menjadi “…
+    terkenal, masa lalunya ini diketahui publik dan membuat Rousseau menjadi “...
     bahan maki-makian. Terlebih lagi setelah penerbitan buku Emile, dia dianggap
     sebagai lambang karikatur dari kemunafikan, suatu perwujudan nyata dari
     kegagalan bersatunya teori dan praktek.” Lih. O’Hagan, Timothy. _Rousseau_,
     p.2
 
-[^5]: Tjahjadi, _Sejarah Filsafat Modern_. “Rousseau”, p.63
-[^6]:
-    Tjahjadi, _Sejarah Filsafat Modern_. “Rousseau”, p.63 [^7]: Hardiman, F.
-    Budi. _Pemikiran-pemikiran yang Membentuk Dunia Modern_. (Jakarta: Penerbit
+[^5]:
+    Tjahjadi, _Sejarah Filsafat Modern_. “Rousseau”, p.63 [^6]: Tjahjadi,
+    _Sejarah Filsafat Modern_. “Rousseau”, p.63 [^7]: Hardiman, F. Budi.
+    _Pemikiran-pemikiran yang Membentuk Dunia Modern_. (Jakarta: Penerbit
     Erlangga, 2011), hlm. 97–98
 
 [^8]:
@@ -578,8 +574,8 @@ mempertahankan warisan kita.
   Ed. Donald M. Borchert, 2nd edition., vol. 8. (Detroit: Thomson Gale/Macmillan
   Reference USA, 2006): 507–516.
 
-- Hadirman, F. Budi. _Pemikiran-pemikiran yang Membentuk Dunia Modern_. (Jakarta:
-  Penerbit Erlangga, 2011).
+- Hadirman, F. Budi. _Pemikiran-pemikiran yang Membentuk Dunia Modern_.
+  (Jakarta: Penerbit Erlangga, 2011).
 
 - Hamersma, Harry. _Tokoh-tokoh Filsafat Barat Modern_. (Jakarta: Penerbit PT
   Gramedia, 1983).
