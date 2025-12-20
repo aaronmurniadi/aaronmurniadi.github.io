@@ -19,7 +19,7 @@ December 12th, 2025---In January 2026, we'll be leaving behind our office in the
 
 December 12th, 2025---Sunset with smokes from a fire in a food court near Kalibata City.
 
-[](/media/images/pano_kodak_vision3_500t.jpg)
+![](/media/images/pano_kodak_vision3_500t.jpg)
 
 December 12th, 2025---My first attempt at panorama photography.
 
