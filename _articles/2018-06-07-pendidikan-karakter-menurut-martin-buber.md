@@ -31,7 +31,7 @@ memandang murid semata dari fungsi-fungsi individualnya. Seorang murid memang
 memiliki kemampuan untuk mengetahui, namun bukan berarti tugas guru hanya
 sekadar menyuapkan pengetahuan agar ia dapat melakukan ini dan itu. Guru yang
 tulus selalu memandang murid secara _utuh_, sebagaimana adanya saat ini, dan
-yang terpenting, _apa saja potensi_ yang bersemayam di dalamnya. Buber
+yang terpenting, _apa saja potensi yang bersemayam di dalamnya_. Buber
 menggambarkan hal ini dengan indahnya, melalui pikiran seorang guru muda yang
 baru pertama kali mengajar:
 

@@ -2,7 +2,9 @@
    IMPORTS
    ========================================================================== */
 
-@import url('https://fonts.googleapis.com/css2?family=Libertinus+Serif:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&display=swap');
+@import url('https://fonts.cdnfonts.com/css/linux-biolinum-o');
+@import url('https://fonts.cdnfonts.com/css/linux-libertine-o');
+@import url('https://fonts.cdnfonts.com/css/inconsolata-2');
 
 /* ==========================================================================
    CSS VARIABLES
@@ -51,13 +53,21 @@ h4,
 h5,
 h6,
 .site-title {
+  font-family: 'Linux Biolinum O', sans-serif;
   color: var(--heading-color) !important;
+}
+
+h1 {
+  margin-bottom: 2rem !important;
 }
 
 code,
 pre,
 .highlight {
+  font-family: 'Inconsolata', monospace;
   background-color: var(--code-bg-color) !important;
+  line-height: 1.25 !important;
+  font-size: 0.9rem !important;
 }
 
 table {
@@ -114,11 +124,9 @@ td {
 }
 
 .main-content {
-  font-family: 'Libertinus Serif', 'Apple Garamond', 'Baskerville',
-    'Libre Baskerville', 'Droid Serif', 'Times New Roman', 'Times', serif,
-    'Noto Emoji', 'Quivira';
+  font-family: 'Linux Libertine O', serif;
   font-kerning: normal;
-  font-size: 1.05rem;
+  font-size: 1.1rem;
   max-width: 80ch;
 }
 
@@ -168,6 +176,7 @@ td {
 .main-content h4,
 .main-content h5,
 .main-content h6 {
+  font-family: 'Linux Biolinum O', sans-serif;
   font-weight: bold;
 }
 
@@ -194,9 +203,7 @@ td {
    ========================================================================== */
 
 .sidenote {
-  font-family: 'Libertinus Serif', 'Apple Garamond', 'Baskerville',
-    'Libre Baskerville', 'Droid Serif', 'Times New Roman', 'Times', serif,
-    'Noto Emoji', 'Quivira';
+  font-family: 'Linux Libertine O', serif;
   padding-left: 20px;
   margin-bottom: 1.5em;
   font-size: 0.8em;
