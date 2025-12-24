@@ -55,6 +55,8 @@ h6,
 .site-title {
   font-family: 'Linux Biolinum O', sans-serif;
   color: var(--heading-color) !important;
+  margin-bottom: 1rem !important;
+  margin-top: 1.25rem !important;
 }
 
 h1 {
@@ -127,7 +129,7 @@ td {
   font-family: 'Linux Libertine O', serif;
   font-kerning: normal;
   font-size: 1.1rem;
-  max-width: 80ch;
+  max-width: 78ch;
 }
 
 .main-content-wrap:has(#gallery-container) {
@@ -206,7 +208,9 @@ td {
   font-family: 'Linux Libertine O', serif;
   padding-left: 20px;
   margin-bottom: 1.5em;
-  font-size: 0.8em;
+  font-size: 0.9em;
+  text-align: justify;
+  hyphens: auto;
 }
 
 .sidenote-hover {
