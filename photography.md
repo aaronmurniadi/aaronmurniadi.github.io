@@ -13,11 +13,16 @@ catch my attention.
 
 ---
 
+![](/media/images/leaf.jpg)
+
+December 24th, 2025---This leaf was near one of the bodies of Wikiti's kitten
+that died.
+
 ![](/media/images/wikiti.jpg)
 
 December 24th, 2025---This is Wikiti, stray female cat that we often feed in
-front of our flat. She gave birth but lost her litter a few days ago due to
-heavy rain.
+front of our flat. She gave birth but tragically lost her entire litter a few
+days ago due to exposure to heavy rain.
 
 ![](/media/images/bidakara_9_end.jpg)
 
@@ -108,6 +113,7 @@ complex.
 </div>
 
 <div class="image-pair" markdown="1">
+
 ![](/media/images/kodak_vision3_200t_kodak_2393.jpg)
 
 October 22nd, 2025---SOHO Pancoran building. Construction by Agung Podomoro Land
