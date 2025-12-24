@@ -7,7 +7,9 @@ nav_order: 7
 
 # Refleksi Filosofis atas Film 'Hotel Rwanda' (2004) Berdasarkan Pemikiran Emmanuel Levinas
 
-_Film "Hotel Rwanda" (2004) menjadi sebuah lensa yang kuat untuk merefleksikan tragedi genosida Rwanda melalui kerangka pemikiran filosofis Emmanuel Levinas, seorang pemikir yang juga mengalami kengerian Holocaust._
+_Film "Hotel Rwanda" (2004) menjadi sebuah lensa yang kuat untuk merefleksikan
+tragedi genosida Rwanda melalui kerangka pemikiran filosofis Emmanuel Levinas,
+seorang pemikir yang juga mengalami kengerian Holocaust._[^1]
 
 ## Pendahuluan
 

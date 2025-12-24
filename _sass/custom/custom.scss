@@ -130,6 +130,7 @@ td {
   font-kerning: normal;
   font-size: 1.1rem;
   max-width: 78ch;
+  letter-spacing: -0.01rem;
 }
 
 .main-content-wrap:has(#gallery-container) {
@@ -348,4 +349,9 @@ p:has(a.reversefootnote)::before {
   + p {
   grid-column: 2;
   grid-row: 2;
+}
+
+blockquote p {
+  font-size: 1rem !important;
+  text-align: justify !important;
 }
