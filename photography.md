@@ -13,6 +13,12 @@ catch my attention.
 
 ---
 
+![](/media/images/wikiti.jpg)
+
+December 24th, 2025---This is Wikiti, stray female cat that we often feed in
+front of our flat. She gave birth but lost her litter a few days ago due to
+heavy rain.
+
 ![](/media/images/bidakara_9_end.jpg)
 
 December 12th, 2025---In January 2026, we'll be leaving behind our office in the
@@ -35,8 +41,8 @@ got spayed thanks to the government’s free initiative.
 
 ![](/media/images/dkpkp2_kodak_pro_image_100_kodak_2393.jpg)
 
-December 6th, 2025---Right in front of DKPKP Jakarta I also saw people working hard to
-feed their family.
+December 6th, 2025---Right in front of DKPKP Jakarta I also saw people working
+hard to feed their family.
 
 ![](/media/images/dkpkp_kodak_pro_image_100_kodak_2393.jpg)
 
