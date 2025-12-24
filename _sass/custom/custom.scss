@@ -282,103 +282,66 @@ td {
   }
 }
 
-/* ==========================================================================
-   MEDIA QUERIES
-   ========================================================================== */
-
-@media (max-width: 31.25rem) {
-  .main-content > main > p {
-    text-align: left;
-    hyphens: none;
-  }
-
-  .main:has(#gallery-container) {
-    position: relative;
-    max-width: 100%;
-  }
-
-  #gallery-container h1 {
-    padding-left: 1rem !important;
-    padding-right: 1rem !important;
-  }
-
-  #gallery-container p:not(:has(img)) {
-    padding-left: 1rem !important;
-    padding-right: 1rem !important;
-  }
-
-  .main-content:has(#gallery-container) {
-    text-align: center;
-  }
-
-  .main:has(#gallery-container) p a {
-    padding-left: 1rem !important;
-    padding-right: 1rem !important;
-  }
+.main:has(#gallery-container) {
+  position: relative;
+  max-width: 90%;
+  text-align: center;
 }
 
-@media (min-width: 50rem) {
-  .main:has(#gallery-container) {
-    position: relative;
-    max-width: 90%;
-    text-align: center;
-  }
+.main-content:has(#gallery-container) img {
+  border: 0.25em solid #000;
+}
 
-  .main-content:has(#gallery-container) img {
-    border: 0.25em solid #000;
-  }
+.home-avatar {
+  max-width: 200px;
+  height: auto;
+  margin-left: 0;
+  margin-right: auto;
+}
 
-  .home-avatar {
-    max-width: 200px;
-    height: auto;
-    margin-left: 0;
-    margin-right: auto;
-  }
+p:has(a.reversefootnote)::before {
+  content: '[' attr(data-footnote-num) ']: ';
+}
 
-  p:has(a.reversefootnote)::before {
-    content: '[' attr(data-footnote-num) ']: ';
-  }
+.image-pair {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+  margin-bottom: 2em;
+}
 
-  .image-pair {
-    display: flex;
-    flex-direction: column;
-    gap: 1em;
-    margin-bottom: 2em;
-  }
+.main-content:has(#gallery-container) .image-pair {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: start;
+}
 
-  .main-content:has(#gallery-container) .image-pair {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    align-items: start;
-  }
+.main-content:has(#gallery-container) .image-pair > p {
+  margin: 0;
+}
 
-  .main-content:has(#gallery-container) .image-pair > p {
-    margin: 0;
-  }
+.main-content:has(#gallery-container) .image-pair > p:has(img) {
+  grid-column: 1;
+  grid-row: 1;
+}
 
-  .main-content:has(#gallery-container) .image-pair > p:has(img) {
-    grid-column: 1;
-    grid-row: 1;
-  }
+.main-content:has(#gallery-container) .image-pair > p:has(img) + p {
+  grid-column: 1;
+  grid-row: 2;
+  text-align: center;
+  margin: 0em auto 0em auto;
+}
 
-  .main-content:has(#gallery-container) .image-pair > p:has(img) + p {
-    grid-column: 1;
-    grid-row: 2;
-    text-align: center;
-    margin: 0em auto 0em auto;
-  }
+.main-content:has(#gallery-container) .image-pair > p:has(img) ~ p:has(img) {
+  grid-column: 2;
+  grid-row: 1;
+}
 
-  .main-content:has(#gallery-container) .image-pair > p:has(img) ~ p:has(img) {
-    grid-column: 2;
-    grid-row: 1;
-  }
-
-  .main-content:has(#gallery-container)
-    .image-pair
-    > p:has(img)
-    ~ p:has(img)
-    + p {
-    grid-column: 2;
-    grid-row: 2;
-  }
+.main-content:has(#gallery-container)
+  .image-pair
+  > p:has(img)
+  ~ p:has(img)
+  + p {
+  grid-column: 2;
+  grid-row: 2;
 }
