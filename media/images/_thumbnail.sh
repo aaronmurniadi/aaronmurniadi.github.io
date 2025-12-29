@@ -36,7 +36,7 @@ for ext in "${EXTENSIONS[@]}"; do
 
     # Create thumbnail (max 500px, keeping aspect ratio)
     # Uses ImageMagick 'convert'
-    magick "$img" -resize '600x600>' "$outpath"
+    magick "$img" -resize '800x800>' "$outpath"
     echo "Created thumbnail: $outpath"
   done
 done
