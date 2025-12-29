@@ -1093,6 +1093,7 @@ body {
   margin-top: 0.25rem;
 }
 .main-content ol {
+  max-width: 80ch;
   list-style-type: none;
   counter-reset: step-counter;
 }
@@ -1128,6 +1129,7 @@ body {
   counter-increment: sub-counter;
 }
 .main-content ul {
+  max-width: 80ch;
   list-style: none;
 }
 .main-content ul > li::before {
