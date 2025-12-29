@@ -255,11 +255,6 @@ td {
   border-top: 1px solid #5c5962;
 }
 
-.image-pair {
-  display: flex;
-  flex-direction: column;
-}
-
 /* ==========================================================================
    GALLERY STYLES
    ========================================================================== */
@@ -277,7 +272,7 @@ td {
   }
 
   p:has(img) + p {
-    margin: 0em auto 2em auto;
+    margin: 0 3ch 2em 0;
     font-style: italic;
   }
 
@@ -287,14 +282,89 @@ td {
   }
 }
 
+.gallery-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+  padding: 1rem 0;
+}
+
+.gallery-grid > p:has(img) {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  gap: 0.5rem;
+}
+
+.gallery-grid > p:has(img) + p {
+  margin: 0 3ch 2em 0;
+  font-style: italic;
+  text-align: left;
+  font-size: 0.95rem;
+  line-height: 1.4;
+  color: var(--text-color);
+}
+
+.gallery-grid > p:has(img) a {
+  display: block;
+  width: 100%;
+  text-decoration: none;
+}
+
+.gallery-grid > p:has(img) img {
+  width: 100%;
+  height: auto;
+  border: 0.2em solid #000;
+}
+
+/* Responsive adjustments */
+@media (min-width: 1200px) {
+  .gallery-grid {
+    grid-template-columns: 2fr 1fr 2fr 1fr;
+    gap: 1.5rem;
+  }
+
+  /* Position images and descriptions in alternating columns */
+  .gallery-grid > p:has(img):nth-child(4n + 1) {
+    /* 1st, 5th, 9th images */
+    grid-column: 1;
+  }
+  .gallery-grid > p:has(img):nth-child(4n + 1) + p {
+    /* descriptions following 1st, 5th, 9th images */
+    grid-column: 2;
+  }
+  .gallery-grid > p:has(img):nth-child(4n + 3) {
+    /* 3rd, 7th, 11th images */
+    grid-column: 3;
+  }
+  .gallery-grid > p:has(img):nth-child(4n + 3) + p {
+    /* descriptions following 3rd, 7th, 11th images */
+    grid-column: 4;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1199px) {
+  .gallery-grid {
+    grid-template-columns: 2fr 1fr;
+    gap: 2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .gallery-grid {
+    gap: 1rem;
+  }
+}
+
 .main:has(#gallery-container) {
   position: relative;
   max-width: 90%;
-  text-align: center;
 }
 
 .main-content:has(#gallery-container) img {
   border: 0.25em solid #000;
+  margin: 0 auto;
 }
 
 .home-avatar {
@@ -306,40 +376,6 @@ td {
 
 p:has(a.reversefootnote)::before {
   content: '[' attr(data-footnote-num) ']: ';
-}
-
-.image-pair {
-  display: flex;
-  flex-direction: column;
-  gap: 1em;
-  margin-bottom: 2em;
-}
-
-.main-content:has(#gallery-container) .image-pair {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  align-items: start;
-}
-
-.main-content:has(#gallery-container) .image-pair > p {
-  margin: 0;
-}
-
-.main-content:has(#gallery-container) .image-pair > p:has(img) {
-  grid-column: 1;
-  grid-row: 1;
-}
-
-.main-content:has(#gallery-container) .image-pair > p:has(img) + p {
-  grid-column: 1;
-  grid-row: 2;
-  text-align: center;
-  margin: 0em auto 0em auto;
-}
-
-.main-content:has(#gallery-container) .image-pair > p:has(img) ~ p:has(img) {
-  grid-column: 2;
-  grid-row: 1;
 }
 
 .main-content:has(#gallery-container)

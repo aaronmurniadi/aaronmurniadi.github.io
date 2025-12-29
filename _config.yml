@@ -168,25 +168,24 @@ exclude:
   - vendor/gems/
   - vendor/ruby/
   - just-the-docs/
+# ############################################################
+# # Site configuration for the WebP Generator Plugin
+# # The values here represent the defaults if nothing is set
+# webp:
+#   enabled: false
 
-############################################################
-# Site configuration for the WebP Generator Plugin
-# The values here represent the defaults if nothing is set
-webp:
-  enabled: true
+#   # The number of threads to use for the webp conversion
+#   threads: 8
 
-  # The number of threads to use for the webp conversion
-  threads: 8
+#   # Set to true to always regenerate existing webp files
+#   regenerate: true
 
-  # Set to true to always regenerate existing webp files
-  regenerate: true
+#   # The quality of the webp conversion 0 to 100 (where 100 is least lossy)
+#   quality: 70
 
-  # The quality of the webp conversion 0 to 100 (where 100 is least lossy)
-  quality: 70
+#   # add ".gif" to the format list to generate webp for animated gifs as well
+#   formats: ['.jpeg', '.jpg', '.png', '.tiff']
 
-  # add ".gif" to the format list to generate webp for animated gifs as well
-  formats: ['.jpeg', '.jpg', '.png', '.tiff']
-
-  # File extensions for animated gif files
-  gifs: ['.gif']
-############################################################
+#   # File extensions for animated gif files
+#   gifs: ['.gif']
+# ############################################################

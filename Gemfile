@@ -20,7 +20,7 @@ group :jekyll_plugins do
   gem "jekyll-sitemap"
   gem "jekyll-pdf-embed"
   gem "jekyll-seo-tag"
-  gem "jekyll-webp", :git => "https://github.com/aaronmurniadi/jekyll-webp.git"
+  # gem "jekyll-webp", :git => "https://github.com/aaronmurniadi/jekyll-webp.git"
 end
 
 # Windows and JRuby does not include zoneinfo files, so bundle the tzinfo-data gem

@@ -4,4 +4,23 @@ layout: default_no_search
 
 <p><a href="{{ '/' | relative_url }}">← Back to Home</a></p>
 
-<div id="gallery-container">{{ content }}</div>
+<h1>📷 Photography</h1>
+
+<div style="max-width: 60ch">
+  <p>
+    Welcome to my little photography corner! Here you'll find a selection of
+    images I've taken. I enjoy capturing moments from daily life and unique
+    scenes that catch my attention. I also added descriptions to each image to
+    tell the story behind the photo.
+  </p>
+
+  <p>
+    <b>Note:</b> You can click on the images to view them in its original size.
+  </p>
+</div>
+
+<hr />
+
+<div id="gallery-container">
+  <div class="gallery-grid">{{ content }}</div>
+</div>
