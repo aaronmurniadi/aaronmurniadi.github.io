@@ -68,8 +68,8 @@ ga_tracking: 'G-5HB33FCT7Y'
 
 collections:
   # Define a collection named "posts", its documents reside in the "_posts" directory
-  dumps:
-    label: '📄 Dumps'
+  recaps:
+    label: '📄 Recap'
     permalink: '/:collection/:path/'
     output: true
   posts:
@@ -130,8 +130,8 @@ just_the_docs:
     summaries:
       name: '🗂️ Summaries'
       nav_fold: true
-    dumps:
-      name: '📄 Dumps'
+    recaps:
+      name: '📄 Recap'
       nav_fold: true
 
 # Plugins
