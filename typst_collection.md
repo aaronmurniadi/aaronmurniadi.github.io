@@ -1,54 +1,37 @@
 ---
-layout: post
-title: 'Typst Collection'
+title: Typst Collection
+layout: gallery
+description: |
+  Welcome to my Typst Collection corner! 
+  These are of the layouts I did in my spare time as a hobby. 
+  I love to read, but sometimes I'm distracted by the beautiful 
+  layout of the book/articles I read and I just want to be able to
+  replicate them myself.
+  <br><br>
+  Note: You can click on the images to get the PDFs. You can get the sources <a href="https://github.com/aaronmurniadi/aaronmurniadi.github.io/tree/main/media/typst" target="_blank">here</a>.
+nav_enabled: false
 nav_exclude: true
 ---
 
-# 📚 Typst Collection
+<style>
+img {
+  border: 0.1em solid #000;
+  box-sizing: border-box;
+}
+</style>
 
-{% comment %}
-Define a mapping between filenames and their titles
-{% endcomment %}
-{% assign pdf_title_map = "cv_aaron_murniadi.pdf:My CV" | split: "," %}
-{% assign pdf_title_map = pdf_title_map | push: "edward_packard_nine_things.pdf:Edward Packard's 'Nine Things I Learned In Ninety Years'" %}
-{% assign pdf_title_map = pdf_title_map | push: "philosophical_review.pdf:The Philosophical Review" %}
-{% assign pdf_title_map = pdf_title_map | push: "two_column_article.pdf:Simple Two Column Article" %}
+[![My CV Preview](/media/typst/cv_aaron_murniadi.jpg)](/media/typst/cv_aaron_murniadi.pdf)
 
-{% assign files = site.static_files | where_exp:"file","file.path contains 'media/files/'" %}
-{% assign pdfs = files | where_exp:"file", "file.extname == '.pdf'" %}
+My CV
 
-{% for pdf in pdfs %}
-{% assign typ_name = pdf.name | replace: '.pdf', '.typ' %}
-{% assign typ_file = files | where: 'name', typ_name | first %}
+[![Edward Packard Nine Things Preview](/media/typst/edward_packard_nine_things.jpg)](/media/typst/edward_packard_nine_things.pdf)
 
-{% assign custom_title = nil %}
-{% for mapping in pdf_title_map %}
-{% assign map_parts = mapping | strip | split: ":" %}
-{% if map_parts[0] == pdf.name %}
-{% assign custom_title = map_parts[1] %}
-{% break %}
-{% endif %}
-{% endfor %}
+Edward Packard - Nine Things I Learned in Ninety Years
 
-{%- capture title -%}
-{%- if custom_title -%}
-{{ custom_title }}
-{%- elsif site.data.pdf_titles and site.data.pdf_titles[pdf.name] -%}
-{{ site.data.pdf_titles[pdf.name] }}
-{%- else -%}
-{{ pdf.name | replace: '.pdf','' | replace: '_',' ' | capitalize }}
-{%- endif -%}
-{%- endcapture -%}
+[![Philosophical Review Journal Preview](/media/typst/philosophical_review.jpg)](/media/typst/philosophical_review.pdf)
 
-### {{ title | strip }}
+The Philosophical Review Journal
 
-<p style="text-align:right">
-  <a href="{{ site.url }}/{{ pdf.path }}">Download PDF</a>
-  {% if typ_file %}
-    | <a href="{{ typ_file.path }}">Download Source</a>
-  {% endif %}
-</p>
+[![Two Column Article Preview](/media/typst/two_column_article.jpg)](/media/typst/two_column_article.pdf)
 
-{% pdf "{{ site.url }}/{{ pdf.path }}" no_link %}
-
-{% endfor %}
+Basic Two Column Article
