@@ -95,7 +95,7 @@ content:
         type: boolean
       - name: body
         label: Body
-        type: rich-text  
+        type: rich-text
   - name: config
     label: Jekyll config
     path: _config.yml
@@ -104,9 +104,9 @@ content:
     label: CSS
     path: _sass/custom/custom.scss
     type: file
-  - name: typst_collection
+  - name: typst-collection
     label: Typst Collection
-    path: typst_collection.md
+    path: typst-collection.md
     type: file
     fields:
       - name: title

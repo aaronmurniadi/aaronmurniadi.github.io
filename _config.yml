@@ -95,7 +95,7 @@ nav_external_links:
     opens_in_new_tab: false
     hide_icon: true
   - title: '📚 Typst Collection'
-    url: /typst_collection
+    url: /typst-collection
     opens_in_new_tab: false
     hide_icon: true
   - title: '📄 My CV'
