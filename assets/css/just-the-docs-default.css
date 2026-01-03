@@ -155,7 +155,7 @@ pre,
 
 .main:has(#gallery-container) {
   position: relative;
-  max-width: 90%;
+  max-width: 100%;
 }
 
 .main-content:has(#gallery-container) img {
