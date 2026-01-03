@@ -3,6 +3,7 @@ title: Building a Custom Debian ISO
 layout: post
 date: 2025-12-01
 last_modified_date: 2025-12-04
+nav_order: 2
 ---
 
 # Building a Custom Debian ISO

@@ -12,6 +12,14 @@ nav_enabled: false
 nav_exclude: true
 ---
 
+[![](/media/images/thumbnail/one_satrio.jpg)](/media/images/one_satrio.jpg)
+
+January 3rd, 2026---Another view from the One Satrio Kuningan.
+
+[![](/media/images/thumbnail/oakwood.jpg)](/media/images/oakwood.jpg)
+
+January 3rd, 2026---Oakwood Premier Cozmo Jakarta as seen from One Satrio Kuningan.
+
 [![](/media/images/thumbnail/leaf.jpg)](/media/images/leaf.jpg)
 
 December 24th, 2025---This leaf was near one of the bodies of Wikiti's kitten

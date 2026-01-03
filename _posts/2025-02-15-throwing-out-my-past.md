@@ -3,6 +3,7 @@ layout: post
 title: 'Throwing out my Past'
 date: 2025-02-15
 last_modified_date: 2025-12-04
+nav_order: 3
 ---
 
 # Throwing out my Past

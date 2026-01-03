@@ -3,6 +3,7 @@ date: 2026-01-01
 last_modified_date: 2026-01-01
 title: Get font family and sizes from PDF
 layout: post
+nav_order: 1
 ---
 
 I have a hobby[^1] of recreating the typesetting of beautiful documents in

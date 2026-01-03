@@ -3,6 +3,7 @@ layout: post
 title: "Shell function to help with Python's Virtual Environment"
 date: 2025-02-12
 last_modified_date: 2025-12-04
+nav_order: 5
 ---
 
 # Shell function to help with Python's Virtual Environment

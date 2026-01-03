@@ -82,9 +82,6 @@ collections:
   summaries:
     permalink: '/:collection/:path/'
     output: true
-  typst_collection:
-    permalink: '/:collection/:path/'
-    output: true
   tools:
     permalink: '/:collection/:path/'
     output: true
