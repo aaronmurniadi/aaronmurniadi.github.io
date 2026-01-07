@@ -12,6 +12,11 @@ nav_enabled: false
 nav_exclude: true
 ---
 
+[![](/media/images/thumbnail/brains_out.jpg)](/media/images/brains_out.jpg)
+
+January 7th, 2026---"It pays to keep an open mind. But not so open your brain falls out",
+A poster on POLCA Coffee & Kitchen, Tebet.
+
 [![](/media/images/thumbnail/one_satrio.jpg)](/media/images/one_satrio.jpg)
 
 January 3rd, 2026---Another view from the One Satrio Kuningan.
