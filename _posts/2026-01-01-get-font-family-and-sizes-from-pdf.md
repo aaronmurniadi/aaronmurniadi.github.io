@@ -13,7 +13,8 @@ step is to obtain the PDF source; ideally, this is the true PDF and not a scan
 of the document. The next step is to find the paper size, which is fairly easy
 to do by checking the document properties. The hard part is identifying the
 fonts the PDF was typeset in, including the specific font sizes. To help with
-this, I turned to [GoogleGemini](<[https://gemini.google.com/](https://gemini.google.com/)>) to create a
+this, I turned to
+[Gemini](<[https://gemini.google.com/](https://gemini.google.com/)>) to create a
 Python script that analyzes the PDF and prints the page size, with the font name
 and size for each paragraph.
 
