@@ -1,21 +1,29 @@
 ---
 title: 📷 Photography
-description: |
-  Welcome to my little photography corner! Here you'll find a selection of
-  images I've taken. I enjoy capturing moments from daily life and unique
-  scenes that catch my attention. I also added descriptions to each image to
-  tell the story behind the photo.
-  <br><br>
-  Note: You can click on the images to view them in its original size.
 layout: gallery
 nav_enabled: false
 nav_exclude: true
 ---
 
+<div style="max-width: 80ch" markdown="1">
+
+Welcome to my little photography corner! Here you'll find a selection of images
+I've taken. I enjoy capturing moments from daily life and unique scenes that
+catch my attention. I also added descriptions to each image to tell the story
+behind the photo.
+
+Note: You can click on the images to view them in its original size.
+
+</div>
+
+---
+
+<div id="gallery-container"><div class="gallery-grid" markdown="1">
+
 [![](/media/images/thumbnail/brains_out.jpg)](/media/images/brains_out.jpg)
 
-January 7th, 2026---"It pays to keep an open mind. But not so open your brain falls out",
-A poster on POLCA Coffee & Kitchen, Tebet.
+January 7th, 2026---"It pays to keep an open mind. But not so open your brain
+falls out", A poster on POLCA Coffee & Kitchen, Tebet.
 
 [![](/media/images/thumbnail/one_satrio.jpg)](/media/images/one_satrio.jpg)
 
@@ -23,7 +31,8 @@ January 3rd, 2026---Another view from the One Satrio Kuningan.
 
 [![](/media/images/thumbnail/oakwood.jpg)](/media/images/oakwood.jpg)
 
-January 3rd, 2026---Oakwood Premier Cozmo Jakarta as seen from One Satrio Kuningan.
+January 3rd, 2026---Oakwood Premier Cozmo Jakarta as seen from One Satrio
+Kuningan.
 
 [![](/media/images/thumbnail/leaf.jpg)](/media/images/leaf.jpg)
 
@@ -134,3 +143,5 @@ constant---carrying the city's burdens through a tight passage.
 
 March 20th, 2025---Constellation of lights hanging above the table of
 decisions—silent witnesses to every verdict and hesitation.
+
+</div></div>

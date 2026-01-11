@@ -104,14 +104,14 @@ content:
     label: CSS
     path: _sass/custom/custom.scss
     type: file
-  - name: typst-collection
-    label: Typst Collection
-    path: typst-collection.md
+  - name: typesttings
+    label: Typesttings
+    path: typesttings.md
     type: file
     fields:
       - name: title
         label: Title
         type: string
       - name: body
-        label: Typst Collection
+        label: Typesttings
         type: rich-text

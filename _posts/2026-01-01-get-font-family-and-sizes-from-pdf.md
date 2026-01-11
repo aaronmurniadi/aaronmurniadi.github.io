@@ -17,7 +17,7 @@ this, I turned to [GoogleGemini](<[https://gemini.google.com/](https://gemini.go
 Python script that analyzes the PDF and prints the page size, with the font name
 and size for each paragraph.
 
-[^1]: You can see more of my typesettings [here](/typst-collection).
+[^1]: You can see more of my typesettings [here](/typesettings).
 
 ```python
 from pdfminer.high_level import extract_pages

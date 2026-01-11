@@ -91,8 +91,8 @@ nav_external_links:
     url: /photography
     opens_in_new_tab: false
     hide_icon: true
-  - title: '📚 Typst Collection'
-    url: /typst-collection
+  - title: '📚 Typesettings'
+    url: /typesettings
     opens_in_new_tab: false
     hide_icon: true
   - title: '📄 My CV'

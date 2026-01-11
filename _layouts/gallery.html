@@ -6,12 +6,4 @@ layout: default_no_search
 
 {% if page.title %}
 <h1>{{ page.title }}</h1>
-{% endif %} {% if page.description %}
-<div style="max-width: 60ch">{{ page.description }}</div>
-{% endif %}
-
-<hr />
-
-<div id="gallery-container">
-  <div class="gallery-grid">{{ content }}</div>
-</div>
+{% endif %} {{ content }}
