@@ -31,31 +31,32 @@ Note: You can click on the images to view in PDF format.
 <div id="gallery-container"><div class="gallery-grid" markdown="1">
 
 [![My CV
-Preview](/media/typst/cv_aaron_murniadi.jpg)](/media/typst/cv_aaron_murniadi.pdf)
+Preview](/media/typst/cv_aaron_murniadi.jpg)](/media/typst/cv_aaron_murniadi.pdf){:target="\_blank"}
 
-My CV
+My CV---[Source](https://github.com/aaronmurniadi/aaronmurniadi.github.io/blob/main/media/typst/cv_aaron_murniadi.typ){:target="\_blank"}
 
 [![Opinion slip of the Supreme Court of the United
-Stated.](/media/typst/supreme_court_usa.jpg)](/media/typst/supreme_court_usa.pdf)
+Stated.](/media/typst/supreme_court_usa.jpg)](/media/typst/supreme_court_usa.pdf){:target="\_blank"}
 
 Opinion slip of the Supreme Court of the United Stated.
-[Source](https://www.supremecourt.gov/opinions/21pdf/19-1392_6j37.pdf) (p.9)
+[Original](https://www.supremecourt.gov/opinions/21pdf/19-1392_6j37.pdf){:target="\_blank"}
+(p.9)---[Source](https://github.com/aaronmurniadi/aaronmurniadi.github.io/blob/main/media/typst/supreme_court_usa.typ){:target="\_blank"}
 
 [![Edward Packard's "Nine Things I Learned in Ninety
-Years".](/media/typst/edward_packard_nine_things.jpg)](/media/typst/edward_packard_nine_things.pdf)
+Years".](/media/typst/edward_packard_nine_things.jpg)](/media/typst/edward_packard_nine_things.pdf){:target="\_blank"}
 
 Edward Packard's "Nine Things I Learned in Ninety Years".
-[Source](https://edwardpackard.com/)
+[Original](https://edwardpackard.com/)---[Source](https://github.com/aaronmurniadi/aaronmurniadi.github.io/blob/main/media/typst/edward_packard_nine_things.typ){:target="\_blank"}
 
 [![The Philosophical Review
-Journal](/media/typst/philosophical_review.jpg)](/media/typst/philosophical_review.pdf)
+Journal](/media/typst/philosophical_review.jpg)](/media/typst/philosophical_review.pdf){:target="\_blank"}
 
-The Philosophical Review Journal
+The Philosophical Review Journal---[Source](https://github.com/aaronmurniadi/aaronmurniadi.github.io/blob/main/media/typst/philosophical_review.typ){:target="\_blank"}
 
 [![Basic Two Column
-Article](/media/typst/two_column_article.jpg)](/media/typst/two_column_article.pdf)
+Article](/media/typst/two_column_article.jpg)](/media/typst/two_column_article.pdf){:target="\_blank"}
 
-Basic Two Column Article
+Basic Two Column Article---[Source](https://github.com/aaronmurniadi/aaronmurniadi.github.io/blob/main/media/typst/two_column_article.typ){:target="\_blank"}
 
 </div></div>
 
@@ -65,6 +66,6 @@ Basic Two Column Article
 
 [![Frederick Henning's Maid of Orleans](/media/latex/thumbnail/maid_of_orleans.jpg)](/media/latex/maid_of_orleans.pdf)
 
-Frederick Henning's Maid of Orleans
+Frederick Henning's Maid of Orleans---[Source](https://github.com/aaronmurniadi/aaronmurniadi.github.io/blob/main/media/latex/maid_of_orleans){:target="\_blank"}
 
 </div></div>
