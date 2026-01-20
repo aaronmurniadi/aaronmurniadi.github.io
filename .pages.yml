@@ -4,11 +4,6 @@ media:
     input: media/images
     output: /media/images
     categories: [image]
-  - name: files
-    label: Files
-    input: media/files
-    output: /media/files
-    categories: [document]
 content:
   - name: posts
     label: Posts
