@@ -15,8 +15,20 @@ if ! command -v magick &> /dev/null; then
     exit 1
 fi
 
+# Get list of changed .typ files from git (relative to repo root)
+# Look for files in media/typst/ directory
+changed_typ_files=$(git status --porcelain | grep '^...media/typst/.*\.typ$' | sed 's/^...//' | sed 's|media/typst/||')
+
+# If no changed .typ files, exit early
+if [ -z "$changed_typ_files" ]; then
+    echo "No .typ files have been changed."
+    exit 0
+fi
+
+echo "Found changed .typ files: $changed_typ_files"
+
 shopt -s nullglob
-for typfile in *.typ; do
+for typfile in $changed_typ_files; do
     base="${typfile%.typ}"
     pdffile="${base}.pdf"
     jpgfile="${base}.jpg"

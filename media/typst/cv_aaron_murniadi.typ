@@ -57,11 +57,19 @@
 
 #let today = datetime.today().display("[month repr:long] [day], [year]")
 
-#set par(justify: true)
+#set par(
+  justify: true,
+  justification-limits: (
+    tracking: (max: 0.02em, min: -0.015em),
+  ),
+)
+
+
 #set text(
-  hyphenate: false,
-  number-type: "lining",
+  hyphenate: true,
+  lang: "en",
   number-width: "proportional",
+  costs: (hyphenation: 30%),
 )
 
 #set page(paper: "a4", margin: 0.95in, footer: [#text(
@@ -120,19 +128,41 @@ Professional QA Software Engineer with expertise in both manual and automated te
       fill: (none, none),
       align: (right, left),
       [*Programming Languages*],
-      [#link("https://www.oracle.com/java/")[Java], #link("https://go.dev/")[Go], #link("https://www.python.org/")[Python]],
+      [
+        #link("https://www.oracle.com/java/")[Java],
+        #link("https://go.dev/")[Go],
+        #link("https://www.python.org/")[Python]
+      ],
 
-      [*Testing Frameworks*],
-      [#link("https://www.selenium.dev/")[Selenium], #link("https://rest-assured.io/")[REST Assured], #link("https://square.github.io/okhttp/")[OkHttp], #link("https://github.com/cucumber/cucumber-jvm")[Cucumber-JVM], #link("https://github.com/karatelabs/karate")[Karate DSL], #link("https://github.com/behave/behave")[Behave], #link("https://appium.io/")[Appium]],
+      [*Testing, Development,\ and Infrastructure*],
+      [
+        #link("https://www.selenium.dev/")[Selenium],
+        #link("https://appium.io/")[Appium],
+        #link("https://github.com/karatelabs/karate")[Karate DSL],
+        #link("https://github.com/cucumber/cucumber-jvm")[Cucumber-JVM],
+        #link("https://rest-assured.io/")[REST Assured],
+        #link("https://github.com/behave/behave")[Behave],
+        #link("https://square.github.io/okhttp/")[OkHttp],
+        #link("https://docs.docker.com/")[Docker],
+        #link("https://git-scm.com/")[Git],
+        #link("https://www.atlassian.com/software/bamboo")[Bamboo],
+        #link("https://gradle.org/")[Gradle],
+        #link("https://maven.apache.org/")[Maven],
+        #link("https://swagger.io/specification/")[OpenAPI],
+        #link("https://redis.io/")[Redis],
+        #link("https://www.mysql.com/")[MySQL],
+        #link("https://postgis.net/")[PostGIS],
+        #link("https://opencv.org/")[OpenCV],
+        #link("https://live-team.pages.debian.net/live-manual/html/live-manual/index.en.html")[Debian Live ISO Builder]
+      ],
 
-      [*Development Tools*],
-      [#link("https://maven.apache.org/")[Maven], #link("https://gradle.org/")[Gradle], #link("https://opencv.org/")[OpenCV], #link("https://git-scm.com/")[Git], #link("https://swagger.io/specification/")[OpenAPI], #link("https://www.atlassian.com/software/bamboo")[Bamboo]],
+      [*Development Methodologies*],
+      [
+        #link("https://agilemanifesto.org/")[Agile],
+        #link("https://cucumber.io/docs/bdd/")[Behavior-Driven Development testing]
+      ],
 
-      [*Testing Specialties*], [API Testing, Web Automation, Mobile Testing],
-
-      [*Methodologies*], [#link("https://agilemanifesto.org/")[Agile], Behavior-Driven Development testing],
-
-      [*Other*], [Cybersecurity Research, FOSS Advocacy, Technical Writing],
+      [*Other*], [Cybersecurity Research, FOSS Advocacy, Technical Writing,],
     )
   ],
 )
@@ -143,7 +173,7 @@ Professional QA Software Engineer with expertise in both manual and automated te
   [Security Research],
   [
     #publication-heading(
-      detail: [*Vulnerability Disclosure Program Contributions* \ Independently discovered and responsibly disclosed two critical security vulnerabilities affecting national and international web applications, demonstrating strong ethical hacking capabilities and commitment to cybersecurity best practices.],
+      detail: [*Vulnerability Disclosure Contributor* \ Independently discovered and responsibly disclosed two critical security vulnerabilities affecting national and international web applications, demonstrating strong ethical hacking capabilities and commitment to cybersecurity best practices.],
       year: [2022--2023],
     )
   ],
