@@ -18,6 +18,9 @@
 
 #set par(
   justify: true,
+  justification-limits: (
+    tracking: (max: 0.025em, min: -0.01em),
+  ),
   first-line-indent: 1em,
   leading: 0.5em,
 )

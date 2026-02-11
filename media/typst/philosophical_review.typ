@@ -1,6 +1,11 @@
 #set page(width: 6in, height: 9.5in, margin: (top: 0.75in, bottom: 1in))
 #set text(size: 11pt, number-type: "lining", kerning: true, ligatures: true)
-#set par(justify: true)
+#set par(
+  justify: true,
+  justification-limits: (
+    tracking: (max: 0.025em, min: -0.01em),
+  ),
+)
 #let journal-prefix = [The]
 #let journal-name = [Philosophical Review]
 #let journal-title = [The Philosophical Review]

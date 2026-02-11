@@ -31,6 +31,9 @@
 
   set par(
     justify: true,
+    justification-limits: (
+      tracking: (max: 0.025em, min: -0.001em),
+    ),
     first-line-indent: 1em,
     leading: 0.50em,
     spacing: 0.75em,
@@ -101,7 +104,9 @@
     #v(1.5em)
     #text(style: "italic")[*Abstract*]
     #block(inset: (left: 2.5em, right: 2.5em))[
-      #par(justify: true)[#abstract]
+      #par(justify: true, justification-limits: (
+        tracking: (max: 0.025em, min: -0.01em),
+      ))[#abstract]
     ]
     #v(1em)
   ])
