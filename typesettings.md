@@ -30,6 +30,10 @@ Note: You can click on the images to view in PDF format.
 
 <div id="gallery-container"><div class="gallery-grid" markdown="1">
 
+[![Maid of Orleans](/media/typst/maid_of_orleans/main.jpg)](/media/typst/maid_of_orleans/main.pdf){:target="\_blank"}
+
+The Maid of Orleans---[Source](https://github.com/aaronmurniadi/aaronmurniadi.github.io/blob/main/media/typst/maid_of_orleans/main.typ){:target="\_blank"}
+
 [![My CV
 Preview](/media/typst/cv_aaron_murniadi.jpg)](/media/typst/cv_aaron_murniadi.pdf){:target="\_blank"}
 
