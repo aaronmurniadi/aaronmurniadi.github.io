@@ -26,8 +26,6 @@ Note: You can click on the images to view in PDF format.
 
 ---
 
-## Typst
-
 <div id="gallery-container"><div class="gallery-grid" markdown="1">
 
 [![Maid of Orleans](/media/typst/maid_of_orleans/main.jpg)](/media/typst/maid_of_orleans/main.pdf){:target="\_blank"}
@@ -61,15 +59,5 @@ The Philosophical Review Journal---[Source](https://github.com/aaronmurniadi/aar
 Article](/media/typst/two_column_article.jpg)](/media/typst/two_column_article.pdf){:target="\_blank"}
 
 Basic Two Column Article---[Source](https://github.com/aaronmurniadi/aaronmurniadi.github.io/blob/main/media/typst/two_column_article.typ){:target="\_blank"}
-
-</div></div>
-
-## LaTeX
-
-<div id="gallery-container"><div class="gallery-grid" markdown="1">
-
-[![Frederick Henning's Maid of Orleans](/media/latex/thumbnail/maid_of_orleans.jpg)](/media/latex/maid_of_orleans.pdf)
-
-Frederick Henning's Maid of Orleans---[Source](https://github.com/aaronmurniadi/aaronmurniadi.github.io/blob/main/media/latex/maid_of_orleans){:target="\_blank"}
 
 </div></div>
