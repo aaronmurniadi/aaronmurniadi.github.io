@@ -1,0 +1,227 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Typst Previewer</title>
+    <script type="module" id="typst"
+        src="https://cdn.jsdelivr.net/npm/@myriaddreamin/typst.ts@0.7.0-rc2/dist/esm/contrib/all-in-one-lite.bundle.js"></script>
+
+    <style>
+        body,
+        html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            font-family: sans-serif;
+            background: #f5f5f5;
+            overflow: hidden;
+        }
+
+        #loader {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .spinner {
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #3498db;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        #pdf-container {
+            display: none;
+            width: 100vw;
+            height: 100vh;
+        }
+
+        embed {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        .error-msg {
+            color: #d32f2f;
+            text-align: center;
+            padding: 20px;
+        }
+
+        /* Print Button Styling */
+        #print-btn {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            padding: 12px 24px;
+            background: #3498db;
+            color: white;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            font-weight: bold;
+            z-index: 100;
+        }
+
+        #print-btn:hover {
+            background: #2980b9;
+        }
+
+        #print-btn:disabled {
+            background: #bdc3c7;
+            cursor: not-allowed;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="loader">
+        <div class="spinner"></div>
+        <p id="status">Loading Typst...</p>
+    </div>
+
+    <button id="print-btn" style="display:none;">Print as A4</button>
+
+    <div id="pdf-container">
+        <embed id="pdf-embed" type="application/pdf">
+    </div>
+
+    <script type="module">
+        const status = document.getElementById('status');
+        const container = document.getElementById('pdf-container');
+        const loader = document.getElementById('loader');
+        const printBtn = document.getElementById('print-btn');
+
+        let rawContent = ""; // Stores the typst source for re-rendering
+
+        const initTypst = async () => {
+            const VERSION = '0.7.0-rc2';
+            const BASE_URL = `https://cdn.jsdelivr.net/npm/@myriaddreamin`;
+
+            try {
+                // Initialize Compiler and Renderer
+                $typst.setCompilerInitOptions({
+                    getModule: () => `${BASE_URL}/typst-ts-web-compiler@${VERSION}/pkg/typst_ts_web_compiler_bg.wasm`
+                });
+                $typst.setRendererInitOptions({
+                    getModule: () => `${BASE_URL}/typst-ts-renderer@${VERSION}/pkg/typst_ts_renderer_bg.wasm`
+                });
+
+                // Fetch content
+                status.innerText = "Fetching content.typ...";
+                rawContent = "= Hello Typst\nEdit your file to update.";
+                try {
+                    const res = await fetch('content.typ');
+                    if (res.ok) rawContent = await res.text();
+                    rawContent = rawContent.replace(/#v\(([0-9.]+fr)\)/g, '#v(1em)').replace(/([0-9.]+)(fr)/g, (match, p1, p2) => `${Number(p1) * 1.2}${p2}`);
+                } catch (e) { console.warn("Using default content."); }
+
+                // Initial Screen Render
+                await renderPreview();
+
+                // Show UI elements
+                loader.style.display = 'none';
+                container.style.display = 'block';
+                printBtn.style.display = 'block';
+
+                // Listen for Print Shortcut (Ctrl+P / Cmd+P)
+                window.addEventListener('keydown', (e) => {
+                    if ((e.ctrlKey || e.metaKey) && e.key === 'p') {
+                        e.preventDefault();
+                        printA4();
+                    }
+                });
+
+                printBtn.onclick = printA4;
+
+            } catch (err) {
+                loader.innerHTML = `<div class="error-msg"><strong>Error:</strong> ${err.message}</div>`;
+            }
+        };
+
+        async function renderPreview() {
+            status.innerText = "Generating Preview...";
+            // Calculate a responsive width for the web preview
+            const widthCm = (window.innerWidth * 0.026458).toFixed(2);
+            const marginX = window.innerWidth > window.innerHeight * 1.77 ? '30%' : '5%';
+
+            const setupPage = `#set page(width: ${widthCm}cm, height: auto, margin: (x: ${marginX}, y: 3em))\n`;
+            const setupText = `#set text(size:14pt)\n`;
+            const pdfContent = setupPage + setupText + rawContent
+
+            const pdfData = await $typst.pdf({ mainContent: pdfContent });
+            const blobUrl = URL.createObjectURL(new Blob([pdfData], { type: 'application/pdf' }));
+
+            document.getElementById('pdf-embed').src = `${blobUrl}#toolbar=0`;
+        }
+
+        async function printA4() {
+            printBtn.disabled = true;
+            printBtn.innerText = "Preparing Print...";
+
+            try {
+                // 1. Rerender specifically for A4 Paper
+                const setupA4 = `#set page("a4", margin: 2.5cm)\n#set text(size: 11pt)\n`;
+                const pdfData = await $typst.pdf({ mainContent: setupA4 + rawContent });
+                const blob = new Blob([pdfData], { type: 'application/pdf' });
+                const blobUrl = URL.createObjectURL(blob);
+
+                // 2. Open in a hidden iframe (Improved Logic)
+                const printFrame = document.createElement('iframe');
+                printFrame.style.visibility = 'hidden';
+                printFrame.style.position = 'fixed';
+                printFrame.style.right = '0';
+                printFrame.style.bottom = '0';
+                printFrame.src = blobUrl;
+
+                document.body.appendChild(printFrame);
+
+                // 3. Robust Print Trigger
+                printFrame.onload = () => {
+                    // Short delay to ensure PDF plugin is active
+                    setTimeout(() => {
+                        try {
+                            printFrame.contentWindow.focus();
+                            printFrame.contentWindow.print();
+                        } catch (e) {
+                            console.error("Print failed, opening in new tab instead.");
+                            window.open(blobUrl, '_blank');
+                        }
+
+                        // 4. Don't remove the frame immediately. 
+                        // Wait for the user to interact with the dialog.
+                        printBtn.disabled = false;
+                        printBtn.innerText = "Print as A4";
+                    }, 500);
+                };
+            } catch (err) {
+                console.error(err);
+                alert("Print failed: " + err.message);
+                printBtn.disabled = false;
+            }
+        }
+
+        // Bootstrapping logic
+        const scriptTag = document.getElementById('typst');
+        if (scriptTag) {
+            scriptTag.addEventListener('load', initTypst);
+            if (window.$typst) initTypst();
+        }
+    </script>
+</body>
+
+</html>
