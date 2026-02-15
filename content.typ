@@ -182,7 +182,7 @@ Professional QA Software Engineer with expertise in both manual and automated te
   [Publications],
   [
     #publication-heading(
-      detail: [Murniadi, Aaron Purnomo (2022) "Waktu Intuitif (durasi) sebagai Dasar Adanya Kehendak Bebas Manusia Menurut Henri Bergson." #link("https://ejournal.driyarkara.ac.id/index.php/driyarkara")[_Driyarkara Jurnal Filsafat_], 42 (2): 5. pp. 81--91. ISSN 2809-9516],
+      detail: [Murniadi, Aaron Purnomo (2022) "Waktu Intuitif (durasi) sebagai Dasar Adanya Kehendak Bebas Manusia Menurut Henri Bergson." #link("https://karya.brin.go.id/id/eprint/25247")[_Driyarkara Jurnal Filsafat_], 42 (2): 5. pp. 81--91. ISSN 2809-9516],
       year: [2022],
     )
     #publication-heading(
