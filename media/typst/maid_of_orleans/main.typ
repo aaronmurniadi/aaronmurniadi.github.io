@@ -3,7 +3,7 @@
 
 // Page
 #show: typearea.with(
-  two-sided: false,
+  two-sided: true,
   paper: "iso-b6",
   div: 13,
   binding-correction: 5mm,
@@ -22,10 +22,11 @@
 #set par(
   justify: true,
   justification-limits: (
-    tracking: (max: 0.02em, min: -0.015em),
+    tracking: (max: 0.02em, min: -0.025em),
   ),
-  first-line-indent: (amount: 0.85em, all: false),
-  spacing: 0.65em,
+  first-line-indent: (amount: 1em, all: false),
+  spacing: 0.7em,
+  leading: 0.7em,
 )
 
 // Use symbols for footnotes instead of numbers
@@ -117,7 +118,7 @@
 #show outline.entry.where(
   level: 1,
 ): it => {
-  v(17pt, weak: true)
+  v(1.5em, weak: true)
   it
 }
 
@@ -129,14 +130,20 @@
     align(alignment, numbering("i", page_number))
   },
 )
+
+#counter(page).update(1)
 #outline(title: "Table of Contents", indent: auto)
 
-
 // List of Figures
-#set figure(numbering: "i", placement: auto)
+#set figure(
+  numbering: none,
+  placement: auto,
+  kind: "custom-image",
+  supplement: [],
+)
 #outline(
   title: "List of Figures",
-  target: figure.where(kind: image),
+  target: figure.where(kind: "custom-image"),
 )
 
 // Body
@@ -150,9 +157,8 @@
   },
 )
 
-= Preface
-
 #counter(page).update(1)
+= Preface
 
 The life story of Joan of Arc, as told in this volume, closely follows
 the historical facts as well as the official records bearing upon her
@@ -3214,6 +3220,15 @@ possession, for the English had been driven out of that whole region.
 The master of the castle was Jean Renault, and by his side sat his happy
 spouse, Marie of Chafleur.
 
+
+#align(center)[
+  #v(2fr)
+  #sym.star\
+  #v(-0.5em)
+  #sym.star
+  #sym.star
+  #v(1fr)
+]
 
 = Appendix
 
