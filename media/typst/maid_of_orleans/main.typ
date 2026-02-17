@@ -3,7 +3,7 @@
 
 // Page
 #show: typearea.with(
-  two-sided: true,
+  two-sided: false,
   paper: "iso-b6",
   div: 13,
   binding-correction: 5mm,
@@ -82,6 +82,9 @@
 ]
 
 #pagebreak()
+#show: typearea.with(
+  two-sided: true,
+)
 
 // Frontmatters
 #align(center)[
