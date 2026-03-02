@@ -1,0 +1,28 @@
+<div class="side-bar">
+  <div class="site-header">
+    <a href="/" class="site-title">
+      {{ site.title }}
+    </a>
+  </div>
+  
+  <nav class="site-nav">
+    <ul class="nav-list">
+      {% for collection in site.collections %}
+        {% if collection.output %}
+          <li class="nav-list-item">
+            <a href="#" class="nav-list-expander">
+              {{ collection.label }}
+            </a>
+            <ul class="nav-list-child-list">
+              {% for item in collections[collection.key] %}
+                <li class="nav-list-item">
+                  <a href="{{ item.url }}">{{ item.title }}</a>
+                </li>
+              {% endfor %}
+            </ul>
+          </li>
+        {% endif %}
+      {% endfor %}
+    </ul>
+  </nav>
+</div>

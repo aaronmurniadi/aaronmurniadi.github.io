@@ -1,0 +1,35 @@
+{
+    "name": "aaronmurniadi.github.io",
+    "version": "1.0.0",
+    "description": "A Software Engineer with a passion for technology, coding, and open-source software.",
+    "main": "index.js",
+    "scripts": {
+        "build": "eleventy",
+        "start": "eleventy --serve",
+        "debug": "DEBUG=* eleventy"
+    },
+    "keywords": [
+        "blog",
+        "portfolio",
+        "11ty",
+        "eleventy"
+    ],
+    "author": "Aaron P. Murniadi",
+    "license": "MIT",
+    "dependencies": {
+        "@11ty/eleventy": "^3.0.0",
+        "@11ty/eleventy-plugin-bundle": "^2.0.0",
+        "@11ty/eleventy-plugin-rss": "^2.0.2",
+        "@11ty/eleventy-plugin-syntaxhighlight": "^5.0.0",
+        "clean-css": "^5.3.3",
+        "eleventy-plugin-seo": "github:artstorm/eleventy-plugin-seo",
+        "html-minifier": "^4.0.0",
+        "markdown-it": "^14.1.0",
+        "markdown-it-anchor": "^9.2.0",
+        "markdown-it-attrs": "^4.2.1",
+        "markdown-it-footnote": "^4.0.0"
+    },
+    "devDependencies": {
+        "@11ty/eleventy-img": "^5.0.0"
+    }
+}

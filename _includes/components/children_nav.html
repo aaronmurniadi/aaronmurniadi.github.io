@@ -1,0 +1,21 @@
+{% if page.has_toc != false and page.toc %}
+<nav class="children-nav">
+  <h2 class="children-nav-title">Table of Contents</h2>
+  <ul class="children-nav-list">
+    {% for item in page.toc %}
+    <li class="children-nav-item">
+      <a href="#{{ item.id | slugify }}">{{ item.title }}</a>
+      {% if item.children %}
+      <ul class="children-nav-child-list">
+        {% for child in item.children %}
+        <li class="children-nav-item">
+          <a href="#{{ child.id | slugify }}">{{ child.title }}</a>
+        </li>
+        {% endfor %}
+      </ul>
+      {% endif %}
+    </li>
+    {% endfor %}
+  </ul>
+</nav>
+{% endif %}

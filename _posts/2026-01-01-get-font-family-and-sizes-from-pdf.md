@@ -6,9 +6,11 @@ layout: post
 nav_order: 1
 ---
 
-I have a hobby[^1] of recreating the typesetting of beautiful documents in
+# Get font family and sizes from PDF
+
+I have a hobby of recreating the typesetting of beautiful documents in
 [LaTeX](<[https://www.latex-project.org/](https://www.latex-project.org/)>) or,
-more recently, [Typst](<[https://typst.app/](https://typst.app/)>). The first
+more recently, [Typst](<[https://typst.app/](https://typst.app/)>).[^1] The first
 step is to obtain the PDF source; ideally, this is the true PDF and not a scan
 of the document. The next step is to find the paper size, which is fairly easy
 to do by checking the document properties. The hard part is identifying the

@@ -1,5 +1,6 @@
 ---
-layout: post_no_comment
+title: Toolbox
+layout: simple
 ---
 
 # 🧰 Toolbox
@@ -104,10 +105,10 @@ layout: post_no_comment
 </style>
 
 <div class="toolbox-grid">
-  {% for tool in site.tools %}
-    <a href="{{ tool.url | relative_url }}" class="toolbox-card-link">
+  {% for tool in collections.tools %}
+    <a href="{{ tool.url }}" class="toolbox-card-link">
       <div class="toolbox-card">
-        <span class="toolbox-tool-title">{{ tool.title }}</span>
+        <span class="toolbox-tool-title">{{ tool.data.title }}</span>
       </div>
     </a>
   {% endfor %}

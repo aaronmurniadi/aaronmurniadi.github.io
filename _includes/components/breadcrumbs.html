@@ -1,0 +1,19 @@
+{% if page.url != "/" %}
+<nav class="breadcrumbs nav">
+  <ol class="breadcrumbs-list">
+    <li class="breadcrumbs-list-item">
+      <a href="/">Home</a>
+    </li>
+    {% if page.collection %}
+    <li class="breadcrumbs-list-item">
+      <a href="/{{ page.collection }}/">{{ page.collection | capitalize }}</a>
+    </li>
+    {% endif %}
+    {% if page.title %}
+    <li class="breadcrumbs-list-item">
+      <span>{{ page.title }}</span>
+    </li>
+    {% endif %}
+  </ol>
+</nav>
+{% endif %}

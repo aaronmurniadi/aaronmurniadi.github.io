@@ -1,8 +1,6 @@
 ---
 title: Contact
-layout: post
-nav_enabled: true
-nav_exclude: true
+layout: simple
 ---
 
 # 📞 Contact

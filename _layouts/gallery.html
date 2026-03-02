@@ -1,9 +1,11 @@
 ---
-layout: default_no_search
+layout: simple
 ---
 
-<p><a href="{{ '/' | relative_url }}">← Back to Home</a></p>
+<p class="text-small text-grey-dk-000 mb-0 mr-2">
+    Gallery
+</p>
 
 {% if page.title %}
 <h1>{{ page.title }}</h1>
-{% endif %} {{ content }}
+{% endif %} {{ content | safe }}

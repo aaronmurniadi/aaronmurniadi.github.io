@@ -513,7 +513,6 @@ bangsa Indonesia.
 - Vickers, J. "The Problem of Induction.", E. N. Zalta (Ed.), _The Stanford
   Encyclopedia of Philosophy_. Stanford University, 2016. (Diakses 1 Desember 2019) (https://plato.stanford.edu/archives/spr2016/entries/induction-problem/)
 
----
 
 [^1]:
     Peraturan Menteri Pendidikan dan Kebudayaan Republik Indonesia No. 81A

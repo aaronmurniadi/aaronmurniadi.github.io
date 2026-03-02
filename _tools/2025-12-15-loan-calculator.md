@@ -6,4 +6,4 @@ title: 🧮 Loan Calculator
 
 # 🧮 Loan Calculator
 
-{% include_relative loan_calculator/index.html %}
+{% include "_tools/loan_calculator/index.html" %}

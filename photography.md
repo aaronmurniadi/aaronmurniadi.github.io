@@ -1,8 +1,6 @@
 ---
-title: 📷 Photography
-layout: gallery
-nav_enabled: false
-nav_exclude: true
+title: Photography
+layout: simple
 ---
 
 <div style="max-width: 80ch" markdown="1">

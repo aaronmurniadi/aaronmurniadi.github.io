@@ -1,0 +1,13 @@
+<nav class="aux-nav">
+  <ul class="aux-nav-list">
+    {% for link in site.aux_links %}
+      <li class="aux-nav-list-item">
+        <a href="{{ link.url }}" 
+           {% if link.opens_in_new_tab %}target="_blank"{% endif %}
+           {% if link.hide_icon %}class="no-icon"{% endif %}>
+          {{ link.title }}
+        </a>
+      </li>
+    {% endfor %}
+  </ul>
+</nav>

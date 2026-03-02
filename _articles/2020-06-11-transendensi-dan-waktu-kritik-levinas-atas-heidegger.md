@@ -3,6 +3,7 @@ layout: post
 title: 'Transendensi dan Waktu: Kritik Levinas atas Heidegger'
 date: 2020-06-11
 nav_order: 3
+heading_anchors: false
 ---
 
 # Transendensi dan Waktu: Kritik Levinas atas Heidegger
