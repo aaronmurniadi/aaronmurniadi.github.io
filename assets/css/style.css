@@ -184,7 +184,6 @@ p {
     margin-block-end: 1.5rem;
     text-align: left;
     text-wrap: pretty;
-    hyphens: auto;
 }
 
 nav {
@@ -209,6 +208,7 @@ b {
 em,
 i {
     font-style: italic;
+    text-shadow: 0 0 4px var(--accent);
 }
 
 mark {
