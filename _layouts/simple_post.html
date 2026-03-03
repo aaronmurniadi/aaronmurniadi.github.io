@@ -1,102 +1,117 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="{{ site.lang or 'en-US' }}">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=Edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+      {% if page.title %}{{ page.title }} | {% endif %}{{ site.title }}
+    </title>
 
-  <title>{% if page.title %}{{ page.title }} | {% endif %}{{ site.title }}</title>
+    <meta
+      name="description"
+      content="{% if page.description %}{{ page.description }}{% else %}{{ site.description }}{% endif %}"
+    />
+    <meta name="author" content="{{ site.github_username }}" />
+    <meta
+      name="keywords"
+      content="{% if page.keywords %}{{ page.keywords }}{% else %}blog, portfolio, programming, philosophy, technology, open source{% endif %}"
+    />
+    <meta name="robots" content="index, follow" />
 
-  <meta name="description"
-    content="{% if page.description %}{{ page.description }}{% else %}{{ site.description }}{% endif %}">
-  <meta name="author" content="{{ site.github_username }}">
-  <meta name="keywords"
-    content="{% if page.keywords %}{{ page.keywords }}{% else %}blog, portfolio, programming, philosophy, technology, open source{% endif %}">
-  <meta name="robots" content="index, follow">
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="{{ site.url }}{{ page.url }}" />
+    <meta property="og:title" content="{{ page.title }} | {{ site.title }}" />
+    <meta
+      property="og:description"
+      content="{% if page.description %}{{ page.description }}{% else %}{{ site.description }}{% endif %}"
+    />
+    <meta
+      property="og:image"
+      content="{% if page.image %}{{ site.url }}{{ page.image }}{% else %}{{ site.url }}/media/images/avatar.jpg{% endif %}"
+    />
+    <meta property="og:site_name" content="{{ site.title }}" />
 
-  <!-- Open Graph / Facebook -->
-  <meta property="og:type" content="article">
-  <meta property="og:url" content="{{ site.url }}{{ page.url }}">
-  <meta property="og:title" content="{{ page.title }} | {{ site.title }}">
-  <meta property="og:description"
-    content="{% if page.description %}{{ page.description }}{% else %}{{ site.description }}{% endif %}">
-  <meta property="og:image"
-    content="{% if page.image %}{{ site.url }}{{ page.image }}{% else %}{{ site.url }}/media/images/avatar.jpg{% endif %}">
-  <meta property="og:site_name" content="{{ site.title }}">
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:site" content="@{{ site.github_username }}" />
+    <meta property="twitter:creator" content="@{{ site.github_username }}" />
+    <meta
+      property="twitter:title"
+      content="{{ page.title }} | {{ site.title }}"
+    />
+    <meta
+      property="twitter:description"
+      content="{% if page.description %}{{ page.description }}{% else %}{{ site.description }}{% endif %}"
+    />
+    <meta
+      property="twitter:image"
+      content="{% if page.image %}{{ site.url }}{{ page.image }}{% else %}{{ site.url }}/media/images/avatar.jpg{% endif %}"
+    />
 
-  <!-- Twitter -->
-  <meta property="twitter:card" content="summary_large_image">
-  <meta property="twitter:site" content="@{{ site.github_username }}">
-  <meta property="twitter:creator" content="@{{ site.github_username }}">
-  <meta property="twitter:title" content="{{ page.title }} | {{ site.title }}">
-  <meta property="twitter:description"
-    content="{% if page.description %}{{ page.description }}{% else %}{{ site.description }}{% endif %}">
-  <meta property="twitter:image"
-    content="{% if page.image %}{{ site.url }}{{ page.image }}{% else %}{{ site.url }}/media/images/avatar.jpg{% endif %}">
+    <link rel="canonical" href="{{ site.url }}{{ page.url }}" />
 
-  <link rel="canonical" href="{{ site.url }}{{ page.url }}">
+    {% include "favicon.html" %}
 
-  {% include "favicon.html" %}
+    <!-- CSS -->
+    <link rel="stylesheet" href="{{ '/assets/css/style.css' | url }}" />
 
-  <!-- CSS -->
-  <link rel="stylesheet" href="{{ '/assets/css/style.css' | url }}">
+    <meta
+      name="google-site-verification"
+      content="9AO6NpUScil3XywYYZoRxjfFqBvb9J6VMle9vl9FdjU"
+    />
+  </head>
 
-  {% if site.ga_tracking %}
-  <!-- Google Analytics -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id={{ site.ga_tracking }}"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag() { dataLayer.push(arguments); }
-    gtag('js', new Date());
-    gtag('config', '{{ site.ga_tracking }}');
-  </script>
-  {% endif %}
-</head>
+  <body>
+    <a class="skip-link" href="#main-content">Skip to main content</a>
 
-<body>
-  <a class="skip-link" href="#main-content">Skip to main content</a>
+    <div class="container">
+      <nav>
+        <a href="{{ '/' | url }}">Home</a>
+        <a href="{{ '/posts' | url }}">Posts</a>
+        <a href="{{ '/articles' | url }}">Articles</a>
+        <a href="{{ '/recaps' | url }}">Recaps</a>
+        <a href="{{ '/summaries' | url }}">Summaries</a>
+        <a href="{{ '/toolbox' | url }}">Toolbox</a>
+        <a href="{{ '/photography' | url }}">Photography</a>
+        <a href="{{ '/contact' | url }}">Contact</a>
+      </nav>
 
-  <div class="container">
-    <nav>
-      <a href="{{ '/' | url }}">Home</a>
-      <a href="{{ '/posts' | url }}">Posts</a>
-      <a href="{{ '/articles' | url }}">Articles</a>
-      <a href="{{ '/recaps' | url }}">Recaps</a>
-      <a href="{{ '/summaries' | url }}">Summaries</a>
-      <a href="{{ '/toolbox' | url }}">Toolbox</a>
-      <a href="{{ '/photography' | url }}">Photography</a>
-      <a href="{{ '/contact' | url }}">Contact</a>
-    </nav>
+      <article id="main-content">
+        {% if site.last_edit_timestamp and site.last_edit_time_format and
+        page.date %}
+        <p class="text-small text-grey-dk-000 mb-0 mr-2">
+          Written on: {{ page.date | dateReadable }} {% if
+          page.last_modified_date %}, Last modified: {{ page.last_modified_date
+          | dateReadable }} {% endif %}
+        </p>
+        {% if page.translated == false or page.translated == nil %}
+        <p class="text-small text-grey-dk-000 mb-0 mr-2">
+          <a
+            target="_blank"
+            href="https://translate.google.com/translate?&sl=id&tl=en&op=translate&u={{ site.url }}{{ page.url }}"
+          >
+            Translate this page to English</a
+          >
+        </p>
+        {% endif %} {% endif %} {{ content | safe }}
 
-    <article id="main-content">
-      {% if site.last_edit_timestamp and site.last_edit_time_format and page.date %}
-      <p class="text-small text-grey-dk-000 mb-0 mr-2">
-        Written on: {{ page.date | dateReadable }} {% if page.last_modified_date %}, Last modified: {{
-        page.last_modified_date | dateReadable }} {% endif %}
-      </p>
-      {% if page.translated == false or page.translated == nil %}
-      <p class="text-small text-grey-dk-000 mb-0 mr-2">
-        <a target="_blank"
-          href="https://translate.google.com/translate?&sl=id&tl=en&op=translate&u={{ site.url }}{{ page.url }}">
-          Translate this page to English</a>
-      </p>
-      {% endif %}
-      {% endif %}
+        <hr />
 
-      {{ content | safe }}
+        <script
+          src="https://utteranc.es/client.js"
+          repo="aaronmurniadi/aaronmurniadi.github.io"
+          issue-term="title"
+          label="comment"
+          theme="github-light"
+          crossorigin="anonymous"
+          async
+        ></script>
+      </article>
+    </div>
 
-      <hr>
-
-      <script src="https://utteranc.es/client.js" repo="aaronmurniadi/aaronmurniadi.github.io" issue-term="title"
-        label="comment" theme="github-light" crossorigin="anonymous" async>
-        </script>
-    </article>
-  </div>
-
-  {% if site.mermaid %}
-  {% include "components/mermaid.html" %}
-  {% endif %}
-</body>
-
+    {% if site.mermaid %} {% include "components/mermaid.html" %} {% endif %}
+  </body>
 </html>

@@ -1,27 +1,26 @@
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=Edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <title>{% if page.title %}{{ page.title }} | {% endif %}{{ site.title }}</title>
+  <title>
+    {% if page.title %}{{ page.title }} | {% endif %}{{ site.title }}
+  </title>
 
-  <meta name="description" content="{% if page.description %}{{ page.description }}{% else %}{{ site.description }}{% endif %}">
-  <meta name="author" content="{{ site.github_username }}">
-  <link rel="canonical" href="{{ site.url }}{{ page.url }}">
+  <meta
+    name="description"
+    content="{% if page.description %}{{ page.description }}{% else %}{{ site.description }}{% endif %}"
+  />
+  <meta name="author" content="{{ site.github_username }}" />
+  <link rel="canonical" href="{{ site.url }}{{ page.url }}" />
 
   {% include "favicon.html" %}
 
   <!-- CSS -->
-  <link rel="stylesheet" href="{{ '/assets/css/style.css' | url }}">
-  
-  {% if site.ga_tracking %}
-  <!-- Google Analytics -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id={{ site.ga_tracking }}"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', '{{ site.ga_tracking }}');
-  </script>
-  {% endif %}
+  <link rel="stylesheet" href="{{ '/assets/css/style.css' | url }}" />
+
+  <meta
+    name="google-site-verification"
+    content="9AO6NpUScil3XywYYZoRxjfFqBvb9J6VMle9vl9FdjU"
+  />
 </head>

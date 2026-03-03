@@ -62,7 +62,7 @@ module.exports = function (eleventyConfig) {
     .use(markdownItFootnote);
 
   eleventyConfig.setLibrary("md", markdownLib);
-  eleventyConfig.addPairedShortcode("markdownNoAnchors", function(content) {
+  eleventyConfig.addPairedShortcode("markdownNoAnchors", function (content) {
     return markdownLibNoAnchors.render(content);
   });
 
@@ -126,7 +126,6 @@ module.exports = function (eleventyConfig) {
     url: "https://aaronmurniadi.github.io",
     lang: "en-US",
     github_username: "aaronmurniadi",
-    ga_tracking: "G-5HB33FCT7Y"
   });
 
   return {
