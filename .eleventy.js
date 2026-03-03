@@ -117,6 +117,14 @@ module.exports = function (eleventyConfig) {
     return new Date(dateObj).toISOString();
   });
 
+  eleventyConfig.addFilter("date", (dateObj, format) => {
+    const date = new Date(dateObj);
+    if (format === "%Y") {
+      return date.getFullYear();
+    }
+    return date.toISOString();
+  });
+
   // Global data
   eleventyConfig.addGlobalData("site", {
     title: "Contemplative Coder",
