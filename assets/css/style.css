@@ -1081,6 +1081,45 @@ body>.main {
     font-size: 3rem;
 }
 
+/* Footer styling */
+footer {
+    margin-top: var(--spacing-3xl);
+    padding-top: var(--spacing-lg);
+    border-top: 1px solid var(--border);
+    text-align: center;
+}
+
+.footer-content p {
+    margin: var(--spacing-sm) 0;
+    font-size: var(--scale-sm);
+    color: var(--text-muted);
+}
+
+.footer-content a {
+    color: var(--accent);
+    text-decoration: none;
+}
+
+.footer-content a:hover {
+    color: var(--accent-alt);
+    text-decoration: underline;
+}
+
+/* Image styling with classic white borders */
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    border: 2px solid white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3), 0 6px 20px rgba(0, 0, 0, 0.19);
+    transition: none;
+}
+
+img:hover {
+    transform: none;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3), 0 6px 20px rgba(0, 0, 0, 0.19);
+}
+
 /* Navigation styling */
 nav {
     padding-bottom: 1rem;

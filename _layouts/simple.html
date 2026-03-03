@@ -86,6 +86,13 @@
       </nav>
 
       <main id="main-content">{{ content | safe }}</main>
+      
+      <footer>
+        <div class="footer-content">
+          <p>&copy; {{ site.time | date: "%Y" }} {{ site.title | default: "Contemplative Coder" }}. All rights reserved.</p>
+          <p>Built with <a href="https://www.11ty.dev/" target="_blank" rel="noopener">Eleventy</a> and styled with care.</p>
+        </div>
+      </footer>
     </div>
 
     {% if site.mermaid %} {% include "components/mermaid.html" %} {% endif %}
