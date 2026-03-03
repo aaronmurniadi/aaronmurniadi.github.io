@@ -97,6 +97,37 @@ module.exports = function (eleventyConfig) {
     });
   });
 
+  // Sitemap collection
+  eleventyConfig.addCollection("sitemap", function (collectionApi) {
+    const allPages = [
+      // Add main pages
+      { url: "/", date: new Date(), changefreq: "weekly", priority: "1.0" },
+      { url: "/contact/", date: new Date(), changefreq: "monthly", priority: "0.8" },
+      { url: "/posts/", date: new Date(), changefreq: "weekly", priority: "0.9" },
+      { url: "/articles/", date: new Date(), changefreq: "weekly", priority: "0.9" },
+      { url: "/recaps/", date: new Date(), changefreq: "weekly", priority: "0.9" },
+      { url: "/summaries/", date: new Date(), changefreq: "weekly", priority: "0.9" },
+      { url: "/toolbox/", date: new Date(), changefreq: "monthly", priority: "0.7" },
+      { url: "/photography/", date: new Date(), changefreq: "monthly", priority: "0.7" }
+    ];
+
+    // Add all collection items
+    const collections = ["posts", "articles", "recaps", "summaries", "tools"];
+    collections.forEach(collectionName => {
+      const collection = collectionApi.getFilteredByGlob(`_${collectionName}/**/*.md`);
+      collection.forEach(item => {
+        allPages.push({
+          url: item.url,
+          date: item.date,
+          changefreq: "monthly",
+          priority: "0.8"
+        });
+      });
+    });
+
+    return allPages.sort((a, b) => a.url.localeCompare(b.url));
+  });
+
   // Copy assets
   eleventyConfig.addPassthroughCopy("assets");
   eleventyConfig.addPassthroughCopy("media");
