@@ -1110,14 +1110,7 @@ img {
     max-width: 100%;
     height: auto;
     display: block;
-    border: 2px solid white;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3), 0 6px 20px rgba(0, 0, 0, 0.19);
-    transition: none;
-}
-
-img:hover {
-    transform: none;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3), 0 6px 20px rgba(0, 0, 0, 0.19);
+    border: 1px solid white;
 }
 
 /* Navigation styling */
@@ -1181,7 +1174,6 @@ h6[id]:hover::after {
 .gallery-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 2rem;
     margin: 2rem 0;
 }
 
@@ -1191,16 +1183,10 @@ h6[id]:hover::after {
 }
 
 .gallery-grid img {
+    margin-top: 2rem;
     width: 100%;
     height: auto;
-    border-radius: 8px;
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
     cursor: pointer;
-}
-
-.gallery-grid img:hover {
-    transform: scale(1.02);
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
 }
 
 .gallery-grid figcaption {
