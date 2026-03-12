@@ -1056,12 +1056,14 @@ body > .main {
 /* Site title styling */
 .site-title {
   font-variant: small-caps;
-  letter-spacing: 5px;
+  letter-spacing: 6px;
   text-align: center;
   display: block;
   margin-bottom: var(--spacing-lg);
   color: var(--text);
-  font-size: 3rem;
+  font-size: 2.5rem;
+  margin-left: 10%;
+  margin-right: 10%;
 }
 
 /* Footer styling */
