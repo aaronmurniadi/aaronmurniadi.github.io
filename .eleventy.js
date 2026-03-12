@@ -108,7 +108,8 @@ module.exports = function (eleventyConfig) {
       { url: "/recaps/", date: new Date(), changefreq: "weekly", priority: "0.9" },
       { url: "/summaries/", date: new Date(), changefreq: "weekly", priority: "0.9" },
       { url: "/toolbox/", date: new Date(), changefreq: "monthly", priority: "0.7" },
-      { url: "/photography/", date: new Date(), changefreq: "monthly", priority: "0.7" }
+      { url: "/photography/", date: new Date(), changefreq: "monthly", priority: "0.7" },
+      { url: "/typesettings/", date: new Date(), changefreq: "monthly", priority: "0.7" }
     ];
 
     // Add all collection items
