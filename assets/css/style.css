@@ -1056,7 +1056,7 @@ body > .main {
 /* Site title styling */
 .site-title {
   font-variant: small-caps;
-  letter-spacing: 7px;
+  letter-spacing: 5px;
   text-align: center;
   display: block;
   margin-bottom: var(--spacing-lg);
