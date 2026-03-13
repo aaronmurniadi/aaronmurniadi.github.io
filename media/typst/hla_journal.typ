@@ -4,6 +4,7 @@
 // ── Metadata ────────────────────────────────────────────────────
 
 #let meta = (
+  institution: "Typst University",
   journal: "Typst Type Review",
   year: "1958",
   month: "February",
@@ -25,7 +26,9 @@
       ]
     ]
 
-    The most fundamental law in this discipline is the nuanced distinction between legibility and readability, two terms that are frequently conflated but represent distinct stages of the visual and cognitive process. _Legibility_ refers specifically to the design of the typeface itself and the ease with which one individual letterform can be distinguished from another under various conditions. This is an inherent property of the font's anatomy, where factors such as a generous x-height, distinct character shapes that avoid ambiguity, and open counter spaces play a critical role in preventing visual confusion. A highly legible typeface ensures that a "c" is not mistaken for an "o" and that an "I" is clearly distinct from an "l," providing the basic building blocks for any successful typographic system.
+    The most fundamental law in this discipline is the nuanced distinction between legibility and readability, two terms that are frequently conflated but represent distinct stages of the visual and cognitive process.#footnote[
+      For a classic and authoritative discussion on the principles underlying typographic clarity, see Bringhurst, R. (2012). "The Elements of Typographic Style". Bringhurst explores the intricate relationship between letterform design and reader perception, providing not only historical context but also practical guidelines for contemporary practice. He devotes significant attention to legibility as the foundational property of type, noting that factors such as x-height, stroke contrast, and open counters all enhance the differentiation between similar letterforms. Additionally, Bringhurst discusses how typographic choices have evolved to balance the needs of the reader with the intentions of the writer and designer, making his work an indispensable resource for anyone seeking to master the fundamentals of communication through typography.]
+    _Legibility_ refers specifically to the design of the typeface itself and the ease with which one individual letterform can be distinguished from another under various conditions.This is an inherent property of the font's anatomy, where factors such as a generous x-height, distinct character shapes that avoid ambiguity, and open counter spaces play a critical role in preventing visual confusion. A highly legible typeface ensures that a "c" is not mistaken for an "o" and that an "I" is clearly distinct from an "l," providing the basic building blocks for any successful typographic system.
 
     In contrast, _Readability_ concerns the macro-level arrangement and orchestration of those typefaces within a specific layout or composition. It is a holistic measure of how easily a reader can process long passages of text without experiencing ocular fatigue or losing interest. Even a perfectly legible font can become entirely unreadable if the surrounding layout is poor, neglected, or overly cramped. To achieve high readability, a designer must carefully consider how the human eye moves across a page, ensuring that the visual path is clear and that the cognitive load remains low. Key factors that dictate this experience include:
 
@@ -60,6 +63,8 @@
 // ── Typography ──────────────────────────────────────────────────
 
 #set text(
+  // This is the root font size for the journal (body).
+  // Other text sizes are relative to this size.
   size: 11pt,
   number-type: "old-style",
   lang: "en",
@@ -81,12 +86,10 @@
 #show: typearea.with(
   two-sided: false,
   paper: "a5",
-  div: 15,
+  div: 14,
   binding-correction: 0mm,
   header-include: true,
   footer-include: false,
-  header-ascent: 20%,
-  footer-descent: 1pt,
 )
 
 // ── Header ──────────────────────────────────────────────────
@@ -94,7 +97,7 @@
   header: context {
     let pg = counter(page).get().first()
     let is-odd = calc.odd(pg)
-    set text(size: 11pt)
+    set text(size: 1em)
 
     if pg == 1 {
       stack(
@@ -116,7 +119,8 @@
           [#meta.year\]],
           [
             #set par(justify: false)
-            #smallcaps(lower(meta.short-title))
+            #set text(tracking: 2pt)
+            #smallcaps(upper(meta.short-title))
           ],
           [#pg],
         ),
@@ -127,7 +131,11 @@
         grid(
           columns: (1fr, 6fr, 1fr),
           align: (left + horizon, center + horizon, right + horizon),
-          [#pg], smallcaps(lower(meta.author)), [\[Vol.~#meta.volume],
+          [#pg],
+          [
+            #set text(tracking: 2pt)
+            #upper(meta.author)],
+          [\[Vol.~#meta.volume],
         ),
       )
     }
@@ -136,18 +144,24 @@
   // ── Footer ──────────────────────────────────────────────────
   // Only the title page carries a footer (outside page number).
   footer: context {
-    set text(size: 11pt)
+    set text(size: 1em)
     let pg = counter(page).get().first()
-    if pg == 1 { align(right)[#pg] }
+    if pg == 1 {
+      grid(
+        columns: (6fr, 1fr),
+        align: (left + horizon, right + horizon),
+        [#sym.copyright #emph(meta.institution)], [#pg],
+      )
+    }
   },
 )
 
 
 // ── Footnotes ───────────────────────────────────────────────────
 #set footnote.entry(
-  separator: line(length: 100%, stroke: 0.4pt),
-  indent: 0pt,
-  gap: 0.45em,
+  separator: line(length: 33%, stroke: 0.35pt),
+  indent: 0.5em,
+  gap: 0.5em,
 )
 
 
@@ -209,7 +223,7 @@
   width: 100%,
   stroke: 0.8pt + black,
   inset: (x: 8pt, y: 8pt),
-  align(center, text(size: 21pt, tracking: 0.3em, font: "Baskervaldx")[
+  align(center, text(size: 1.9em, tracking: 0.3em, font: "Baskervaldx")[
     #smallcaps(upper(meta.journal))
   ]),
 )
@@ -217,7 +231,7 @@
 #v(2em)
 
 // Full title
-#pad(right: 3em, align(left, text(size: 14pt)[
+#pad(right: 3em, align(left, text(size: 1.25em)[
   #upper(meta.title)#footnote[
     Submission for r\/Typst subreddit.
     Compiled: #datetime.today().display().
@@ -227,7 +241,7 @@
 #v(0.5em)
 
 // Author
-#pad(left: 1em, text(size: 14pt)[
+#pad(left: 1em, text(size: 1.25em)[
   _#meta.author _#footnote[A person who loves Typst.]
 ])
 
@@ -235,7 +249,7 @@
 
 // Abstract + keywords
 #pad(left: 2em, right: 2em)[
-  #set text(size: 11pt)
+  #set text(size: 1em)
   #set par(first-line-indent: 0pt)
 
   #meta.abstract
