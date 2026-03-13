@@ -55,8 +55,7 @@
 
 
   ],
-)// ── BODY ────────────────────────────────────────────────────
-
+)
 
 // ── Typography ──────────────────────────────────────────────────
 
@@ -67,7 +66,7 @@
 )
 
 #set par(
-  first-line-indent: 1.5em,
+  first-line-indent: (amount: 1.5em, all: true),
   leading: 0.65em,
   spacing: 0.65em,
   justify: true,
@@ -95,7 +94,6 @@
   header: context {
     let pg = counter(page).get().first()
     let is-odd = calc.odd(pg)
-    let rule = line(length: 100%, stroke: 0.4pt)
     set text(size: 11pt)
 
     if pg == 1 {
@@ -108,7 +106,6 @@
           text(tracking: 0.18em)[#upper(meta.month) #meta.year],
           text(tracking: 0.18em)[VOLUME #meta.volume],
         ),
-        rule,
       )
     } else if is-odd {
       stack(
@@ -123,7 +120,6 @@
           ],
           [#pg],
         ),
-        rule,
       )
     } else {
       stack(
@@ -133,7 +129,6 @@
           align: (left + horizon, center + horizon, right + horizon),
           [#pg], smallcaps(lower(meta.author)), [\[Vol.~#meta.volume],
         ),
-        rule,
       )
     }
   },
