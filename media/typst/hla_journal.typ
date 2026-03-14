@@ -62,9 +62,9 @@
 
 // ── Typography ──────────────────────────────────────────────────
 
+// This is the root font size for the journal (body).
+// Other text sizes are relative to this size.
 #set text(
-  // This is the root font size for the journal (body).
-  // Other text sizes are relative to this size.
   size: 11pt,
   number-type: "old-style",
   lang: "en",
@@ -76,20 +76,21 @@
   spacing: 0.65em,
   justify: true,
   justification-limits: (
-    tracking: (max: 0.1em, min: -0.01em),
+    tracking: (max: 0.1em, min: -0.015em),
   ),
 )
-
 
 // ── Page geometry ───────────────────────────────────────────────
 
 #show: typearea.with(
   two-sided: false,
-  paper: "a5",
-  div: 14,
+  width: 6in,
+  height: 11in,
+  div: 13,
   binding-correction: 0mm,
   header-include: true,
   footer-include: false,
+  header-height: 2em,
 )
 
 // ── Header ──────────────────────────────────────────────────
@@ -98,45 +99,35 @@
     let pg = counter(page).get().first()
     let is-odd = calc.odd(pg)
     set text(size: 1em)
-
     if pg == 1 {
-      stack(
-        spacing: 6pt,
-        grid(
-          columns: (1fr, 1fr, 1fr),
-          align: (left + horizon, center + horizon, right + horizon),
-          text(tracking: 0.18em)[NUMBER #meta.number],
-          text(tracking: 0.18em)[#upper(meta.month) #meta.year],
-          text(tracking: 0.18em)[VOLUME #meta.volume],
-        ),
+      grid(
+        columns: (1fr, 1fr, 1fr),
+        align: (left + horizon, center + horizon, right + horizon),
+        text(tracking: 0.18em)[NUMBER #meta.number],
+        text(tracking: 0.18em)[#upper(meta.month) #meta.year],
+        text(tracking: 0.18em)[VOLUME #meta.volume],
       )
     } else if is-odd {
-      stack(
-        spacing: 6pt,
-        grid(
-          columns: (1fr, 6fr, 1fr),
-          align: (left + horizon, center + horizon, right + horizon),
-          [#meta.year\]],
-          [
-            #set par(justify: false)
-            #set text(tracking: 2pt)
-            #smallcaps(upper(meta.short-title))
-          ],
-          [#pg],
-        ),
+      grid(
+        columns: (1fr, 6fr, 1fr),
+        align: (left + horizon, center + horizon, right + horizon),
+        [#meta.year\]],
+        [
+          #set par(justify: false)
+          #set text(tracking: 1pt)
+          #smallcaps(upper(meta.short-title))
+        ],
+        [#pg],
       )
     } else {
-      stack(
-        spacing: 6pt,
-        grid(
-          columns: (1fr, 6fr, 1fr),
-          align: (left + horizon, center + horizon, right + horizon),
-          [#pg],
-          [
-            #set text(tracking: 2pt)
-            #upper(meta.author)],
-          [\[Vol.~#meta.volume],
-        ),
+      grid(
+        columns: (1fr, 6fr, 1fr),
+        align: (left + horizon, center + horizon, right + horizon),
+        [#pg],
+        [
+          #set text(tracking: 1pt)
+          #upper(meta.author)],
+        [\[Vol.~#meta.volume],
       )
     }
   },
@@ -170,7 +161,7 @@
 #set heading(numbering: none)
 
 #show heading.where(level: 1): it => {
-  block(above: 1em, below: 0.25em, context {
+  block(above: 1.25em, below: 0.25em, context {
     let n = counter(heading).get().first()
     align(center, strong[
       #text(number-type: "lining")[#numbering("I.", n)]#h(0.4em)#it.body
@@ -179,7 +170,7 @@
 }
 
 #show heading.where(level: 2): it => {
-  block(above: 1em, below: 1em, align(center, emph(it.body)))
+  block(above: 1.25em, below: 1em, align(center, emph(it.body)))
 }
 
 #show heading.where(level: 3): it => {
