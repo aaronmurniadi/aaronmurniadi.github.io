@@ -84,8 +84,8 @@
 
 #show: typearea.with(
   two-sided: false,
-  width: 6in,
-  height: 11in,
+  width: 6.25in,
+  height: 10in,
   div: 13,
   binding-correction: 0mm,
   header-include: true,
