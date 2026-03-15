@@ -32,8 +32,6 @@ That's when it hit me: Typst gives us almost too much freedom.
 
 Here's the thing I've noticed in the Typst community: we're all figuring this out on our own. I often ask "how should I structure my document?" and gets five different answers on top of my mind. There's no official guidance, no community-approved patterns, no real consensus.
 
-I've been there. When I started with Typst, I just threw everything at the top of the file because that's what the examples showed. But as my projects got more complex, I started feeling the pain. My CV document became a mess. My book project had styles scattered everywhere. That's when I started paying attention to how different projects naturally organized themselves.
-
 Don't get me wrong, though. The official Typst documentation is fantastic. When I need to understand how `show` rules work or the exact syntax for page setup, [the docs](https://typst.app/docs/) are my go-to. They cover the technical details beautifully. But they're focused on the "how" not the "why." They'll teach you every function in Typst, but they won't tell you how to organize a 50-page report or when to split your styles into separate files.
 
 That's the gap I'm talking about. We have excellent technical documentation, but we're missing the higher-level guidance about document architecture and patterns.
