@@ -26,20 +26,22 @@ Note: You can click on the images to view in PDF format.
 
 <div id="gallery-container"><div class="gallery-grid" markdown="1">
 
-[![The Law of Typography Journal](/media/typst/hla_journal.jpg)](/media/typst/hla_journal.pdf){:target="_blank"}
+[![My CV
+Preview](/media/typst/cv_aaron_murniadi.jpg)](/media/typst/cv_aaron_murniadi.pdf){:target="_blank"}
 
-The Law of Typography Journal---[Source](https://github.com/aaronmurniadi/aaronmurniadi.github.io/blob/main/media/typst/HLA_journal.typ){:target="_blank"}.
-Article template inspired by: ["Positivism and the Separation of Law and Morals" (H.L.A. Hart, 1958)](http://www.horty.umiacs.io/courses/readings/hart-1958-positivism-separation.pdf){:target="_blank"}
+My CV---[Source](https://github.com/aaronmurniadi/aaronmurniadi.github.io/blob/main/media/typst/cv_aaron_murniadi.typ){:target="_blank"}
+
+
+[![Journal Template](/media/typst/hla_journal.jpg)](/media/typst/hla_journal.pdf){:target="_blank"}
+
+Journal Template---[Source](https://github.com/aaronmurniadi/aaronmurniadi.github.io/blob/main/media/typst/HLA_journal.typ){:target="_blank"}.
+Inspired by: ["Positivism and the Separation of Law and Morals" (H.L.A. Hart, 1958)](http://www.horty.umiacs.io/courses/readings/hart-1958-positivism-separation.pdf){:target="_blank"}
 
 
 [![Maid of Orleans](/media/typst/maid_of_orleans/maid_of_orleans.jpg)](/media/typst/maid_of_orleans/maid_of_orleans.pdf){:target="_blank"}
 
 The Maid of Orleans---[Source](https://github.com/aaronmurniadi/aaronmurniadi.github.io/blob/main/media/typst/maid_of_orleans/main.typ){:target="_blank"}
 
-[![My CV
-Preview](/media/typst/cv_aaron_murniadi.jpg)](/media/typst/cv_aaron_murniadi.pdf){:target="_blank"}
-
-My CV---[Source](https://github.com/aaronmurniadi/aaronmurniadi.github.io/blob/main/media/typst/cv_aaron_murniadi.typ){:target="_blank"}
 
 [![Opinion slip of the Supreme Court of the United
 Stated.](/media/typst/supreme_court_usa.jpg)](/media/typst/supreme_court_usa.pdf){:target="_blank"}
@@ -48,16 +50,19 @@ Opinion slip of the Supreme Court of the United Stated.
 [Original](https://www.supremecourt.gov/opinions/21pdf/19-1392_6j37.pdf){:target="_blank"}
 (p.9)---[Source](https://github.com/aaronmurniadi/aaronmurniadi.github.io/blob/main/media/typst/supreme_court_usa.typ){:target="_blank"}
 
+
 [![Edward Packard's "Nine Things I Learned in Ninety
 Years".](/media/typst/edward_packard_nine_things.jpg)](/media/typst/edward_packard_nine_things.pdf){:target="_blank"}
 
 Edward Packard's "Nine Things I Learned in Ninety Years".
 [Original](https://edwardpackard.com/)---[Source](https://github.com/aaronmurniadi/aaronmurniadi.github.io/blob/main/media/typst/edward_packard_nine_things.typ){:target="_blank"}
 
+
 [![The Philosophical Review
 Journal](/media/typst/philosophical_review.jpg)](/media/typst/philosophical_review.pdf){:target="_blank"}
 
 The Philosophical Review Journal---[Source](https://github.com/aaronmurniadi/aaronmurniadi.github.io/blob/main/media/typst/philosophical_review.typ){:target="_blank"}
+
 
 [![Basic Two Column
 Article](/media/typst/two_column_article.jpg)](/media/typst/two_column_article.pdf){:target="_blank"}
