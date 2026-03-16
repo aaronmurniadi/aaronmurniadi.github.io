@@ -27,24 +27,24 @@ Note: You can click on the images to view in PDF format.
 <div id="gallery-container"><div class="gallery-grid" markdown="1">
 
 [![My CV
-Preview](/media/typst/cv_aaron_murniadi.jpg)](/media/typst/cv_aaron_murniadi.pdf){:target="_blank"}
+Preview](/media/typst/cv_aaron_murniadi.jpg)](/media/typst/cv_aaron_murniadi.pdf){:target="_blank" #cv-preview}
 
 My CV---[Source](https://github.com/aaronmurniadi/aaronmurniadi.github.io/blob/main/media/typst/cv_aaron_murniadi.typ){:target="_blank"}
 
 
-[![Journal Template](/media/typst/hla_journal.jpg)](/media/typst/hla_journal.pdf){:target="_blank"}
+[![Journal Template](/media/typst/hla_journal.jpg)](/media/typst/hla_journal.pdf){:target="_blank" #journal-template}
 
 Journal Template---[Source](https://github.com/aaronmurniadi/aaronmurniadi.github.io/blob/main/media/typst/HLA_journal.typ){:target="_blank"}.
 Inspired by: ["Positivism and the Separation of Law and Morals" (H.L.A. Hart, 1958)](http://www.horty.umiacs.io/courses/readings/hart-1958-positivism-separation.pdf){:target="_blank"}
 
 
-[![Maid of Orleans](/media/typst/maid_of_orleans/maid_of_orleans.jpg)](/media/typst/maid_of_orleans/maid_of_orleans.pdf){:target="_blank"}
+[![Maid of Orleans](/media/typst/maid_of_orleans/maid_of_orleans.jpg)](/media/typst/maid_of_orleans/maid_of_orleans.pdf){:target="_blank" #maid-of-orleans}
 
 The Maid of Orleans---[Source](https://github.com/aaronmurniadi/aaronmurniadi.github.io/blob/main/media/typst/maid_of_orleans/main.typ){:target="_blank"}
 
 
 [![Opinion slip of the Supreme Court of the United
-Stated.](/media/typst/supreme_court_usa.jpg)](/media/typst/supreme_court_usa.pdf){:target="_blank"}
+Stated.](/media/typst/supreme_court_usa.jpg)](/media/typst/supreme_court_usa.pdf){:target="_blank" #supreme-court-usa}
 
 Opinion slip of the Supreme Court of the United Stated.
 [Original](https://www.supremecourt.gov/opinions/21pdf/19-1392_6j37.pdf){:target="_blank"}
@@ -52,20 +52,20 @@ Opinion slip of the Supreme Court of the United Stated.
 
 
 [![Edward Packard's "Nine Things I Learned in Ninety
-Years".](/media/typst/edward_packard_nine_things.jpg)](/media/typst/edward_packard_nine_things.pdf){:target="_blank"}
+Years".](/media/typst/edward_packard_nine_things.jpg)](/media/typst/edward_packard_nine_things.pdf){:target="_blank" #edward-packard-nine-things}
 
 Edward Packard's "Nine Things I Learned in Ninety Years".
 [Original](https://edwardpackard.com/)---[Source](https://github.com/aaronmurniadi/aaronmurniadi.github.io/blob/main/media/typst/edward_packard_nine_things.typ){:target="_blank"}
 
 
 [![The Philosophical Review
-Journal](/media/typst/philosophical_review.jpg)](/media/typst/philosophical_review.pdf){:target="_blank"}
+Journal](/media/typst/philosophical_review.jpg)](/media/typst/philosophical_review.pdf){:target="_blank" #philosophical-review}
 
 The Philosophical Review Journal---[Source](https://github.com/aaronmurniadi/aaronmurniadi.github.io/blob/main/media/typst/philosophical_review.typ){:target="_blank"}
 
 
 [![Basic Two Column
-Article](/media/typst/two_column_article.jpg)](/media/typst/two_column_article.pdf){:target="_blank"}
+Article](/media/typst/two_column_article.jpg)](/media/typst/two_column_article.pdf){:target="_blank" #two-column-article}
 
 Basic Two Column Article---[Source](https://github.com/aaronmurniadi/aaronmurniadi.github.io/blob/main/media/typst/two_column_article.typ){:target="_blank"}
 

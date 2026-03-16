@@ -8,7 +8,7 @@ layout: post
 
 > [Check out my Typst patterns and templates here](/typesettings)!
 
-I had one of those moments while working on Harvard Law Review journal template recently, where you're staring at your code and suddenly something clicks into place. I'd been struggling with how to organize this academic journal layout, trying different approaches, when I just decided to define all the metadata first.
+I had one of those moments while working on [Harvard Law Review journal template](/typesettings#journal-template) recently, where you're staring at your code and suddenly something clicks into place. I'd been struggling with how to organize this academic journal layout, trying different approaches, when I just decided to define all the metadata first.
 
 ```typst
 #let meta = (
@@ -40,7 +40,7 @@ That's the gap I'm talking about. We have excellent technical documentation, but
 
 ### The "Get It Done" Approach
 
-For quick stuff-like my CV or simple documents-I still use the traditional top-down approach:
+For quick stuff—like [my CV](/typesettings#cv) or simple documents—I still use the traditional top-down approach:
 ```typst
 #import "@preview/droplet:0.3.1": dropcap
 
@@ -63,7 +63,7 @@ For quick stuff-like my CV or simple documents-I still use the traditional top-d
 
 ### The "Split It Up" Method
 
-Then there's my book project approach. I learned this the hard way after my first attempt at typesetting "The Maid of Orleans" turned into a messy document.
+Then there's my book project approach. I learned this the hard way after my first attempt at typesetting ["The Maid of Orleans"](/typesettings#maid-of-orleans) turned into a messy document.
 ```
 maid_of_orleans/
 ├── maid_of_orleans.typ       # Main content
@@ -134,6 +134,8 @@ I went through a phase where I tried to template everything. Academic papers, re
 For highly configurable documents, especially those that might need different layouts or formats, a configuration object approach works well.
 
 ### Example: Two-Column Article
+
+See example output [here](/typesettings#two-column-article).
 ```typst
 #let config(
   column: 2,
