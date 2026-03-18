@@ -4,8 +4,6 @@ layout: simple
 heading_anchors: false
 ---
 
-<h1 class="site-title">contemplative coder</h1>
-
 ## Hi, I'm Aaron
 
 A Software Engineer with a passion for technology, coding, and open-source software. My background includes four years of studying philosophy (though I didn't finish the degree), which has profoundly shaped my thinking and continues to influence my work and writing.

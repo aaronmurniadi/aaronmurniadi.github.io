@@ -16,7 +16,7 @@ Note: You can click on the images to view them in its original size.
 
 ---
 
-<div id="gallery-container"><div class="gallery-grid" markdown="1">
+<div id="gallery-container" class="gallery-one-col photography-page"><div class="gallery-grid" markdown="1">
 
 [![](/media/images/thumbnail/brains_out.jpg)](/media/images/brains_out.jpg)
 

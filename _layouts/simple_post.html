@@ -41,6 +41,12 @@
 
   {% include "favicon.html" %}
 
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Barlow+Condensed:wght@300;400;600;700;900&display=swap"
+    rel="stylesheet"
+  />
+
   <!-- CSS -->
   <link rel="stylesheet" href="{{ '/assets/css/style.css' | url }}" />
 
@@ -49,6 +55,13 @@
 
 <body>
   <a class="skip-link" href="#main-content">Skip to main content</a>
+
+  <header class="blog-header">
+    <div class="blog-header-inner">
+      <div class="header-tag">Post · {{ site.title }}</div>
+      <a href="{{ '/' | url }}" class="site-logotype">{{ site.title }}</a>
+    </div>
+  </header>
 
   <div class="container">
     <nav>
@@ -81,8 +94,8 @@
 
       <hr />
 
-      <script src="https://utteranc.es/client.js" repo="aaronmurniadi/aaronmurniadi.github.io" issue-term="pathname"
-        label="blog-comment" theme="github-dark" crossorigin="anonymous" async>
+      <script src="https://utteranc.es/client.js" repo="aaronmurniadi/aaronmurniadi.github.io"         issue-term="pathname"
+        label="blog-comment" theme="photon-dark" crossorigin="anonymous" async>
         </script>
     </article>
 

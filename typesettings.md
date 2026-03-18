@@ -24,7 +24,7 @@ Note: You can click on the images to view in PDF format.
 
 ---
 
-<div id="gallery-container"><div class="gallery-grid" markdown="1">
+<div id="gallery-container" class="gallery-one-col"><div class="gallery-grid" markdown="1">
 
 [![My CV
 Preview](/media/typst/cv_aaron_murniadi.jpg)](/media/typst/cv_aaron_murniadi.pdf){:target="_blank" #cv-preview}
