@@ -1,5 +1,13 @@
 /* FSR-style phosphor / CRT theme (see fsr-comparison.html) */
 
+@font-face {
+  font-family: 'Cordata PPC';
+  src: url('../fonts/Web437_Cordata_PPC-400.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
 /* ============================================================
    Variables
    ============================================================ */
@@ -14,7 +22,7 @@
   --red: #ff3b3b;
   --text: #c8e6c8;
   --text-dim: #5a7a5a;
-  --mono: 'Share Tech Mono', ui-monospace, monospace;
+  --mono: 'Cordata PPC', ui-monospace, monospace;
   --display: 'Barlow Condensed', system-ui, sans-serif;
   --scan-size: 3px;
 
