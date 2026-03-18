@@ -147,6 +147,41 @@ body::after {
   z-index: 9998;
 }
 
+/* Small screens: scanlines + vignette compete with text/photos — dial way back */
+@media (max-width: 900px) {
+  body::before {
+    background: repeating-linear-gradient(
+      to bottom,
+      transparent 0px,
+      transparent 3px,
+      rgba(0, 0, 0, 0.045) 3px,
+      rgba(0, 0, 0, 0.045) 4px
+    );
+  }
+
+  body::after {
+    background: radial-gradient(
+      ellipse 85% 85% at 50% 45%,
+      transparent 70%,
+      rgba(0, 0, 0, 0.38) 100%
+    );
+  }
+}
+
+@media (max-width: 480px) {
+  body::before {
+    opacity: 0;
+  }
+
+  body::after {
+    background: radial-gradient(
+      ellipse 90% 90% at 50% 50%,
+      transparent 75%,
+      rgba(0, 0, 0, 0.28) 100%
+    );
+  }
+}
+
 /* Content above overlays */
 .skip-link,
 .skip-to-main,
