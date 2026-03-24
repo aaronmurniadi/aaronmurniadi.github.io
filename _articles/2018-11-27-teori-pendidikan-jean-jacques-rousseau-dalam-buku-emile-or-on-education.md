@@ -557,13 +557,13 @@ mempertahankan warisan kita.
     _Pemikiran-pemikiran yang Membentuk Dunia Modern_. (Jakarta: Penerbit
     Erlangga, 2011), hlm. 97–98
 
-[^8]:
+[^6]:
     “Dalam hal-hal yang sama, keduanya (laki-laki dan wanita) setara. Dalam
     hal-hal yang berbeda, mereka tidak dapat dibandingkan.” (EM 358:1)
 
-[^9]: O’Hagan, Timothy. Rousseau, p.41
-[^10]: O’Hagan, Timothy. Rousseau, p.43
-[^11]: KBBI Daring, bedung (n): kain pembalut bayi.
+[^7]: O’Hagan, Timothy. Rousseau, p.41
+[^8]: O’Hagan, Timothy. Rousseau, p.43
+[^9]: KBBI Daring, bedung (n): kain pembalut bayi.
 
 ## Daftar Pustaka
 
