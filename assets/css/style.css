@@ -366,7 +366,7 @@ ul ul ul:not(.ulEmpty) {
 
 li {
   margin: var(--line) 0;
-  padding: 0 0 0 2ch;
+  padding: 0 0 0 0ch;
 }
 
 :is(ol:is(.compact, .olCompact), ul:is(.compact, .ulCompact)) > li,
