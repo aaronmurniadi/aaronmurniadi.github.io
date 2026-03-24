@@ -365,7 +365,7 @@ ul ul ul:not(.ulEmpty) {
 }
 
 li {
-  margin: var(--line) 2ch;
+  margin: 1em 2ch;
   padding: 0 0 0 1ch;
 }
 
@@ -1292,6 +1292,9 @@ article#main-content section > p:not(li p):not(blockquote p) {
   margin-block: var(--line);
   margin-inline: auto;
   padding-left: 3ch;
+  hyphens: auto;
+  hyphenate-limit-chars: 10;
+  text-wrap: pretty;
 }
 
 main#main-content > dl,
@@ -1442,8 +1445,9 @@ h6[id]:hover::after {
   cursor: pointer;
 }
 
-/* Photography only: cap image height to 90vh, preserve aspect ratio */
-#gallery-container.photography-page .gallery-grid img {
+/* Photography & Typesettings: cap image height to 90vh, preserve aspect ratio */
+#gallery-container.photography-page .gallery-grid img,
+#gallery-container.typesettings-page .gallery-grid img {
   max-height: 90vh;
   max-width: 100%;
   width: auto;
