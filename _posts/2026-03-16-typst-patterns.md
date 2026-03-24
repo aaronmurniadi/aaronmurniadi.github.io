@@ -6,7 +6,7 @@ layout: post
 
 # How I Found My Typst Patterns (and Why the Community Needs More)
 
-> [Check out my Typst patterns and templates here](/typesettings)!
+> [Check out my Typst templates here](/typesettings)!
 
 I had one of those moments while working on [Harvard Law Review journal template](/typesettings#journal-template) recently, where you're staring at your code and suddenly something clicks into place. I'd been struggling with how to organize this academic journal layout, trying different approaches, when I just decided to define all the metadata first.
 
