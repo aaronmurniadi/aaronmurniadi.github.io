@@ -1,0 +1,112 @@
+# yaml-language-server: $schema=https://unpkg.com/@sveltia/cms/schema/sveltia-cms.json
+
+backend:
+  name: github
+  repo: aaronmurniadi/aaronmurniadi.github.io
+  branch: main
+
+# Match existing site layout: uploads go under media/images (see .pages.yml)
+media_folder: media/images
+public_folder: /media/images
+
+collections:
+  - name: posts
+    label: Posts
+    label_singular: Post
+    folder: _posts
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    extension: md
+    format: frontmatter
+    fields:
+      - { label: Title, name: title, widget: string }
+      - { label: Date, name: date, widget: datetime, type: date }
+      - { label: Layout, name: layout, widget: string, default: post }
+      - { label: Body, name: body, widget: markdown }
+
+  - name: articles
+    label: Articles
+    label_singular: Article
+    folder: _articles
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    extension: md
+    format: frontmatter
+    fields:
+      - { label: Title, name: title, widget: string }
+      - { label: Date, name: date, widget: datetime, type: date }
+      - { label: Layout, name: layout, widget: string, default: post }
+      - { label: Navigation order, name: nav_order, widget: number, required: false }
+      - { label: Body, name: body, widget: markdown }
+
+  - name: summaries
+    label: Summaries
+    label_singular: Summary
+    folder: _summaries
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    extension: md
+    format: frontmatter
+    fields:
+      - { label: Title, name: title, widget: string }
+      - { label: Date, name: date, widget: datetime, type: date }
+      - { label: Last modified, name: last_modified_date, widget: datetime, type: date, required: false }
+      - { label: Layout, name: layout, widget: string, default: post }
+      - { label: Body, name: body, widget: markdown }
+
+  - name: tools
+    label: Tools
+    label_singular: Tool
+    folder: _tools
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    extension: md
+    format: frontmatter
+    fields:
+      - { label: Title, name: title, widget: string }
+      - { label: Date, name: date, widget: datetime, type: date }
+      - { label: Layout, name: layout, widget: string, default: tool }
+      - { label: Body, name: body, widget: markdown }
+
+  - name: recaps
+    label: Recaps
+    label_singular: Recap
+    folder: _recaps
+    create: true
+    slug: "{{slug}}"
+    extension: md
+    format: frontmatter
+    fields:
+      - { label: Title, name: title, widget: string }
+      - { label: Date, name: date, widget: datetime, type: date, required: false }
+      - { label: Layout, name: layout, widget: string, default: post }
+      - { label: Body, name: body, widget: markdown }
+
+  # Root pages served at /typesettings/, /photography/, /toolbox/ (Eleventy clean URLs)
+  - name: site_pages
+    label: Site pages
+    files:
+      - label: Typesettings
+        name: typesettings
+        file: typesettings.md
+        format: frontmatter
+        fields:
+          - { label: Title, name: title, widget: string }
+          - { label: Layout, name: layout, widget: string, default: gallery }
+          - { label: Body, name: body, widget: markdown }
+      - label: Photography
+        name: photography
+        file: photography.md
+        format: frontmatter
+        fields:
+          - { label: Title, name: title, widget: string }
+          - { label: Layout, name: layout, widget: string, default: simple }
+          - { label: Body, name: body, widget: markdown }
+      - label: Toolbox
+        name: toolbox
+        file: toolbox.md
+        format: frontmatter
+        fields:
+          - { label: Title, name: title, widget: string }
+          - { label: Layout, name: layout, widget: string, default: simple }
+          - { label: Body, name: body, widget: markdown }

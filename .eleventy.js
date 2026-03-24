@@ -132,6 +132,7 @@ module.exports = function (eleventyConfig) {
   // Copy assets
   eleventyConfig.addPassthroughCopy("assets");
   eleventyConfig.addPassthroughCopy("media");
+  eleventyConfig.addPassthroughCopy("admin");
   eleventyConfig.addPassthroughCopy("avatar.jpg");
   eleventyConfig.addPassthroughCopy("robots.txt");
   eleventyConfig.addPassthroughCopy("_includes/**/*.(css|js|jpg|jpeg|png|gif|svg|ico|pdf)");
