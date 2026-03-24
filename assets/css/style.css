@@ -365,8 +365,8 @@ ul ul ul:not(.ulEmpty) {
 }
 
 li {
-  margin: var(--line) 0;
-  padding: 0 0 0 0ch;
+  margin: var(--line) 2ch;
+  padding: 0 0 0 1ch;
 }
 
 :is(ol:is(.compact, .olCompact), ul:is(.compact, .ulCompact)) > li,
@@ -653,7 +653,6 @@ audio {
    Tables (htmlized RFC)
    ============================================================ */
 table {
-  width: 100%;
   border-collapse: collapse;
   caption-side: bottom;
   margin: var(--line) 0 var(--half-line) 3ch;
