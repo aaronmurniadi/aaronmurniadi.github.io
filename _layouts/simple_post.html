@@ -42,8 +42,9 @@
   {% include "favicon.html" %}
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link
-    href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@300;400;600;700;900&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@100..900&display=swap"
     rel="stylesheet"
   />
 
@@ -90,13 +91,13 @@
           href="https://translate.google.com/translate?&sl=id&tl=en&op=translate&u={{ site.url }}{{ page.url }}">
           Translate this page to English</a>
       </p>
-      {% endif %} {% endif %} {{ content | safe }}
+
+      {% endif %} {% endif %} 
+    
+      {{ content | safe }}
 
       <hr />
 
-      <script src="https://utteranc.es/client.js" repo="aaronmurniadi/aaronmurniadi.github.io"         issue-term="pathname"
-        label="blog-comment" theme="photon-dark" crossorigin="anonymous" async>
-        </script>
     </article>
 
     <footer>

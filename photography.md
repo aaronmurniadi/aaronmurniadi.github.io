@@ -14,7 +14,6 @@ Note: You can click on the images to view them in its original size.
 
 </div>
 
----
 
 <div id="gallery-container" class="gallery-one-col photography-page"><div class="gallery-grid" markdown="1">
 
