@@ -88,6 +88,43 @@
   --radius-3xl: 1.5rem;
   --radius-4xl: 2rem;
   --radius-full: 9999px;
+
+  /* Animated page backdrop (very low contrast; see body backgrounds) */
+  --bg-anim-a: rgba(95, 130, 210, 0.07);
+  --bg-anim-b: rgba(190, 120, 220, 0.06);
+  --bg-anim-c: rgba(60, 180, 160, 0.05);
+  --bg-anim-grid: rgba(0, 0, 0, 0.022);
+}
+
+@keyframes page-backdrop-drift {
+  0% {
+    background-position:
+      0% 30%,
+      100% 70%,
+      50% 50%,
+      0 0;
+  }
+  33% {
+    background-position:
+      80% 10%,
+      20% 90%,
+      40% 60%,
+      12px 8px;
+  }
+  66% {
+    background-position:
+      40% 80%,
+      60% 20%,
+      70% 40%,
+      -8px 12px;
+  }
+  100% {
+    background-position:
+      0% 30%,
+      100% 70%,
+      50% 50%,
+      0 0;
+  }
 }
 
 /* ============================================================
@@ -117,12 +154,56 @@ body {
   margin: 0;
   padding: 0;
   min-height: 100vh;
-  background: var(--bg);
+  background-color: var(--bg);
+  background-image:
+    radial-gradient(ellipse 85% 70% at 15% 25%, var(--bg-anim-a), transparent 55%),
+    radial-gradient(ellipse 75% 65% at 88% 78%, var(--bg-anim-b), transparent 52%),
+    radial-gradient(ellipse 60% 80% at 48% 105%, var(--bg-anim-c), transparent 50%),
+    repeating-linear-gradient(
+      -12deg,
+      transparent 0,
+      transparent 11px,
+      var(--bg-anim-grid) 11px,
+      var(--bg-anim-grid) 12px
+    ),
+    repeating-linear-gradient(
+      78deg,
+      transparent 0,
+      transparent 17px,
+      var(--bg-anim-grid) 17px,
+      var(--bg-anim-grid) 18px
+    );
+  background-size:
+    180% 180%,
+    170% 170%,
+    140% 140%,
+    100% 100%,
+    100% 100%;
+  background-repeat: no-repeat, no-repeat, no-repeat, repeat, repeat;
+  background-position:
+    0% 30%,
+    100% 70%,
+    50% 50%,
+    0 0,
+    0 0;
+  animation: page-backdrop-drift 42s ease-in-out infinite;
   color: var(--text);
   overflow-x: hidden;
   overflow-wrap: break-word;
   cursor: auto;
   display: block;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body {
+    animation: none;
+    background-position:
+      20% 40%,
+      80% 60%,
+      50% 100%,
+      0 0,
+      0 0;
+  }
 }
 
 .skip-link,
